@@ -37,7 +37,6 @@ public class RotateToDirectionOneAxis : MonoBehaviour
 
     private void Rotate()
     {
-        Debug.Log(_input.direction);
         if (_input.direction.magnitude != 0)
         {
             Vector2 dir = _input.direction.normalized;
