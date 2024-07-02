@@ -7,24 +7,54 @@ using UnityEngine.Events;
 public class InvokeAfterTimer : InvokeAfter
 {
     [SerializeField] private float timeToAction;
-    [SerializeField] private float maxTimeToActionOPTIONAL;
-    [SerializeField] private FloatVariable timeToActionVariable;
-    [SerializeField] private Vector2Variable randomTimeToActionVariable;
-    [SerializeField] private float valueAdjuster;
-    [SerializeField] private bool desableAfterTimer = true;
+    [SerializeField] private InvokeAfterTimerValueSetter valueSetter;
+    private float maxTimeToAction;
+    private FloatVariable timeToActionVariable;
+    private Vector2Variable randomTimeToActionVariable;
+    private float valueAdjuster;
+    [SerializeField] private bool startTimerOnEnabled;
     [SerializeField] private bool overrideLastTimer = true;
     [SerializeField] private bool useUnscaledTime;
 
-    [SerializeField] private float currentTimeToAction;
-    [SerializeField] private bool isPaused;
-
-    [SerializeField] private float currentTimePass;
+    private float _currentTimeToAction;
+    private bool _isPaused;
+    private float _currentTimePass;
 
     private Coroutine coroutine;
 
+    public float GetCurrentTimeToAction()
+    {
+        return _currentTimeToAction;
+    }
+
+    public bool GetIsPaused()
+    {
+        return _isPaused;
+    }
+
+    public float GetcurrentTimePass()
+    {
+        return _currentTimePass;
+    }
+
     public void SetPause(bool value)
     {
-        isPaused = value;
+        _isPaused = value;
+    }
+
+    private void OnEnable()
+    {
+        if (valueSetter != null)
+        {
+            maxTimeToAction = valueSetter.GetMaxTimeToAction();
+            timeToActionVariable = valueSetter.GetTimeToActionVariable();
+            randomTimeToActionVariable = valueSetter.GetRandomTimeToActionVariable();
+            valueAdjuster = valueSetter.GetValueAdjuster();
+        }
+        if (startTimerOnEnabled)
+        {
+            StartTimer();
+        }
     }
 
     public void StartTimer()
@@ -44,29 +74,28 @@ public class InvokeAfterTimer : InvokeAfter
     {
         if (randomTimeToActionVariable != null && randomTimeToActionVariable.Value != Vector2.zero)
         {
-            currentTimeToAction = Random.Range(randomTimeToActionVariable.Value.x, randomTimeToActionVariable.Value.y);
-            yield return Timer(currentTimeToAction);
+            _currentTimeToAction = Random.Range(randomTimeToActionVariable.Value.x, randomTimeToActionVariable.Value.y);
+            yield return Timer(_currentTimeToAction);
         }
         else if (timeToActionVariable != null && timeToActionVariable.Value > 0)
         {
-            currentTimeToAction = timeToActionVariable.Value;
-            yield return Timer(currentTimeToAction);
+            _currentTimeToAction = timeToActionVariable.Value;
+            yield return Timer(_currentTimeToAction);
         }
         else
         {
-            if (maxTimeToActionOPTIONAL <= 0)
+            if (maxTimeToAction <= 0)
             {
-                currentTimeToAction = timeToAction;
-                yield return Timer(currentTimeToAction);
+                _currentTimeToAction = timeToAction;
+                yield return Timer(_currentTimeToAction);
             }
             else
             {
-                currentTimeToAction = Random.Range(timeToAction, maxTimeToActionOPTIONAL);
-                yield return Timer(currentTimeToAction);
+                _currentTimeToAction = Random.Range(timeToAction, maxTimeToAction);
+                yield return Timer(_currentTimeToAction);
             }
         }
         CallAction();
-        enabled = !desableAfterTimer;
     }
 
     private IEnumerator Timer(float timeCount)
@@ -74,8 +103,8 @@ public class InvokeAfterTimer : InvokeAfter
         timeCount += valueAdjuster;
         while (timeCount > 0)
         {
-            currentTimePass = timeCount;
-            if (!isPaused)
+            _currentTimePass = timeCount;
+            if (!_isPaused)
             {
                 if (useUnscaledTime)
                 {

@@ -11,7 +11,7 @@ public class Gravity : MonoBehaviour
     [SerializeField] private float maxSpeed = float.NegativeInfinity;
 
 
-    private bool _isGrounded;
+    private bool _isGrounded = true;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask whatIsGround;
 
