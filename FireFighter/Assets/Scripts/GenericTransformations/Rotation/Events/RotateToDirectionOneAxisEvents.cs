@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlaneMoveEvents : MonoBehaviour
+public class RotateToDirectionOneAxisEvents : MonoBehaviour
 {
-    [SerializeField] private PlaneMove planeMove;
+    [SerializeField] private RotateToDirectionOneAxis rotateToDirectionOneAxis;
 
     [SerializeField] private UnityEvent onStartMove;
     [SerializeField] private UnityEvent onStopMove;
@@ -14,10 +14,10 @@ public class PlaneMoveEvents : MonoBehaviour
 
     private void OnEnable()
     {
-        if (planeMove != null)
+        if (rotateToDirectionOneAxis != null)
         {
-            planeMove.onStartMove += OnStartMove;
-            planeMove.onStopMove += OnStopMove;
+            rotateToDirectionOneAxis.onStartMove += OnStartMove;
+            rotateToDirectionOneAxis.onStopMove += OnStopMove;
             listening = true;
         }
     }
@@ -34,10 +34,10 @@ public class PlaneMoveEvents : MonoBehaviour
 
     private void OnDisable()
     {
-        if (planeMove != null && listening)
+        if (rotateToDirectionOneAxis != null && listening)
         {
-            planeMove.onStartMove -= OnStartMove;
-            planeMove.onStopMove -= OnStopMove;
+            rotateToDirectionOneAxis.onStartMove -= OnStartMove;
+            rotateToDirectionOneAxis.onStopMove -= OnStopMove;
             listening = false;
         }
     }

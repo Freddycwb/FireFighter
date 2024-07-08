@@ -15,6 +15,19 @@ public class InvokeAfterCounter : InvokeAfter
         FloatVariable,
     }
 
+    public enum startValueType
+    {
+        Min,
+        Current,
+        Max
+    }
+
+    public enum actionValueType
+    {
+        Min,
+        Max
+    }
+
     [HideInInspector] public valueType maxValueType;
     [HideInInspector] public valueType currentValueType;
     [HideInInspector] public valueType minValueType;
@@ -39,15 +52,34 @@ public class InvokeAfterCounter : InvokeAfter
     private float _currentValue;
     private float _minValue;
 
-    public Action onIncreaseValue;
-    public Action onDecreaseValue;
+    [SerializeField] private actionValueType targetToAction = actionValueType.Min;
+    [SerializeField] private startValueType startCurrentValueType = startValueType.Max;
+
+    public Action onModifyValue;
 
     private void OnEnable()
     {
         SetMaxValue();
         SetMinValue();
-        _currentValue = _maxValue;
+        SetStartCurrentValue();
         SetCurrentValueVariable();
+    }
+
+    private void SetStartCurrentValue()
+    {
+        switch (startCurrentValueType)
+        {
+            case startValueType.Min:
+                _currentValue = _minValue;
+                break;
+            case startValueType.Current:
+                break;
+            case startValueType.Max:
+                _currentValue = _maxValue;
+                break;
+            default:
+                break;
+        }
     }
 
     public float GetMaxValue()
@@ -133,55 +165,46 @@ public class InvokeAfterCounter : InvokeAfter
         CallSubAction();
     }
 
-    public void IncreaseValue(float a)
+    private void CheckAction()
+    {
+        switch (targetToAction)
+        {
+            case actionValueType.Min:
+                if (_currentValue == _minValue)
+                {
+                    CallAction();
+                }
+                break;
+            case actionValueType.Max:
+                if (_currentValue == _maxValue)
+                {
+                    CallAction();
+                }
+                break;
+        }
+    }
+
+    public void ModifyValue(float a)
     {
         _currentValue = Mathf.Clamp(_currentValue + a, _minValue, _maxValue);
         SetCurrentValueVariable();
         CallSubAction();
-        if (onIncreaseValue != null)
+        CheckAction();
+        if (onModifyValue != null)
         {
-            onIncreaseValue.Invoke();
+            onModifyValue.Invoke();
         }
     }
 
-    public void IncreaseValue(FloatVariable a)
+    public void ModifyValue(FloatVariable a)
     {
         _currentValue = Mathf.Clamp(_currentValue + a.Value, _minValue, _maxValue);
         SetCurrentValueVariable();
         CallSubAction();
-        if (onIncreaseValue != null)
+        CheckAction();
+        if (onModifyValue != null)
         {
-            onIncreaseValue.Invoke();
-        }
-    }
-
-    public void DecreaseValue(float a)
-    {
-        _currentValue = Mathf.Clamp(_currentValue - a, _minValue, _maxValue);
-        SetCurrentValueVariable();
-        CallSubAction();
-        if (_currentValue == _minValue)
-        {
-            CallAction();
-        }
-        if (onDecreaseValue != null)
-        {
-            onDecreaseValue.Invoke();
-        }
-    }
-
-    public void DecreaseValue(FloatVariable a)
-    {
-        _currentValue = Mathf.Clamp(_currentValue - a.Value, _minValue, _maxValue);
-        SetCurrentValueVariable();
-        CallSubAction();
-        if (_currentValue == _minValue)
-        {
-            CallAction();
-        }
-        if (onDecreaseValue != null)
-        {
-            onDecreaseValue.Invoke();
+            onModifyValue.Invoke();
         }
     }
 
@@ -193,10 +216,7 @@ public class InvokeAfterCounter : InvokeAfter
         if (lastValue != _currentValue)
         {
             CallSubAction();
-            if (_currentValue == _minValue)
-            {
-                CallAction();
-            }
+            CheckAction();
         }
     }
 
@@ -208,10 +228,7 @@ public class InvokeAfterCounter : InvokeAfter
         if (lastValue != _currentValue)
         {
             CallSubAction();
-            if (_currentValue == _minValue)
-            {
-                CallAction();
-            }
+            CheckAction();
         }
     }
 
@@ -223,10 +240,7 @@ public class InvokeAfterCounter : InvokeAfter
         if (lastValue != _currentValue)
         {
             CallSubAction();
-            if (_currentValue == _minValue)
-            {
-                CallAction();
-            }
+            CheckAction();
         }
     }
 }

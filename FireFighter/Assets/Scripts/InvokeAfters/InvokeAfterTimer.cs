@@ -68,6 +68,7 @@ public class InvokeAfterTimer : InvokeAfter
         {
             coroutine = StartCoroutine(InvokeAfterSeconds());
         }
+        CallSubAction();
     }
 
     private IEnumerator InvokeAfterSeconds()

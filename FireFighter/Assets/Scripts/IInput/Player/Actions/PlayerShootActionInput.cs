@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem;
 
-public class PlayerJumpActionInput : MonoBehaviour, IInputAction
+public class PlayerShootActionInput : MonoBehaviour, IInputAction
 {
 
     public bool buttonDown
@@ -14,9 +14,9 @@ public class PlayerJumpActionInput : MonoBehaviour, IInputAction
             bool gamepad = false;
             if (Gamepad.current != null)
             {
-                gamepad = Gamepad.current.buttonSouth.wasPressedThisFrame;
+                gamepad = Gamepad.current.buttonWest.wasPressedThisFrame;
             }
-            return Input.GetKeyDown(KeyCode.Space) || gamepad;
+            return Input.GetKeyDown(KeyCode.Mouse0) || gamepad;
         }
     }
 
@@ -27,9 +27,9 @@ public class PlayerJumpActionInput : MonoBehaviour, IInputAction
             bool gamepad = false;
             if (Gamepad.current != null)
             {
-                gamepad = Gamepad.current.buttonSouth.isPressed;
+                gamepad = Gamepad.current.buttonWest.isPressed;
             }
-            return Input.GetKey(KeyCode.Space) || gamepad;
+            return Input.GetKey(KeyCode.Mouse0) || gamepad;
         }
     }
 
@@ -40,9 +40,9 @@ public class PlayerJumpActionInput : MonoBehaviour, IInputAction
             bool gamepad = false;
             if (Gamepad.current != null)
             {
-                gamepad = Gamepad.current.buttonSouth.wasReleasedThisFrame;
+                gamepad = Gamepad.current.buttonWest.wasReleasedThisFrame;
             }
-            return Input.GetKeyUp(KeyCode.Space) || gamepad;
+            return Input.GetKeyUp(KeyCode.Mouse0) || gamepad;
         }
     }
 }
