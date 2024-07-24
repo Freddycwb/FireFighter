@@ -18,4 +18,9 @@ public class RotationSetter : MonoBehaviour
             transform.eulerAngles = _reference.transform.eulerAngles;
         }        
     }
+
+    public void SetToZero()
+    {
+        transform.eulerAngles = Vector3.zero;
+    }
 }

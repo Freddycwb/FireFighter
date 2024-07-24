@@ -7,8 +7,10 @@ public class Destroyer : MonoBehaviour
 {
     [SerializeField] private GameObject obj;
     [SerializeField] private float delay;
-    [SerializeField] private bool onStart;
+    [SerializeField] private bool onEnable;
     private Coroutine coroutine;
+
+    private PoolObject poolObj;
 
     public Action onDelete;
 
@@ -17,12 +19,17 @@ public class Destroyer : MonoBehaviour
         return delay;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        if (onStart)
+        if (onEnable)
         {
             Delete();
         }
+    }
+
+    private void Start()
+    {
+        poolObj = obj.GetComponent<PoolObject>();
     }
 
     private void CheckDelay()
@@ -66,7 +73,7 @@ public class Destroyer : MonoBehaviour
             onDelete.Invoke();
         }
         yield return new WaitForEndOfFrame();
-        Destroy(obj);
+        CheckIsPool();
     }
 
     private void DeleteNow()
@@ -75,7 +82,19 @@ public class Destroyer : MonoBehaviour
         {
             onDelete.Invoke();
         }
-        Destroy(obj);
+        CheckIsPool();
+    }
+
+    private void CheckIsPool()
+    {
+        if (poolObj == null)
+        {
+            Destroy(obj);
+        }
+        else
+        {
+            poolObj.Delete();
+        }
     }
 
     private void OnDestroy()
