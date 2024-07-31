@@ -72,4 +72,19 @@ public class Gravity : MonoBehaviour
         }
         _isGrounded = grounds.Length > 0;
     }
+
+    public void SetGravityScale(float value)
+    {
+        gravityScale = value;
+    }
+
+    public void SetMaxSpeed(float value)
+    {
+        maxSpeed = value;
+        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.velocity);
+        if (downVelocity.y <= maxSpeed)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, maxSpeed, rb.velocity.z);
+        }
+    }
 }
