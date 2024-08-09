@@ -6,11 +6,11 @@ public class EventDebugger : MonoBehaviour
 {
     public void WriteDebug(string value)
     {
-        Debug.Log(value);
+        Debug.Log(gameObject.name + " : " + value);
     }
 
     public void WriteErrorDebug(string value)
     {
-        Debug.LogError(value);
+        Debug.Log(gameObject.name + " : " + value);
     }
 }

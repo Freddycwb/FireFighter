@@ -12,7 +12,7 @@ public class Gravity : MonoBehaviour
 
 
     private bool _isGrounded = true;
-    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private float groundCheckRadius = 0.15f;
     [SerializeField] private LayerMask whatIsGround;
 
     public Action onLand;
