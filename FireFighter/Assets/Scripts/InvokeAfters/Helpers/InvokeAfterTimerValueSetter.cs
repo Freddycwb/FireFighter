@@ -6,8 +6,6 @@ using UnityEngine.Events;
 
 public class InvokeAfterTimerValueSetter : MonoBehaviour
 {
-    [SerializeField] private InvokeAfterTimer timer;
-
     [SerializeField] private float maxTimeToAction;
     [SerializeField] private FloatVariable timeToActionVariable;
     [SerializeField] private Vector2Variable randomTimeToActionVariable;

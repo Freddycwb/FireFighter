@@ -7,7 +7,7 @@ using UnityEngine.InputSystem.Controls;
 public class PlayerDirectionInput : MonoBehaviour, IInputDirection
 {
     [SerializeField] private GameObject pov;
-    [SerializeField] private GameObject povVariable;
+    [SerializeField] private GameObjectVariable povVariable;
 
     public Vector2 direction
     {
@@ -26,7 +26,7 @@ public class PlayerDirectionInput : MonoBehaviour, IInputDirection
             Vector2 keyboardMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             Vector2 move = keyboardMove + gamepadMove;
 
-            pov = povVariable ? povVariable : pov;
+            pov = povVariable ? povVariable.Value : pov;
 
             if (pov != null)
             {
