@@ -10,6 +10,7 @@ public class InvokeAfterTimerValueSetter : MonoBehaviour
     [SerializeField] private FloatVariable timeToActionVariable;
     [SerializeField] private Vector2Variable randomTimeToActionVariable;
     [SerializeField] private float valueAdjuster;
+    [SerializeField] private FloatVariable valueAdjusterVariable;
 
     private Coroutine coroutine;
 
@@ -30,6 +31,10 @@ public class InvokeAfterTimerValueSetter : MonoBehaviour
 
     public float GetValueAdjuster()
     {
+        if (valueAdjusterVariable != null)
+        {
+            valueAdjuster = valueAdjusterVariable.Value;
+        }
         return valueAdjuster;
     }
 }

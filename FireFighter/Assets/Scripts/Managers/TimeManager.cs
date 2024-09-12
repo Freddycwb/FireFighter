@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class TimeManager : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class TimeManager : MonoBehaviour
 
     private Coroutine coroutine;
     [SerializeField] private float timeScaleSwitchValueSpeed;
+
+    private float defaultFixedDeltaTime;
+    private float defaultVFXFixedTimeStep;
+
+    private void Start()
+    {
+        defaultFixedDeltaTime = Time.fixedDeltaTime;
+        defaultVFXFixedTimeStep = VFXManager.fixedTimeStep;
+    }
 
     public void SetTimeScale(float value)
     {

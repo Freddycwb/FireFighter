@@ -14,7 +14,7 @@ public class PlayerShootActionInput : MonoBehaviour, IInputAction
             bool gamepad = false;
             if (Gamepad.current != null)
             {
-                gamepad = Gamepad.current.buttonWest.wasPressedThisFrame;
+                gamepad = Gamepad.current.rightTrigger.wasPressedThisFrame;
             }
             return Input.GetKeyDown(KeyCode.Mouse0) || gamepad;
         }
@@ -27,7 +27,7 @@ public class PlayerShootActionInput : MonoBehaviour, IInputAction
             bool gamepad = false;
             if (Gamepad.current != null)
             {
-                gamepad = Gamepad.current.buttonWest.isPressed;
+                gamepad = Gamepad.current.rightTrigger.isPressed;
             }
             return Input.GetKey(KeyCode.Mouse0) || gamepad;
         }
@@ -40,7 +40,7 @@ public class PlayerShootActionInput : MonoBehaviour, IInputAction
             bool gamepad = false;
             if (Gamepad.current != null)
             {
-                gamepad = Gamepad.current.buttonWest.wasReleasedThisFrame;
+                gamepad = Gamepad.current.rightTrigger.wasReleasedThisFrame;
             }
             return Input.GetKeyUp(KeyCode.Mouse0) || gamepad;
         }
