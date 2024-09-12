@@ -32,7 +32,10 @@ public class InvokeAfterEvents : MonoBehaviour
 
     void OnSubActionCall()
     {
-        onSubActionCall.Invoke();
+        if (enabled)
+        {
+            onSubActionCall.Invoke();
+        }
     }
 
     private void OnDisable()

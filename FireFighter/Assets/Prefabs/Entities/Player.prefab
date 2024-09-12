@@ -1468,7 +1468,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4711208715938537054, guid: 017caee599b937544871625ee71c7053, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 6f03850d4edeb454db70d9a00b8952fc, type: 2}
   m_Bones:
   - {fileID: 1420195345246532996}
   - {fileID: 6114724747712093828}
@@ -2347,6 +2347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5905110999428286032}
   - component: {fileID: 1236960392716156585}
+  - component: {fileID: 6932395429008947158}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2400,7 +2401,21 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &6932395429008947158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277373061674458332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af8e944b467f3f4ca663405af70c184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableObject: {fileID: 11400000, guid: aacfc9e7b942e544a9494b3668e5f801, type: 2}
+  value: {fileID: 2277373061674458332}
 --- !u!1 &2330501197263779458
 GameObject:
   m_ObjectHideFlags: 0
@@ -9122,6 +9137,8 @@ GameObject:
   - component: {fileID: 6597426573218764822}
   - component: {fileID: 3682095985476942261}
   - component: {fileID: 7366136974643470260}
+  - component: {fileID: 6734042365911748326}
+  - component: {fileID: 3777653414728944280}
   m_Layer: 0
   m_Name: AxeAttackImpactParticle
   m_TagString: Untagged
@@ -9211,6 +9228,48 @@ MonoBehaviour:
   onTakeOff:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6734042365911748326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226836700258831874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed8d3d5b955dad4eb221c350525a52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3777653414728944280}
+        m_TargetAssemblyTypeName: RotationSetter, Assembly-CSharp
+        m_MethodName: SetReference
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1780341652795040770}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3777653414728944280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226836700258831874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9b18298cd381c458535a4288cf8d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7239953847792683413
 GameObject:
   m_ObjectHideFlags: 0

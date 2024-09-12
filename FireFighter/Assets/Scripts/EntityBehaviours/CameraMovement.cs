@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    [SerializeField] private GameObjectVariable targetVarible;
+    [SerializeField] private GameObjectVariable targetVariable;
 
     [SerializeField] private float maxDistance;
     [SerializeField] private float distanceMargin;
@@ -23,9 +23,9 @@ public class CameraMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        if (targetVarible != null)
+        if (targetVariable != null)
         {
-            target = targetVarible.Value;
+            target = targetVariable.Value;
         }
 
         _lookDirection = lookDirectionObject.GetComponent<IInputDirection>();
