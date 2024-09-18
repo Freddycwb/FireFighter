@@ -8,7 +8,8 @@ public class Gravity : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float gravityScale = -14;
-    [SerializeField] private float maxSpeed = float.NegativeInfinity;
+    [SerializeField] private float maxSpeedUp = float.PositiveInfinity;
+    [SerializeField] private float maxSpeedDown = float.NegativeInfinity;
 
 
     private bool _isGrounded = true;
@@ -39,17 +40,23 @@ public class Gravity : MonoBehaviour
 
     private void ApplyGravity()
     {
+        Vector3 upVelocity = Vector3.up * Vector3.Dot(Vector3.up, rb.velocity);
+        if (upVelocity.y >= maxSpeedUp)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, maxSpeedUp, rb.velocity.z);
+        }
+
         Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.velocity);
-        if (downVelocity.y <= maxSpeed)
+        if (downVelocity.y <= maxSpeedDown)
         {
             return;
         }
 
         Vector3 gravity = gravityScale * Vector3.up;
         rb.AddForce(gravity, ForceMode.Acceleration);
-        if (downVelocity.y <= maxSpeed)
+        if (downVelocity.y <= maxSpeedDown)
         {
-            rb.velocity = new Vector3(rb.velocity.x, -maxSpeed, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, -maxSpeedDown, rb.velocity.z);
         }
     }
 
@@ -78,13 +85,23 @@ public class Gravity : MonoBehaviour
         gravityScale = value;
     }
 
-    public void SetMaxSpeed(float value)
+    public void SetMaxSpeedUp(float value)
     {
-        maxSpeed = value;
-        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.velocity);
-        if (downVelocity.y <= maxSpeed)
+        maxSpeedUp = value;
+        Vector3 upVelocity = Vector3.down * Vector3.Dot(Vector3.up, rb.velocity);
+        if (upVelocity.y >= maxSpeedUp)
         {
-            rb.velocity = new Vector3(rb.velocity.x, maxSpeed, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, maxSpeedUp, rb.velocity.z);
+        }
+    }
+
+    public void SetMaxSpeedDown(float value)
+    {
+        maxSpeedDown = value;
+        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.velocity);
+        if (downVelocity.y <= maxSpeedDown)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, maxSpeedDown, rb.velocity.z);
         }
     }
 }

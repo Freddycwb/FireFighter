@@ -16,8 +16,8 @@ public class InvokeAfterTimerDebugger : MonoBehaviour
 
     private void Update()
     {
-        timer.GetCurrentTimeToAction();
-        timer.GetIsPaused();
-        timer.GetcurrentTimePass();
+        currentTimeToAction = timer.GetCurrentTimeToAction();
+        isPaused = timer.GetIsPaused();
+        currentTimePass = timer.GetCurrentTimePass();
     }
 }

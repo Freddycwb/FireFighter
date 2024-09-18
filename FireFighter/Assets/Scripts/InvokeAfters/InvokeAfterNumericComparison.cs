@@ -22,12 +22,17 @@ public class InvokeAfterNumericComparison : InvokeAfter
         compareValue = value;
     }
 
-    public void SetValueToCompare(IntVariable value)
+    public void SetValueToCompare(FloatVariable value)
     {
         compareValue = value.Value;
     }
 
-    public void SetValueToCompare(FloatVariable value)
+    public void SetValueToCompare(int value)
+    {
+        compareValue = value;
+    }
+
+    public void SetValueToCompare(IntVariable value)
     {
         compareValue = value.Value;
     }
@@ -35,6 +40,11 @@ public class InvokeAfterNumericComparison : InvokeAfter
     public void SetValueToCompare(StringArrayVariable value)
     {
         compareValue = value.Value.Length - 1;
+    }
+
+    public void Compare(int value)
+    {
+        Compare((float)value);
     }
 
     public void Compare(FloatVariable value)

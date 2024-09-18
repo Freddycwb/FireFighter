@@ -8,7 +8,9 @@ using UnityEngine.Events;
 
 public class InvokeAfterCollision : InvokeAfter
 {
+
     [SerializeField] private List<string> tags = new List<string>();
+
     public GameObject lastCollision { get; private set; }
 
     private int numberOfCollisions;

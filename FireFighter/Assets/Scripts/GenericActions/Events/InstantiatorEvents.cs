@@ -22,12 +22,15 @@ public class InstantiatorEvents : MonoBehaviour
 
     void OnObjCreated(GameObject value)
     {
-        onObjCreated.Invoke(value);
+        if (enabled)
+        {
+            onObjCreated.Invoke(value);
+        }
     }
 
     private void OnDisable()
     {
-        if (instantiator != null)
+        if (instantiator != null && listening)
         {
             instantiator.onObjCreated -= OnObjCreated;
             listening = true;

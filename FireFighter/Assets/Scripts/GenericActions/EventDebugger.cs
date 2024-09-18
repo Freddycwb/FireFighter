@@ -11,6 +11,11 @@ public class EventDebugger : MonoBehaviour
 
     public void WriteErrorDebug(string value)
     {
-        Debug.Log(gameObject.name + " : " + value);
+        Debug.LogError(gameObject.name + " : " + value);
+    }
+
+    public void WriteCounterValueDebug(InvokeAfterCounter value)
+    {
+        Debug.Log(gameObject.name + " : " + value.GetCurrentValue());
     }
 }

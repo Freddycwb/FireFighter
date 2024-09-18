@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class DamageChecker : MonoBehaviour
 {
-    [SerializeField] private DamageType.Types damageType;
+    [SerializeField] private CollisionType.Types damageType;
 
-    [SerializeField] private UnityEvent<int> takeDamage;
+    [SerializeField] private UnityEvent<float> takeDamage;
 
     public void CheckDamage(GameObject value)
     {
@@ -16,13 +16,13 @@ public class DamageChecker : MonoBehaviour
             return;
         }
         DamageEmitter emitter = null;
-        if (value.GetComponent<DamageEmitter>() != null)
+        if (value.transform.parent.GetComponent<DamageEmitter>() != null)
         {
-            emitter = value.GetComponent<DamageEmitter>();
+            emitter = value.transform.parent.GetComponent<DamageEmitter>();
         }
         if ((emitter.GetDamageType() & damageType) != 0)
         {
-            takeDamage.Invoke(emitter.GetDamageValue());
+            takeDamage.Invoke(-emitter.GetDamageValue());
         }
     }
 }

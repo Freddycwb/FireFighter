@@ -24,12 +24,18 @@ public class JumpEvents : MonoBehaviour
 
     void OnJump()
     {
-        onJump.Invoke();
+        if (enabled)
+        {
+            onJump.Invoke();
+        }
     }
 
     void OnStopHolding()
     {
-        onStopHolding.Invoke();
+        if (enabled)
+        {
+            onStopHolding.Invoke();
+        }
     }
 
     private void OnDisable()

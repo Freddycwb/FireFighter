@@ -22,7 +22,10 @@ public class EntityActionEvents : MonoBehaviour
 
     void OnActionTrigger()
     {
-        onActionTrigger.Invoke();
+        if (enabled)
+        {
+            onActionTrigger.Invoke();
+        }
     }
 
     private void OnDisable()

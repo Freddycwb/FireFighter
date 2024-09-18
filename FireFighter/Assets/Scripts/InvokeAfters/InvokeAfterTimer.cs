@@ -22,6 +22,11 @@ public class InvokeAfterTimer : InvokeAfter
 
     private Coroutine coroutine;
 
+    public float GetTimeToAction()
+    {
+        return timeToAction;
+    }
+
     public float GetCurrentTimeToAction()
     {
         return _currentTimeToAction;
@@ -32,7 +37,7 @@ public class InvokeAfterTimer : InvokeAfter
         return _isPaused;
     }
 
-    public float GetcurrentTimePass()
+    public float GetCurrentTimePass()
     {
         return _currentTimePass;
     }

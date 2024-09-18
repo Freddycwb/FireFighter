@@ -10,6 +10,16 @@ public class LookAt : MonoBehaviour
 
     [SerializeField] private float yOffset;
 
+    public void SetTarget(GameObject value)
+    {
+        target = value;
+    }
+
+    public void SetTarget(GameObjectVariable value)
+    {
+        target = value.Value;
+    }
+
     private void OnEnable()
     {
         if (targetVariable != null)

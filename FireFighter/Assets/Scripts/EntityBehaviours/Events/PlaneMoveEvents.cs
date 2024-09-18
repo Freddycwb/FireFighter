@@ -24,12 +24,18 @@ public class PlaneMoveEvents : MonoBehaviour
 
     void OnStartMove()
     {
-        onStartMove.Invoke();
+        if (enabled)
+        {
+            onStartMove.Invoke();
+        }
     }
 
     void OnStopMove()
     {
-        onStopMove.Invoke();
+        if (enabled)
+        {
+            onStopMove.Invoke();
+        }
     }
 
     private void OnDisable()

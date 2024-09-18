@@ -22,12 +22,15 @@ public class PoolInstantiatorEvents : MonoBehaviour
 
     void OnObjCreated(GameObject value)
     {
-        onObjCreated.Invoke(value);
+        if (enabled)
+        {
+            onObjCreated.Invoke(value);
+        }
     }
 
     private void OnDisable()
     {
-        if (poolInstantiator != null)
+        if (poolInstantiator != null && listening)
         {
             poolInstantiator.onObjCreated -= OnObjCreated;
             listening = true;

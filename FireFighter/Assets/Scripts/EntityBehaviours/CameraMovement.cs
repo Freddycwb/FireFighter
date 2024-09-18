@@ -51,11 +51,11 @@ public class CameraMovement : MonoBehaviour
 
         // Checking for walls
         RaycastHit hit;
-        Physics.Raycast(_targetPos, direction, out hit, maxDistance, obstacleMask);
+        Physics.Raycast(_targetPos, direction, out hit, maxDistance + distanceMargin, obstacleMask);
 
-        float hitDistance = (hit.collider ? hit.distance : maxDistance) - distanceMargin;
+        float hitDistance = (hit.collider ? hit.distance : maxDistance);
 
         // Setting camera position
-        transform.position = _targetPos + direction * hitDistance;
+        transform.position = _targetPos + direction * hitDistance + (hit.collider ? distanceMargin * hit.normal : Vector2.zero);
     }
 }

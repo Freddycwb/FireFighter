@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class DamageEmitter : MonoBehaviour
 {
-    [SerializeField] private DamageType.Types damageType;
-    [SerializeField] private int damageValue = 1;
+    [SerializeField] private CollisionType.Types damageType;
+    [SerializeField] private float damageValue = 1;
 
-    public DamageType.Types GetDamageType()
+    public CollisionType.Types GetDamageType()
     {
         return damageType;
     }
 
-    public int GetDamageValue()
+    public float GetDamageValue()
     {
         return damageValue;
     }

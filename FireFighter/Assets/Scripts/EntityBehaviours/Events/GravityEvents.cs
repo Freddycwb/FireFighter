@@ -24,12 +24,18 @@ public class GravityEvents : MonoBehaviour
 
     void OnLand()
     {
-        onLand.Invoke();
+        if (enabled)
+        {
+            onLand.Invoke();
+        }
     }
 
     void OnTakeOff()
     {
-        onTakeOff.Invoke();
+        if (enabled)
+        {
+            onTakeOff.Invoke();
+        }
     }
 
     private void OnDisable()

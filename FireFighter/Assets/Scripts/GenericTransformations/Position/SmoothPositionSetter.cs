@@ -11,7 +11,7 @@ public class SmoothPositionSetter : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private GameObjectVariable targetVariable;
 
-    private void OnEnable()
+    private void Start()
     {
         if (targetVariable != null)
         {

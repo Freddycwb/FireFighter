@@ -135,6 +135,73 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &2243220507794759713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3714991011409455806}
+  - component: {fileID: 8516051940956629922}
+  m_Layer: 0
+  m_Name: Lifetime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3714991011409455806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2243220507794759713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5935254136164504789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8516051940956629922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2243220507794759713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2883448301705703983}
+        m_TargetAssemblyTypeName: Destroyer, Assembly-CSharp
+        m_MethodName: Delete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  timeToAction: 30
+  valueSetter: {fileID: 0}
+  startTimerOnEnabled: 1
+  overrideLastTimer: 1
+  useUnscaledTime: 0
 --- !u!1 &3139046197222256604
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5935254136164504789}
   - component: {fileID: 2607029185726365039}
+  - component: {fileID: 2883448301705703983}
   m_Layer: 0
   m_Name: WaterProjectile
   m_TagString: Untagged
@@ -260,6 +328,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7044457122035763711}
+  - {fileID: 3714991011409455806}
   - {fileID: 1241400860414220520}
   - {fileID: 7137531788078759041}
   m_Father: {fileID: 0}
@@ -291,6 +360,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2883448301705703983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299623257735981432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f4196df2435ac42bba5fd7159de740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 4299623257735981432}
+  delay: 0
+  onEnable: 0
 --- !u!1 &4452081443140860186
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +436,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3157531656879476518}
   - component: {fileID: 7671639488234302652}
-  - component: {fileID: 2562654674939581251}
   m_Layer: 0
   m_Name: DeleteOnCollision
   m_TagString: Untagged
@@ -391,7 +474,7 @@ MonoBehaviour:
   onActionCall:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2562654674939581251}
+      - m_Target: {fileID: 2883448301705703983}
         m_TargetAssemblyTypeName: Destroyer, Assembly-CSharp
         m_MethodName: Delete
         m_Mode: 1
@@ -406,21 +489,6 @@ MonoBehaviour:
   onSubActionCall:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2562654674939581251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4702926247653943827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62f4196df2435ac42bba5fd7159de740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 4299623257735981432}
-  delay: 0
-  onEnable: 0
 --- !u!1 &7164090267891691021
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +599,7 @@ GameObject:
   - component: {fileID: 8364048615342307922}
   m_Layer: 0
   m_Name: Collision
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -571,7 +639,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   tags:
-  - Ground
+  - Untagged
 --- !u!135 &8364048615342307922
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -592,7 +660,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.15
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.15}
 --- !u!1 &7585864872934976443
 GameObject:
   m_ObjectHideFlags: 0
