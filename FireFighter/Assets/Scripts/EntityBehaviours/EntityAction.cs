@@ -63,7 +63,7 @@ public class EntityAction : MonoBehaviour
         }
     }
 
-    public void Update()
+    public virtual void Update()
     {
         if (GetButton())
         {

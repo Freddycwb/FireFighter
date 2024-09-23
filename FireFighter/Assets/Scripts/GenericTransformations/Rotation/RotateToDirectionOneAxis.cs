@@ -34,6 +34,7 @@ public class RotateToDirectionOneAxis : MonoBehaviour
     public void SetInput(GameObject value)
     {
         input = value;
+        _input = input.GetComponent<IInputDirection>();
     }
 
     public void SetMoveType(int value)

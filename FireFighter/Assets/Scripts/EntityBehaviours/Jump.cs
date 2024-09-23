@@ -21,7 +21,7 @@ public class Jump : EntityAction
     public Action onJump;
     public Action onStopHolding;
 
-    private void Update()
+    public override void Update()
     {
         base.Update();
         SetRemembers();

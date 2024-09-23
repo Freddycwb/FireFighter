@@ -43,6 +43,12 @@ public class PlaneMove : MonoBehaviour
         _startMaxDesAccel = maxDesAccel;
     }
 
+    public void SetInput(GameObject value)
+    {
+        input = value;
+        _input = input.GetComponent<IInputDirection>();
+    }
+
     public void SetMaxSpeed(float value)
     {
         maxSpeed = value;
