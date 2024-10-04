@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class RotationSetter : MonoBehaviour
 {
-    private GameObject _reference;
+    [SerializeField] private GameObject reference;
+    [SerializeField] private Vector3 offSet;
 
     public void SetReference(GameObject value)
     {
-        _reference = value;
+        reference = value;
     }
 
     void Update()
     {
-        if (_reference != null)
+        if (reference != null)
         {
-            transform.eulerAngles = _reference.transform.eulerAngles;
+            transform.eulerAngles = reference.transform.eulerAngles + offSet;
         }        
     }
 

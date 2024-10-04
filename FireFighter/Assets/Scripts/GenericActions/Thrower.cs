@@ -9,6 +9,8 @@ public class Thrower : MonoBehaviour
     [SerializeField] private Rigidbody throwable;
     [SerializeField] private Transform target;
 
+    [SerializeField] private Vector3 throwableOffSet;
+
     public void SetTarget(GameObject value)
     {
         target = value.transform;
@@ -16,7 +18,7 @@ public class Thrower : MonoBehaviour
 
     public void Throw()
     {
-        Throw(throwable, target);
+        Throw(throwable, target.position);
     }
 
     public void Throw(GameObject value)
@@ -39,14 +41,14 @@ public class Thrower : MonoBehaviour
             return;
         }
 
-        Throw(rb, t);
+        Throw(rb, t.position);
     }
 
-    public void Throw(Rigidbody rb, Transform target)
+    public void Throw(Rigidbody rb, Vector3 target)
     {
         rb.velocity = Vector3.zero;
 
-        Vector3 dirToObject = target.position - rb.transform.position;
+        Vector3 dirToObject = target - (rb.transform.position + throwableOffSet);
         float throwForce = force.x >= force.y ? force.x : Random.Range(force.x, force.y);
         rb.AddForce(dirToObject.normalized * throwForce, ForceMode.Impulse);
     }

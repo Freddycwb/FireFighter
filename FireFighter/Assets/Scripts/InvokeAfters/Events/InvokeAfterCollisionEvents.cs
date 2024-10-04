@@ -9,6 +9,7 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
 
     [SerializeField] private UnityEvent<GameObject> onImpact;
     [SerializeField] private UnityEvent<GameObject> onLeave;
+    [SerializeField] private UnityEvent<GameObject> onCallLastCollisionAction;
 
     private bool listening;
 
@@ -17,7 +18,7 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
         if (invokeAfterCollision != null && !listening)
         {
             invokeAfterCollision.onImpact += OnImpact;
-            invokeAfterCollision.onImpact += OnLeave;
+            invokeAfterCollision.onLeave += OnLeave;
             listening = true;
         }
     }
@@ -38,12 +39,20 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
         }
     }
 
+    public void CallLastCollisionAction()
+    {
+        if (enabled && invokeAfterCollision.lastCollision != null)
+        {
+            onCallLastCollisionAction.Invoke(invokeAfterCollision.lastCollision);
+        }
+    }
+
     private void OnDisable()
     {
         if (invokeAfterCollision != null && listening)
         {
             invokeAfterCollision.onImpact -= OnImpact;
-            invokeAfterCollision.onImpact -= OnLeave;
+            invokeAfterCollision.onLeave -= OnLeave;
             listening = false;
         }
     }

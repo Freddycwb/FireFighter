@@ -16,7 +16,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     public Action onReachTarget;
 
-    private void Awake()
+    private void Start()
     {
         _path = new NavMeshPath();
         if (targetVariable != null)

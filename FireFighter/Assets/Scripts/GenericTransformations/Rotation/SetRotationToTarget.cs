@@ -7,6 +7,7 @@ public class SetRotationToTarget : MonoBehaviour
 {
     [SerializeField] private GameObject objToRotate;
     [SerializeField] private GameObject target;
+    [SerializeField] private GameObjectVariable targetVariable;
 
     [System.Flags]
     public enum Axis
@@ -18,11 +19,22 @@ public class SetRotationToTarget : MonoBehaviour
     }
     [SerializeField] private Axis axis;
 
+    private void Start()
+    {
+        if (targetVariable != null)
+        {
+            target = targetVariable.Value;
+        }
+    }
+    public void SetRotation(GameObjectVariable value)
+    {
+        SetRotation(value.Value);
+    }
+
     public void SetRotation(GameObject value)
     {
-
         Vector3 relativePos = value.transform.position - objToRotate.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        Vector3 rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
         if ((axis & Axis.x) == 0)
         {
             rotation.x = objToRotate.transform.rotation.x;
@@ -35,7 +47,7 @@ public class SetRotationToTarget : MonoBehaviour
         {
             rotation.z = objToRotate.transform.rotation.z;
         }
-        objToRotate.transform.localEulerAngles = rotation.eulerAngles;
+        objToRotate.transform.localEulerAngles = rotation;
     }
 
     private void Update()

@@ -20,16 +20,22 @@ public class SceneManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        StartCoroutine(LoadScene(currentScene));
+        StartCoroutine(LoadSceneRoutine(currentScene));
     }
 
-    private IEnumerator LoadScene(string value)
+    public void LoadScene(string value)
+    {
+        StartCoroutine(LoadSceneRoutine(value));
+    }
+
+    private IEnumerator LoadSceneRoutine(string value)
     {
         if (onStartLoadScene != null)
         {
             onStartLoadScene(value);
         }
         yield return new WaitForSeconds(delay);
+        currentScene = value;
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
     }
 }

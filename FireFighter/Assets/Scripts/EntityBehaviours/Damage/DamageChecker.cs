@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class DamageChecker : MonoBehaviour
 {
     [SerializeField] private CollisionType.Types damageType;
 
     [SerializeField] private UnityEvent<float> takeDamage;
+
+    public Action onTakeDamage; 
 
     public void CheckDamage(GameObject value)
     {
@@ -22,6 +25,10 @@ public class DamageChecker : MonoBehaviour
         }
         if ((emitter.GetDamageType() & damageType) != 0)
         {
+            if (onTakeDamage != null)
+            {
+                onTakeDamage.Invoke();
+            }
             takeDamage.Invoke(-emitter.GetDamageValue());
         }
     }

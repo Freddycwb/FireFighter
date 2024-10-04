@@ -133,4 +133,17 @@ public class RotateToDirectionOneAxis : MonoBehaviour
         target = Quaternion.Euler(transform.localEulerAngles.x, -rotY + offset, transform.localEulerAngles.z);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, target, Time.deltaTime * rotateVel);
     }
+
+    public void InstanteRotate(GameObject value)
+    {
+        if (_input.direction.normalized == Vector2.zero)
+        {
+            return;
+        }
+        Vector2 dir = _input.direction.normalized;
+        target = Quaternion.identity;
+        float rotY = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        target = Quaternion.Euler(transform.localEulerAngles.x, -rotY + offset, transform.localEulerAngles.z);
+        value.transform.rotation = target;
+    }
 }
