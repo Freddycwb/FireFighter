@@ -10,6 +10,8 @@ public class DamageChecker : MonoBehaviour
 
     [SerializeField] private UnityEvent<float> takeDamage;
 
+    [SerializeField] private bool alertEmitter = true;
+
     public Action onTakeDamage; 
 
     public void CheckDamage(GameObject value)
@@ -29,7 +31,7 @@ public class DamageChecker : MonoBehaviour
             {
                 onTakeDamage.Invoke();
             }
-            takeDamage.Invoke(-emitter.GetDamageValue());
+            takeDamage.Invoke(-emitter.GetDamageValue(alertEmitter));
         }
     }
 }

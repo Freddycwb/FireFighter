@@ -15,9 +15,9 @@ public class DamageEmitter : MonoBehaviour
         return damageType;
     }
 
-    public float GetDamageValue()
+    public float GetDamageValue(bool value)
     {
-        if (onEmitDamage != null)
+        if (onEmitDamage != null && value)
         {
             onEmitDamage.Invoke();
         }

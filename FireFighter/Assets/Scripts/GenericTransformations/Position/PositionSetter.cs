@@ -8,4 +8,9 @@ public class PositionSetter : MonoBehaviour
     {
         transform.position = value.transform.position;
     }
+
+    public void SetPosition(GameObjectVariable value)
+    {
+        transform.position = value.Value.transform.position;
+    }
 }

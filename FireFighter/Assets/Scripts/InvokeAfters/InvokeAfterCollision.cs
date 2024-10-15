@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +10,17 @@ public class InvokeAfterCollision : InvokeAfter
 
     [SerializeField] private List<string> tags = new List<string>();
 
+    [System.Flags]
+    public enum Types
+    {
+        None = 0,
+        trigger = 1,
+        collision = 2,
+    }
+
+    [SerializeField] private Types collisionTypes = Types.trigger | Types.collision;
+
+
     public GameObject lastCollision { get; private set; }
 
     private int numberOfCollisions;
@@ -18,8 +28,7 @@ public class InvokeAfterCollision : InvokeAfter
     public Action<GameObject> onImpact;
     public Action<GameObject> onLeave;
 
-    public GameObject GetLastCollision()
-    {
+    public GameObject GetLastCollision() {
         return lastCollision;
     }
 
@@ -30,6 +39,10 @@ public class InvokeAfterCollision : InvokeAfter
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!((collisionTypes & Types.trigger) != 0 && other.GetComponent<Collider>().isTrigger) && !((collisionTypes & Types.collision) != 0 && !other.GetComponent<Collider>().isTrigger))
+        {
+            return;
+        }
         if (tags.Count == 0 || tags.Contains(other.tag))
         {
             lastCollision = other.gameObject;
@@ -44,6 +57,10 @@ public class InvokeAfterCollision : InvokeAfter
 
     private void OnTriggerExit(Collider other)
     {
+        if (!((collisionTypes & Types.trigger) != 0 && other.GetComponent<Collider>().isTrigger) && !((collisionTypes & Types.collision) != 0 && !other.GetComponent<Collider>().isTrigger))
+        {
+            return;
+        }
         if (tags.Count == 0 || tags.Contains(other.tag))
         {
             if (onLeave != null)
@@ -57,6 +74,10 @@ public class InvokeAfterCollision : InvokeAfter
 
     private void OnCollisionEnter(Collision other)
     {
+        if (!((collisionTypes & Types.trigger) != 0 && other.collider.isTrigger) && !((collisionTypes & Types.collision) != 0 && !other.collider.isTrigger))
+        {
+            return;
+        }
         if (tags.Count == 0 || tags.Contains(other.gameObject.tag))
         {
             lastCollision = other.gameObject;
@@ -71,6 +92,10 @@ public class InvokeAfterCollision : InvokeAfter
 
     private void OnCollisionExit(Collision other)
     {
+        if (!((collisionTypes & Types.trigger) != 0 && other.collider.isTrigger) && !((collisionTypes & Types.collision) != 0 && !other.collider.isTrigger))
+        {
+            return;
+        }
         if (tags.Count == 0 || tags.Contains(other.gameObject.tag))
         {
             if (onLeave != null)
