@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class RotationSetter : MonoBehaviour
 {
+    [SerializeField] private GameObject objectToRotate;
     [SerializeField] private GameObject reference;
     [SerializeField] private Vector3 offSet;
+
+    private void Awake()
+    {
+        if (objectToRotate != null) 
+        {
+            objectToRotate = gameObject;
+        }
+    }
 
     public void SetReference(GameObject value)
     {
@@ -16,12 +25,22 @@ public class RotationSetter : MonoBehaviour
     {
         if (reference != null)
         {
-            transform.eulerAngles = reference.transform.eulerAngles + offSet;
+            SetRotationToReference(reference);
         }        
+    }
+
+    public void SetRotationToReference(GameObject value)
+    {
+        objectToRotate.transform.eulerAngles = value.transform.eulerAngles + offSet;
+    }
+
+    public void SetLocalRotationToReference(GameObject value)
+    {
+        objectToRotate.transform.localEulerAngles = value.transform.localEulerAngles + offSet;
     }
 
     public void SetToZero()
     {
-        transform.eulerAngles = Vector3.zero;
+        objectToRotate.transform.eulerAngles = Vector3.zero;
     }
 }

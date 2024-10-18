@@ -12,7 +12,14 @@ public class DamageChecker : MonoBehaviour
 
     [SerializeField] private bool alertEmitter = true;
 
+    private float lastDamage;
+
     public Action onTakeDamage; 
+
+    public float GetLastDamage()
+    {
+        return lastDamage;
+    }
 
     public void CheckDamage(GameObject value)
     {
@@ -31,7 +38,8 @@ public class DamageChecker : MonoBehaviour
             {
                 onTakeDamage.Invoke();
             }
-            takeDamage.Invoke(-emitter.GetDamageValue(alertEmitter));
+            lastDamage = -emitter.GetDamageValue(alertEmitter);
+            takeDamage.Invoke(lastDamage);
         }
     }
 }

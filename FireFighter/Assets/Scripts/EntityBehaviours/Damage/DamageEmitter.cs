@@ -23,4 +23,19 @@ public class DamageEmitter : MonoBehaviour
         }
         return damageValue;
     }
+
+    public void SetDamageValue(float value)
+    {
+        damageValue = value;
+    }
+
+    public void SetDamageValue(FloatVariable value)
+    {
+        damageValue = value.Value;
+    }
+
+    public void SetDamageValue(InvokeAfterCounter value)
+    {
+        damageValue = value.GetCurrentValue();
+    }
 }

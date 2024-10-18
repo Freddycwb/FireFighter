@@ -131,6 +131,12 @@ public class InvokeAfterTimer : InvokeAfter
         StartCoroutine(InvokeAfterSeconds());
     }
 
+    public void SetTimeToAction(DamageChecker time)
+    {
+        timeToAction = time.GetLastDamage();
+        StartCoroutine(InvokeAfterSeconds());
+    }
+
     public void CancelTimer()
     {
         if (coroutine != null)
