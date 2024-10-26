@@ -8,6 +8,7 @@ public class SetRotationToTarget : MonoBehaviour
     [SerializeField] private GameObject objToRotate;
     [SerializeField] private GameObject target;
     [SerializeField] private GameObjectVariable targetVariable;
+    [SerializeField] private bool local = true;
 
     [System.Flags]
     public enum Axis
@@ -47,7 +48,14 @@ public class SetRotationToTarget : MonoBehaviour
         {
             rotation.z = objToRotate.transform.rotation.z;
         }
-        objToRotate.transform.localEulerAngles = rotation;
+        if (local)
+        {
+            objToRotate.transform.localEulerAngles = rotation;
+        }
+        else
+        {
+            objToRotate.transform.eulerAngles = rotation;
+        }
     }
 
     private void Update()

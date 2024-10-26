@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977260939235624654}
   - component: {fileID: 2270137590586265679}
+  - component: {fileID: 3853581511507592190}
   - component: {fileID: 1492938790850312389}
   m_Layer: 0
   m_Name: SetPosToPlayerOnEnable
@@ -48,6 +49,36 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 3853581511507592190}
+        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3853581511507592190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810666940227347081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 1492938790850312389}
         m_TargetAssemblyTypeName: ParentTransformations, Assembly-CSharp
         m_MethodName: SetParentToNull
@@ -75,6 +106,11 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
+  timeToAction: 0.05
+  valueSetter: {fileID: 0}
+  startTimerOnEnabled: 0
+  overrideLastTimer: 1
+  useUnscaledTime: 0
 --- !u!114 &1492938790850312389
 MonoBehaviour:
   m_ObjectHideFlags: 0

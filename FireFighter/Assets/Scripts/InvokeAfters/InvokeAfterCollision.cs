@@ -23,6 +23,7 @@ public class InvokeAfterCollision : InvokeAfter
 
     public GameObject lastCollision { get; private set; }
 
+    private List<GameObject> collisionsThisFrame = new List<GameObject>();
     private int numberOfCollisions;
 
     public Action<GameObject> onImpact;
@@ -45,6 +46,10 @@ public class InvokeAfterCollision : InvokeAfter
         }
         if (tags.Count == 0 || tags.Contains(other.tag))
         {
+            if (collisionsThisFrame.Contains(other.gameObject))
+            {
+                return;
+            }
             lastCollision = other.gameObject;
             if (onImpact != null)
             {
@@ -52,6 +57,7 @@ public class InvokeAfterCollision : InvokeAfter
             }
             numberOfCollisions++;
             CallAction();
+            collisionsThisFrame.Add(lastCollision);
         }
     }
 
@@ -80,6 +86,10 @@ public class InvokeAfterCollision : InvokeAfter
         }
         if (tags.Count == 0 || tags.Contains(other.gameObject.tag))
         {
+            if (collisionsThisFrame.Contains(other.gameObject))
+            {
+                return;
+            }
             lastCollision = other.gameObject;
             if (onImpact != null)
             {
@@ -87,6 +97,7 @@ public class InvokeAfterCollision : InvokeAfter
             }
             numberOfCollisions++;
             CallAction();
+            collisionsThisFrame.Add(lastCollision);
         }
     }
 
@@ -105,5 +116,10 @@ public class InvokeAfterCollision : InvokeAfter
             numberOfCollisions--;
             CallSubAction();
         }
+    }
+
+    private void LateUpdate()
+    {
+        collisionsThisFrame.Clear();
     }
 }

@@ -43,7 +43,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6466726734407130741}
   - component: {fileID: 433566277321637660}
-  - component: {fileID: 9209759530267295782}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -116,18 +115,6 @@ MonoBehaviour:
   minValueFloatVariable: {fileID: 0}
   targetToAction: 0
   startCurrentValueType: 2
---- !u!114 &9209759530267295782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418161227938245054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42431415ecbcb4447bb0cb25f10e264d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1548163159105019334
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,38 +146,6 @@ Transform:
   m_Children:
   - {fileID: 3157531656879476518}
   m_Father: {fileID: 8170723653478239665}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1570580828684415121
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3264053142101645517}
-  m_Layer: 0
-  m_Name: Events
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3264053142101645517
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570580828684415121}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1636696494683960801}
-  m_Father: {fileID: 7503039348484617399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1820018696467068784
 GameObject:
@@ -348,6 +303,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 433566277321637660}
+        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+        m_MethodName: SetCurrentValueToMin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 7
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 433566277321637660}
         m_TargetAssemblyTypeName: InvokeAfter, Assembly-CSharp
         m_MethodName: CallAction
         m_Mode: 1
@@ -474,6 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageType: 4
   damageValue: 1
+  damageValueVariable: {fileID: 0}
 --- !u!1 &3139046197222256604
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,68 +476,6 @@ Transform:
   - {fileID: 4234472906056050099}
   m_Father: {fileID: 7137531788078759041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3846146341819285245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1636696494683960801}
-  - component: {fileID: 7320974479764058200}
-  m_Layer: 0
-  m_Name: SetTimeOffset
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1636696494683960801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3846146341819285245}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3264053142101645517}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7320974479764058200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3846146341819285245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed8d3d5b955dad4eb221c350525a52f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WaterShader, Assembly-CSharp
-        m_MethodName: SetTimeOffSet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4250262191421916659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToScale: {fileID: 1820018696467068784}
   minMaxScale: {x: 0, y: 1}
-  currentMaxValue: {x: 1, y: 1}
+  minCurrentMaxValue: {x: 0, y: 0, z: 0}
+  setScaleOnSetCurrent: 1
 --- !u!114 &1743682399512148219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,18 +1270,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5868192823676317682}
-        m_TargetAssemblyTypeName: ScaleBetweenTwoValues, Assembly-CSharp
-        m_MethodName: SetScale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   subAction:
     m_PersistentCalls:
       m_Calls: []
@@ -1404,18 +1299,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 433566277321637660}
           m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5868192823676317682}
-        m_TargetAssemblyTypeName: ScaleBetweenTwoValues, Assembly-CSharp
-        m_MethodName: SetScale
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1765,8 +1648,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3264053142101645517}
+  m_Children: []
   m_Father: {fileID: 7137531788078759041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6886000658822675218

@@ -12,6 +12,9 @@ public class InvokeAfterTimer : InvokeAfter
     private FloatVariable timeToActionVariable;
     private Vector2Variable randomTimeToActionVariable;
     private float valueAdjuster;
+
+    private OperatorType.Type valueAdjustType;
+
     [SerializeField] private bool startTimerOnEnabled;
     [SerializeField] private bool overrideLastTimer = true;
     [SerializeField] private bool useUnscaledTime;
@@ -55,6 +58,7 @@ public class InvokeAfterTimer : InvokeAfter
             timeToActionVariable = valueSetter.GetTimeToActionVariable();
             randomTimeToActionVariable = valueSetter.GetRandomTimeToActionVariable();
             valueAdjuster = valueSetter.GetValueAdjuster();
+            valueAdjustType = valueSetter.GetValueAdjustType();
         }
         if (startTimerOnEnabled)
         {
@@ -106,7 +110,23 @@ public class InvokeAfterTimer : InvokeAfter
 
     private IEnumerator Timer(float timeCount)
     {
-        timeCount += valueAdjuster;
+        switch (valueAdjustType)
+        {
+            case OperatorType.Type.add:
+                timeCount += valueAdjuster;
+                break;
+            case OperatorType.Type.subtract:
+                timeCount -= valueAdjuster;
+                break;
+            case OperatorType.Type.divide:
+                timeCount /= valueAdjuster;
+                break;
+            case OperatorType.Type.multiply:
+                timeCount *= valueAdjuster;
+                break;
+            default: 
+                break;
+        }
         while (timeCount > 0)
         {
             _currentTimePass = timeCount;
@@ -128,13 +148,13 @@ public class InvokeAfterTimer : InvokeAfter
     public void SetTimeToAction(float time)
     {
         timeToAction = time;
-        StartCoroutine(InvokeAfterSeconds());
+        StartTimer();
     }
 
     public void SetTimeToAction(DamageChecker time)
     {
         timeToAction = time.GetLastDamage();
-        StartCoroutine(InvokeAfterSeconds());
+        StartTimer();
     }
 
     public void CancelTimer()

@@ -6,41 +6,63 @@ public class ScaleBetweenTwoValues : MonoBehaviour
 {
     [SerializeField] private GameObject objectToScale;
     [SerializeField] private Vector2 minMaxScale;
-    [SerializeField] private Vector2 currentMaxValue;
+    [SerializeField] private Vector3 minCurrentMaxValue;
+
+    [SerializeField] private bool setScaleOnSetCurrent = true;
+    private InvokeAfterTimer timer;
+
+    private void Update()
+    {
+        if (timer != null)
+        {
+            minCurrentMaxValue.y = Mathf.Clamp(timer.GetCurrentTimePass() / timer.GetCurrentTimeToAction() * minCurrentMaxValue.z, minCurrentMaxValue.x, minCurrentMaxValue.z);
+            SetScale();
+        }
+    }
 
     public void SetCurrentValue(float value)
     {
-        currentMaxValue.x = value;
+        minCurrentMaxValue.y = Mathf.Clamp(value, minCurrentMaxValue.x, minCurrentMaxValue.z);
+        minCurrentMaxValue.y -= minCurrentMaxValue.x;
+        if (setScaleOnSetCurrent)
+        {
+            SetScale();
+        }
     }
 
     public void SetCurrentValue(FloatVariable value)
     {
-        currentMaxValue.x = value.Value;
+        SetCurrentValue(value.Value);
     }
 
     public void SetCurrentValue(InvokeAfterCounter value)
     {
-        currentMaxValue.x = value.GetCurrentValue();
+        SetCurrentValue(value.GetCurrentValue());
     }
 
     public void SetMaxValue(float value)
     {
-        currentMaxValue.y = value;
+        minCurrentMaxValue.z = value;
     }
 
     public void SetMaxValue(FloatVariable value)
     {
-        currentMaxValue.y = value.Value;
+        minCurrentMaxValue.z = value.Value;
     }
 
     public void SetMaxValue(InvokeAfterCounter value)
     {
-        currentMaxValue.y = value.GetCurrentValue();
+        minCurrentMaxValue.z = value.GetCurrentValue();
+    }
+
+    public void SetTimer(InvokeAfterTimer value)
+    {
+        timer = value;
     }
 
     public void SetScale()
     {
-        float perc = currentMaxValue.x / currentMaxValue.y;
+        float perc = minCurrentMaxValue.y / (minCurrentMaxValue.z - minCurrentMaxValue.x);
         float minToMaxScale = minMaxScale.y - minMaxScale.x;
 
         float currentExtraScale = minToMaxScale * perc;

@@ -34,12 +34,12 @@ public class DamageChecker : MonoBehaviour
         }
         if ((emitter.GetDamageType() & damageType) != 0)
         {
+            lastDamage = emitter.GetDamageValue(alertEmitter);
             if (onTakeDamage != null)
             {
                 onTakeDamage.Invoke();
             }
-            lastDamage = -emitter.GetDamageValue(alertEmitter);
-            takeDamage.Invoke(lastDamage);
+            takeDamage.Invoke(-lastDamage);
         }
     }
 }

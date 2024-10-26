@@ -12,6 +12,8 @@ public class InvokeAfterTimerValueSetter : MonoBehaviour
     [SerializeField] private float valueAdjuster;
     [SerializeField] private FloatVariable valueAdjusterVariable;
 
+    [SerializeField] private OperatorType.Type valueAdjustType;
+
     private Coroutine coroutine;
 
     public float GetMaxTimeToAction()
@@ -36,5 +38,10 @@ public class InvokeAfterTimerValueSetter : MonoBehaviour
             valueAdjuster = valueAdjusterVariable.Value;
         }
         return valueAdjuster;
+    }
+
+    public OperatorType.Type GetValueAdjustType() 
+    { 
+        return valueAdjustType;
     }
 }

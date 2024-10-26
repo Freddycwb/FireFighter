@@ -18,4 +18,9 @@ public class EventDebugger : MonoBehaviour
     {
         Debug.Log(gameObject.name + " : " + value.GetCurrentValue());
     }
+
+    public void WriteTimePassDebug(InvokeAfterTimer value)
+    {
+        Debug.Log(gameObject.name + " : " + value.GetCurrentTimePass());
+    }
 }

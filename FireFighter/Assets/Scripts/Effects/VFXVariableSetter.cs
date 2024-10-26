@@ -18,6 +18,11 @@ public class VFXVariableSetter : MonoBehaviour
         vfx.SetFloat(variableID, value.Value);
     }
 
+    public void SetFloatByGameObjectScale(GameObject value)
+    {
+        vfx.SetFloat(variableID, value.transform.localScale.x);
+    }
+
     public void SetVector2X(float value)
     {
         vfx.SetVector2(variableID, new Vector2(value, vfx.GetVector2(variableID).y));

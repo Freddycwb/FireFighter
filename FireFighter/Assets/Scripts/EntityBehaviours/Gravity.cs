@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Gravity : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class Gravity : MonoBehaviour
     public bool GetIsGrounded()
     {
         return _isGrounded;
+    }
+
+    public void SetIsGrounded(bool value)
+    {
+        _isGrounded = value;
     }
 
     private void Start()
@@ -77,7 +83,7 @@ public class Gravity : MonoBehaviour
                 onTakeOff.Invoke();
             }
         }
-        _isGrounded = grounds.Length > 0;
+        SetIsGrounded(grounds.Length > 0);
     }
 
     public void SetGravityScale(float value)

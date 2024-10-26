@@ -7,8 +7,17 @@ public class DamageEmitter : MonoBehaviour
 {
     [SerializeField] private CollisionType.Types damageType;
     [SerializeField] private float damageValue = 1;
+    [SerializeField] private FloatVariable damageValueVariable;
 
     public Action onEmitDamage;
+
+    private void Start()
+    {
+        if (damageValueVariable != null)
+        {
+            damageValue = damageValueVariable.Value;
+        }
+    }
 
     public CollisionType.Types GetDamageType()
     {
