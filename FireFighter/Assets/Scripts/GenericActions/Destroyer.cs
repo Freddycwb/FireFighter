@@ -12,7 +12,7 @@ public class Destroyer : MonoBehaviour
 
     private PoolObject poolObj;
 
-    public Action onDelete;
+    public Action<Destroyer> onDelete;
 
     public float GetDelay()
     {
@@ -70,7 +70,7 @@ public class Destroyer : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (onDelete != null)
         {
-            onDelete.Invoke();
+            onDelete.Invoke(this);
         }
         yield return new WaitForEndOfFrame();
         CheckIsPool();
@@ -80,7 +80,7 @@ public class Destroyer : MonoBehaviour
     {
         if (onDelete != null)
         {
-            onDelete.Invoke();
+            onDelete.Invoke(this);
         }
         CheckIsPool();
     }

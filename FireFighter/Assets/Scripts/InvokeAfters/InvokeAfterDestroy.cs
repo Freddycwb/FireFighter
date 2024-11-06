@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class InvokeAfterDestroy : InvokeAfter
 {
     [SerializeField] private List<Destroyer> destroyers = new List<Destroyer>();
+    [SerializeField] private List<GameObject> objs = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -19,7 +20,12 @@ public class InvokeAfterDestroy : InvokeAfter
         }
     }
 
-    public void AddGameObject(GameObject value)
+    public void AddObject(GameObject value)
+    {
+        objs.Add(value);
+    }
+
+    public void AddDestroyer(GameObject value)
     {
         if (value.GetComponent<Destroyer>() != null)
         {
@@ -28,33 +34,27 @@ public class InvokeAfterDestroy : InvokeAfter
         }
     }
 
-    private void CallRefresh()
+    private void CallRefresh(Destroyer value)
     {
-        //StartCoroutine(RefreshList());
+        value.onDelete -= CallRefresh;
+        destroyers.Remove(value);
+        CallSubAction();
+        CallRefresh();
     }
 
-    private IEnumerator RefreshList()
+    public void CallRefresh()
     {
-        foreach (var destroyer in destroyers)
+        for (int i = objs.Count - 1; i >= 0; i--) 
         {
-            if (destroyer != null)
+            if (objs[i] == null)
             {
-                destroyer.onDelete -= CallRefresh;
+                objs.RemoveAt(i);
+                CallSubAction();
             }
         }
-        yield return new WaitForSeconds(0.05f);
-        CallSubAction();
-        destroyers = destroyers.Where(x => x != null).ToList();
-        if (destroyers.Count == 0)
+        if (objs.Count == 0 && destroyers.Count == 0)
         {
             CallAction();
-        }
-        foreach (var destroyer in destroyers)
-        {
-            if (destroyer != null)
-            {
-                destroyer.onDelete += CallRefresh;
-            }
         }
     }
 

@@ -20,7 +20,7 @@ public class DestroyerEvents : MonoBehaviour
         }
     }
 
-    void OnDelete()
+    void OnDelete(Destroyer value)
     {
         if (enabled)
         {

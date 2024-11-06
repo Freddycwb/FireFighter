@@ -96,7 +96,19 @@ MonoBehaviour:
       m_Calls: []
   subAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7682222611603146668}
+        m_TargetAssemblyTypeName: InvokeAfterDestroy, Assembly-CSharp
+        m_MethodName: CallRefresh
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   tags:
   - Enemy
   collisionTypes: 1
@@ -231,6 +243,8 @@ GameObject:
   m_Component:
   - component: {fileID: 378028790185629677}
   - component: {fileID: 7682222611603146668}
+  - component: {fileID: 3565964876682608532}
+  - component: {fileID: 8891186681438653589}
   m_Layer: 0
   m_Name: AllEnemiesDefeated
   m_TagString: Untagged
@@ -284,6 +298,81 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyers: []
+  objs: []
+--- !u!114 &3565964876682608532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783816911297932220}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812bc42eab3ebdf4e9f9c89998ede650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  Event: {fileID: 11400000, guid: 46cf22d244bc2eb42acc438d5efdc4ce, type: 2}
+--- !u!114 &8891186681438653589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783816911297932220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 7674270155770993376}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3565964876682608532}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7682222611603146668}
+        m_TargetAssemblyTypeName: InvokeAfterDestroy, Assembly-CSharp
+        m_MethodName: CallRefresh
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3565964876682608532}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5458405370161588285
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +608,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7682222611603146668}
         m_TargetAssemblyTypeName: InvokeAfterDestroy, Assembly-CSharp
-        m_MethodName: AddGameObject
+        m_MethodName: AddObject
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
