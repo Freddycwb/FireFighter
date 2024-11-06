@@ -6,11 +6,17 @@ public class PositionSetter : MonoBehaviour
 {
     public void SetPosition(GameObject value)
     {
-        transform.position = value.transform.position;
+        if (value != null)
+        {
+            transform.position = value.transform.position;
+        }
     }
 
     public void SetPosition(GameObjectVariable value)
     {
-        transform.position = value.Value.transform.position;
+        if (value != null && value.Value != null)
+        {
+            transform.position = value.Value.transform.position;
+        }
     }
 }

@@ -2,40 +2,53 @@
 #define CEL_SHADING_INCLUDED
 
 #ifndef SHADERGRAPH_PREVIEW
-float3 CalculateLighting(Light l, float3 normal, float3 position, float3 lightColor, float3 darkColor) {
+bool IsInLight(Light l, float3 normal, float incidenceThreshold, float attenuationThreshold) {
     float incidence = saturate(dot(normal, l.direction));
-    
-    int additionalLights = GetAdditionalLightsCount();
-    for (int i = 0; i < additionalLights; ++i) {
-        incidence += saturate(dot(normal, GetAdditionalLight(i, position, 1).direction));
-    }
-    
-    bool inLight = incidence > 0.2f && l.shadowAttenuation > 0.5f;
-    
-    return inLight ? lightColor : darkColor;
+    return incidence > incidenceThreshold && (l.shadowAttenuation * l.distanceAttenuation) > attenuationThreshold;
 }
 #endif
 
-void CelShading_float(float3 Normal, float3 Position, float3 LightColor, float3 DarkColor, out float3 Color) {
+void CelShading_float(float3 Normal, float3 positionWS, float4 positionCS, float3 LightColor, float3 NormalColor, float3 DarkColor, float IncidenceThreshold, float AttenuationThreshold, out float3 Color) {
 #ifdef SHADERGRAPH_PREVIEW
     Color = float3(1.0f, 0.0f, 1.0f);
 #else
     
+    float3 normal = normalize(Normal);
+    
+    InputData inputData;
+    
+    //Fix lights disappearing (thank you https://github.com/rsofia/CustomLightingForwardPlus/)
+    float4 screenPos = float4(positionCS.x, (_ScaledScreenParams.y - positionCS.y), 0, 0);
+    inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(screenPos);
+    inputData.positionWS = positionWS;
+    
     // calculating shadow coordinate
 #ifdef SHADOWS_SCREEN
-    // if using screen shadows, convert the position to clip space position and then to screen position
-    float4 clipPos = TransformWorldToHClip(Position);
-    float4 shadowCoord = ComputeScreenPos(clipPos);
-    
-    Color = 0.0f;
-    return;
+    // if using screen shadows, convert clip space position to screen position
+    float4 shadowCoord = ComputeScreenPos(positionCS);
 #else
     // otherwise
-    float4 shadowCoord = TransformWorldToShadowCoord(Position);
+    float4 shadowCoord = TransformWorldToShadowCoord(positionWS);
 #endif
     
-    Color = CalculateLighting(GetMainLight(shadowCoord), normalize(Normal), Position, LightColor, DarkColor);
-    //Color = float3(1.0f, 0.5f, 0.5f);
+    // initializing lightCount based on main light
+    int lightCount = IsInLight(GetMainLight(shadowCoord), normal, IncidenceThreshold, AttenuationThreshold) ? 1 : 0;
+    
+    // looping through additional lights, adding to lightCount if its in at least one light
+    int additionalLightCount = GetAdditionalLightsCount();
+    LIGHT_LOOP_BEGIN(additionalLightCount)
+    if (IsInLight(GetAdditionalLight(lightIndex, positionWS, 1), normal, IncidenceThreshold, AttenuationThreshold)) {
+        ++lightCount;
+        break;
+    }
+    LIGHT_LOOP_END
+    
+    if (lightCount < 1)
+        Color = DarkColor;
+    else if (lightCount == 1)
+        Color = NormalColor;
+    else if (lightCount > 1)
+        Color = LightColor;
 #endif
 }
 #endif

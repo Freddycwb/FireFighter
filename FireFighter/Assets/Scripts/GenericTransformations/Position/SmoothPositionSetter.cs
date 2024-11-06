@@ -13,7 +13,7 @@ public class SmoothPositionSetter : MonoBehaviour
 
     private void Start()
     {
-        if (targetVariable != null)
+        if (targetVariable != null && targetVariable.Value != null)
         {
             target = targetVariable.Value.transform;
         }
