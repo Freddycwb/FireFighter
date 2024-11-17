@@ -8,6 +8,7 @@ public class SceneManagerEvents : MonoBehaviour
     [SerializeField] private SceneManager sceneManager;
 
     [SerializeField] private UnityEvent onStartLoadScene;
+    [SerializeField] private UnityEvent onLastFrameBeforeLoadScene;
 
     private bool listening;
 
@@ -16,6 +17,7 @@ public class SceneManagerEvents : MonoBehaviour
         if (sceneManager != null)
         {
             sceneManager.onStartLoadScene += OnStartLoadScene;
+            sceneManager.onLastFrameBeforeLoadScene += OnLastFrameBeforeLoadScene;
             listening = true;
         }
     }
@@ -28,11 +30,20 @@ public class SceneManagerEvents : MonoBehaviour
         }
     }
 
+    void OnLastFrameBeforeLoadScene()
+    {
+        if (enabled)
+        {
+            onLastFrameBeforeLoadScene.Invoke();
+        }
+    }
+
     private void OnDisable()
     {
         if (onStartLoadScene != null && listening)
         {
             sceneManager.onStartLoadScene -= OnStartLoadScene;
+            sceneManager.onLastFrameBeforeLoadScene -= OnLastFrameBeforeLoadScene;
             listening = false;
         }
     }

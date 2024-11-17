@@ -13,6 +13,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
 
     [SerializeField] private ComparisonType comparison;
 
+    public void Compare(Gravity value)
+    {
+        Compare(value.GetIsGrounded());
+    }
+
     public void Compare(GameObject value)
     {
         Compare(value.activeSelf);

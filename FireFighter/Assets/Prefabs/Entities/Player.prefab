@@ -4359,153 +4359,6 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
---- !u!1 &2399184334566688630
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 234388436661822944}
-  - component: {fileID: 8030563377383136375}
-  - component: {fileID: 707278996051437120}
-  - component: {fileID: 1865638710864817834}
-  m_Layer: 0
-  m_Name: AxeAttackImpact
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &234388436661822944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2399184334566688630}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8490711322144708012}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8030563377383136375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2399184334566688630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f89d0b29511acf24da5b32141890405f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: {fileID: 5143122350246865235}
-  onLand:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 707278996051437120}
-        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onTakeOff:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &707278996051437120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2399184334566688630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1075387104441741056}
-        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
-        m_MethodName: ModifyValue
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1865638710864817834}
-        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
-  timeToAction: 0.0675
-  valueSetter: {fileID: 0}
-  startTimerOnEnabled: 0
-  overrideLastTimer: 1
-  useUnscaledTime: 0
---- !u!114 &1865638710864817834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2399184334566688630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1075387104441741056}
-        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
-        m_MethodName: ModifyValue
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
-  timeToAction: 0.05
-  valueSetter: {fileID: 0}
-  startTimerOnEnabled: 0
-  overrideLastTimer: 0
-  useUnscaledTime: 0
 --- !u!1 &2410830416178424082
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,6 +6101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 416224055646181652}
   - component: {fileID: 8674150832203625788}
+  - component: {fileID: 3170519764747027268}
   - component: {fileID: 7600472212448565904}
   - component: {fileID: 929304154859551907}
   m_Layer: 0
@@ -6288,6 +6142,36 @@ MonoBehaviour:
   onActionCall:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 3170519764747027268}
+        m_TargetAssemblyTypeName: InvokeAfterBoolComparison, Assembly-CSharp
+        m_MethodName: Compare
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4954031686982245246}
+          m_ObjectArgumentAssemblyTypeName: Gravity, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3170519764747027268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225258818850382451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09601003378a96f43907452d3f753743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 7600472212448565904}
         m_TargetAssemblyTypeName: InvokeAfterStringComparison, Assembly-CSharp
         m_MethodName: Compare
@@ -6300,9 +6184,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSubActionCall:
+      - m_Target: {fileID: 1712592924423703892}
+        m_TargetAssemblyTypeName: SetBoolAnimatorParameter, Assembly-CSharp
+        m_MethodName: SetBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: IsGrounded
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7600472212448565904}
+        m_TargetAssemblyTypeName: InvokeAfterStringComparison, Assembly-CSharp
+        m_MethodName: Compare
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1286350481489441023}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  comparison: 0
 --- !u!114 &7600472212448565904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6389,7 +6298,7 @@ GameObject:
   - component: {fileID: 6766555022298216534}
   - component: {fileID: 1342698258457597515}
   - component: {fileID: 6876504527424350492}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7114,7 +7023,6 @@ GameObject:
   - component: {fileID: 3589727926274715918}
   - component: {fileID: 8245689704511308606}
   - component: {fileID: 9124451625034445235}
-  - component: {fileID: 6780529865596328178}
   m_Layer: 0
   m_Name: DamageIncreaseByTime
   m_TagString: Untagged
@@ -7229,18 +7137,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6780529865596328178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3484651127254626627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42431415ecbcb4447bb0cb25f10e264d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3491797543047090203
 GameObject:
   m_ObjectHideFlags: 0
@@ -7926,73 +7822,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2187625573702147744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3836132917920931935
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1006978343036217159}
-  - component: {fileID: 1240488655506836861}
-  m_Layer: 0
-  m_Name: DisableOnEnable
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1006978343036217159
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3836132917920931935}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5289752715938354919}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1240488655506836861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3836132917920931935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1665404392268420814}
-        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
-        m_MethodName: ModifyValue
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
-  timeToAction: 0.1
-  valueSetter: {fileID: 0}
-  startTimerOnEnabled: 1
-  overrideLastTimer: 1
-  useUnscaledTime: 0
 --- !u!1 &3866939491911233418
 GameObject:
   m_ObjectHideFlags: 0
@@ -8220,7 +8049,7 @@ GameObject:
   - component: {fileID: 1155019689931819484}
   - component: {fileID: 2687301288235714113}
   - component: {fileID: 735154381743344304}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SnearAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9863,6 +9692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 8592441761179185171}
   radius: 0.22
+  setFromCurrentPos: 0
 --- !u!114 &7528441073264059055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10990,6 +10820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a51316085e2a042badeab564a2b52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objToSetPos: {fileID: 0}
 --- !u!114 &8484620067270855580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11726,7 +11557,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1006978343036217159}
   - {fileID: 5273601051908668554}
   - {fileID: 5846631912280970365}
   - {fileID: 2846786796133078316}
@@ -12484,10 +12314,10 @@ MonoBehaviour:
       - m_Target: {fileID: 8577797280613337369}
         m_TargetAssemblyTypeName: RotateToDirectionOneAxis, Assembly-CSharp
         m_MethodName: SetVelocity
-        m_Mode: 4
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: ca080115e5609be45a43cd9b9921314b, type: 2}
+          m_ObjectArgumentAssemblyTypeName: FloatVariable, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 75
           m_StringArgument: 
@@ -13650,7 +13480,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1378927562636400453}
-  - {fileID: 8490711322144708012}
   m_Father: {fileID: 288098912238264774}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6100084216544353005
@@ -14477,6 +14306,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5273601051908668554}
   - component: {fileID: 1585885735431541661}
+  - component: {fileID: 7534891368974282718}
+  - component: {fileID: 8655619312760954115}
   m_Layer: 0
   m_Name: OnAir
   m_TagString: Untagged
@@ -14542,6 +14373,72 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7534891368974282718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507918474990294029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8655619312760954115}
+        m_TargetAssemblyTypeName: InvokeAfterBoolComparison, Assembly-CSharp
+        m_MethodName: Compare
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4954031686982245246}
+          m_ObjectArgumentAssemblyTypeName: Gravity, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  timeToAction: 0.05
+  valueSetter: {fileID: 0}
+  startTimerOnEnabled: 1
+  overrideLastTimer: 1
+  useUnscaledTime: 0
+--- !u!114 &8655619312760954115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507918474990294029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09601003378a96f43907452d3f753743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1665404392268420814}
+        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+        m_MethodName: ModifyValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  comparison: 0
 --- !u!1 &6604378466431183541
 GameObject:
   m_ObjectHideFlags: 0
@@ -15548,6 +15445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a51316085e2a042badeab564a2b52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objToSetPos: {fileID: 0}
 --- !u!114 &1773127718042531648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15836,131 +15734,6 @@ Transform:
   - {fileID: 1463452564840786289}
   m_Father: {fileID: 1503108077054408899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7312631619028939705
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8490711322144708012}
-  - component: {fileID: 1075387104441741056}
-  - component: {fileID: 7585974782258797742}
-  m_Layer: 0
-  m_Name: LockMovement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8490711322144708012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312631619028939705}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 234388436661822944}
-  m_Father: {fileID: 3551977262545231408}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1075387104441741056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312631619028939705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5611edb09a73eb848a52d75962dd36f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls: []
-  subAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7585974782258797742}
-        m_TargetAssemblyTypeName: InvokeAfterNumericComparison, Assembly-CSharp
-        m_MethodName: Compare
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1075387104441741056}
-          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  maxValueType: 0
-  currentValueType: 0
-  minValueType: 0
-  maxValueInt: 10
-  currentValueInt: 0
-  minValueInt: 0
-  maxValueFloat: 0
-  currentValueFloat: 0
-  minValueFloat: 0
-  maxValueIntVariable: {fileID: 0}
-  currentValueIntVariable: {fileID: 0}
-  minValueIntVariable: {fileID: 0}
-  maxValueFloatVariable: {fileID: 0}
-  currentValueFloatVariable: {fileID: 0}
-  minValueFloatVariable: {fileID: 0}
-  targetToAction: 0
-  startCurrentValueType: 0
---- !u!114 &7585974782258797742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312631619028939705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a815eb9546a816147b811e0c595eb731, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1236960392716156585}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-        m_MethodName: set_isKinematic
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1236960392716156585}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-        m_MethodName: set_isKinematic
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  compareValue: 0
-  comparison: 1
 --- !u!1 &7333969334022152571
 GameObject:
   m_ObjectHideFlags: 0
@@ -17367,6 +17140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 2458321007497389492}
   radius: 0.2
+  setFromCurrentPos: 0
 --- !u!114 &3246151130079253402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19594,7 +19368,6 @@ GameObject:
   m_Component:
   - component: {fileID: 240040720544403926}
   - component: {fileID: 7748166959885072069}
-  - component: {fileID: 5580490857847056775}
   - component: {fileID: 412966562749403274}
   m_Layer: 0
   m_Name: Damage
@@ -19651,36 +19424,6 @@ MonoBehaviour:
   onTakeOff:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5580490857847056775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8781101467650360732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed8d3d5b955dad4eb221c350525a52f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 412966562749403274}
-        m_TargetAssemblyTypeName: RotationSetter, Assembly-CSharp
-        m_MethodName: SetReference
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1780341652795040770}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &412966562749403274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19694,7 +19437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToRotate: {fileID: 8781101467650360732}
-  reference: {fileID: 0}
+  reference: {fileID: 1780341652795040770}
   offSet: {x: 0, y: 0, z: 0}
 --- !u!1 &8794976708697155617
 GameObject:
@@ -20185,7 +19928,7 @@ GameObject:
   - component: {fileID: 9196573013714312953}
   - component: {fileID: 6184908119128788499}
   - component: {fileID: 2923836593706060633}
-  - component: {fileID: 1578615641383173289}
+  - component: {fileID: 6817032886267952099}
   - component: {fileID: 8152451778446975699}
   m_Layer: 0
   m_Name: TimeToEnterState
@@ -20252,7 +19995,7 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1578615641383173289}
+      - m_Target: {fileID: 6817032886267952099}
         m_TargetAssemblyTypeName: InvokeAfterBoolComparison, Assembly-CSharp
         m_MethodName: Compare
         m_Mode: 2
@@ -20272,7 +20015,7 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
---- !u!114 &1578615641383173289
+--- !u!114 &6817032886267952099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

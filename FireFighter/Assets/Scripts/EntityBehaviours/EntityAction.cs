@@ -18,7 +18,10 @@ public class EntityAction : MonoBehaviour
     [SerializeField] protected InteractionType interaction;
 
     [SerializeField] private bool canControl = true;
-    private bool _doAction;
+
+    private bool _doDownAction;
+    private bool _doHoldAction;
+    private bool _doUpAction;
 
     public Action onActionTrigger;
     public Action onCanControl;
@@ -43,11 +46,27 @@ public class EntityAction : MonoBehaviour
         canControl = value;
     }
 
-    public void DoAction()
+    public void DoDownAction()
     {
         if (canControl)
         {
-            _doAction = true;
+            _doDownAction = true;
+        }
+    }
+
+    public void DoHoldAction()
+    {
+        if (canControl)
+        {
+            _doHoldAction = true;
+        }
+    }
+
+    public void DoUpAction()
+    {
+        if (canControl)
+        {
+            _doUpAction = true;
         }
     }
 
@@ -76,11 +95,6 @@ public class EntityAction : MonoBehaviour
 
     protected bool GetButton()
     {
-        if (_doAction)
-        {
-            _doAction = false;
-            return true;
-        }
         if (_input == null || !canControl)
         {
             return false;
@@ -100,7 +114,12 @@ public class EntityAction : MonoBehaviour
 
     protected bool GetButtonDown()
     {
-        if (_input == null || !canControl)
+        if (_doDownAction)
+        {
+            _doDownAction = false;
+            return true;
+        }
+        if ((_input == null && !_doDownAction) || !canControl)
         {
             return false;
         }
@@ -109,7 +128,12 @@ public class EntityAction : MonoBehaviour
 
     protected bool GetButtonHold()
     {
-        if (_input == null || !canControl)
+        if (_doHoldAction)
+        {
+            _doHoldAction = false;
+            return true;
+        }
+        if ((_input == null && !_doHoldAction) || !canControl)
         {
             return false;
         }
@@ -118,7 +142,12 @@ public class EntityAction : MonoBehaviour
 
     protected bool GetButtonUp()
     {
-        if (_input == null || !canControl)
+        if (_doUpAction)
+        {
+            _doUpAction = false;
+            return true;
+        }
+        if ((_input == null && !_doUpAction) || !canControl)
         {
             return false;
         }

@@ -10,10 +10,13 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     [SerializeField] private GameObjectVariable targetVariable;
     [SerializeField] private float distToReach = 0.2f;
     [SerializeField] private Vector2 offSet;
+    [SerializeField] private bool updateManually;
+    private Vector3 _lastDir;
     private NavMeshPath _path;
 
-    private bool _reachTarget;
+    private bool _reachTarget = true;
 
+    public Action onGetAwayFromTarget;
     public Action onReachTarget;
 
     private void Start()
@@ -36,27 +39,46 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         get
         {
             Vector2 dir = Vector2.zero;
-            if (target == null || _path == null)
+            if (!updateManually)
             {
-                return dir;
+                CalculateDirection();
             }
-            if (Vector3.Distance(transform.position, Pathfinder.GetNavMeshClosestPos(target.position) + new Vector3(offSet.x, 0, offSet.y)) > distToReach)
-            {
-                dir = Pathfinder.GetDirectionTo(transform.position, target.position + new Vector3(offSet.x, 0, offSet.y), _path);
-                _reachTarget = false;
-            }
-            else
-            {
-                if (!_reachTarget)
-                {
-                    _reachTarget = true;
-                    if (onReachTarget != null)
-                    {
-                        onReachTarget.Invoke();
-                    }
-                }
-            }
+            dir = _lastDir;
             return dir;
         }
+    }
+
+    public void CalculateDirection()
+    {
+        Vector3 dir = Vector3.zero;
+        if (target == null || _path == null)
+        {
+            _lastDir = dir;
+            return;
+        }
+        if (Vector3.Distance(transform.position, Pathfinder.GetNavMeshClosestPos(target.position) + new Vector3(offSet.x, 0, offSet.y)) > distToReach)
+        {
+            dir = Pathfinder.GetDirectionTo(transform.position, target.position + new Vector3(offSet.x, 0, offSet.y), _path);
+            if (_reachTarget)
+            {
+                _reachTarget = false;
+                if (onGetAwayFromTarget != null)
+                {
+                    onGetAwayFromTarget.Invoke();
+                }
+            }
+        }
+        else
+        {
+            if (!_reachTarget)
+            {
+                _reachTarget = true;
+                if (onReachTarget != null)
+                {
+                    onReachTarget.Invoke();
+                }
+            }
+        }
+        _lastDir = dir;
     }
 }

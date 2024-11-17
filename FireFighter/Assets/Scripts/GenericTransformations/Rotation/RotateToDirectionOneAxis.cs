@@ -42,6 +42,11 @@ public class RotateToDirectionOneAxis : MonoBehaviour
         moveType = (moveTypes)value;
     }
 
+    public void SetVelocity(FloatVariable value)
+    {
+        SetVelocity(value.Value);
+    }
+
     public void SetVelocity(float value)
     {
         rotateVel = value;

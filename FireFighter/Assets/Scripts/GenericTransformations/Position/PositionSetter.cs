@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class PositionSetter : MonoBehaviour
 {
+    [SerializeField] private Transform objToSetPos;
+
+    private void OnEnable()
+    {
+        if (objToSetPos == null)
+        {
+            objToSetPos = gameObject.transform;
+        }
+    }
+
     public void SetPosition(GameObject value)
     {
         if (value != null)
         {
-            transform.position = value.transform.position;
+            objToSetPos.transform.position = value.transform.position;
         }
     }
 
@@ -16,7 +26,7 @@ public class PositionSetter : MonoBehaviour
     {
         if (value != null && value.Value != null)
         {
-            transform.position = value.Value.transform.position;
+            objToSetPos.transform.position = value.Value.transform.position;
         }
     }
 }

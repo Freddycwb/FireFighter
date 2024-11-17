@@ -55,6 +55,8 @@ public class InvokeAfterCounter : InvokeAfter
     [SerializeField] private actionValueType targetToAction = actionValueType.Min;
     [SerializeField] private startValueType startCurrentValueType = startValueType.Max;
 
+    [SerializeField] private bool CallActionOnSetToMinMax;
+
     public Action onModifyValue;
 
     private void OnEnable()
@@ -114,6 +116,16 @@ public class InvokeAfterCounter : InvokeAfter
         }
     }
 
+    public void SetMaxValue(FloatVariable value)
+    {
+        SetMaxValue((int)value.Value);
+    }
+
+    public void SetMaxValue(IntVariable value)
+    {
+        SetMaxValue(value.Value);
+    }
+
     public void SetMaxValue(int value)
     {
         _maxValue = value;
@@ -156,12 +168,20 @@ public class InvokeAfterCounter : InvokeAfter
     public void SetCurrentValueToMax()
     {
         _currentValue = _maxValue;
+        if (CallActionOnSetToMinMax)
+        {
+            CheckAction();
+        }
         CallSubAction();
     }
 
     public void SetCurrentValueToMin()
     {
         _currentValue = _minValue;
+        if (CallActionOnSetToMinMax)
+        {
+            CheckAction();
+        }
         CallSubAction();
     }
 

@@ -11,6 +11,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private float delay;
 
     public Action<string> onStartLoadScene;
+    public Action onLastFrameBeforeLoadScene;
 
 
     private void Start()
@@ -34,8 +35,13 @@ public class SceneManager : MonoBehaviour
         {
             onStartLoadScene(value);
         }
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
         currentScene = value;
+        if (onLastFrameBeforeLoadScene != null)
+        {
+            onLastFrameBeforeLoadScene.Invoke();
+        }
+        yield return new WaitForEndOfFrame();
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
     }
 }

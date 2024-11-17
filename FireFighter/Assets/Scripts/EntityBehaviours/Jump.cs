@@ -9,12 +9,12 @@ public class Jump : EntityAction
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Gravity gravity;
 
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float holdJumpTime;
+    [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float holdJumpTime = 0.2f;
     private float _holdJump;
-    [SerializeField] private float jumpPressedRememberTime;
+    [SerializeField] private float jumpPressedRememberTime = 0.2f;
     private float _jumpPressedRemember;
-    [SerializeField] private float groundedRememberTime;
+    [SerializeField] private float groundedRememberTime = 0.2f;
     private float _groundedRemember;
     private bool _justJumped;
 
@@ -54,7 +54,7 @@ public class Jump : EntityAction
 
     private void PerformJump()
     {
-        if ((GetButtonHold() && _justJumped) || ((_jumpPressedRemember > 0) && (_groundedRemember > 0)))
+        if ((_justJumped && GetButtonHold()) || ((_jumpPressedRemember > 0) && (_groundedRemember > 0)))
         {
             if (!_justJumped)
             {
@@ -76,7 +76,10 @@ public class Jump : EntityAction
                     _holdJump -= Time.deltaTime;
                     if (_holdJump <= 0)
                     {
-                        onStopHolding.Invoke();
+                        if (onStopHolding != null)
+                        {
+                            onStopHolding.Invoke();
+                        }
                     }
                 }
             }
@@ -85,9 +88,17 @@ public class Jump : EntityAction
         {
             if (!GetButtonHold() && _justJumped)
             {
-                onStopHolding.Invoke();
+                if (onStopHolding != null)
+                {
+                    onStopHolding.Invoke();
+                }
             }
             _justJumped = false;
         }
+    }
+
+    public void SetJumpForce(float value)
+    {
+        jumpForce = value;
     }
 }

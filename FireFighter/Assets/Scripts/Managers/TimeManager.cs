@@ -28,6 +28,18 @@ public class TimeManager : MonoBehaviour
         {
             StopCoroutine(coroutine);
         }
+        timeScale = value;
+        Time.timeScale = 1 * timeScale;
+        Time.fixedDeltaTime = defaultFixedDeltaTime * timeScale;
+        VFXManager.fixedTimeStep = defaultVFXFixedTimeStep * timeScale;
+    }
+
+    public void SetTimeScaleSmooth(float value)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         coroutine = StartCoroutine(TimeScaleRoutine(value));
     }
 
@@ -51,6 +63,8 @@ public class TimeManager : MonoBehaviour
         if (count < 1)
         {
             Time.timeScale = Mathf.Clamp(freezeFrameCurve.Evaluate(count), 0, 1) * timeScale;
+            Time.fixedDeltaTime = defaultFixedDeltaTime * Mathf.Clamp(freezeFrameCurve.Evaluate(count), 0, 1) * timeScale;
+            VFXManager.fixedTimeStep = defaultVFXFixedTimeStep * Mathf.Clamp(freezeFrameCurve.Evaluate(count), 0, 1) * timeScale;
             count += Time.unscaledDeltaTime / freezeFrameDuration;
             if (count >= 1)
             {
@@ -60,6 +74,8 @@ public class TimeManager : MonoBehaviour
         else
         {
             Time.timeScale = 1 * timeScale;
+            Time.fixedDeltaTime = defaultFixedDeltaTime * timeScale;
+            VFXManager.fixedTimeStep = defaultVFXFixedTimeStep * timeScale;
         }
     }
 

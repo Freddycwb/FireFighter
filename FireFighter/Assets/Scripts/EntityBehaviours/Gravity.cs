@@ -69,21 +69,26 @@ public class Gravity : MonoBehaviour
     private void CheckGround()
     {
         Collider[] grounds = Physics.OverlapSphere(transform.position, groundCheckRadius, whatIsGround);
-        if (!_isGrounded && grounds.Length > 0)
+
+        bool callLand = !_isGrounded && grounds.Length > 0;
+        bool callTakeOff = _isGrounded && grounds.Length <= 0;
+
+        SetIsGrounded(grounds.Length > 0);
+
+        if (callLand)
         {
             if (onLand != null)
             {
                 onLand.Invoke();
             }
         }
-        else if (_isGrounded && grounds.Length <= 0)
+        else if (callTakeOff)
         {
             if (onTakeOff != null)
             {
                 onTakeOff.Invoke();
             }
         }
-        SetIsGrounded(grounds.Length > 0);
     }
 
     public void SetGravityScale(float value)

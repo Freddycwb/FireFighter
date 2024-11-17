@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        HideCursor(true);
     }
 
     private void Update()
@@ -57,5 +58,19 @@ public class CameraMovement : MonoBehaviour
 
         // Setting camera position
         transform.position = _targetPos + direction * hitDistance + (hit.collider ? distanceMargin * hit.normal : Vector2.zero);
+    }
+
+    public void HideCursor(bool value)
+    {
+        if (value)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

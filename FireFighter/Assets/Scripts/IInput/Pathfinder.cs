@@ -7,13 +7,14 @@ public class Pathfinder : MonoBehaviour
 {
     public static Vector2 GetDirectionTo(Vector3 origin, Vector3 destination, NavMeshPath path)
     {
-        Vector3 dir = Vector3.zero;
+        Vector3 dir = (destination - origin).normalized; // go to target without pathfinding if a valid path isnt found
         NavMeshHit hit;
         if (NavMesh.SamplePosition(destination, out hit, 50, NavMesh.AllAreas))
         {
-            NavMesh.CalculatePath(origin, hit.position, NavMesh.AllAreas, path);
-            dir = path.corners.Length >= 2 ? path.corners[1] - origin : Vector3.zero;
+            NavMesh.CalculatePath(origin, hit.position, NavMesh.AllAreas, path); 
+            dir = path.corners.Length >= 2 ? path.corners[1] - origin : dir;
         }
+
         return new Vector2(dir.x, dir.z);
     }
 

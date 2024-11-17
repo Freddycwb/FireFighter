@@ -195,7 +195,7 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  timeToAction: 0.05
+  timeToAction: 1
   valueSetter: {fileID: 0}
   startTimerOnEnabled: 1
   overrideLastTimer: 1
@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 378028790185629677}
   - component: {fileID: 7682222611603146668}
   - component: {fileID: 3565964876682608532}
+  - component: {fileID: 7997465117502941800}
   - component: {fileID: 8891186681438653589}
   m_Layer: 0
   m_Name: AllEnemiesDefeated
@@ -313,11 +314,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7997465117502941800}
+        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   subAction:
     m_PersistentCalls:
       m_Calls: []
   Event: {fileID: 11400000, guid: 46cf22d244bc2eb42acc438d5efdc4ce, type: 2}
+--- !u!114 &7997465117502941800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783816911297932220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7682222611603146668}
+        m_TargetAssemblyTypeName: InvokeAfterDestroy, Assembly-CSharp
+        m_MethodName: CallRefresh
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  timeToAction: 0.05
+  valueSetter: {fileID: 0}
+  startTimerOnEnabled: 0
+  overrideLastTimer: 1
+  useUnscaledTime: 0
 --- !u!114 &8891186681438653589
 MonoBehaviour:
   m_ObjectHideFlags: 0

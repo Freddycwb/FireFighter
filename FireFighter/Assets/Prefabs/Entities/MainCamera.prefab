@@ -308,6 +308,95 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Event: {fileID: 11400000, guid: 3cd2fa89297f45f448438547183fe24c, type: 2}
+--- !u!1 &5176316527979629079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4012148830080731568}
+  - component: {fileID: 7063991407714110886}
+  - component: {fileID: 9115092470063857080}
+  - component: {fileID: 7232954326802687924}
+  m_Layer: 0
+  m_Name: SetCursorOnClick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4012148830080731568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176316527979629079}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 942164558549159099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7063991407714110886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176316527979629079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177aa9791dae88b4fad0518788e39f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9115092470063857080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176316527979629079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210f0dc427e757d448464672beff7917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 5176316527979629079}
+  interaction: 0
+  canControl: 1
+--- !u!114 &7232954326802687924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176316527979629079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d59e9c7d7f6b04290b47a83ff9a63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityAction: {fileID: 9115092470063857080}
+  onActionTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2728859923779558061}
+        m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
+        m_MethodName: HideCursor
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &5423617374334283053
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5423617374334283053}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.2, z: -3.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -498,7 +587,7 @@ MonoBehaviour:
   yOffset: 2.5
   angleLimits: {x: -70, y: 89.9}
   lookDirectionObject: {fileID: 5423617374334283053}
-  sensitivity: 1
+  sensitivity: 0.2
   obstacleMask:
     serializedVersion: 2
     m_Bits: 8
@@ -609,5 +698,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8948887815954641383}
+  - {fileID: 4012148830080731568}
   m_Father: {fileID: 543803672576983851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
