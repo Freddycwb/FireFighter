@@ -16,7 +16,7 @@ public class PlayerBackActionInput : MonoBehaviour, IInputAction
             {
                 gamepad = Gamepad.current.buttonEast.wasPressedThisFrame;
             }
-            return Input.GetKeyDown(KeyCode.R) || gamepad;
+            return Input.GetKeyDown(KeyCode.R);
         }
     }
 
@@ -29,7 +29,7 @@ public class PlayerBackActionInput : MonoBehaviour, IInputAction
             {
                 gamepad = Gamepad.current.buttonEast.isPressed;
             }
-            return Input.GetKey(KeyCode.R) || gamepad;
+            return Input.GetKey(KeyCode.R);
         }
     }
 
@@ -42,7 +42,7 @@ public class PlayerBackActionInput : MonoBehaviour, IInputAction
             {
                 gamepad = Gamepad.current.buttonEast.wasReleasedThisFrame;
             }
-            return Input.GetKeyUp(KeyCode.R) || gamepad;
+            return Input.GetKeyUp(KeyCode.R);
         }
     }
 }

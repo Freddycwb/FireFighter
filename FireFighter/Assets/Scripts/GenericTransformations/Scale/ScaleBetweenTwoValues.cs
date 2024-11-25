@@ -32,11 +32,19 @@ public class ScaleBetweenTwoValues : MonoBehaviour
 
     public void SetCurrentValue(FloatVariable value)
     {
+        if (value == null)
+        {
+            return;
+        }
         SetCurrentValue(value.Value);
     }
 
     public void SetCurrentValue(InvokeAfterCounter value)
     {
+        if (value == null)
+        {
+            return;
+        }
         SetCurrentValue(value.GetCurrentValue());
     }
 
@@ -47,16 +55,28 @@ public class ScaleBetweenTwoValues : MonoBehaviour
 
     public void SetMaxValue(FloatVariable value)
     {
+        if (value == null)
+        {
+            return;
+        }
         minCurrentMaxValue.z = value.Value;
     }
 
     public void SetMaxValue(InvokeAfterCounter value)
     {
+        if (value == null)
+        {
+            return;
+        }
         minCurrentMaxValue.z = value.GetCurrentValue();
     }
 
     public void SetTimer(InvokeAfterTimer value)
     {
+        if (value == null)
+        {
+            return;
+        }
         timer = value;
     }
 

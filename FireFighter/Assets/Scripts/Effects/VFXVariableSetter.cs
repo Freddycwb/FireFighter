@@ -15,6 +15,10 @@ public class VFXVariableSetter : MonoBehaviour
 
     public void SetFloat(FloatVariable value)
     {
+        if (value == null)
+        {
+            return;
+        }
         vfx.SetFloat(variableID, value.Value);
     }
 
@@ -30,11 +34,19 @@ public class VFXVariableSetter : MonoBehaviour
 
     public void SetVector2X(FloatVariable value)
     {
+        if (value == null)
+        {
+            return;
+        }
         vfx.SetVector2(variableID, new Vector2(value.Value, vfx.GetVector2(variableID).y));
     }
 
     public void SetVector2X(InvokeAfterCounter value)
     {
+        if (value == null)
+        {
+            return;
+        }
         vfx.SetVector2(variableID, new Vector2(value.GetCurrentValue(), vfx.GetVector2(variableID).y));
     }
 
@@ -45,11 +57,19 @@ public class VFXVariableSetter : MonoBehaviour
 
     public void SetVector2Y(FloatVariable value)
     {
+        if (value == null)
+        {
+            return;
+        }
         vfx.SetVector2(variableID, new Vector2(vfx.GetVector2(variableID).x, value.Value));
     }
 
     public void SetVector2Y(InvokeAfterCounter value)
     {
+        if (value == null)
+        {
+            return;
+        }
         vfx.SetVector2(variableID, new Vector2(vfx.GetVector2(variableID).x, value.GetCurrentValue()));
     }
 }
