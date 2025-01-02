@@ -16,10 +16,32 @@ public class TimeManager : MonoBehaviour
     private float defaultFixedDeltaTime;
     private float defaultVFXFixedTimeStep;
 
+    private static bool _isPaused;
+    private static bool _lateIsPaused;
+
     private void Start()
     {
         defaultFixedDeltaTime = Time.fixedDeltaTime;
         defaultVFXFixedTimeStep = VFXManager.fixedTimeStep;
+        _isPaused = false;
+    }
+
+    public static bool GetIsPaused()
+    {
+        return _isPaused;
+    }
+
+    public static bool GetJustPaused()
+    {
+        bool result = _isPaused && !_lateIsPaused;
+        _lateIsPaused = _isPaused;
+        return result;
+    }
+
+    public static bool GetJustUnpaused()
+    {
+        bool result = !_isPaused && _lateIsPaused;
+        return result;
     }
 
     public void SetTimeScale(float value)
@@ -76,6 +98,19 @@ public class TimeManager : MonoBehaviour
             Time.timeScale = 1 * timeScale;
             Time.fixedDeltaTime = defaultFixedDeltaTime * timeScale;
             VFXManager.fixedTimeStep = defaultVFXFixedTimeStep * timeScale;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        _lateIsPaused = _isPaused;
+        if (Time.timeScale == 0)
+        {
+            _isPaused = true;
+        }
+        else
+        {
+            _isPaused = false;
         }
     }
 

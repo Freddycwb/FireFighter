@@ -14,11 +14,14 @@ public class CameraMovement : MonoBehaviour
     private Vector3 _targetPos => target.transform.position + Vector3.up * yOffset;
 
     private Vector2 _orbitRotation;
+    [SerializeField] private Vector2 defaultRotation;
     [SerializeField] private Vector2 angleLimits;
 
     [SerializeField] private GameObject lookDirectionObject;
     private IInputDirection _lookDirection;
-    [SerializeField] private float sensitivity;
+    [SerializeField] private FloatVariable sensitivity;
+    [SerializeField] private BoolVariable invertX;
+    [SerializeField] private BoolVariable invertY;
 
     [SerializeField] private LayerMask obstacleMask;
 
@@ -29,7 +32,12 @@ public class CameraMovement : MonoBehaviour
             target = targetVariable.Value;
         }
 
-        _lookDirection = lookDirectionObject.GetComponent<IInputDirection>();
+        if (lookDirectionObject != null)
+        {
+            _lookDirection = lookDirectionObject.GetComponent<IInputDirection>();
+        }
+
+        _orbitRotation = defaultRotation;
     }
 
     private void Start()
@@ -39,10 +47,18 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!target) return;
+        if (!target || TimeManager.GetIsPaused() || _lookDirection == null) return;
 
         // Updating camera rotation
-        Vector2 scaledLook = _lookDirection.direction * sensitivity;
+        Vector2 scaledLook = _lookDirection.direction * sensitivity.Value;
+        if (invertY.Value)
+        {
+            scaledLook.x = -scaledLook.x;
+        }
+        if (invertX.Value)
+        {
+            scaledLook.y = -scaledLook.y;
+        }
         _orbitRotation = new Vector2(Mathf.Clamp(_orbitRotation.x - scaledLook.x, angleLimits.x, angleLimits.y), Mathf.Repeat(_orbitRotation.y - scaledLook.y, 360));
 
         // Calculating camera direction
@@ -72,5 +88,10 @@ public class CameraMovement : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    public void SetInput(GameObject value)
+    {
+        _lookDirection = value.GetComponent<IInputDirection>();
     }
 }

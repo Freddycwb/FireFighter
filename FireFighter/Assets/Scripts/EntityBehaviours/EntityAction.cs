@@ -18,6 +18,9 @@ public class EntityAction : MonoBehaviour
     [SerializeField] protected InteractionType interaction;
 
     [SerializeField] private bool canControl = true;
+    [SerializeField] private bool useUnscaledTime;
+
+    private bool _wasHolding;
 
     private bool _doDownAction;
     private bool _doHoldAction;
@@ -95,10 +98,22 @@ public class EntityAction : MonoBehaviour
 
     protected bool GetButton()
     {
-        if (_input == null || !canControl)
+        if (_input == null || !canControl || (TimeManager.GetIsPaused() && !useUnscaledTime))
         {
             return false;
         }
+        if (TimeManager.GetJustUnpaused() && !useUnscaledTime)
+        {
+            if ((!_wasHolding && _input.buttonHold && (interaction == InteractionType.down || interaction == InteractionType.hold)))
+            {
+                return true;
+            }
+            if ((_wasHolding && !_input.buttonHold && interaction == InteractionType.up))
+            {
+                return true;
+            }
+        }
+        _wasHolding = _input.buttonHold;
         switch (interaction)
         {
             case InteractionType.down:
@@ -119,7 +134,7 @@ public class EntityAction : MonoBehaviour
             _doDownAction = false;
             return true;
         }
-        if ((_input == null && !_doDownAction) || !canControl)
+        if ((_input == null && !_doDownAction) || !canControl || (TimeManager.GetIsPaused() && !useUnscaledTime))
         {
             return false;
         }
@@ -133,7 +148,7 @@ public class EntityAction : MonoBehaviour
             _doHoldAction = false;
             return true;
         }
-        if ((_input == null && !_doHoldAction) || !canControl)
+        if ((_input == null && !_doHoldAction) || !canControl || (TimeManager.GetIsPaused() && !useUnscaledTime))
         {
             return false;
         }
@@ -147,7 +162,7 @@ public class EntityAction : MonoBehaviour
             _doUpAction = false;
             return true;
         }
-        if ((_input == null && !_doUpAction) || !canControl)
+        if ((_input == null && !_doUpAction) || !canControl || (TimeManager.GetIsPaused() && !useUnscaledTime))
         {
             return false;
         }

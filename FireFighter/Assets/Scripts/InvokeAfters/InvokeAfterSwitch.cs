@@ -8,6 +8,11 @@ public class InvokeAfterSwitch : InvokeAfter
     [SerializeField] private bool value;
     private bool _value;
 
+    public bool GetValue()
+    {
+        return _value;
+    }
+
     public void SetValue(bool newValue)
     {
         value = newValue;

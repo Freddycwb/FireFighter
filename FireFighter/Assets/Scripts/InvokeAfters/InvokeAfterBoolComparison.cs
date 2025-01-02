@@ -18,6 +18,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
         Compare(value.GetIsGrounded());
     }
 
+    public void Compare(InvokeAfterSwitch value)
+    {
+        Compare(value.GetValue());
+    }
+
     public void Compare(GameObject value)
     {
         Compare(value.activeSelf);

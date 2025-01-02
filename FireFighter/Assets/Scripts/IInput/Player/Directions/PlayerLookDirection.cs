@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-public class PlayerLookInput : MonoBehaviour, IInputDirection
+public class PlayerLookDirection : MonoBehaviour, IInputDirection
 {
     public Vector2 direction
     {
@@ -14,7 +14,7 @@ public class PlayerLookInput : MonoBehaviour, IInputDirection
             if (Gamepad.current != null)
             {
                 StickControl stick = Gamepad.current.rightStick;
-                gamepadLook = new Vector2(stick.up.value - stick.down.value, stick.right.value - stick.left.value);
+                gamepadLook = new Vector2(stick.up.value - stick.down.value, stick.right.value - stick.left.value) * 12f;
             }
             Vector2 mouseLook = new Vector2(Mouse.current.delta.value.y, Mouse.current.delta.value.x);
             return mouseLook + gamepadLook;

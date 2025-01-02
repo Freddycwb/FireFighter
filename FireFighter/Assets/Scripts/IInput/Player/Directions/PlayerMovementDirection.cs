@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-public class PlayerDirectionInput : MonoBehaviour, IInputDirection
+public class PlayerMovementDirection : MonoBehaviour, IInputDirection
 {
     [SerializeField] private GameObject pov;
     [SerializeField] private GameObjectVariable povVariable;

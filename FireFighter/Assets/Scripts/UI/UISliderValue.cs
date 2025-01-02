@@ -16,8 +16,11 @@ public class UISliderValue : MonoBehaviour
     [SerializeField] private SourceTypes sourceType;
     [SerializeField] private GameObject source;
     [SerializeField] private GameObjectVariable sourceVariable;
+    [SerializeField] private bool autoUpdate = true;
     private InvokeAfterCounter _counter;
     private InvokeAfterTimer _timer;
+    [SerializeField] private FloatVariable minVariable;
+    [SerializeField] private float min;
     [SerializeField] private FloatVariable currentVariable;
     [SerializeField] private float current;
     [SerializeField] private FloatVariable maxVariable;
@@ -39,9 +42,13 @@ public class UISliderValue : MonoBehaviour
             source = sourceVariable.Value;
         }
         SetVariables();
-        SetCurrentMax();
-        _currentValue = current / max;
+        SetMinCurrentMax();
+        _currentValue = (current - min) / (max - min);
         _lastValue = _currentValue;
+        if (!autoUpdate)
+        {
+            UpdateSliderValue();
+        }
     }
 
     private void SetVariables()
@@ -56,7 +63,7 @@ public class UISliderValue : MonoBehaviour
         }
     }
 
-    public void SetCurrentMax()
+    public void SetMinCurrentMax()
     {
         if ((sourceType & SourceTypes.counter) != 0)
         {
@@ -65,16 +72,18 @@ public class UISliderValue : MonoBehaviour
                 _lastValue = _currentValue;
                 _count = 0;
             }
+            min = _counter.GetMinValue();
             current = _counter.GetCurrentValue();
             max = _counter.GetMaxValue();
         }
-        else if ((sourceType & SourceTypes.counter) != 0)
+        else if ((sourceType & SourceTypes.timer) != 0)
         {
             if (current != _timer.GetCurrentTimePass())
             {
                 _lastValue = _currentValue;
                 _count = 0;
             }
+            min = 0;
             current = _timer.GetCurrentTimePass();
             max = _timer.GetTimeToAction();
         }
@@ -87,6 +96,10 @@ public class UISliderValue : MonoBehaviour
             }
             current = currentVariable.Value;
         }
+        if (minVariable != null)
+        {
+            min = minVariable.Value;
+        }
         if (maxVariable != null)
         {
             max = maxVariable.Value;
@@ -95,18 +108,29 @@ public class UISliderValue : MonoBehaviour
 
     private void Update()
     {
-        SetCurrentMax();
+        if (!autoUpdate)
+        {
+            return;
+        }
+        SetMinCurrentMax();
 
-        if (((_currentValue > current / max) && timeToReachLowerValue > 0) || ((_currentValue < current / max) && timeToReachHigherValue > 0))
+        float newCurrent = (current - min) / (max - min);
+        if (((_currentValue > newCurrent) && timeToReachLowerValue > 0) || ((_currentValue < newCurrent) && timeToReachHigherValue > 0))
         {
             SliderLerp();
         }
-        else if (((_currentValue > current / max) && timeToReachLowerValue <= 0) || ((_currentValue < current / max) && timeToReachHigherValue <= 0))
+        else if (((_currentValue > newCurrent) && timeToReachLowerValue <= 0) || ((_currentValue < newCurrent) && timeToReachHigherValue <= 0))
         {
             SetValueToCurrent();
         }
 
+        slider.value = _currentValue;
+    }
 
+    public void UpdateSliderValue()
+    {
+        SetMinCurrentMax();
+        SetValueToCurrent();
         slider.value = _currentValue;
     }
 
@@ -114,19 +138,29 @@ public class UISliderValue : MonoBehaviour
     {
         if (_count < 1)
         {
-            _count += _currentValue > current / max ? Time.deltaTime / timeToReachLowerValue : Time.deltaTime / timeToReachHigherValue;
+            float newCurrent = (current - min) / (max - min);
+            _count += _currentValue > newCurrent ? Time.deltaTime / timeToReachLowerValue : Time.deltaTime / timeToReachHigherValue;
             if (_count >= 1)
             {
                 _count = 1;
             }
-            _currentValue = Mathf.Lerp(_lastValue, current / max, curve.Evaluate(_count));
+            _currentValue = Mathf.Lerp(_lastValue, newCurrent, curve.Evaluate(_count));
         }
     }
 
     public void SetValueToCurrent()
     {
-        _currentValue = current / max;
+        float newCurrent = (current - min) / (max - min);
+        _currentValue = newCurrent;
         _lastValue = _currentValue;
         _count = 1;
+    }
+
+    public void SetCounterCurrentValue()
+    {
+        if ((sourceType & SourceTypes.counter) != 0)
+        {
+            _counter.SetValue((max - min) * slider.value + min);
+        }
     }
 }

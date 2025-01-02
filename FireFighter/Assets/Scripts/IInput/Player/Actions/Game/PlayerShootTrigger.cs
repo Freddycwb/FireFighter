@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem;
 
-public class PlayerShootActionInput : MonoBehaviour, IInputAction
+public class PlayerShootTrigger : MonoBehaviour, IInputAction
 {
 
     public bool buttonDown

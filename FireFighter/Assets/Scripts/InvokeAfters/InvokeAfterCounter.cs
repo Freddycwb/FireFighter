@@ -75,6 +75,14 @@ public class InvokeAfterCounter : InvokeAfter
                 _currentValue = _minValue;
                 break;
             case startValueType.Current:
+                if (currentValueType == valueType.IntVariable)
+                {
+                    _currentValue = currentValueIntVariable.Value;
+                }
+                else if (currentValueType == valueType.FloatVariable)
+                {
+                    _currentValue = currentValueFloatVariable.Value;
+                }
                 break;
             case startValueType.Max:
                 _currentValue = _maxValue;
@@ -82,6 +90,11 @@ public class InvokeAfterCounter : InvokeAfter
             default:
                 break;
         }
+    }
+
+    public float GetMinValue()
+    {
+        return _minValue;
     }
 
     public float GetMaxValue()
