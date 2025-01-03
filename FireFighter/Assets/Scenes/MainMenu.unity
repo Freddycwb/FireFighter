@@ -8500,8 +8500,7 @@ GameObject:
   - component: {fileID: 132862748}
   - component: {fileID: 132862747}
   - component: {fileID: 132862751}
-  - component: {fileID: 132862753}
-  - component: {fileID: 132862754}
+  - component: {fileID: 132862752}
   m_Layer: 0
   m_Name: MainMenuCamera
   m_TagString: Untagged
@@ -8648,7 +8647,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &132862753
+--- !u!114 &132862752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8657,70 +8656,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 132862746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b69bf49cb96d6e64b99f194c5ce4a459, type: 3}
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  targetVariable: {fileID: 0}
-  maxDistance: 0
-  distanceMargin: 0
-  yOffset: 0
-  defaultRotation: {x: 0, y: 0}
-  angleLimits: {x: 0, y: 0}
-  lookDirectionObject: {fileID: 0}
-  sensitivity: {fileID: 0}
-  invertX: {fileID: 0}
-  invertY: {fileID: 0}
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &132862754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132862746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 132862754}
-        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 132862753}
-        m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
-        m_MethodName: HideCursor
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  timeToAction: 3
-  valueSetter: {fileID: 0}
-  startTimerOnEnabled: 1
-  overrideLastTimer: 1
-  useUnscaledTime: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &167252894
 GameObject:
   m_ObjectHideFlags: 0
@@ -13667,11 +13606,11 @@ PrefabInstance:
     - target: {fileID: 5419947006744457611, guid: b1f34517242e50b4aaf1fe513d27de7b, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 132862754}
+      objectReference: {fileID: 0}
     - target: {fileID: 5419947006744457611, guid: b1f34517242e50b4aaf1fe513d27de7b, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
-      objectReference: {fileID: 132862753}
+      objectReference: {fileID: 0}
     - target: {fileID: 5419947006744457611, guid: b1f34517242e50b4aaf1fe513d27de7b, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -25170,7 +25109,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733001734336396013}
-  m_Mesh: {fileID: 6004598260351091047, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e1eeaedc35e592343b46f957e1894cd4, type: 2}
 --- !u!23 &1699101990976490282
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25248,7 +25187,7 @@ GameObject:
   - component: {fileID: 5393625056899177659}
   - component: {fileID: 874383127226385706}
   m_Layer: 0
-  m_Name: Cube.001
+  m_Name: Stair1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25309,7 +25248,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4608462909984816357}
-  m_Mesh: {fileID: 3833889208564203372, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 92abcbcf4edbe5047a58a6a2e3ab3eec, type: 2}
 --- !u!4 &3125514654066600500
 Transform:
   m_ObjectHideFlags: 0
@@ -25332,7 +25271,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2701044973192448398}
-  m_Mesh: {fileID: -6296333951556723582, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 93e1c9ca82bdbaf4e81271620edf5737, type: 2}
 --- !u!23 &3175901880044384628
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25382,7 +25321,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7788530836577490271}
-  m_Mesh: {fileID: -5495902117074765545, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 5e6b188c2f3da47418be5108ac79f686, type: 2}
 --- !u!33 &3879911046131214064
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25390,7 +25329,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6310605846962576771}
-  m_Mesh: {fileID: 548590712551798673, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e1eeaedc35e592343b46f957e1894cd4, type: 2}
 --- !u!33 &4479950252600442196
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25398,7 +25337,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7621016971137629589}
-  m_Mesh: {fileID: 493096543787772863, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e1eeaedc35e592343b46f957e1894cd4, type: 2}
 --- !u!4 &4568770127108019851
 Transform:
   m_ObjectHideFlags: 0
@@ -25483,7 +25422,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2255313359974295339}
-  m_Mesh: {fileID: 4493585093827132993, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 46cfec01e516f774cace05f4b035db05, type: 2}
 --- !u!1 &5733001734336396013
 GameObject:
   m_ObjectHideFlags: 0
@@ -25509,7 +25448,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6526931172992920369}
-  m_Mesh: {fileID: 1385279003812690709, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 54c3e57fc0be7a449a790a75e4993a25, type: 2}
 --- !u!4 &6080167243044543413
 Transform:
   m_ObjectHideFlags: 0
@@ -25650,8 +25589,8 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2938953732728281168}
-  - {fileID: 6080167243044543413}
   - {fileID: 6859416138996711062}
+  - {fileID: 6080167243044543413}
   - {fileID: 4568770127108019851}
   - {fileID: 8024018443021804615}
   - {fileID: 1742912423425115618}
@@ -25773,7 +25712,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6175756891682456446}
-  m_Mesh: {fileID: -5120776273691030924, guid: cbfac913c16c9c64397b7f1fc785adf7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e1eeaedc35e592343b46f957e1894cd4, type: 2}
 --- !u!1 &7735884374640401002
 GameObject:
   m_ObjectHideFlags: 0
@@ -25802,7 +25741,7 @@ GameObject:
   - component: {fileID: 3286579292338629931}
   - component: {fileID: 6384498572160922100}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Stair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
