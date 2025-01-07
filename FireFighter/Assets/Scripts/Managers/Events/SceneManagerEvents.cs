@@ -9,6 +9,8 @@ public class SceneManagerEvents : MonoBehaviour
 
     [SerializeField] private UnityEvent onStartLoadScene;
     [SerializeField] private UnityEvent onLastFrameBeforeLoadScene;
+    [SerializeField] private UnityEvent<float> onLoadProgressChange;
+    [SerializeField] private UnityEvent onFirstScene;
 
     private bool listening;
 
@@ -18,6 +20,29 @@ public class SceneManagerEvents : MonoBehaviour
         {
             sceneManager.onStartLoadScene += OnStartLoadScene;
             sceneManager.onLastFrameBeforeLoadScene += OnLastFrameBeforeLoadScene;
+            sceneManager.onLoadProgressChange += OnLoadProgressChange;
+            sceneManager.onFirstScene += OnFirstScene;
+            listening = true;
+        }
+    }
+
+    public void SetSceneManager(GameObjectVariable value)
+    {
+        if (sceneManager != null)
+        {
+            sceneManager.onStartLoadScene -= OnStartLoadScene;
+            sceneManager.onLastFrameBeforeLoadScene -= OnLastFrameBeforeLoadScene;
+            sceneManager.onLoadProgressChange -= OnLoadProgressChange;
+            sceneManager.onFirstScene -= OnFirstScene;
+            listening = false;
+        }
+        if (value.Value != null)
+        {
+            sceneManager = value.Value.GetComponent<SceneManager>();
+            sceneManager.onStartLoadScene += OnStartLoadScene;
+            sceneManager.onLastFrameBeforeLoadScene += OnLastFrameBeforeLoadScene;
+            sceneManager.onLoadProgressChange += OnLoadProgressChange;
+            sceneManager.onFirstScene += OnFirstScene;
             listening = true;
         }
     }
@@ -38,12 +63,30 @@ public class SceneManagerEvents : MonoBehaviour
         }
     }
 
+    void OnLoadProgressChange(float value)
+    {
+        if (enabled)
+        {
+            onLoadProgressChange.Invoke(value);
+        }
+    }
+
+    void OnFirstScene()
+    {
+        if (enabled)
+        {
+            onFirstScene.Invoke();
+        }
+    }
+
     private void OnDisable()
     {
-        if (onStartLoadScene != null && listening)
+        if (onStartLoadScene != null && listening && sceneManager != null)
         {
             sceneManager.onStartLoadScene -= OnStartLoadScene;
             sceneManager.onLastFrameBeforeLoadScene -= OnLastFrameBeforeLoadScene;
+            sceneManager.onLoadProgressChange -= OnLoadProgressChange;
+            sceneManager.onFirstScene -= OnFirstScene;
             listening = false;
         }
     }

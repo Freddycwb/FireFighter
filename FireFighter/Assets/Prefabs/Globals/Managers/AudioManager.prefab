@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2790279930215877721}
   - component: {fileID: 7272509016127876532}
+  - component: {fileID: 8179764871474244474}
+  - component: {fileID: 8280027551625518431}
+  - component: {fileID: 191211217966944643}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -25,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5868935856611121354}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,9 +48,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadEvent: 1
-  UnloadEvent: 2
+  UnloadEvent: 0
   Banks:
   - Master
   - Master.strings
   CollisionTag: 
   PreloadSamples: 0
+--- !u!114 &8179764871474244474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868935856611121354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ef268b625153a4a9151c0d0de95a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8280027551625518431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868935856611121354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68058beefac7bf34b8960b5fa248b3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistBetweenScenes: {fileID: 8179764871474244474}
+  onObjDontDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &191211217966944643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868935856611121354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ebb98d530a0784c991f66281e2e544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7272509016127876532}
+        m_TargetAssemblyTypeName: FMODUnity.StudioBankLoader, FMODUnity
+        m_MethodName: Unload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyers: []
+  objs:
+  - {fileID: 5868935856611121354}
