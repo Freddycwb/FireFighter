@@ -20,7 +20,7 @@ public class LookAt : MonoBehaviour
         target = value.Value;
     }
 
-    private void OnEnable()
+    private void Start()
     {
         if (targetVariable != null)
         {

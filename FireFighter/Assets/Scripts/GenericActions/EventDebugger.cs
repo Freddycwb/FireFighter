@@ -14,6 +14,11 @@ public class EventDebugger : MonoBehaviour
         Debug.LogError(gameObject.name + " : " + value);
     }
 
+    public void WriteErrorDebug(FloatVariable value)
+    {
+        Debug.Log(gameObject.name + " : " + value.name + " = " + value.Value);
+    }
+
     public void WriteCounterValueDebug(InvokeAfterCounter value)
     {
         Debug.Log(gameObject.name + " : " + value.GetCurrentValue());

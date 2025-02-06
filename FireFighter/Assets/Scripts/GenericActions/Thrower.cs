@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Thrower : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class Thrower : MonoBehaviour
     [SerializeField] private Rigidbody throwable;
     [SerializeField] private Transform target;
 
-    [SerializeField] private Vector3 throwableOffSet;
-    [SerializeField] private Vector3 throwableMaxOffSet;
+    [FormerlySerializedAs("throwableOffSet")] [SerializeField] private Vector3 targetOffset;
+    [FormerlySerializedAs("throwableMaxOffSet")] [SerializeField] private Vector3 targetMaxOffSet;
     [SerializeField] private bool addForce;
 
     [SerializeField] private float valueAdjuster;
@@ -62,9 +63,9 @@ public class Thrower : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        Vector3 offset = throwableMaxOffSet != Vector3.zero ? new Vector3(Random.Range(throwableOffSet.x, throwableMaxOffSet.x), Random.Range(throwableOffSet.y, throwableMaxOffSet.y), Random.Range(throwableOffSet.z, throwableMaxOffSet.z)) : throwableOffSet;
+        Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
 
-        Vector3 dirToObject = target - (rb.transform.position + throwableOffSet);
+        Vector3 dirToObject = target + targetOffset - rb.transform.position;
         float throwForce = force.x >= force.y ? force.x : Random.Range(force.x, force.y);
 
         switch (valueAdjustType)

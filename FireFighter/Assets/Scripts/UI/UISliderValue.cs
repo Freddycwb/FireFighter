@@ -53,19 +53,23 @@ public class UISliderValue : MonoBehaviour
 
     private void SetVariables()
     {
+        if (source == null)
+        {
+            return;
+        }
         if ((sourceType & SourceTypes.counter) != 0)
         {
-            _counter = source.GetComponent<InvokeAfterCounter>();
+            _counter = source.GetComponent<InvokeAfterCounter>() != null ? source.GetComponent<InvokeAfterCounter>() : null;
         }
         else if ((sourceType & SourceTypes.counter) != 0)
         {
-            _timer = source.GetComponent<InvokeAfterTimer>();
+            _timer = source.GetComponent<InvokeAfterTimer>() != null ? source.GetComponent<InvokeAfterTimer>() : null;
         }
     }
 
     public void SetMinCurrentMax()
     {
-        if ((sourceType & SourceTypes.counter) != 0)
+        if (((sourceType & SourceTypes.counter) != 0) && _counter != null)
         {
             if (current != _counter.GetCurrentValue())
             {
@@ -76,7 +80,7 @@ public class UISliderValue : MonoBehaviour
             current = _counter.GetCurrentValue();
             max = _counter.GetMaxValue();
         }
-        else if ((sourceType & SourceTypes.timer) != 0)
+        else if (((sourceType & SourceTypes.timer) != 0) && _timer != null)
         {
             if (current != _timer.GetCurrentTimePass())
             {

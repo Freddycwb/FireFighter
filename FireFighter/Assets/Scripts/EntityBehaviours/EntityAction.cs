@@ -19,6 +19,9 @@ public class EntityAction : MonoBehaviour
 
     [SerializeField] private bool canControl = true;
     [SerializeField] private bool useUnscaledTime;
+    [SerializeField] private float bufferTime;
+    private float _currentBufferTime;
+    private bool _bufferCanControl;
 
     private bool _wasHolding;
 
@@ -83,6 +86,7 @@ public class EntityAction : MonoBehaviour
         {
             _input = input.GetComponent<IInputAction>();
         }
+        _bufferCanControl = canControl;
     }
 
     public virtual void Update()
@@ -94,37 +98,95 @@ public class EntityAction : MonoBehaviour
                 onActionTrigger.Invoke();
             }
         }
+        BufferTime();
     }
 
     protected bool GetButton()
     {
-        if (_input == null || !canControl || (TimeManager.GetIsPaused() && !useUnscaledTime))
+        if (_input == null || (TimeManager.GetIsPaused() && !useUnscaledTime))
         {
             return false;
         }
         if (TimeManager.GetJustUnpaused() && !useUnscaledTime)
         {
+            bool r = false;
             if ((!_wasHolding && _input.buttonHold && (interaction == InteractionType.down || interaction == InteractionType.hold)))
             {
-                return true;
+                r = true;
             }
             if ((_wasHolding && !_input.buttonHold && interaction == InteractionType.up))
             {
-                return true;
+                r = true;
+            }
+            if (!canControl && r)
+            {
+                Buffer(r);
+                return false;
             }
         }
         _wasHolding = _input.buttonHold;
+
         switch (interaction)
         {
             case InteractionType.down:
-                return _input.buttonDown;
+                return Buffer(_input.buttonDown);
             case InteractionType.hold:
-                return _input.buttonHold;
+                return Buffer(_input.buttonHold);
             case InteractionType.up:
-                return _input.buttonUp;
-            default:
+                return Buffer(_input.buttonUp);
+            default: 
                 return false;
         }
+    }
+
+    private bool Buffer(bool value)
+    {
+        if (value && canControl)
+        {
+            return true;
+        }
+        else if (value && !canControl)
+        {
+            _currentBufferTime = bufferTime;
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void BufferTime()
+    {
+        if (_currentBufferTime > 0)
+        {
+            _currentBufferTime -= Time.deltaTime;
+            if (_currentBufferTime <= 0)
+            {
+                _currentBufferTime = 0;
+            }
+        }
+        if ((!_bufferCanControl && canControl) && _currentBufferTime > 0)
+        {
+            if (onActionTrigger != null)
+            {
+                onActionTrigger.Invoke();
+            }
+            switch (interaction)
+            {
+                case InteractionType.down:
+                    _doDownAction = true;
+                    break;
+                case InteractionType.hold:
+                    _doHoldAction = true;
+                    break;
+                case InteractionType.up:
+                    _doUpAction = true;
+                    break;
+            }
+            _currentBufferTime = 0;
+        }
+        _bufferCanControl = canControl;
     }
 
     protected bool GetButtonDown()

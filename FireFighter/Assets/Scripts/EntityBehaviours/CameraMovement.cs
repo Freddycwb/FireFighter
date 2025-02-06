@@ -27,11 +27,6 @@ public class CameraMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        if (targetVariable != null)
-        {
-            target = targetVariable.Value;
-        }
-
         if (lookDirectionObject != null)
         {
             _lookDirection = lookDirectionObject.GetComponent<IInputDirection>();
@@ -42,6 +37,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
+        if (targetVariable != null)
+        {
+            target = targetVariable.Value;
+        }
         HideCursor(true);
     }
 

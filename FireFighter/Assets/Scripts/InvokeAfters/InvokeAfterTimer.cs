@@ -73,11 +73,16 @@ public class InvokeAfterTimer : InvokeAfter
             StopCoroutine(coroutine);
         }
         enabled = true;
-        if (timeToAction > 0 || (randomTimeToActionVariable != null && randomTimeToActionVariable.Value != Vector2.zero) || (timeToActionVariable != null && timeToActionVariable.Value > 0))
+        bool haveTime = timeToAction > 0 || (randomTimeToActionVariable != null && randomTimeToActionVariable.Value != Vector2.zero) || (timeToActionVariable != null && timeToActionVariable.Value > 0);
+        if (haveTime)
         {
             coroutine = StartCoroutine(InvokeAfterSeconds());
         }
         CallSubAction();
+        if (!haveTime)
+        {
+            CallAction();
+        }
     }
 
     private IEnumerator InvokeAfterSeconds()
