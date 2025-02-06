@@ -3097,6 +3097,8 @@ MonoBehaviour:
   damageType: 2
   damageValue: 1
   damageValueVariable: {fileID: 0}
+  knockbackForce: {x: 0, y: 0}
+  knockbackForceVariable: {fileID: 11400000, guid: 992e50a6814f02b408d9722b31048152, type: 2}
 --- !u!114 &1666931304807159090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5868,6 +5870,166 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2623375803018747548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3805403287861117637}
+  - component: {fileID: 562445686150995072}
+  - component: {fileID: 5831432796174824819}
+  - component: {fileID: 6651337257648037151}
+  - component: {fileID: 1154981685180106570}
+  m_Layer: 0
+  m_Name: KncokbackIncreaseByDamage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3805403287861117637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623375803018747548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3178017235360388488}
+  m_Father: {fileID: 1147309589201845128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &562445686150995072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623375803018747548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 7360280676235115133}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8240949127533872599}
+        m_TargetAssemblyTypeName: DamageEmitter, Assembly-CSharp
+        m_MethodName: SetKnockbackForceValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 928f8686b734b6546978e3fa7e3cbe69, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Vector2Variable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5831432796174824819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623375803018747548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 2867095094088773023}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8240949127533872599}
+        m_TargetAssemblyTypeName: DamageEmitter, Assembly-CSharp
+        m_MethodName: SetKnockbackForceValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 3d7370f4f1b604340bef5276dedf4b21, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Vector2Variable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6651337257648037151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623375803018747548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 1637494107494028112}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8240949127533872599}
+        m_TargetAssemblyTypeName: DamageEmitter, Assembly-CSharp
+        m_MethodName: SetKnockbackForceValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 93ca5516bf5024440a5c0463e1f6ab4a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Vector2Variable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1154981685180106570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623375803018747548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 1740597616263205869}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8240949127533872599}
+        m_TargetAssemblyTypeName: DamageEmitter, Assembly-CSharp
+        m_MethodName: SetKnockbackForceValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 12444ece8850bdf4c8aef8c8a52ede60, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Vector2Variable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2674445545661563068
 GameObject:
   m_ObjectHideFlags: 0
@@ -7219,7 +7381,7 @@ MonoBehaviour:
   interaction: 0
   canControl: 1
   useUnscaledTime: 0
-  bufferTime: 0
+  bufferTime: 0.3
 --- !u!1 &3115954152417140142
 GameObject:
   m_ObjectHideFlags: 0
@@ -9425,8 +9587,8 @@ MonoBehaviour:
   force: {x: 6, y: 0}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 147136593779938969}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 1, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0
@@ -12171,8 +12333,8 @@ MonoBehaviour:
   force: {x: 13, y: 0}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 3034076706627434439}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0
@@ -12733,8 +12895,8 @@ MonoBehaviour:
   force: {x: 10, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 2458321007497389492}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0
@@ -14267,8 +14429,8 @@ MonoBehaviour:
   force: {x: 10, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 8592441761179185171}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0
@@ -16135,6 +16297,8 @@ MonoBehaviour:
   damageType: 2
   damageValue: 1
   damageValueVariable: {fileID: 0}
+  knockbackForce: {x: 0, y: 0}
+  knockbackForceVariable: {fileID: 11400000, guid: 992e50a6814f02b408d9722b31048152, type: 2}
 --- !u!114 &1094397783853830349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18100,6 +18264,8 @@ MonoBehaviour:
   damageType: 2
   damageValue: 1
   damageValueVariable: {fileID: 0}
+  knockbackForce: {x: 0, y: 0}
+  knockbackForceVariable: {fileID: 11400000, guid: 928f8686b734b6546978e3fa7e3cbe69, type: 2}
 --- !u!114 &6711961579394129264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19317,6 +19483,7 @@ Transform:
   m_Children:
   - {fileID: 3589727926274715918}
   - {fileID: 3926665895820416817}
+  - {fileID: 3805403287861117637}
   m_Father: {fileID: 240040720544403926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7442422723860331355
@@ -21067,8 +21234,8 @@ MonoBehaviour:
   force: {x: -9, y: -10}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0
@@ -22079,6 +22246,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &8277147660742066119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3178017235360388488}
+  m_Layer: 0
+  m_Name: ResetKnockback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3178017235360388488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277147660742066119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3805403287861117637}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8279159780464428009
 GameObject:
   m_ObjectHideFlags: 0
@@ -22481,6 +22679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4444045998310067064}
   - component: {fileID: 6022561778027267587}
+  - component: {fileID: 848056407931177170}
   - component: {fileID: 7474272583487335316}
   m_Layer: 0
   m_Name: Throw
@@ -22521,6 +22720,33 @@ MonoBehaviour:
   onActionTrigger:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 848056407931177170}
+        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &848056407931177170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372808462451430221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 7474272583487335316}
         m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
         m_MethodName: Throw
@@ -22533,6 +22759,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  timeToAction: 0.05
+  valueSetter: {fileID: 0}
+  startTimerOnEnabled: 0
+  overrideLastTimer: 1
+  useUnscaledTime: 0
 --- !u!114 &7474272583487335316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22548,8 +22782,8 @@ MonoBehaviour:
   force: {x: 10, y: 0}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 6679718329274325223}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0
@@ -24548,8 +24782,8 @@ MonoBehaviour:
   force: {x: 17, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 6634889611677662334}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0

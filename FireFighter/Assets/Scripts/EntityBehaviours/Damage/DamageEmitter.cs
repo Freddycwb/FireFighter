@@ -8,6 +8,8 @@ public class DamageEmitter : MonoBehaviour
     [SerializeField] private CollisionType.Types damageType;
     [SerializeField] private float damageValue = 1;
     [SerializeField] private FloatVariable damageValueVariable;
+    [SerializeField] private Vector2 knockbackForce;
+    [SerializeField] private Vector2Variable knockbackForceVariable;
 
     public Action onEmitDamage;
 
@@ -16,6 +18,10 @@ public class DamageEmitter : MonoBehaviour
         if (damageValueVariable != null)
         {
             damageValue = damageValueVariable.Value;
+        }
+        if (knockbackForceVariable != null)
+        {
+            knockbackForce = knockbackForceVariable.Value;
         }
     }
 
@@ -33,6 +39,11 @@ public class DamageEmitter : MonoBehaviour
         return damageValue;
     }
 
+    public Vector2 GetKnockbackForceValue()
+    {
+        return knockbackForce;
+    }
+
     public void SetDamageValue(float value)
     {
         damageValue = value;
@@ -46,5 +57,10 @@ public class DamageEmitter : MonoBehaviour
     public void SetDamageValue(InvokeAfterCounter value)
     {
         damageValue = value.GetCurrentValue();
+    }
+
+    public void SetKnockbackForceValue(Vector2Variable value)
+    {
+        knockbackForce = value.Value;
     }
 }

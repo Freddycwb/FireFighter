@@ -13,12 +13,18 @@ public class DamageChecker : MonoBehaviour
     [SerializeField] private bool alertEmitter = true;
 
     private float lastDamage;
+    private Vector2 lastKnockbackForce;
 
     public Action onTakeDamage; 
 
     public float GetLastDamage()
     {
         return lastDamage;
+    }
+
+    public Vector2 GetLastKnockbackForce()
+    {
+        return lastKnockbackForce;
     }
 
     public void CheckDamage(GameObject value)
@@ -35,6 +41,7 @@ public class DamageChecker : MonoBehaviour
         if ((emitter.GetDamageType() & damageType) != 0)
         {
             lastDamage = emitter.GetDamageValue(alertEmitter);
+            lastKnockbackForce = emitter.GetKnockbackForceValue();
             if (onTakeDamage != null)
             {
                 onTakeDamage.Invoke();

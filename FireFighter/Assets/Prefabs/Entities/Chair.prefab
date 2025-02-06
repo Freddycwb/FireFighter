@@ -3278,11 +3278,11 @@ MonoBehaviour:
   force: {x: -9, y: -9}
   throwable: {fileID: 5509588830728461574}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: -0.25, z: 0}
+  targetMaxOffSet: {x: 0, y: -2.1, z: 0}
   addForce: 1
   valueAdjuster: 0
-  valueAdjustType: 3
+  valueAdjustType: 0
 --- !u!114 &589968673878975861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4303,8 +4303,8 @@ MonoBehaviour:
   force: {x: -4, y: -5}
   throwable: {fileID: 5451446968587522876}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 0.5, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0.5, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
   valueAdjustType: 0
@@ -4877,6 +4877,8 @@ MonoBehaviour:
   damageType: 8
   damageValue: 1
   damageValueVariable: {fileID: 0}
+  knockbackForce: {x: 0, y: 0}
+  knockbackForceVariable: {fileID: 0}
 --- !u!1 &4396065803056270934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5501,11 +5503,11 @@ MonoBehaviour:
   force: {x: -13, y: -13}
   throwable: {fileID: 5451446968587522876}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: -0.5, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: -1, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
   valueAdjuster: 0
-  valueAdjustType: 1
+  valueAdjustType: 0
 --- !u!1 &5108429795068189793
 GameObject:
   m_ObjectHideFlags: 0
@@ -7698,11 +7700,11 @@ MonoBehaviour:
   force: {x: -9, y: -9}
   throwable: {fileID: 6569360647354069965}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: -0.25, z: 0}
+  targetMaxOffSet: {x: 0, y: -2.1, z: 0}
   addForce: 1
   valueAdjuster: 0
-  valueAdjustType: 3
+  valueAdjustType: 0
 --- !u!114 &2224846511882511179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7976,7 +7978,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4863771924799606675}
         m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
-        m_MethodName: SetValueAdjuster
+        m_MethodName: SetForce
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7291176826808659613}
@@ -7988,7 +7990,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2574271935895170805}
         m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
-        m_MethodName: SetValueAdjuster
+        m_MethodName: SetForce
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7291176826808659613}
@@ -8000,7 +8002,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 8736967030197053402}
         m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
-        m_MethodName: SetValueAdjuster
+        m_MethodName: SetForce
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7291176826808659613}
@@ -9811,7 +9813,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 873954072325063031}
         m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
-        m_MethodName: SetValueAdjuster
+        m_MethodName: SetForce
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2121728547682359187}
@@ -10349,11 +10351,11 @@ MonoBehaviour:
   force: {x: -9, y: -9}
   throwable: {fileID: 8524501786661707879}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: -0.25, z: 0}
+  targetMaxOffSet: {x: 0, y: -2.1, z: 0}
   addForce: 1
-  valueAdjuster: 0
-  valueAdjustType: 3
+  valueAdjuster: 1.5
+  valueAdjustType: 2
 --- !u!114 &2555166425938154008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10423,8 +10425,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 8524501786661707879}
   target: {fileID: 2126017098986739176}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -10443,8 +10445,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 5509588830728461574}
   target: {fileID: 4346782488627704135}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -10463,8 +10465,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 6569360647354069965}
   target: {fileID: 6528708639863313511}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -11450,6 +11452,8 @@ MonoBehaviour:
   damageType: 4
   damageValue: 1
   damageValueVariable: {fileID: 11400000, guid: af60fdb04d0e8244a8723c420d814b75, type: 2}
+  knockbackForce: {x: 0, y: 0}
+  knockbackForceVariable: {fileID: 0}
 --- !u!114 &8054713368175561930
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -93,4 +93,9 @@ public class Thrower : MonoBehaviour
     {
         valueAdjuster = value.GetLastDamage();
     }
+
+    public void SetForce(DamageChecker value)
+    {
+        force = -value.GetLastKnockbackForce();
+    }
 }
