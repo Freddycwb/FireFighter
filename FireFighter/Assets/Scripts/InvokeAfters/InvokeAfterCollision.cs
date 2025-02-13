@@ -22,6 +22,7 @@ public class InvokeAfterCollision : InvokeAfter
 
 
     public GameObject lastCollision { get; private set; }
+    public Vector3 lastCollisionPoint { get; private set; }
 
     private List<GameObject> collisionsThisFrame = new List<GameObject>();
     private int numberOfCollisions;
@@ -51,6 +52,7 @@ public class InvokeAfterCollision : InvokeAfter
                 return;
             }
             lastCollision = other.gameObject;
+            lastCollisionPoint = other.ClosestPoint(transform.position);
             if (onImpact != null)
             {
                 onImpact.Invoke(lastCollision);
@@ -91,6 +93,7 @@ public class InvokeAfterCollision : InvokeAfter
                 return;
             }
             lastCollision = other.gameObject;
+            lastCollisionPoint = other.contacts[0].point;
             if (onImpact != null)
             {
                 onImpact.Invoke(lastCollision);

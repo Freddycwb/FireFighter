@@ -5,6 +5,7 @@ using UnityEngine;
 public class PositionSetter : MonoBehaviour
 {
     [SerializeField] private Transform objToSetPos;
+    [SerializeField] private Vector3 offset;
 
     private void OnEnable()
     {
@@ -14,11 +15,19 @@ public class PositionSetter : MonoBehaviour
         }
     }
 
+    public void SetPosition(Vector3 value)
+    {
+        if (value != null)
+        {
+            objToSetPos.transform.position = value + offset;
+        }
+    }
+
     public void SetPosition(GameObject value)
     {
         if (value != null)
         {
-            objToSetPos.transform.position = value.transform.position;
+            SetPosition(value.transform.position);
         }
     }
 
@@ -26,7 +35,16 @@ public class PositionSetter : MonoBehaviour
     {
         if (value != null && value.Value != null)
         {
-            objToSetPos.transform.position = value.Value.transform.position;
+            SetPosition(value.Value.transform.position);
+        }
+    }
+
+    public void SetPositionY(GameObject value)
+    {
+        if (value != null)
+        {
+            Vector3 pos = new Vector3(objToSetPos.transform.position.x, value.transform.position.y, objToSetPos.transform.position.z);
+            SetPosition(pos);
         }
     }
 }

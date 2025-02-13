@@ -10,6 +10,7 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
     [SerializeField] private UnityEvent<GameObject> onImpact;
     [SerializeField] private UnityEvent<GameObject> onLeave;
     [SerializeField] private UnityEvent<GameObject> onCallLastCollisionAction;
+    [SerializeField] private UnityEvent<Vector3> onCallGetLastCollisionPoint;
 
     private bool listening;
 
@@ -44,6 +45,14 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
         if (enabled && invokeAfterCollision.lastCollision != null)
         {
             onCallLastCollisionAction.Invoke(invokeAfterCollision.lastCollision);
+        }
+    }
+
+    public void CallGetLastCollisionPoint()
+    {
+        if (enabled && invokeAfterCollision.lastCollisionPoint != null)
+        {
+            onCallGetLastCollisionPoint.Invoke(invokeAfterCollision.lastCollisionPoint);
         }
     }
 
