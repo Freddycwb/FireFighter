@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LookAt : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class LookAt : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private GameObjectVariable targetVariable;
 
-    [SerializeField] private float yOffset;
+    [SerializeField] private Vector3 offSet;
+
+    [SerializeField] private float targetYOffset;
 
     public void SetTarget(GameObject value)
     {
@@ -34,6 +37,7 @@ public class LookAt : MonoBehaviour
         {
             return;
         }
-        obj.transform.rotation = Quaternion.LookRotation((target.transform.position + Vector3.up * yOffset) - obj.transform.position, Vector3.up);
+        obj.transform.rotation = Quaternion.LookRotation((target.transform.position + Vector3.up * targetYOffset) - obj.transform.position, Vector3.up);
+        obj.transform.eulerAngles += offSet;
     }
 }

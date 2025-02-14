@@ -9,11 +9,18 @@ public class PoolInstantiator : MonoBehaviour
     [SerializeField] private GameObject obj;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform parent;
+    [SerializeField] private Vector3 positionOffset;
+
+    private Vector3 newPosition;
+    private Quaternion newRotation;
 
     public Action<GameObject> onObjCreated;
 
     private void Start()
     {
+        newPosition.x = float.PositiveInfinity;
+        newRotation.x = float.PositiveInfinity;
+
         for (int i = 0; i < instancesOnStart; i++)
         {
             GameObject a = Instantiate(obj, transform.position, transform.rotation);
@@ -23,27 +30,57 @@ public class PoolInstantiator : MonoBehaviour
         }
     }
 
+    private void SetNewCoordinates()
+    {
+        if (newPosition.x == float.PositiveInfinity)
+        {
+            if (spawnPoint != null)
+            {
+                newPosition = spawnPoint.position;
+            }
+            else
+            {
+                newPosition = transform.position;
+            }
+        }
+
+        if (newRotation.x == float.PositiveInfinity)
+        {
+            if (spawnPoint != null)
+            {
+                newRotation = spawnPoint.rotation;
+            }
+            else
+            {
+                newRotation = transform.rotation;
+            }
+        }
+
+        newPosition += positionOffset;
+    }
+
     public void CreateObject()
     {
         if (!gameObject.activeSelf)
         {
             return;
         }
-        Transform t = spawnPoint != null ? spawnPoint : transform;
+
+        SetNewCoordinates();
 
         GameObject a;
 
         if (transform.childCount > 0)
         {
             a = transform.GetChild(0).gameObject;
-            a.transform.position = t.position;
-            a.transform.rotation = t.rotation;
+            a.transform.position = newPosition;
+            a.transform.rotation = newRotation;
             a.transform.SetParent(parent);
             a.SetActive(true);
         }
         else
         {
-            a = Instantiate(obj, t.position, t.rotation);
+            a = Instantiate(obj, newPosition, newRotation);
             a.transform.SetParent(parent);
             a.AddComponent<PoolObject>().SetInstantiator(this);
         }
@@ -52,35 +89,21 @@ public class PoolInstantiator : MonoBehaviour
         {
             onObjCreated.Invoke(a);
         }
+
+        newPosition.x = float.PositiveInfinity;
+        newRotation.x = float.PositiveInfinity;
     }
 
     public void CreateObject(Transform value)
     {
-        if (!gameObject.activeSelf)
-        {
-            return;
-        }
+        newPosition = value.position;
+        newRotation = value.rotation;
+        CreateObject();
+    }
 
-        GameObject a;
-
-        if (transform.childCount > 0)
-        {
-            a = transform.GetChild(0).gameObject;
-            a.transform.position = value.position;
-            a.transform.rotation = value.rotation;
-            a.transform.SetParent(parent);
-            a.SetActive(true);
-        }
-        else
-        {
-            a = Instantiate(obj, value.position, value.rotation);
-            a.transform.SetParent(parent);
-            a.AddComponent<PoolObject>().SetInstantiator(this);
-        }
-
-        if (onObjCreated != null)
-        {
-            onObjCreated.Invoke(a);
-        }
+    public void CreateObjectInPosition(Vector3 value)
+    {
+        newPosition = value;
+        CreateObject();
     }
 }
