@@ -113,10 +113,4 @@ public class TimeManager : MonoBehaviour
             _isPaused = false;
         }
     }
-
-    public void FreezeFrame(float value)
-    {
-        freezeFrameDuration = value;
-        count = 0;
-    }
 }

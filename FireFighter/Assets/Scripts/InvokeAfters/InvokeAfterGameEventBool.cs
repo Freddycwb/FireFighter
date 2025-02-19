@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class InvokeAfterGameEventBool : InvokeAfter
 {
     public GameEventBool Event;
 
-    public UnityEvent<bool> asda;
+    public UnityEvent<bool> boolAction;
 
     private void OnEnable()
     {

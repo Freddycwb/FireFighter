@@ -23,6 +23,11 @@ public class LookAt : MonoBehaviour
         target = value.Value;
     }
 
+    public void SetOffset(Vector3 value)
+    {
+        offSet = value;
+    }
+
     private void Start()
     {
         if (targetVariable != null)

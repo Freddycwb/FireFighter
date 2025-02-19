@@ -12,6 +12,7 @@ public class InvokeAfterFrame : InvokeAfter
     [SerializeField] private bool startTimerOnEnabled;
     [SerializeField] private bool overrideLastTimer = true;
     [SerializeField] private bool useUnscaledTime;
+    [SerializeField] private bool useWaitUntilEndOfFrame;
 
     private float _currentTimeToAction;
     private float _currentTimePass;
@@ -49,7 +50,14 @@ public class InvokeAfterFrame : InvokeAfter
         int i = 0;
         while (i < framesToAction)
         {
-            yield return new WaitForNextFrameUnit();
+            if (useWaitUntilEndOfFrame)
+            {
+                yield return new WaitForEndOfFrameUnit();
+            }
+            else
+            {
+                yield return new WaitForNextFrameUnit();
+            }
             if (Time.timeScale > 0 || (Time.timeScale <= 0 && useUnscaledTime))
             {
                 i++;
