@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6963335867881153351}
   - component: {fileID: 1517512752226128115}
+  - component: {fileID: 5787473734018264585}
   - component: {fileID: 326317528943800583}
   - component: {fileID: 5362443939002450625}
   m_Layer: 0
@@ -50,6 +51,37 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5787473734018264585}
+        m_TargetAssemblyTypeName: InvokeAfterBoolComparison, Assembly-CSharp
+        m_MethodName: Compare
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b37390dad8e265c4ab1f1c0e85ca9607, type: 2}
+          m_ObjectArgumentAssemblyTypeName: BoolVariable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  Event: {fileID: 11400000, guid: aeeb8dcce23a6c14ea8d0f11e0c32b3c, type: 2}
+--- !u!114 &5787473734018264585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16423603317860373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09601003378a96f43907452d3f753743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 326317528943800583}
         m_TargetAssemblyTypeName: InvokeAfterFrame, Assembly-CSharp
         m_MethodName: StartTimer
@@ -65,7 +97,7 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  Event: {fileID: 11400000, guid: aeeb8dcce23a6c14ea8d0f11e0c32b3c, type: 2}
+  comparison: 0
 --- !u!114 &326317528943800583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,11 +171,11 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 0.1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  framesToAction: 1
+  framesToAction: 7
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1

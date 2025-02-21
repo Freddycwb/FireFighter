@@ -28,6 +28,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
         Compare(value.activeSelf);
     }
 
+    public void Compare(BoolVariable value)
+    {
+        Compare(value.Value);
+    }
+
     public void Compare(bool value)
     {
         if (value ^ (comparison == ComparisonType.isTrue))

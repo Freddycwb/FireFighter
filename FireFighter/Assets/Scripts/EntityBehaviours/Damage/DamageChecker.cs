@@ -12,6 +12,9 @@ public class DamageChecker : MonoBehaviour
 
     [SerializeField] private bool alertEmitter = true;
 
+    private List<GameObject> damageReceived = new List<GameObject>();
+    private Coroutine damageReceiveRoutine;
+
     private float lastDamage;
     private Vector2 lastKnockbackForce;
 
@@ -27,6 +30,11 @@ public class DamageChecker : MonoBehaviour
         return lastKnockbackForce;
     }
 
+    private void OnEnable()
+    {
+        damageReceived.Clear();
+    }
+
     public void CheckDamage(GameObject value)
     {
         if (!enabled)
@@ -38,6 +46,10 @@ public class DamageChecker : MonoBehaviour
         {
             emitter = value.transform.parent.GetComponent<DamageEmitter>();
         }
+        if (damageReceived.Contains(emitter.gameObject))
+        {
+            return;
+        }
         if ((emitter.GetDamageType() & damageType) != 0)
         {
             lastDamage = emitter.GetDamageValue(alertEmitter);
@@ -47,6 +59,17 @@ public class DamageChecker : MonoBehaviour
                 onTakeDamage.Invoke();
             }
             takeDamage.Invoke(-lastDamage);
+            damageReceived.Add(emitter.gameObject);
+            if (enabled && gameObject.activeSelf)
+            {
+                StartCoroutine(RemoveDamageReceived(emitter.gameObject));
+            }
         }
+    }
+
+    private IEnumerator RemoveDamageReceived(GameObject value)
+    {
+        yield return new WaitForSeconds(0.12f);
+        damageReceived.Remove(value);
     }
 }

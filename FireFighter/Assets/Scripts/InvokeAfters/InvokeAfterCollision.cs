@@ -9,6 +9,7 @@ public class InvokeAfterCollision : InvokeAfter
 {
 
     [SerializeField] private List<string> tags = new List<string>();
+    [SerializeField] private bool ignoreTags;
 
     [System.Flags]
     public enum Types
@@ -45,7 +46,8 @@ public class InvokeAfterCollision : InvokeAfter
         {
             return;
         }
-        if (tags.Count == 0 || tags.Contains(other.tag))
+        bool acceptTags = (tags.Contains(other.tag) && !ignoreTags) || (!tags.Contains(other.tag) && ignoreTags);
+        if (tags.Count == 0 || acceptTags)
         {
             if (collisionsThisFrame.Contains(other.gameObject))
             {
@@ -69,7 +71,8 @@ public class InvokeAfterCollision : InvokeAfter
         {
             return;
         }
-        if (tags.Count == 0 || tags.Contains(other.tag))
+        bool acceptTags = (tags.Contains(other.tag) && !ignoreTags) || (!tags.Contains(other.tag) && ignoreTags);
+        if (tags.Count == 0 || acceptTags)
         {
             if (onLeave != null)
             {
@@ -86,6 +89,7 @@ public class InvokeAfterCollision : InvokeAfter
         {
             return;
         }
+        bool acceptTags = (tags.Contains(other.gameObject.tag) && !ignoreTags) || (!tags.Contains(other.gameObject.tag) && ignoreTags);
         if (tags.Count == 0 || tags.Contains(other.gameObject.tag))
         {
             if (collisionsThisFrame.Contains(other.gameObject))
@@ -110,6 +114,7 @@ public class InvokeAfterCollision : InvokeAfter
         {
             return;
         }
+        bool acceptTags = (tags.Contains(other.gameObject.tag) && !ignoreTags) || (!tags.Contains(other.gameObject.tag) && ignoreTags);
         if (tags.Count == 0 || tags.Contains(other.gameObject.tag))
         {
             if (onLeave != null)
