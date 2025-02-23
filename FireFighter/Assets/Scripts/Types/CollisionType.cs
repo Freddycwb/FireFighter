@@ -13,5 +13,6 @@ public abstract class CollisionType : MonoBehaviour
         water = 4,
         meleeFire = 8,
         fire = 16,
+        instantDeath = 32,
     }
 }
