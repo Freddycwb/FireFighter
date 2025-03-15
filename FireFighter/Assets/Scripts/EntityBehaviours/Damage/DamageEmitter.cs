@@ -63,4 +63,20 @@ public class DamageEmitter : MonoBehaviour
     {
         knockbackForce = value.Value;
     }
+
+    public void GiveDamageFromCollision(GameObject value)
+    {
+        if (value.transform.parent != null)
+        {
+            GiveDamage(value.transform.parent.GetComponent<DamageChecker>());
+        }
+    }
+
+    public void GiveDamage(DamageChecker checker)
+    {
+        if (checker != null)
+        {
+            checker.ReceiveDamage(this);
+        }
+    }
 }

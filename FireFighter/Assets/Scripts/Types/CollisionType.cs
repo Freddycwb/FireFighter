@@ -14,5 +14,6 @@ public abstract class CollisionType : MonoBehaviour
         meleeFire = 8,
         fire = 16,
         instantDeath = 32,
+        puddle = 64,
     }
 }

@@ -13,6 +13,11 @@ public class InvokeAfterSwitch : InvokeAfter
         return _value;
     }
 
+    public void SwitchValue()
+    {
+        value = !_value;
+    }
+
     public void SetValue(bool newValue)
     {
         value = newValue;

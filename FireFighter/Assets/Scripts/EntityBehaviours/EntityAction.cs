@@ -189,6 +189,11 @@ public class EntityAction : MonoBehaviour
         _bufferCanControl = canControl;
     }
 
+    public void CancelBuffer()
+    {
+        _currentBufferTime = 0;
+    }
+
     protected bool GetButtonDown()
     {
         if (_doDownAction)
@@ -229,5 +234,10 @@ public class EntityAction : MonoBehaviour
             return false;
         }
         return _input.buttonUp;
+    }
+
+    private void OnDisable()
+    {
+        _currentBufferTime = 0;
     }
 }

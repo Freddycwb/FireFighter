@@ -98,4 +98,9 @@ public class Thrower : MonoBehaviour
     {
         force = -value.GetLastKnockbackForce();
     }
+
+    public void SetForceX(float value)
+    {
+        force.x = value;
+    }
 }

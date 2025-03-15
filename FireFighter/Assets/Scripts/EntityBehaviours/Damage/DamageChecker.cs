@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using static UnityEngine.Rendering.DebugUI;
 
 public class DamageChecker : MonoBehaviour
 {
@@ -42,9 +43,18 @@ public class DamageChecker : MonoBehaviour
             return;
         }
         DamageEmitter emitter = null;
-        if (value.transform.parent.GetComponent<DamageEmitter>() != null)
+        if (value.transform.parent != null)
         {
             emitter = value.transform.parent.GetComponent<DamageEmitter>();
+        }
+        ReceiveDamage(emitter);
+    }
+
+    public void ReceiveDamage(DamageEmitter emitter)
+    {
+        if (emitter == null)
+        {
+            return;
         }
         if (damageReceived.Contains(emitter.gameObject))
         {

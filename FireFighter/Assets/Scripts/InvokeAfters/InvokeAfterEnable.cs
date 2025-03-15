@@ -5,9 +5,14 @@ using UnityEngine.Events;
 
 public class InvokeAfterEnable : InvokeAfter
 {
+    [SerializeField] private bool activeInHierarchy;
+
     private void OnEnable()
     {
-        CallAction();
+        if (gameObject.activeInHierarchy || !activeInHierarchy)
+        {
+            CallAction();
+        }
     }
 
     private void OnDisable()

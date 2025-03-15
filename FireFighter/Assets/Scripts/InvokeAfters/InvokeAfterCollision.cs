@@ -25,11 +25,14 @@ public class InvokeAfterCollision : InvokeAfter
     public GameObject lastCollision { get; private set; }
     public Vector3 lastCollisionPoint { get; private set; }
 
+    private List<GameObject> collisions = new List<GameObject>();
     private List<GameObject> collisionsThisFrame = new List<GameObject>();
     private int numberOfCollisions;
 
     public Action<GameObject> onImpact;
     public Action<GameObject> onLeave;
+
+    private Coroutine refreshRoutine;
 
     public GameObject GetLastCollision() {
         return lastCollision;
@@ -61,6 +64,10 @@ public class InvokeAfterCollision : InvokeAfter
             }
             numberOfCollisions++;
             CallAction();
+            if (!collisions.Contains(lastCollision))
+            {
+                collisions.Add(lastCollision);
+            }
             collisionsThisFrame.Add(lastCollision);
         }
     }
@@ -80,6 +87,10 @@ public class InvokeAfterCollision : InvokeAfter
             }
             numberOfCollisions--;
             CallSubAction();
+            if (collisions.Contains(other.gameObject))
+            {
+                collisions.Remove(other.gameObject);
+            }
         }
     }
 
@@ -104,6 +115,10 @@ public class InvokeAfterCollision : InvokeAfter
             }
             numberOfCollisions++;
             CallAction();
+            if (!collisions.Contains(lastCollision))
+            {
+                collisions.Add(lastCollision);
+            }
             collisionsThisFrame.Add(lastCollision);
         }
     }
@@ -123,11 +138,28 @@ public class InvokeAfterCollision : InvokeAfter
             }
             numberOfCollisions--;
             CallSubAction();
+            if (collisions.Contains(other.gameObject))
+            {
+                collisions.Remove(other.gameObject);
+            }
         }
     }
 
     private void LateUpdate()
     {
         collisionsThisFrame.Clear();
+    }
+
+    public void RemoveCollision(GameObject value)
+    {
+        if (collisions.Remove(value))
+        {
+            if (onLeave != null)
+            {
+                onLeave.Invoke(value);
+            }
+            numberOfCollisions = collisions.Count;
+            CallSubAction();
+        }
     }
 }

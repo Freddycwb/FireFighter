@@ -426,6 +426,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   tags: []
+  ignoreTags: 0
   collisionTypes: -1
 --- !u!65 &2316002904575346437
 BoxCollider:
@@ -698,8 +699,8 @@ MonoBehaviour:
   force: {x: -12, y: -12}
   throwable: {fileID: 5416611058021760051}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: 1, z: 0}
+  targetMaxOffSet: {x: 0, y: 3, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 3
@@ -774,8 +775,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 7577716328359710755}
   target: {fileID: 693136041372968695}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -794,8 +795,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 4184790333891576802}
   target: {fileID: 8914056086995264327}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -814,8 +815,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 2492274989436094123}
   target: {fileID: 8686435059527681925}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -834,8 +835,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 5416611058021760051}
   target: {fileID: 8889446488654867366}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -854,8 +855,8 @@ MonoBehaviour:
   force: {x: -3, y: -3}
   throwable: {fileID: 135388309750630810}
   target: {fileID: 4559294146693481933}
-  throwableOffSet: {x: 0, y: 0, z: 0}
-  throwableMaxOffSet: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
+  targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 0
@@ -1002,8 +1003,8 @@ MonoBehaviour:
   force: {x: -9, y: -9}
   throwable: {fileID: 7577716328359710755}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: 1, z: 0}
+  targetMaxOffSet: {x: 0, y: 3, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 3
@@ -1417,6 +1418,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onCallGetLastCollisionPoint:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1375951569743441595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,8 +1963,8 @@ MonoBehaviour:
   force: {x: -9, y: -9}
   throwable: {fileID: 2492274989436094123}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: 1, z: 0}
+  targetMaxOffSet: {x: 0, y: 3, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 3
@@ -2142,6 +2146,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onCallLastCollisionAction:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallGetLastCollisionPoint:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8363552710040865876
@@ -3333,8 +3340,8 @@ MonoBehaviour:
   force: {x: -9, y: -9}
   throwable: {fileID: 4184790333891576802}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: 1, z: 0}
+  targetMaxOffSet: {x: 0, y: 3, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 3
@@ -3370,7 +3377,7 @@ GameObject:
   - component: {fileID: 3198009816714649340}
   m_Layer: 3
   m_Name: Standard
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3746,8 +3753,8 @@ MonoBehaviour:
   force: {x: -12, y: -12}
   throwable: {fileID: 135388309750630810}
   target: {fileID: 0}
-  throwableOffSet: {x: 0, y: 1, z: 0}
-  throwableMaxOffSet: {x: 0, y: 3, z: 0}
+  targetOffset: {x: 0, y: 1, z: 0}
+  targetMaxOffSet: {x: 0, y: 3, z: 0}
   addForce: 1
   valueAdjuster: 0
   valueAdjustType: 3

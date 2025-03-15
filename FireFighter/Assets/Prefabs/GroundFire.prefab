@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 4276807526230517638}
   - component: {fileID: 7098453606716516227}
   - component: {fileID: 6589003864136058661}
+  - component: {fileID: 5689298643179054802}
+  - component: {fileID: 7933887626658328953}
   m_Layer: 7
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +79,71 @@ MonoBehaviour:
   tags: []
   ignoreTags: 0
   collisionTypes: -1
+--- !u!114 &5689298643179054802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22486880942870896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1811fba130e0f41ab91b7e11981b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7933887626658328953}
+        m_TargetAssemblyTypeName: InvokeAfterSwitch, Assembly-CSharp
+        m_MethodName: SetValueTrue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7933887626658328953}
+        m_TargetAssemblyTypeName: InvokeAfterSwitch, Assembly-CSharp
+        m_MethodName: SetValueFalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  tags:
+  - Player
+  ignoreTags: 0
+  collisionTypes: -1
+--- !u!114 &7933887626658328953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22486880942870896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a990bcd07bcf4469379357d238aee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  value: 0
 --- !u!1 &227525666105107837
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +619,7 @@ GameObject:
   - component: {fileID: 8179890977614719996}
   - component: {fileID: 3888053710240965182}
   - component: {fileID: 5561332584604551355}
-  - component: {fileID: 3395358762958850670}
+  - component: {fileID: 4773184007314052303}
   m_Layer: 0
   m_Name: FireSound
   m_TagString: Untagged
@@ -637,7 +704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Event: {fileID: 11400000, guid: 542386c690ede8a42afc18eb4cd9a730, type: 2}
---- !u!114 &3395358762958850670
+--- !u!114 &4773184007314052303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -646,7 +713,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2259993151568552083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   action:
@@ -667,11 +734,11 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  timeToAction: 0
-  valueSetter: {fileID: 0}
+  framesToAction: 2
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
 --- !u!1 &2839451665158722979
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5504187302264162875}
   - component: {fileID: 8774281059811246324}
+  - component: {fileID: 2127428319339264254}
   - component: {fileID: 1994424646424425978}
   m_Layer: 6
   m_Name: DamageChecker
@@ -743,6 +811,34 @@ MonoBehaviour:
   onCallGetLastCollisionPoint:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2127428319339264254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839451665158722979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292fd8b993c4f18478351208f715e3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfterOverlap: {fileID: 2901219895490606181}
+  onContact:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1994424646424425978}
+        m_TargetAssemblyTypeName: DamageChecker, Assembly-CSharp
+        m_MethodName: CheckDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1994424646424425978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee65669b3f59d2242a81fed465773d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageType: 4
+  damageType: 68
   takeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -783,6 +879,7 @@ GameObject:
   - component: {fileID: 795072568384688280}
   - component: {fileID: 5288030810398082269}
   - component: {fileID: 4388509692625327292}
+  - component: {fileID: 626683326965208248}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -834,6 +931,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7492456513046809935}
+        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
+        m_MethodName: CancelTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 273168726502928939}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -853,6 +962,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 626683326965208248}
+        m_TargetAssemblyTypeName: InvokeAfterBoolComparison, Assembly-CSharp
+        m_MethodName: Compare
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7933887626658328953}
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterSwitch, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -921,6 +1042,37 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &626683326965208248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068183818688724076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09601003378a96f43907452d3f753743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 8c97f499d6b034c45aab43e9428cb01c, type: 2}
+        m_TargetAssemblyTypeName: GameEventGameObject, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 22486880942870896}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  comparison: 0
 --- !u!1 &4469210310288322279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1298,8 @@ GameObject:
   - component: {fileID: 2923644918863411677}
   - component: {fileID: 3971587678461565733}
   - component: {fileID: 4599647236584020156}
+  - component: {fileID: 2901219895490606181}
+  - component: {fileID: 2978232044276831023}
   m_Layer: 6
   m_Name: Collider
   m_TagString: Fire
@@ -1212,3 +1366,63 @@ MonoBehaviour:
   tags: []
   ignoreTags: 0
   collisionTypes: -1
+--- !u!114 &2901219895490606181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710303521682825839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb32069067431114fbd082851b724e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  radius: 0.1
+  layer:
+    serializedVersion: 2
+    m_Bits: 128
+  triggerInteraction: 0
+  tags: []
+  ignoreTags: 0
+--- !u!114 &2978232044276831023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710303521682825839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2901219895490606181}
+        m_TargetAssemblyTypeName: InvokeAfterOverlap, Assembly-CSharp
+        m_MethodName: Check
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  framesToAction: 1
+  startTimerOnEnabled: 1
+  overrideLastTimer: 1
+  useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
