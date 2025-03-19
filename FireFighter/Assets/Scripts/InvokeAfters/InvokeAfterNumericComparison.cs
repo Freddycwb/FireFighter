@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class InvokeAfterNumericComparison : InvokeAfter
 {
@@ -70,6 +71,11 @@ public class InvokeAfterNumericComparison : InvokeAfter
     public void Compare(Rigidbody value)
     {
         Compare(value.velocity.magnitude);
+    }
+
+    public void Compare(Slider value)
+    {
+        Compare(value.value);
     }
 
     public void Compare(float value)

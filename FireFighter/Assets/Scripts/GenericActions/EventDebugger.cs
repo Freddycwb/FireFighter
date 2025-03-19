@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EventDebugger : MonoBehaviour
 {
@@ -27,5 +28,10 @@ public class EventDebugger : MonoBehaviour
     public void WriteTimePassDebug(InvokeAfterTimer value)
     {
         Debug.Log(gameObject.name + " : " + value.GetCurrentTimePass());
+    }
+
+    public void WriteSiderValueDebug(Slider value)
+    {
+        Debug.Log(gameObject.name + " : " + value.value);
     }
 }

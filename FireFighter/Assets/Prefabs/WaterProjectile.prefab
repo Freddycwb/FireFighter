@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4968090185823121207
 Transform:
   m_ObjectHideFlags: 0
@@ -96,7 +96,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7479649480224071570}
-  - {fileID: 2631069478292284909}
   m_Father: {fileID: 5935254136164504789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146915564331829384
@@ -559,55 +558,6 @@ MonoBehaviour:
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
---- !u!1 &2763108963008775036
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2631069478292284909}
-  - component: {fileID: 5272758164665293265}
-  m_Layer: 0
-  m_Name: Instantiator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2631069478292284909
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2763108963008775036}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4968090185823121207}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5272758164665293265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2763108963008775036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3591d5fe3fcf8b4281bc6591a19342e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  instancesOnStart: 3
-  obj: {fileID: 7594561014108210936, guid: 60d69b2e1e408b046b7125144c79495e, type: 3}
-  spawnPoint: {fileID: 5935254136164504789}
-  parent: {fileID: 0}
-  positionOffset: {x: 0, y: -0.1, z: 0}
 --- !u!1 &2919017686598714613
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +619,8 @@ GameObject:
   - component: {fileID: 7479649480224071570}
   - component: {fileID: 4038578737738951050}
   - component: {fileID: 6289468187093207209}
+  - component: {fileID: 2648215416147389972}
+  - component: {fileID: 3588653209817135285}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -737,9 +689,9 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5272758164665293265}
-        m_TargetAssemblyTypeName: PoolInstantiator, Assembly-CSharp
-        m_MethodName: CreateObject
+      - m_Target: {fileID: 2648215416147389972}
+        m_TargetAssemblyTypeName: InvokeAfterOverlap, Assembly-CSharp
+        m_MethodName: Check
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -760,6 +712,56 @@ MonoBehaviour:
   tags:
   - Untagged
   ignoreTags: 0
+--- !u!114 &2648215416147389972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954309107246825744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb32069067431114fbd082851b724e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+  subAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 6303ffcd85c280f4fa27a2913c5aab37, type: 2}
+        m_TargetAssemblyTypeName: GameEventVector3, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4299623257735981432}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  radius: 0.1
+  layer:
+    serializedVersion: 2
+    m_Bits: 16
+  triggerInteraction: 0
+  tags:
+  - Water
+  ignoreTags: 0
+--- !u!114 &3588653209817135285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954309107246825744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42431415ecbcb4447bb0cb25f10e264d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2987327356093896787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1527,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyer: {fileID: 2883448301705703983}
+  onStartDelay:
+    m_PersistentCalls:
+      m_Calls: []
   onDelete:
     m_PersistentCalls:
       m_Calls:
@@ -2358,6 +2363,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 5935254136164504789}
   parent: {fileID: 0}
   positionOffset: {x: 0, y: 0, z: 0}
+  destroySurplus: 0
 --- !u!1 &8512993331133886009
 GameObject:
   m_ObjectHideFlags: 0

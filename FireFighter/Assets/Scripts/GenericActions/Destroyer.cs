@@ -12,6 +12,7 @@ public class Destroyer : MonoBehaviour
 
     private PoolObject poolObj;
 
+    public Action<Destroyer> onStartDelay;
     public Action<Destroyer> onDelete;
 
     public float GetDelay()
@@ -67,6 +68,10 @@ public class Destroyer : MonoBehaviour
 
     private IEnumerator DeleteRoutine()
     {
+        if (onStartDelay != null)
+        {
+            onStartDelay.Invoke(this);
+        }
         yield return new WaitForSeconds(delay);
         if (onDelete != null)
         {

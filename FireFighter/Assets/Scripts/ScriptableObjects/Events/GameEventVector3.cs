@@ -19,6 +19,12 @@ public class GameEventVector3 : ScriptableObject
             _eventListeners[i].OnEventRaised(value);
     }
 
+    public void Raise(GameObject value)
+    {
+        this.value = value.transform.position;
+        Raise();
+    }
+
     public void Raise(Vector3 value)
     {
         this.value = value;

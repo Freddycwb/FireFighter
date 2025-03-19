@@ -7,6 +7,7 @@ public class DestroyerEvents : MonoBehaviour
 {
     [SerializeField] private Destroyer destroyer;
 
+    [SerializeField] private UnityEvent onStartDelay;
     [SerializeField] private UnityEvent onDelete;
 
     private bool listening;
@@ -15,8 +16,17 @@ public class DestroyerEvents : MonoBehaviour
     {
         if (destroyer != null)
         {
+            destroyer.onStartDelay += OnStartDelay;
             destroyer.onDelete += OnDelete;
             listening = true;
+        }
+    }
+
+    void OnStartDelay(Destroyer value)
+    {
+        if (enabled)
+        {
+            onStartDelay.Invoke();
         }
     }
 
@@ -32,6 +42,7 @@ public class DestroyerEvents : MonoBehaviour
     {
         if (onDelete != null && listening)
         {
+            destroyer.onStartDelay -= OnStartDelay;
             destroyer.onDelete -= OnDelete;
             listening = false;
         }
