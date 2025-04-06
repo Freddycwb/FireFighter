@@ -10,7 +10,7 @@ public class RotationSetter : MonoBehaviour
 
     private void Awake()
     {
-        if (objectToRotate != null) 
+        if (objectToRotate == null) 
         {
             objectToRotate = gameObject;
         }

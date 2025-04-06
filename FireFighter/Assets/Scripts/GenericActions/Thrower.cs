@@ -14,6 +14,7 @@ public class Thrower : MonoBehaviour
     [FormerlySerializedAs("throwableOffSet")] [SerializeField] private Vector3 targetOffset;
     [FormerlySerializedAs("throwableMaxOffSet")] [SerializeField] private Vector3 targetMaxOffSet;
     [SerializeField] private bool addForce;
+    [SerializeField] private bool useCenterOfMass;
 
     [SerializeField] private float valueAdjuster;
     [SerializeField] private OperatorType.Type valueAdjustType;
@@ -65,7 +66,7 @@ public class Thrower : MonoBehaviour
 
         Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
 
-        Vector3 dirToObject = target + targetOffset - rb.transform.position;
+        Vector3 dirToObject = target + offset - (!useCenterOfMass? rb.transform.position : rb.transform.position + rb.centerOfMass);
         float throwForce = force.x >= force.y ? force.x : Random.Range(force.x, force.y);
 
         switch (valueAdjustType)

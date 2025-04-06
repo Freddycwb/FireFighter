@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2238119183002721746}
   - component: {fileID: 5643043002111797030}
-  - component: {fileID: 4424683993372121877}
+  - component: {fileID: 8873841497037735284}
   - component: {fileID: 7691672655757036641}
-  - component: {fileID: 6509123671147349507}
   m_Layer: 0
   m_Name: SetHealthVariable
   m_TagString: Untagged
@@ -49,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vfx: {fileID: 3977904398570031122}
   variableID: Health
---- !u!114 &4424683993372121877
+--- !u!114 &8873841497037735284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +57,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 470457874213483550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed8d3d5b955dad4eb221c350525a52f, type: 3}
+  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   action:
@@ -66,11 +65,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5643043002111797030}
         m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
-        m_MethodName: SetVector2X
+        m_MethodName: SetVector2Y
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: FloatVariable, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -78,19 +77,36 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5643043002111797030}
         m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
-        m_MethodName: SetVector2Y
+        m_MethodName: SetVector2X
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: FloatVariable, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7691672655757036641}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   subAction:
     m_PersistentCalls:
       m_Calls: []
+  framesToAction: 0
+  startTimerOnEnabled: 0
+  overrideLastTimer: 1
+  useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
 --- !u!114 &7691672655757036641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,41 +138,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6509123671147349507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470457874213483550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7691672655757036641}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
-  timeToAction: 0.05
-  valueSetter: {fileID: 0}
-  startTimerOnEnabled: 1
-  overrideLastTimer: 1
-  useUnscaledTime: 0
 --- !u!1 &1556857392209512202
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,8 +663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386557039609692210}
   - component: {fileID: 7099739525181431771}
-  - component: {fileID: 5992861413219197107}
-  - component: {fileID: 5819005998796978058}
+  - component: {fileID: 8974080590011953996}
   - component: {fileID: 9063600584353832770}
   m_Layer: 0
   m_Name: SetScaleValues
@@ -723,7 +703,7 @@ MonoBehaviour:
   minMaxScale: {x: 100, y: 200}
   minCurrentMaxValue: {x: 0, y: 0, z: 0}
   setScaleOnSetCurrent: 0
---- !u!114 &5992861413219197107
+--- !u!114 &8974080590011953996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -732,7 +712,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6981673178807811333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed8d3d5b955dad4eb221c350525a52f, type: 3}
+  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   action:
@@ -744,49 +724,19 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: FloatVariable, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5819005998796978058}
-        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5819005998796978058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6981673178807811333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 7099739525181431771}
         m_TargetAssemblyTypeName: ScaleBetweenTwoValues, Assembly-CSharp
         m_MethodName: SetCurrentValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: FloatVariable, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -804,14 +754,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9063600584353832770}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  timeToAction: 0.05
-  valueSetter: {fileID: 0}
-  startTimerOnEnabled: 0
+  framesToAction: 2
+  startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
 --- !u!114 &9063600584353832770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,7 +781,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6981673178807811333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
   m_Name: 
