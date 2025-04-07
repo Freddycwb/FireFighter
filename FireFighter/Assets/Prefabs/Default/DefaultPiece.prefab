@@ -348,7 +348,7 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  timeToAction: 20
+  timeToAction: 30
   valueSetter: {fileID: 7221365335827158016}
   startTimerOnEnabled: 0
   overrideLastTimer: 1
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139d3b4d6789fa54ca3051f9533f2663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeToAction: 30
+  maxTimeToAction: 60
   timeToActionVariable: {fileID: 0}
   randomTimeToActionVariable: {fileID: 0}
   valueAdjuster: 0
@@ -539,11 +539,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1314016793026685667}
-  - component: {fileID: 23963668328551856}
-  - component: {fileID: 2480237180204245967}
+  - component: {fileID: 1804397425430785225}
+  - component: {fileID: 7420854009495132161}
   - component: {fileID: 7802087083182855031}
   - component: {fileID: 4440725156721762961}
+  - component: {fileID: 5180449386566374074}
   - component: {fileID: 8758173036166285084}
+  - component: {fileID: 7087717328350427607}
+  - component: {fileID: 3119545890883576379}
   m_Layer: 0
   m_Name: EntityCollider
   m_TagString: Untagged
@@ -561,13 +564,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3223571187845771107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &23963668328551856
-SphereCollider:
+--- !u!64 &1804397425430785225
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -584,10 +587,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2480237180204245967
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &7420854009495132161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -622,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invokeAfterCollision: {fileID: 2480237180204245967}
+  invokeAfterCollision: {fileID: 7420854009495132161}
   onImpact:
     m_PersistentCalls:
       m_Calls:
@@ -671,6 +675,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679f6078f572efe4487ac10e8328a1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5180449386566374074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437322823659750899}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9b18298cd381c458535a4288cf8d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToRotate: {fileID: 3437322823659750899}
+  reference: {fileID: 0}
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!114 &8758173036166285084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,10 +729,95 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7087717328350427607}
+        m_TargetAssemblyTypeName: MeshColliderProtractor, Assembly-CSharp
+        m_MethodName: Transfer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3119545890883576379}
+        m_TargetAssemblyTypeName: InvokeAfterFrame, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8758173036166285084}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   subAction:
     m_PersistentCalls:
       m_Calls: []
   activeInHierarchy: 0
+--- !u!114 &7087717328350427607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437322823659750899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f0edb0b27c3604cb6ab7ca8392f1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receiveMesh: {fileID: 1804397425430785225}
+  meshCollider: {fileID: 1389404637335738016}
+--- !u!114 &3119545890883576379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437322823659750899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5180449386566374074}
+        m_TargetAssemblyTypeName: RotationSetter, Assembly-CSharp
+        m_MethodName: SetLocalToZero
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  framesToAction: 2
+  startTimerOnEnabled: 0
+  overrideLastTimer: 1
+  useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
 --- !u!1 &4108811895107137654
 GameObject:
   m_ObjectHideFlags: 0

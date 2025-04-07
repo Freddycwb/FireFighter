@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -10,8 +11,11 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float maxDistance;
     [SerializeField] private float distanceMargin;
+    [SerializeField] private float distanceSmoothing;
     [SerializeField] private float yOffset;
+    [SerializeField] private float lookYOffset;
     private Vector3 _targetPos => target.transform.position + Vector3.up * yOffset;
+    private Vector3 _lookTargetPos => target.transform.position + Vector3.up * lookYOffset;
 
     private Vector2 _orbitRotation;
     [SerializeField] private Vector2 defaultRotation;
@@ -25,6 +29,9 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private LayerMask obstacleMask;
 
+    private float _currDist;
+    private float _currVel = 0.0f;
+
     private void OnEnable()
     {
         if (lookDirectionObject != null)
@@ -37,6 +44,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
+        _currDist = maxDistance;
         if (targetVariable != null)
         {
             target = targetVariable.Value;
@@ -66,13 +74,23 @@ public class CameraMovement : MonoBehaviour
         Vector3 direction = new Vector3(Mathf.Cos(orbitRotationRad.y), 0, Mathf.Sin(orbitRotationRad.y)) * circleSize + Vector3.up * Mathf.Sin(orbitRotationRad.x);
 
         // Checking for walls
-        RaycastHit hit;
-        Physics.Raycast(_targetPos, direction, out hit, maxDistance + distanceMargin, obstacleMask);
+          // - updating direction to be based off lookTarget instead of target, so that camera doesn't rotate as it tries to move out of the wall
+        Vector3 camPosFromLook = direction * maxDistance + Vector3.up * (yOffset - lookYOffset);
+        direction = camPosFromLook.normalized;
+          // ---
 
-        float hitDistance = (hit.collider ? hit.distance : maxDistance);
+        RaycastHit hit;
+        Physics.Raycast(_lookTargetPos, direction, out hit, camPosFromLook.magnitude + distanceMargin, obstacleMask);
 
         // Setting camera position
-        transform.position = _targetPos + direction * hitDistance + (hit.collider ? distanceMargin * hit.normal : Vector2.zero);
+        float targetDist = camPosFromLook.magnitude;
+        if (hit.collider) {
+            // naive reduction of magnitude by the margin instead of moving along collision normal otherwise camera teleports when switching colliding surface
+            // (there's definitely a better way, but it isn't worth it...)
+            targetDist = hit.distance - distanceMargin;
+        }
+
+        transform.position = _lookTargetPos + direction * (_currDist = targetDist > _currDist? Mathf.SmoothDamp(_currDist, targetDist, ref _currVel, distanceSmoothing) : targetDist);
     }
 
     public void HideCursor(bool value)

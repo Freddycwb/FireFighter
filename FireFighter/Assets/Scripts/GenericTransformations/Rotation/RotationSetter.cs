@@ -43,4 +43,9 @@ public class RotationSetter : MonoBehaviour
     {
         objectToRotate.transform.eulerAngles = Vector3.zero;
     }
+
+    public void SetLocalToZero()
+    {
+        objectToRotate.transform.localEulerAngles = Vector3.zero;
+    }
 }
