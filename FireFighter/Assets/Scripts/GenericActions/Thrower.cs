@@ -57,16 +57,8 @@ public class Thrower : MonoBehaviour
         Throw(rb, t.position, addForce);
     }
 
-    public void Throw(Rigidbody rb, Vector3 target, bool addForce)
+    private float GetThrowForce()
     {
-        if (!addForce)
-        {
-            rb.velocity = Vector3.zero;
-        }
-
-        Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
-
-        Vector3 dirToObject = target + offset - (!useCenterOfMass? rb.transform.position : rb.transform.position + rb.centerOfMass);
         float throwForce = force.x >= force.y ? force.x : Random.Range(force.x, force.y);
 
         switch (valueAdjustType)
@@ -87,7 +79,37 @@ public class Thrower : MonoBehaviour
                 break;
         }
 
-        rb.AddForce(dirToObject.normalized * throwForce, ForceMode.Impulse);
+        return throwForce;
+    }
+
+    public void Throw(Rigidbody rb, Vector3 target, bool addForce)
+    {
+        if (!addForce)
+        {
+            rb.velocity = Vector3.zero;
+        }
+
+        Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
+        Vector3 dirToObject = target + offset - (!useCenterOfMass? rb.transform.position : rb.worldCenterOfMass);
+
+        rb.AddForce(dirToObject.normalized * GetThrowForce(), ForceMode.Impulse);
+    }
+
+    public void ThrowUsingRBVelocity(Rigidbody value)
+    {
+        Throw(throwable, value, addForce);
+    }
+
+    public void Throw(Rigidbody rb, Rigidbody dir, bool addForce)
+    {
+        if (!addForce)
+        {
+            rb.velocity = Vector3.zero;
+        }
+
+        Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
+
+        rb.AddForce(dir.velocity.normalized * GetThrowForce(), ForceMode.Impulse);
     }
 
     public void SetValueAdjuster(DamageChecker value)
