@@ -27,10 +27,26 @@ public class StateMachine : MonoBehaviour
         {
             s.SetActive(false);
         }
-        state.SetActive(true);
-        if (onChangeState != null)
+
+        if (state != null)
         {
-            onChangeState.Invoke(state);
+            state.SetActive(true);
+            if (onChangeState != null)
+            {
+                onChangeState.Invoke(state);
+            }
         }
+        else
+        {
+            if (onChangeState != null)
+            {
+                onChangeState.Invoke(gameObject);
+            }
+        }
+    }
+
+    public void SetStateToNull()
+    {
+        ChangeState(null);
     }
 }

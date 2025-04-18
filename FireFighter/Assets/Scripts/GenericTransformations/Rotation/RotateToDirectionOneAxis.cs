@@ -10,6 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class RotateToDirectionOneAxis : MonoBehaviour
 {
+    [SerializeField] private GameObject objToRotate;
     [SerializeField] private GameObject input;
     private IInputDirection _input;
 
@@ -30,6 +31,14 @@ public class RotateToDirectionOneAxis : MonoBehaviour
 
     public Action onStartMove;
     public Action onStopMove;
+
+    private void OnEnable()
+    {
+        if (objToRotate == null)
+        {
+            objToRotate = gameObject;
+        }
+    }
 
     public void SetInput(GameObject value)
     {
@@ -64,7 +73,7 @@ public class RotateToDirectionOneAxis : MonoBehaviour
     {
         if (_input.direction.magnitude != 0)
         {
-            if (Quaternion.Angle(transform.rotation, target) <= angleTriggerMove)
+            if (Quaternion.Angle(objToRotate.transform.rotation, target) <= angleTriggerMove)
             {
                 if (moving)
                 {
@@ -127,7 +136,7 @@ public class RotateToDirectionOneAxis : MonoBehaviour
         target = Quaternion.identity;
         float rotY = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         target = Quaternion.Euler(transform.localEulerAngles.x, -rotY + offset, transform.localEulerAngles.z);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * rotateVel);
+        objToRotate.transform.rotation = Quaternion.Slerp(objToRotate.transform.rotation, target, Time.deltaTime * rotateVel);
     }
 
     private void RotateLinear()
@@ -136,7 +145,7 @@ public class RotateToDirectionOneAxis : MonoBehaviour
         target = Quaternion.identity;
         float rotY = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         target = Quaternion.Euler(transform.localEulerAngles.x, -rotY + offset, transform.localEulerAngles.z);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, Time.deltaTime * rotateVel);
+        objToRotate.transform.rotation = Quaternion.RotateTowards(objToRotate.transform.rotation, target, Time.deltaTime * rotateVel);
     }
 
     public void InstanteRotate(GameObject value)

@@ -75,7 +75,15 @@ public class InvokeAfterCounter : InvokeAfter
                 _currentValue = _minValue;
                 break;
             case startValueType.Current:
-                if (currentValueType == valueType.IntVariable)
+                if (currentValueType == valueType.Int)
+                {
+                    _currentValue = currentValueInt;
+                }
+                else if (currentValueType == valueType.Float)
+                {
+                    _currentValue = currentValueFloat;
+                }
+                else if (currentValueType == valueType.IntVariable)
                 {
                     _currentValue = currentValueIntVariable.Value;
                 }

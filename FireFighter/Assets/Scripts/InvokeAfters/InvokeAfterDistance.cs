@@ -57,6 +57,11 @@ public class InvokeAfterDistance : InvokeAfter
         targetTransform = value.transform;
     }
 
+    public void SetDistance(float value)
+    {
+        distanceToAction = value;
+    }
+
     private void Update()
     {
         if (Vector3.Distance(originTransform.position, targetTransform.position) <= distanceToAction && !_close)

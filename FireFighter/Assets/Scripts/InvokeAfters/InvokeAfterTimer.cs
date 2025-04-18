@@ -68,6 +68,10 @@ public class InvokeAfterTimer : InvokeAfter
 
     public void StartTimer()
     {
+        if (!gameObject.activeSelf)
+        {
+            return;
+        }
         if (overrideLastTimer && coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -153,13 +157,11 @@ public class InvokeAfterTimer : InvokeAfter
     public void SetTimeToAction(float time)
     {
         timeToAction = time;
-        StartTimer();
     }
 
     public void SetTimeToAction(DamageChecker time)
     {
         timeToAction = time.GetLastDamage();
-        StartTimer();
     }
 
     public void CancelTimer()

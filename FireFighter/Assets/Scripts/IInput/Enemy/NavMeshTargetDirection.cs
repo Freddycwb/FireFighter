@@ -10,14 +10,21 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     [SerializeField] private GameObjectVariable targetVariable;
     [SerializeField] private float distToReach = 0.2f;
     [SerializeField] private Vector2 offSet;
+    [SerializeField] private Vector2 randomOffsetRadius;
+    [SerializeField] private bool ignoreCanReach;
     [SerializeField] private bool updateManually;
+    [SerializeField] private GameObject reference;
+    private Vector3 _navMeshTarget;
     private Vector3 _lastDir;
     private NavMeshPath _path;
 
     private bool _reachTarget = true;
+    private bool _canReachTarget = true;
 
     public Action onGetAwayFromTarget;
     public Action onReachTarget;
+    public Action onCantReachTarget;
+    public Action onCanReachTarget;
 
     private void Start()
     {
@@ -28,10 +35,17 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         }
     }
 
-    public void SetOffSetByRandomPointInSphere(float radius)
+    public void SetTarget(GameObject value)
     {
-        Vector3 pos = UnityEngine.Random.insideUnitSphere * radius;
-        offSet = new Vector2(pos.x, pos.z);
+        target = value.transform;
+    }
+
+    public void SetOffSetByRandomPointInSphere()
+    {
+        float angle = UnityEngine.Random.Range(0, Mathf.PI * 2);
+        Vector2 heading = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        float radius = UnityEngine.Random.Range(randomOffsetRadius.x, randomOffsetRadius.y);
+        offSet = heading * radius;
     }
 
     public Vector2 direction
@@ -39,11 +53,14 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         get
         {
             Vector2 dir = Vector2.zero;
-            if (!updateManually)
+            if (enabled)
             {
-                CalculateDirection();
+                if (!updateManually)
+                {
+                    CalculateDirection();
+                }
+                dir = _lastDir;
             }
-            dir = _lastDir;
             return dir;
         }
     }
@@ -56,9 +73,42 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
             _lastDir = dir;
             return;
         }
-        if (Vector3.Distance(transform.position, Pathfinder.GetNavMeshClosestPos(target.position) + new Vector3(offSet.x, 0, offSet.y)) > distToReach)
+
+        _navMeshTarget = Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y));
+
+        if (reference != null)
         {
-            dir = Pathfinder.GetDirectionTo(transform.position, target.position + new Vector3(offSet.x, 0, offSet.y), _path);
+            reference.transform.position = _navMeshTarget;
+        }
+
+        CheckIfReachTarget();
+        if ((ignoreCanReach || CheckIfCanReachTarget()) || !CheckIfIsInNavMeshArea())
+        {
+            if (onCanReachTarget != null && CheckIfCanReachTarget() && !_canReachTarget)
+            {
+                onCanReachTarget.Invoke();
+            }
+            _canReachTarget = true;
+            if (!_reachTarget)
+            {
+                dir = Pathfinder.GetDirectionTo(transform.position, _navMeshTarget, _path);
+            }
+        }
+        else
+        {
+            if (onCantReachTarget != null && _canReachTarget)
+            {
+                onCantReachTarget.Invoke();
+            }
+            _canReachTarget = false;
+        }
+        _lastDir = dir;
+    }
+
+    public void CheckIfReachTarget()
+    {
+        if (Vector3.Distance(transform.position, _navMeshTarget) > distToReach)
+        {
             if (_reachTarget)
             {
                 _reachTarget = false;
@@ -79,6 +129,15 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
                 }
             }
         }
-        _lastDir = dir;
+    }
+
+    public bool CheckIfCanReachTarget()
+    {
+        return Pathfinder.CanReachTarget(transform.position, Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y)), _path);
+    }
+
+    public bool CheckIfIsInNavMeshArea()
+    {
+        return Pathfinder.CanReachTarget(transform.position, transform.position, _path);
     }
 }
