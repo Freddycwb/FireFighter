@@ -12,6 +12,8 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     [SerializeField] private Vector2 offSet;
     [SerializeField] private Vector2 randomOffsetRadius;
     [SerializeField] private bool ignoreCanReach;
+    private bool _defaultIgnoreCanReach;
+    private bool _defaultIgnoreCanReachSetted;
     [SerializeField] private bool updateManually;
     [SerializeField] private GameObject reference;
     private Vector3 _navMeshTarget;
@@ -33,11 +35,36 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         {
             target = targetVariable.Value.transform;
         }
+        if (!_defaultIgnoreCanReachSetted)
+        {
+            _defaultIgnoreCanReach = ignoreCanReach;
+            _defaultIgnoreCanReachSetted = true;
+        }
     }
 
     public void SetTarget(GameObject value)
     {
         target = value.transform;
+    }
+
+    public void SetIgnoreCanReach(bool value)
+    {
+        if (!_defaultIgnoreCanReachSetted)
+        {
+            _defaultIgnoreCanReach = ignoreCanReach;
+            _defaultIgnoreCanReachSetted = true;
+        }
+        ignoreCanReach = value;
+    }
+
+    public void SetIgnoreCanReachToDefault()
+    {
+        if (!_defaultIgnoreCanReachSetted)
+        {
+            _defaultIgnoreCanReach = ignoreCanReach;
+            _defaultIgnoreCanReachSetted = true;
+        }
+        ignoreCanReach = _defaultIgnoreCanReach;
     }
 
     public void SetOffSetByRandomPointInSphere()
@@ -82,7 +109,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         }
 
         CheckIfReachTarget();
-        if ((ignoreCanReach || CheckIfCanReachTarget()) || !CheckIfIsInNavMeshArea())
+        if (ignoreCanReach || CheckIfCanReachTarget() || !CheckIfIsInNavMeshArea())
         {
             if (onCanReachTarget != null && CheckIfCanReachTarget() && !_canReachTarget)
             {
