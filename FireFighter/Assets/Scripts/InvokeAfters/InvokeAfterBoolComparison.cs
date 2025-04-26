@@ -13,9 +13,14 @@ public class InvokeAfterBoolComparison : InvokeAfter
 
     [SerializeField] private ComparisonType comparison;
 
-    public void Compare(NavMeshTargetDirection value)
+    public void CompareCanReachTarget(NavMeshTargetDirection value)
     {
         Compare(value.CheckIfCanReachTarget());
+    }
+
+    public void CompareReachTarget(NavMeshTargetDirection value)
+    {
+        Compare(value.GetReachTarget());
     }
 
     public void Compare(Gravity value)

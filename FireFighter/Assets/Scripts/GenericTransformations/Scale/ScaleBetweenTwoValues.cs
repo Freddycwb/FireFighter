@@ -48,6 +48,11 @@ public class ScaleBetweenTwoValues : MonoBehaviour
         SetCurrentValue(value.GetCurrentValue());
     }
 
+    public void SetCurrentValueToMax()
+    {
+        SetCurrentValue(minCurrentMaxValue.z);
+    }
+
     public void SetMaxValue(float value)
     {
         minCurrentMaxValue.z = value;
@@ -68,7 +73,7 @@ public class ScaleBetweenTwoValues : MonoBehaviour
         {
             return;
         }
-        minCurrentMaxValue.z = value.GetCurrentValue();
+        minCurrentMaxValue.z = value.GetMaxValue();
     }
 
     public void SetTimer(InvokeAfterTimer value)

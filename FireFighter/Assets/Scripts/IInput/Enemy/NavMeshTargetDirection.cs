@@ -28,6 +28,11 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     public Action onCantReachTarget;
     public Action onCanReachTarget;
 
+    public bool GetReachTarget()
+    {
+        return _reachTarget;
+    }
+
     private void Start()
     {
         _path = new NavMeshPath();
@@ -111,7 +116,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         CheckIfReachTarget();
         if (ignoreCanReach || CheckIfCanReachTarget() || !CheckIfIsInNavMeshArea())
         {
-            if (onCanReachTarget != null && CheckIfCanReachTarget() && !_canReachTarget)
+            if (onCanReachTarget != null && CheckIfCanReachTarget() && !_canReachTarget && enabled)
             {
                 onCanReachTarget.Invoke();
             }
@@ -123,7 +128,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         }
         else
         {
-            if (onCantReachTarget != null && _canReachTarget)
+            if (onCantReachTarget != null && _canReachTarget && enabled)
             {
                 onCantReachTarget.Invoke();
             }
@@ -139,7 +144,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
             if (_reachTarget)
             {
                 _reachTarget = false;
-                if (onGetAwayFromTarget != null)
+                if (onGetAwayFromTarget != null && enabled)
                 {
                     onGetAwayFromTarget.Invoke();
                 }
@@ -150,7 +155,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
             if (!_reachTarget)
             {
                 _reachTarget = true;
-                if (onReachTarget != null)
+                if (onReachTarget != null && enabled)
                 {
                     onReachTarget.Invoke();
                 }
