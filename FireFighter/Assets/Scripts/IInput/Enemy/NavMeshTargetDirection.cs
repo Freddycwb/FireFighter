@@ -137,6 +137,32 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         _lastDir = dir;
     }
 
+    public void SetReachTarget(bool value)
+    {
+        if (!value)
+        {
+            if (_reachTarget)
+            {
+                _reachTarget = false;
+                if (onGetAwayFromTarget != null && enabled)
+                {
+                    onGetAwayFromTarget.Invoke();
+                }
+            }
+        }
+        else
+        {
+            if (!_reachTarget)
+            {
+                _reachTarget = true;
+                if (onReachTarget != null && enabled)
+                {
+                    onReachTarget.Invoke();
+                }
+            }
+        }
+    }
+
     public void CheckIfReachTarget()
     {
         if (Vector3.Distance(transform.position, _navMeshTarget) > distToReach)
