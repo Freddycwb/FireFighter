@@ -2391,7 +2391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3473798497380761674}
+  - {fileID: 7722861692194148824}
   - {fileID: 789839221556570506}
   - {fileID: 7195938832799132352}
   - {fileID: 2862917094712422258}
@@ -2500,7 +2500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2749931504582160150}
   - component: {fileID: 8995037440117772477}
-  - component: {fileID: 3786484701304630430}
+  - component: {fileID: 6250460255138250012}
   - component: {fileID: 7705592469043424414}
   m_Layer: 0
   m_Name: SetHealthVariable
@@ -2521,7 +2521,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5141645751901511801}
   m_Father: {fileID: 3473798497380761674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8995037440117772477
@@ -2538,7 +2539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vfx: {fileID: 4338907056852009143}
   variableID: Health
---- !u!114 &3786484701304630430
+--- !u!114 &6250460255138250012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2547,36 +2548,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1732331559833787886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action:
+  invokeAfter: {fileID: 5931542380664584803}
+  onActionCall:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8995037440117772477}
-        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
-        m_MethodName: SetVector2Y
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1031221960951774312}
-          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8995037440117772477}
-        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
-        m_MethodName: SetVector2X
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1031221960951774312}
-          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 7705592469043424414}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
@@ -2589,14 +2567,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  subAction:
+      - m_Target: {fileID: 5182520899066400363}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
     m_PersistentCalls:
       m_Calls: []
-  framesToAction: 2
-  startTimerOnEnabled: 1
-  overrideLastTimer: 1
-  useUnscaledTime: 0
-  useWaitUntilEndOfFrame: 0
 --- !u!114 &7705592469043424414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3643,6 +3628,53 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &2330809121467239288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7722861692194148824}
+  - component: {fileID: 2995837048387445301}
+  m_Layer: 0
+  m_Name: Fire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7722861692194148824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330809121467239288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3473798497380761674}
+  m_Father: {fileID: 5301712382705556481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2995837048387445301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330809121467239288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992145c15b801df43bb2e2364ffad18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfters:
+  - {fileID: 6365813235557755113}
 --- !u!1 &2363973931120521311
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,7 +5298,7 @@ Transform:
   m_GameObject: {fileID: 3014370608139571819}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.89, y: 0, z: -18.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5288,9 +5320,9 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4338907056852009143}
-        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
-        m_MethodName: Stop
+      - m_Target: {fileID: 2995837048387445301}
+        m_TargetAssemblyTypeName: ActionGroupEvent, Assembly-CSharp
+        m_MethodName: CallSubActions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5327,9 +5359,9 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4338907056852009143}
-        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 2995837048387445301}
+        m_TargetAssemblyTypeName: ActionGroupEvent, Assembly-CSharp
+        m_MethodName: CallActions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5739,7 +5771,7 @@ Transform:
   m_GameObject: {fileID: 3105261122032578947}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.89, y: 0, z: -18.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8816,6 +8848,149 @@ MonoBehaviour:
   objectToRotate: {fileID: 4484542332870052543}
   reference: {fileID: 0}
   offSet: {x: 0, y: 0, z: 0}
+--- !u!1 &5182520899066400363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5141645751901511801}
+  - component: {fileID: 9146085013762867968}
+  - component: {fileID: 8229939254319422955}
+  - component: {fileID: 5931542380664584803}
+  m_Layer: 0
+  m_Name: OnStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5141645751901511801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182520899066400363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2749931504582160150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9146085013762867968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182520899066400363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 4290723239427916398}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5931542380664584803}
+        m_TargetAssemblyTypeName: InvokeAfterFrame, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8229939254319422955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182520899066400363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 6087383815272280872}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5931542380664584803}
+        m_TargetAssemblyTypeName: InvokeAfterFrame, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5931542380664584803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182520899066400363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8995037440117772477}
+        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
+        m_MethodName: SetVector2Y
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1031221960951774312}
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8995037440117772477}
+        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
+        m_MethodName: SetVector2X
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1031221960951774312}
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  framesToAction: 2
+  startTimerOnEnabled: 0
+  overrideLastTimer: 1
+  useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
 --- !u!1 &5574194931132387079
 GameObject:
   m_ObjectHideFlags: 0
@@ -9117,6 +9292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772712140944951942}
   - component: {fileID: 1320556733915403161}
+  - component: {fileID: 358780466503814512}
   m_Layer: 0
   m_Name: SetFireOnStart
   m_TagString: Untagged
@@ -9155,9 +9331,9 @@ MonoBehaviour:
   onActionCall:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3624277225106162183}
-        m_TargetAssemblyTypeName: InvokeAfter, Assembly-CSharp
-        m_MethodName: CallAction
+      - m_Target: {fileID: 358780466503814512}
+        m_TargetAssemblyTypeName: InvokeAfterFrame, Assembly-CSharp
+        m_MethodName: StartTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9182,6 +9358,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &358780466503814512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741984166006074917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3624277225106162183}
+        m_TargetAssemblyTypeName: InvokeAfter, Assembly-CSharp
+        m_MethodName: CallAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  framesToAction: 2
+  startTimerOnEnabled: 0
+  overrideLastTimer: 1
+  useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
 --- !u!1 &5863312728405603857
 GameObject:
   m_ObjectHideFlags: 0
@@ -9367,6 +9578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3473798497380761674}
+  - component: {fileID: 6365813235557755113}
   - component: {fileID: 4338907056852009143}
   - component: {fileID: 6268218522146463180}
   m_Layer: 0
@@ -9390,8 +9602,50 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2749931504582160150}
-  m_Father: {fileID: 5301712382705556481}
+  m_Father: {fileID: 7722861692194148824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6365813235557755113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985222138744872422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54e93a655f4fdc4ba5a8a5f12d4b2ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4338907056852009143}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4338907056852009143}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!2083052967 &4338907056852009143
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -9418,9 +9672,9 @@ VisualEffect:
         m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 3, y: 10}
+      - m_Value: {x: 1, y: 1}
         m_Name: Health
-        m_Overridden: 0
+        m_Overridden: 1
       - m_Value: {x: 1.25, y: 0.5}
         m_Name: MaxLifetime
         m_Overridden: 1

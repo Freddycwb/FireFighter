@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &182395482591626767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298026590612177800}
+  - component: {fileID: 3287599657469705367}
+  m_Layer: 0
+  m_Name: Throw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &298026590612177800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182395482591626767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1318800295901805280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3287599657469705367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182395482591626767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfterCollision: {fileID: 7744068708021545181}
+  onImpact:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeave:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastCollisionAction:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallGetLastCollisionPoint:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastRigidbodyAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1558804653401157037}
+        m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
+        m_MethodName: ThrowUsingRBVelocity
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &310861881034471818
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +490,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3160676935292964784}
   - component: {fileID: 2751801845916943058}
-  - component: {fileID: 3630820945734469722}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -438,7 +509,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6800493510133745491}
+  - {fileID: 4102605628057730492}
   m_Father: {fileID: 8273228160471343170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2751801845916943058
@@ -457,7 +530,7 @@ MonoBehaviour:
   onTakeDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3630820945734469722}
+      - m_Target: {fileID: 5765400291377737263}
         m_TargetAssemblyTypeName: InvokeAfterCollisionEvents, Assembly-CSharp
         m_MethodName: CallLastCollisionAction
         m_Mode: 1
@@ -469,67 +542,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3630820945734469722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202325010691117025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeAfterCollision: {fileID: 7744068708021545181}
-  onImpact:
-    m_PersistentCalls:
-      m_Calls: []
-  onLeave:
-    m_PersistentCalls:
-      m_Calls: []
-  onCallLastCollisionAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 659674632622773587}
-        m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
-        m_MethodName: SetForce
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5189570939716906485}
-          m_ObjectArgumentAssemblyTypeName: DamageChecker, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 659674632622773587}
-        m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
-        m_MethodName: Throw
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2430122342519080480}
-        m_TargetAssemblyTypeName: Spinner, Assembly-CSharp
-        m_MethodName: SetValueAdjuster
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5189570939716906485}
-          m_ObjectArgumentAssemblyTypeName: DamageChecker, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2430122342519080480}
-        m_TargetAssemblyTypeName: Spinner, Assembly-CSharp
-        m_MethodName: Spin
+      - m_Target: {fileID: 105877646924563751}
+        m_TargetAssemblyTypeName: InvokeAfterCollisionEvents, Assembly-CSharp
+        m_MethodName: CallLastCollisionAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -539,12 +554,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onCallGetLastCollisionPoint:
-    m_PersistentCalls:
-      m_Calls: []
-  onCallLastRigidbodyAction:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2665555973114165801
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +897,139 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   alertEmitter: 1
+--- !u!1 &4370478333967527054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7144963542544129003}
+  - component: {fileID: 492317663262341745}
+  - component: {fileID: 8595061171776709185}
+  m_Layer: 0
+  m_Name: Spin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7144963542544129003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370478333967527054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1318800295901805280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &492317663262341745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370478333967527054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfterCollision: {fileID: 7744068708021545181}
+  onImpact:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeave:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastCollisionAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8595061171776709185}
+        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+        m_MethodName: ModifyValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCallGetLastCollisionPoint:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastRigidbodyAction:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8595061171776709185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370478333967527054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5611edb09a73eb848a52d75962dd36f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8180829589414092840}
+        m_TargetAssemblyTypeName: Spinner, Assembly-CSharp
+        m_MethodName: Spin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8595061171776709185}
+        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+        m_MethodName: SetCurrentValueToMin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  maxValueType: 0
+  currentValueType: 0
+  minValueType: 0
+  maxValueInt: 2
+  currentValueInt: 0
+  minValueInt: 0
+  maxValueFloat: 0
+  currentValueFloat: 0
+  minValueFloat: 0
+  maxValueIntVariable: {fileID: 0}
+  currentValueIntVariable: {fileID: 0}
+  minValueIntVariable: {fileID: 0}
+  maxValueFloatVariable: {fileID: 0}
+  currentValueFloatVariable: {fileID: 0}
+  minValueFloatVariable: {fileID: 0}
+  targetToAction: 1
+  startCurrentValueType: 0
+  CallActionOnSetToMinMax: 0
 --- !u!1 &5583702629614654407
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +1082,90 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+--- !u!1 &5898710026429745769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6800493510133745491}
+  - component: {fileID: 5765400291377737263}
+  m_Layer: 0
+  m_Name: Throw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6800493510133745491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5898710026429745769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3160676935292964784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5765400291377737263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5898710026429745769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfterCollision: {fileID: 7744068708021545181}
+  onImpact:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeave:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastCollisionAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 659674632622773587}
+        m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
+        m_MethodName: SetForce
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5189570939716906485}
+          m_ObjectArgumentAssemblyTypeName: DamageChecker, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 659674632622773587}
+        m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
+        m_MethodName: Throw
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCallGetLastCollisionPoint:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastRigidbodyAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6686740250690644754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1707,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1318800295901805280}
   - component: {fileID: 8166140920618975616}
-  - component: {fileID: 5763495711429366005}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -1501,7 +1726,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 298026590612177800}
+  - {fileID: 7144963542544129003}
   m_Father: {fileID: 7573369102268708644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8166140920618975616
@@ -1520,7 +1747,7 @@ MonoBehaviour:
   onTakeDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5763495711429366005}
+      - m_Target: {fileID: 3287599657469705367}
         m_TargetAssemblyTypeName: InvokeAfterCollisionEvents, Assembly-CSharp
         m_MethodName: CallLastRigidbodyAction
         m_Mode: 1
@@ -1532,62 +1759,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5763495711429366005}
+      - m_Target: {fileID: 492317663262341745}
         m_TargetAssemblyTypeName: InvokeAfterCollisionEvents, Assembly-CSharp
         m_MethodName: CallLastCollisionAction
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5763495711429366005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8635393312424755685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeAfterCollision: {fileID: 7744068708021545181}
-  onImpact:
-    m_PersistentCalls:
-      m_Calls: []
-  onLeave:
-    m_PersistentCalls:
-      m_Calls: []
-  onCallLastCollisionAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8180829589414092840}
-        m_TargetAssemblyTypeName: Spinner, Assembly-CSharp
-        m_MethodName: Spin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onCallGetLastCollisionPoint:
-    m_PersistentCalls:
-      m_Calls: []
-  onCallLastRigidbodyAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1558804653401157037}
-        m_TargetAssemblyTypeName: Thrower, Assembly-CSharp
-        m_MethodName: ThrowUsingRBVelocity
-        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1663,15 +1838,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0975ad7c42823aa4e934f9d9338c90b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 1, y: 1.5}
+  force: {x: 6, y: 7}
   spinnable: {fileID: 7732853517189132037}
   target: {fileID: 1432061661521899618}
   targetOffset: {x: -2, y: -2, z: -2}
   targetMaxOffSet: {x: 2, y: 2, z: 2}
   addForce: 1
   useCenterOfMass: 0
-  valueAdjuster: 0.5
-  valueAdjustType: 3
+  valueAdjuster: 0
+  valueAdjustType: 0
+--- !u!1 &8879590684460501671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4102605628057730492}
+  - component: {fileID: 105877646924563751}
+  m_Layer: 0
+  m_Name: Spin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4102605628057730492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879590684460501671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3160676935292964784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &105877646924563751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879590684460501671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfterCollision: {fileID: 7744068708021545181}
+  onImpact:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeave:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastCollisionAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2430122342519080480}
+        m_TargetAssemblyTypeName: Spinner, Assembly-CSharp
+        m_MethodName: SetValueAdjuster
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5189570939716906485}
+          m_ObjectArgumentAssemblyTypeName: DamageChecker, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2430122342519080480}
+        m_TargetAssemblyTypeName: Spinner, Assembly-CSharp
+        m_MethodName: Spin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCallGetLastCollisionPoint:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastRigidbodyAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9092803533274221266
 GameObject:
   m_ObjectHideFlags: 0

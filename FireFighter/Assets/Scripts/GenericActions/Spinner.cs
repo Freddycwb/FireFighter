@@ -18,7 +18,24 @@ public class Spinner : MonoBehaviour
 
     private void Start()
     {
-        spinnable.maxAngularVelocity = force.x >= force.y ? Mathf.Abs(force.x) : Mathf.Abs(force.y);
+        spinnable.maxAngularVelocity = Mathf.Max(Mathf.Abs(force.x), Mathf.Abs(force.y));
+
+        switch (valueAdjustType)
+        {
+            case OperatorType.Type.add:
+                spinnable.maxAngularVelocity += valueAdjuster;
+                break;
+            case OperatorType.Type.subtract:
+                spinnable.maxAngularVelocity -= valueAdjuster;
+                break;
+            case OperatorType.Type.divide:
+                spinnable.maxAngularVelocity /= valueAdjuster;
+                break;
+            case OperatorType.Type.multiply:
+                spinnable.maxAngularVelocity *= valueAdjuster;
+                break;
+            default: break;
+        }
     }
 
     public void SetTarget(GameObject value)
