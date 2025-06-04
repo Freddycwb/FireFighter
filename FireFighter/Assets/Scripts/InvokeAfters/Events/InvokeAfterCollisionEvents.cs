@@ -43,7 +43,7 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
 
     public void CallLastCollisionAction()
     {
-        if (enabled && invokeAfterCollision.lastCollision != null)
+        if (enabled && invokeAfterCollision != null && invokeAfterCollision.lastCollision != null)
         {
             onCallLastCollisionAction.Invoke(invokeAfterCollision.lastCollision);
         }
@@ -51,7 +51,7 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
 
     public void CallGetLastCollisionPoint()
     {
-        if (enabled && invokeAfterCollision.lastCollisionPoint != null)
+        if (enabled && invokeAfterCollision != null && invokeAfterCollision.lastCollisionPoint != null)
         {
             onCallGetLastCollisionPoint.Invoke(invokeAfterCollision.lastCollisionPoint);
         }
@@ -59,7 +59,7 @@ public class InvokeAfterCollisionEvents : MonoBehaviour
 
     public void CallLastRigidbodyAction()
     {
-        if (enabled && invokeAfterCollision.lastRigidbody != null)
+        if (enabled && invokeAfterCollision != null && invokeAfterCollision.lastRigidbody != null)
         {
             onCallLastRigidbodyAction.Invoke(invokeAfterCollision.lastRigidbody);
         }

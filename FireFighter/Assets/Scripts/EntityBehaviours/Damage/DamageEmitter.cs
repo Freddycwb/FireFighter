@@ -66,7 +66,11 @@ public class DamageEmitter : MonoBehaviour
 
     public void GiveDamageFromCollision(GameObject value)
     {
-        if (value.transform.parent != null)
+        if (value.GetComponent<GameObjectHolder>() != null)
+        {
+            GiveDamage(value.GetComponent<GameObjectHolder>().GetGameObject().GetComponent<DamageChecker>());
+        }
+        else if (value.transform.parent != null)
         {
             GiveDamage(value.transform.parent.GetComponent<DamageChecker>());
         }

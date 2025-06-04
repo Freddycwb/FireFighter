@@ -43,7 +43,11 @@ public class DamageChecker : MonoBehaviour
             return;
         }
         DamageEmitter emitter = null;
-        if (value.transform.parent != null)
+        if (value.GetComponent<GameObjectHolder>() != null)
+        {
+            emitter = value.GetComponent<GameObjectHolder>().GetGameObject().GetComponent<DamageEmitter>();
+        }
+        else if (value.transform.parent != null)
         {
             emitter = value.transform.parent.GetComponent<DamageEmitter>();
         }
@@ -52,11 +56,11 @@ public class DamageChecker : MonoBehaviour
 
     public void ReceiveDamage(DamageEmitter emitter)
     {
-        if (emitter == null)
+        if (!enabled || emitter == null)
         {
             return;
         }
-        if (damageReceived.Contains(emitter.gameObject))
+        if (damageReceived.Contains(emitter.gameObject) || !emitter.enabled || !emitter.gameObject.activeSelf || !emitter.gameObject.activeInHierarchy)
         {
             return;
         }
@@ -70,7 +74,7 @@ public class DamageChecker : MonoBehaviour
             }
             takeDamage.Invoke(-lastDamage);
             damageReceived.Add(emitter.gameObject);
-            if (enabled && gameObject.activeSelf)
+            if (enabled && gameObject.activeSelf && gameObject.activeInHierarchy)
             {
                 StartCoroutine(RemoveDamageReceived(emitter.gameObject));
             }
@@ -81,5 +85,11 @@ public class DamageChecker : MonoBehaviour
     {
         yield return new WaitForSeconds(0.12f);
         damageReceived.Remove(value);
+    }
+
+    private void OnDisable()
+    {
+        damageReceived.Clear();
+        StopAllCoroutines();
     }
 }
