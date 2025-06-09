@@ -12,13 +12,15 @@ public class PositionShakeCaller : MonoBehaviour
 
     public void CallShake()
     {
+        if (time == float.NegativeInfinity || time == float.PositiveInfinity)
+        {
+            return;
+        }
         positionShake.CallShake(new Vector3(time, intensity, delayBetweenShake));
     }
 
     public void SetTime(InvokeAfterTimer value)
     {
-        Debug.Log(value.GetCurrentTimeToAction());
         time = value.GetCurrentTimeToAction();
-        Debug.Log(time);
     }
 }

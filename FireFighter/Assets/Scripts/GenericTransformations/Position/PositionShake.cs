@@ -43,13 +43,24 @@ public class PositionShake : MonoBehaviour
         _coroutine = StartCoroutine(ShakeRoutine());
     }
 
+    private void Update()
+    {
+        if (_time > 0)
+        {
+            _time -= Time.deltaTime;
+            if (_time < 0)
+            {
+                _time = 0;
+            }
+        }
+    }
+
     private IEnumerator ShakeRoutine()
     {
         while (_time > 0)
         {
             yield return new WaitForSeconds(_delayBetweenShake);
             RandomizeLookAtOffset();
-            _time -= _delayBetweenShake;
             _intensity = intensityCurve.Evaluate(_time / _lastFullTime) * _lastFullIntensity;
         }
         if (backToOriginAtEnd)
@@ -64,6 +75,6 @@ public class PositionShake : MonoBehaviour
         newOffset.x = Random.Range(-(shakeIntensity * axisIntensity.x), shakeIntensity * axisIntensity.x);
         newOffset.y = Random.Range(-(shakeIntensity * axisIntensity.y), shakeIntensity * axisIntensity.y);
         newOffset.z = Random.Range(-(shakeIntensity * axisIntensity.z), shakeIntensity * axisIntensity.z);
-        objToShake.transform.localPosition = _position + (newOffset * shakeIntensity);
+        objToShake.transform.localPosition = _position + (newOffset * _intensity);
     }
 }

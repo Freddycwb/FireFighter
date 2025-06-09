@@ -1842,69 +1842,6 @@ Transform:
   - {fileID: 6972303467151643306}
   m_Father: {fileID: 2126071166547377967}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &785251852438595297
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 965217556170021781}
-  - component: {fileID: 806969824842771756}
-  m_Layer: 0
-  m_Name: Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &965217556170021781
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785251852438595297}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8148169168679675779}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &806969824842771756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785251852438595297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeAfter: {fileID: 8791764827245930693}
-  onActionCall:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3059007241691844106}
-        m_TargetAssemblyTypeName: PositionShakeCaller, Assembly-CSharp
-        m_MethodName: CallShake
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSubActionCall:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &795161848890041640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5288,7 +5225,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2655441444289874229}
-  - {fileID: 965217556170021781}
   m_Father: {fileID: 4997047571680496328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3059007241691844106
@@ -5305,7 +5241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionShake: {fileID: 6589574874402664827}
   time: 0.5
-  intensity: 0
+  intensity: 1
   delayBetweenShake: 0.035
 --- !u!114 &6589574874402664827
 MonoBehaviour:
@@ -5321,7 +5257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objToShake: {fileID: 692345790562908081}
   axisIntensity: {x: 1, y: 1, z: 1}
-  shakeIntensity: 0.175
+  shakeIntensity: 0.05
   intensityCurve:
     serializedVersion: 2
     m_Curve:
@@ -5332,8 +5268,8 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.4
       value: 0
@@ -5502,7 +5438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2655441444289874229}
-  - component: {fileID: 5573378487564819528}
+  - component: {fileID: 9027441706984968615}
   m_Layer: 0
   m_Name: SetTime
   m_TagString: Untagged
@@ -5525,7 +5461,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8148169168679675779}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5573378487564819528
+--- !u!114 &9027441706984968615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5534,10 +5470,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2770997902043581120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f02e9a6fc9c454a8270dab1501281c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action:
+  invokeAfter: {fileID: 2063540043301490840}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubActionCall:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3059007241691844106}
@@ -5552,14 +5492,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  subAction:
-    m_PersistentCalls:
-      m_Calls: []
-  framesToAction: 12
-  startTimerOnEnabled: 1
-  overrideLastTimer: 1
-  useUnscaledTime: 0
-  useWaitUntilEndOfFrame: 0
+      - m_Target: {fileID: 3059007241691844106}
+        m_TargetAssemblyTypeName: PositionShakeCaller, Assembly-CSharp
+        m_MethodName: CallShake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2917984399633878066
 GameObject:
   m_ObjectHideFlags: 0
@@ -16760,11 +16704,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1432061661521899618, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 1432061661521899618, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7.23
       objectReference: {fileID: 0}
     - target: {fileID: 1432061661521899618, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

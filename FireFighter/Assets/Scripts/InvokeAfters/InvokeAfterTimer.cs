@@ -82,9 +82,9 @@ public class InvokeAfterTimer : InvokeAfter
         {
             coroutine = StartCoroutine(InvokeAfterSeconds());
         }
-        CallSubAction();
         if (!haveTime)
         {
+            CallSubAction();
             CallAction();
         }
     }
@@ -94,26 +94,24 @@ public class InvokeAfterTimer : InvokeAfter
         if (randomTimeToActionVariable != null && randomTimeToActionVariable.Value != Vector2.zero)
         {
             _currentTimeToAction = Random.Range(randomTimeToActionVariable.Value.x, randomTimeToActionVariable.Value.y);
-            yield return Timer(_currentTimeToAction);
         }
         else if (timeToActionVariable != null && timeToActionVariable.Value > 0)
         {
             _currentTimeToAction = timeToActionVariable.Value;
-            yield return Timer(_currentTimeToAction);
         }
         else
         {
             if (maxTimeToAction <= 0)
             {
                 _currentTimeToAction = timeToAction;
-                yield return Timer(_currentTimeToAction);
             }
             else
             {
                 _currentTimeToAction = Random.Range(timeToAction, maxTimeToAction);
-                yield return Timer(_currentTimeToAction);
             }
         }
+        CallSubAction();
+        yield return Timer(_currentTimeToAction);
         CallAction();
     }
 
