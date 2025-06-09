@@ -14,4 +14,11 @@ public class PositionShakeCaller : MonoBehaviour
     {
         positionShake.CallShake(new Vector3(time, intensity, delayBetweenShake));
     }
+
+    public void SetTime(InvokeAfterTimer value)
+    {
+        Debug.Log(value.GetCurrentTimeToAction());
+        time = value.GetCurrentTimeToAction();
+        Debug.Log(time);
+    }
 }
