@@ -80,7 +80,7 @@ public class Spinner : MonoBehaviour
     {
         if (!addForce)
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
         }
 
         Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;

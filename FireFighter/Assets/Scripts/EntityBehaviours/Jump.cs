@@ -59,7 +59,7 @@ public class Jump : EntityAction
             if (!_justJumped)
             {
                 _justJumped = true;
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
                 _holdJump = holdJumpTime;
                 _jumpPressedRemember = 0;
                 _groundedRemember = 0;
@@ -72,7 +72,7 @@ public class Jump : EntityAction
             {
                 if (_holdJump > 0)
                 {
-                    rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+                    rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
                     _holdJump -= Time.deltaTime;
                     if (_holdJump <= 0)
                     {

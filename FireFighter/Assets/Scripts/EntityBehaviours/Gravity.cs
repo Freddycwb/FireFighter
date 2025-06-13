@@ -46,13 +46,13 @@ public class Gravity : MonoBehaviour
 
     private void ApplyGravity()
     {
-        Vector3 upVelocity = Vector3.up * Vector3.Dot(Vector3.up, rb.velocity);
+        Vector3 upVelocity = Vector3.up * Vector3.Dot(Vector3.up, rb.linearVelocity);
         if (upVelocity.y >= maxSpeedUp)
         {
-            rb.velocity = new Vector3(rb.velocity.x, maxSpeedUp, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, maxSpeedUp, rb.linearVelocity.z);
         }
 
-        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.velocity);
+        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.linearVelocity);
         if (downVelocity.y <= maxSpeedDown)
         {
             return;
@@ -62,7 +62,7 @@ public class Gravity : MonoBehaviour
         rb.AddForce(gravity, ForceMode.Acceleration);
         if (downVelocity.y <= maxSpeedDown)
         {
-            rb.velocity = new Vector3(rb.velocity.x, -maxSpeedDown, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, -maxSpeedDown, rb.linearVelocity.z);
         }
     }
 
@@ -99,20 +99,20 @@ public class Gravity : MonoBehaviour
     public void SetMaxSpeedUp(float value)
     {
         maxSpeedUp = value;
-        Vector3 upVelocity = Vector3.down * Vector3.Dot(Vector3.up, rb.velocity);
+        Vector3 upVelocity = Vector3.down * Vector3.Dot(Vector3.up, rb.linearVelocity);
         if (upVelocity.y >= maxSpeedUp)
         {
-            rb.velocity = new Vector3(rb.velocity.x, maxSpeedUp, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, maxSpeedUp, rb.linearVelocity.z);
         }
     }
 
     public void SetMaxSpeedDown(float value)
     {
         maxSpeedDown = value;
-        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.velocity);
+        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.linearVelocity);
         if (downVelocity.y <= maxSpeedDown)
         {
-            rb.velocity = new Vector3(rb.velocity.x, maxSpeedDown, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, maxSpeedDown, rb.linearVelocity.z);
         }
     }
 }

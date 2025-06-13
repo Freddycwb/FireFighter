@@ -20,10 +20,10 @@ public class RotateToRigidbodyDirection : MonoBehaviour
 
     private void Rotate()
     {
-        if (rb.velocity.normalized == Vector3.zero)
+        if (rb.linearVelocity.normalized == Vector3.zero)
         {
             return;
         }
-        transform.rotation = Quaternion.LookRotation(rb.velocity.normalized);
+        transform.rotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
     }
 }

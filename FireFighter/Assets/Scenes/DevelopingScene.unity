@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3886733, g: 0.7280866, b: 0.7325946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -97,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 455b27419e4aece4b9bb1b19a58f1607, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 8cd21795a2c92a340aa21871ed358cd2, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -280,8 +276,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -593,6 +589,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -632,14 +631,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shape:
     rid: 6891607146427318275
-  m_Size: {x: 30, y: -1, z: -30}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
   m_UnmodifiedMeshVersion: 1483
-  m_ShapeBox:
-    m_Center: {x: 15, y: -0.5, z: -15}
-    m_Extent: {x: 15, y: 0.5, z: 15}
+  m_Size: {x: 30, y: -1, z: -30}
+  m_LocalCenter: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:
@@ -2063,8 +2058,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -2290,8 +2285,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -2472,6 +2467,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5905110999428286032, guid: 0febbdad775655748bcfaf4220611a1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222393551361147003, guid: 0febbdad775655748bcfaf4220611a1a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2908,7 +2907,7 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedFaces.Array.data[0]
+      propertyPath: 'm_SelectedFaces.Array.data[0]'
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -2948,19 +2947,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[0]
+      propertyPath: 'm_SelectedVertices.Array.data[0]'
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[1]
+      propertyPath: 'm_SelectedVertices.Array.data[1]'
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[2]
+      propertyPath: 'm_SelectedVertices.Array.data[2]'
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[3]
+      propertyPath: 'm_SelectedVertices.Array.data[3]'
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3268439054275070003, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -3382,6 +3381,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3421,14 +3423,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shape:
     rid: 6891607146427318275
-  m_Size: {x: 30, y: -1, z: -30}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
   m_UnmodifiedMeshVersion: 1483
-  m_ShapeBox:
-    m_Center: {x: 15, y: -0.5, z: -15}
-    m_Extent: {x: 15, y: 0.5, z: 15}
+  m_Size: {x: 30, y: -1, z: -30}
+  m_LocalCenter: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:
@@ -3957,7 +3955,7 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedFaces.Array.data[0]
+      propertyPath: 'm_SelectedFaces.Array.data[0]'
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -3997,19 +3995,19 @@ PrefabInstance:
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[0]
+      propertyPath: 'm_SelectedVertices.Array.data[0]'
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[1]
+      propertyPath: 'm_SelectedVertices.Array.data[1]'
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[2]
+      propertyPath: 'm_SelectedVertices.Array.data[2]'
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[3]
+      propertyPath: 'm_SelectedVertices.Array.data[3]'
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3268439054275070003, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -4207,8 +4205,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -4339,6 +4337,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4378,14 +4379,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shape:
     rid: 6891607146427318275
-  m_Size: {x: 30, y: -1, z: -30}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
   m_UnmodifiedMeshVersion: 1483
-  m_ShapeBox:
-    m_Center: {x: 15, y: -0.5, z: -15}
-    m_Extent: {x: 15, y: 0.5, z: 15}
+  m_Size: {x: 30, y: -1, z: -30}
+  m_LocalCenter: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:
@@ -4897,7 +4894,7 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedFaces.Array.data[0]
+      propertyPath: 'm_SelectedFaces.Array.data[0]'
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -4937,19 +4934,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[0]
+      propertyPath: 'm_SelectedVertices.Array.data[0]'
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[1]
+      propertyPath: 'm_SelectedVertices.Array.data[1]'
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[2]
+      propertyPath: 'm_SelectedVertices.Array.data[2]'
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[3]
+      propertyPath: 'm_SelectedVertices.Array.data[3]'
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3268439054275070003, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -5528,7 +5525,7 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedFaces.Array.data[0]
+      propertyPath: 'm_SelectedFaces.Array.data[0]'
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -5568,19 +5565,19 @@ PrefabInstance:
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[0]
+      propertyPath: 'm_SelectedVertices.Array.data[0]'
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[1]
+      propertyPath: 'm_SelectedVertices.Array.data[1]'
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[2]
+      propertyPath: 'm_SelectedVertices.Array.data[2]'
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[3]
+      propertyPath: 'm_SelectedVertices.Array.data[3]'
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3268439054275070003, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -5604,7 +5601,7 @@ PrefabInstance:
       value: Block (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6158534502232619030, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e66b3bbcb36fa554b8318b90fa7039a7, type: 2}
     - target: {fileID: 6426316748256077448, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -5704,6 +5701,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5743,14 +5743,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shape:
     rid: 6891607146427318275
-  m_Size: {x: 30, y: -1, z: -30}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
   m_UnmodifiedMeshVersion: 1483
-  m_ShapeBox:
-    m_Center: {x: 15, y: -0.5, z: -15}
-    m_Extent: {x: 15, y: 0.5, z: 15}
+  m_Size: {x: 30, y: -1, z: -30}
+  m_LocalCenter: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:
@@ -6255,8 +6251,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -6597,8 +6593,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -7067,8 +7063,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -7232,8 +7228,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -7619,8 +7615,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -7932,7 +7928,7 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedFaces.Array.data[0]
+      propertyPath: 'm_SelectedFaces.Array.data[0]'
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -7972,19 +7968,19 @@ PrefabInstance:
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[0]
+      propertyPath: 'm_SelectedVertices.Array.data[0]'
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[1]
+      propertyPath: 'm_SelectedVertices.Array.data[1]'
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[2]
+      propertyPath: 'm_SelectedVertices.Array.data[2]'
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[3]
+      propertyPath: 'm_SelectedVertices.Array.data[3]'
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3268439054275070003, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -8182,8 +8178,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -8446,8 +8442,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -8611,8 +8607,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -8873,8 +8869,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -9143,6 +9139,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9394,9 +9393,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590702150}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -9446,8 +9444,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!1 &1594693875
 GameObject:
   m_ObjectHideFlags: 0
@@ -10146,8 +10148,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -10396,8 +10398,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -10561,8 +10563,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -11189,7 +11191,7 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedFaces.Array.data[0]
+      propertyPath: 'm_SelectedFaces.Array.data[0]'
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -11229,19 +11231,19 @@ PrefabInstance:
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[0]
+      propertyPath: 'm_SelectedVertices.Array.data[0]'
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[1]
+      propertyPath: 'm_SelectedVertices.Array.data[1]'
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[2]
+      propertyPath: 'm_SelectedVertices.Array.data[2]'
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1007938688231410539, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
-      propertyPath: m_SelectedVertices.Array.data[3]
+      propertyPath: 'm_SelectedVertices.Array.data[3]'
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3268439054275070003, guid: 16e277363c1e9274ca5479876915f1d8, type: 3}
@@ -11310,7 +11312,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5190736935494505685, guid: 6c16a7d80940c014cb3a8c8046e111dd, type: 3}
-      propertyPath: destroyers.Array.data[0]
+      propertyPath: 'destroyers.Array.data[0]'
       value: 
       objectReference: {fileID: 1513310558}
     - target: {fileID: 5685188225405206482, guid: 6c16a7d80940c014cb3a8c8046e111dd, type: 3}
@@ -11342,7 +11344,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7827837947177737138, guid: 6c16a7d80940c014cb3a8c8046e111dd, type: 3}
-      propertyPath: destroyers.Array.data[0]
+      propertyPath: 'destroyers.Array.data[0]'
       value: 
       objectReference: {fileID: 759022612}
     - target: {fileID: 7957680304698728876, guid: 6c16a7d80940c014cb3a8c8046e111dd, type: 3}

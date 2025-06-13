@@ -39,4 +39,9 @@ public class EventDebugger : MonoBehaviour
     {
         Debug.Log(gameObject.name + " : " + value.value);
     }
+
+    public void DebugInt(int value)
+    {
+        Debug.Log(gameObject.name + " : " + value);
+    }
 }

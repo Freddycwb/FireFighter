@@ -70,7 +70,7 @@ public class InvokeAfterNumericComparison : InvokeAfter
 
     public void Compare(Rigidbody value)
     {
-        Compare(value.velocity.magnitude);
+        Compare(value.linearVelocity.magnitude);
     }
 
     public void Compare(Slider value)

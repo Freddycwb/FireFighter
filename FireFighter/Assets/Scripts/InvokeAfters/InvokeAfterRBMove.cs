@@ -11,12 +11,12 @@ public class InvokeAfterRBMove : InvokeAfter
 
     private void Update()
     {
-        if (value.velocity.magnitude > minVelocity && !moving)
+        if (value.linearVelocity.magnitude > minVelocity && !moving)
         {
             moving = true;
             CallAction();
         }
-        else if (value.velocity.magnitude <= minVelocity && moving)
+        else if (value.linearVelocity.magnitude <= minVelocity && moving)
         {
             moving = false;
             CallSubAction();

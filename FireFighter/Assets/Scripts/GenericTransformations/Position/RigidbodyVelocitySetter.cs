@@ -8,6 +8,6 @@ public class RigidbodyVelocitySetter : MonoBehaviour
 
     public void SetVelocityToZero()
     {
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
     }
 }

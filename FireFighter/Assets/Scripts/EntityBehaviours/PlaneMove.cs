@@ -100,7 +100,7 @@ public class PlaneMove : MonoBehaviour
     public void Move(Vector3 dir)
     {
         Vector3 goalVel = dir * maxSpeed;
-        Vector3 neededAccel = goalVel - rb.velocity;
+        Vector3 neededAccel = goalVel - rb.linearVelocity;
         neededAccel -= Vector3.up * neededAccel.y;
         neededAccel = dir != Vector3.zero ? Vector3.ClampMagnitude(neededAccel, maxAccel) : Vector3.ClampMagnitude(neededAccel, maxDesAccel);
         rb.AddForce(neededAccel, ForceMode.Impulse);

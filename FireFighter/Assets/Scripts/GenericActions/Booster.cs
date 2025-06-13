@@ -56,7 +56,7 @@ public class Booster : MonoBehaviour
         if (active)
         {
             Vector3 dir = (target.transform.position - transform.position).normalized;
-            float velocity = Vector3.Dot(dir, rb.velocity);
+            float velocity = Vector3.Dot(dir, rb.linearVelocity);
             lastVelocity = velocity;
             if (velocity >= maxSpeed)
             {

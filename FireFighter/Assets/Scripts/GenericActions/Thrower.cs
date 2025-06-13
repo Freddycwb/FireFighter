@@ -86,7 +86,7 @@ public class Thrower : MonoBehaviour
     {
         if (!addForce)
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
         }
 
         Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
@@ -104,12 +104,12 @@ public class Thrower : MonoBehaviour
     {
         if (!addForce)
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
         }
 
         Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
 
-        rb.AddForce(dir.velocity.normalized * GetThrowForce(), ForceMode.Impulse);
+        rb.AddForce(dir.linearVelocity.normalized * GetThrowForce(), ForceMode.Impulse);
     }
 
     public void SetValueAdjuster(DamageChecker value)
