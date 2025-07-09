@@ -6,15 +6,19 @@ public class ColliderCloner : MonoBehaviour
 {
     [SerializeField] private Collider reference;
     [SerializeField] private bool isTrigger = true;
-    [SerializeField] private bool createColliderOnEnable = true;
+    [SerializeField] private bool createColliderOnStart = true;
     [SerializeField] private bool setTransformToReference = true;
 
-    private void OnEnable()
+    private void Start()
     {
-        if (!createColliderOnEnable)
+        if (createColliderOnStart)
         {
-            return;
+            Clone();
         }
+    }
+
+    public void Clone()
+    {
         if (reference.GetType() == typeof(BoxCollider))
         {
             AddBoxCollider();

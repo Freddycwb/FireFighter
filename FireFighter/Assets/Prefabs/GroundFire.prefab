@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6589003864136058661}
   - component: {fileID: 5689298643179054802}
   - component: {fileID: 7933887626658328953}
+  - component: {fileID: 4630629475293574425}
   m_Layer: 7
   m_Name: Collider
   m_TagString: Fire
@@ -78,6 +79,7 @@ MonoBehaviour:
       m_Calls: []
   tags: []
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: -1
 --- !u!114 &5689298643179054802
 MonoBehaviour:
@@ -124,6 +126,7 @@ MonoBehaviour:
   tags:
   - Player
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: -1
 --- !u!114 &7933887626658328953
 MonoBehaviour:
@@ -144,6 +147,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   value: 0
+--- !u!114 &4630629475293574425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22486880942870896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af73ce7b40e84c84c888d4f739d027f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &227525666105107837
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3814876415822612022}
+  - component: {fileID: 1848789945414269222}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -255,6 +271,21 @@ Transform:
   - {fileID: 4863148018736734196}
   m_Father: {fileID: 4399007605734043811}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848789945414269222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273168726502928939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f4196df2435ac42bba5fd7159de740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 273168726502928939}
+  delay: 0
+  onEnable: 0
 --- !u!1 &858224602046717766
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +497,9 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:
@@ -948,10 +982,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 273168726502928939}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1848789945414269222}
+        m_TargetAssemblyTypeName: Destroyer, Assembly-CSharp
+        m_MethodName: Delete
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1121,9 +1155,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4469210310288322279}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 0.75
@@ -1173,8 +1206,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!114 &4750252156466140827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,6 +1541,7 @@ MonoBehaviour:
       m_Calls: []
   tags: []
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: -1
 --- !u!114 &2901219895490606181
 MonoBehaviour:

@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ public class InvokeAfterCollision : InvokeAfter
 
     [SerializeField] private List<string> tags = new List<string>();
     [SerializeField] private bool ignoreTags;
+    [SerializeField] private bool listenLeaveActions;
+    private List<LeaveAction> leaveActions = new List<LeaveAction>();
 
     [System.Flags]
     public enum Types
@@ -71,6 +74,15 @@ public class InvokeAfterCollision : InvokeAfter
                 collisions.Add(lastCollision);
             }
             collisionsThisFrame.Add(lastCollision);
+            if (listenLeaveActions)
+            {
+                LeaveAction leaveAction = lastCollision.GetComponent<LeaveAction>();
+                if (leaveAction != null)
+                {
+                    leaveAction.leave += LeaveActionCall;
+                    leaveActions.Add(leaveAction);
+                }
+            }
         }
     }
 
@@ -92,6 +104,15 @@ public class InvokeAfterCollision : InvokeAfter
             if (collisions.Contains(other.gameObject))
             {
                 collisions.Remove(other.gameObject);
+            }
+            if (listenLeaveActions)
+            {
+                LeaveAction leaveAction = other.gameObject.GetComponent<LeaveAction>();
+                if (leaveAction != null && leaveActions.Contains(leaveAction))
+                {
+                    leaveAction.leave -= LeaveActionCall;
+                    leaveActions.Remove(leaveAction);
+                }
             }
         }
     }
@@ -123,6 +144,15 @@ public class InvokeAfterCollision : InvokeAfter
                 collisions.Add(lastCollision);
             }
             collisionsThisFrame.Add(lastCollision);
+            if (listenLeaveActions)
+            {
+                LeaveAction leaveAction = lastCollision.GetComponent<LeaveAction>();
+                if (leaveAction != null)
+                {
+                    leaveAction.leave += LeaveActionCall;
+                    leaveActions.Add(leaveAction);
+                }
+            }
         }
     }
 
@@ -145,6 +175,15 @@ public class InvokeAfterCollision : InvokeAfter
             {
                 collisions.Remove(other.gameObject);
             }
+            if (listenLeaveActions)
+            {
+                LeaveAction leaveAction = other.gameObject.GetComponent<LeaveAction>();
+                if (leaveAction != null && leaveActions.Contains(leaveAction))
+                {
+                    leaveAction.leave -= LeaveActionCall;
+                    leaveActions.Remove(leaveAction);
+                }
+            }
         }
     }
 
@@ -163,6 +202,45 @@ public class InvokeAfterCollision : InvokeAfter
             }
             numberOfCollisions = collisions.Count;
             CallSubAction();
+        }
+    }
+
+    public void CleanCollisions()
+    {
+        collisions.RemoveAll(x => !x);
+        numberOfCollisions = collisions.Count;
+    }
+
+    private void LeaveActionCall(GameObject value)
+    {
+        if (value == null)
+        {
+            return;
+        }
+        LeaveAction leaveAction = value.GetComponent<LeaveAction>();
+        leaveAction.leave -= LeaveActionCall;
+        leaveActions.Remove(leaveAction);
+
+        if (onLeave != null)
+        {
+            onLeave.Invoke(leaveAction.gameObject);
+        }
+        numberOfCollisions--;
+        CallSubAction();
+        if (collisions.Contains(leaveAction.gameObject))
+        {
+            collisions.Remove(leaveAction.gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (LeaveAction leaveAction in leaveActions)
+        {
+            if (leaveAction != null)
+            {
+                leaveAction.leave -= LeaveActionCall;
+            }
         }
     }
 }

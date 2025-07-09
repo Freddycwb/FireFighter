@@ -12,6 +12,7 @@ public class DamageChecker : MonoBehaviour
     [SerializeField] private UnityEvent<float> takeDamage;
 
     [SerializeField] private bool alertEmitter = true;
+    [SerializeField] private bool ignoreEmitterDisable;
 
     private List<GameObject> damageReceived = new List<GameObject>();
     private Coroutine damageReceiveRoutine;
@@ -60,7 +61,7 @@ public class DamageChecker : MonoBehaviour
         {
             return;
         }
-        if (damageReceived.Contains(emitter.gameObject) || !emitter.enabled || !emitter.gameObject.activeSelf || !emitter.gameObject.activeInHierarchy)
+        if (damageReceived.Contains(emitter.gameObject) || ((!emitter.enabled || !emitter.gameObject.activeSelf || !emitter.gameObject.activeInHierarchy) && !ignoreEmitterDisable))
         {
             return;
         }
