@@ -23,6 +23,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
         Compare(value.GetReachTarget());
     }
 
+    public void Compare(GameObjectHolder value)
+    {
+        Compare(value.GetGameObject() != null);
+    }
+
     public void Compare(Gravity value)
     {
         Compare(value.GetIsGrounded());
