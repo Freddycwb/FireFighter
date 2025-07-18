@@ -166,6 +166,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   alertEmitter: 0
+  ignoreEmitterDisable: 0
 --- !u!114 &8307860388957467680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,6 +643,7 @@ MonoBehaviour:
   - Player
   - Body
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: -1
 --- !u!114 &7802087083182855031
 MonoBehaviour:
@@ -913,10 +915,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4108811895107137654}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 0.5
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1177,6 +1179,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   alertEmitter: 1
+  ignoreEmitterDisable: 0
 --- !u!1 &5032379149167730533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1340,7 @@ MonoBehaviour:
   - Obstacle
   - NoKnockback
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: 2
 --- !u!114 &324459768351171128
 MonoBehaviour:
@@ -1687,6 +1691,7 @@ MonoBehaviour:
       m_Calls: []
   tags: []
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: -1
 --- !u!114 &7220915577293260470
 MonoBehaviour:
@@ -1860,50 +1865,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objToShake: {fileID: 7494382663580745524}
   axisIntensity: {x: 1, y: 0.2, z: 1}
-  shakeIntensity: 0.2
+  shakeIntensity: 0.1
   intensityCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 3.9602075
+      value: 1
+      inSlope: 0
       outSlope: 0
-      tangentMode: 69
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.044560947
-    - serializedVersion: 3
-      time: 0.15
-      value: 0
-      inSlope: -0
-      outSlope: 2.7855384
-      tangentMode: 5
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.09205548
-    - serializedVersion: 3
-      time: 0.8
-      value: 1
-      inSlope: 0.0021554232
-      outSlope: 0.0021554232
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.0052356194
-      outSlope: 0.0052356194
-      tangentMode: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.9986894
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   backToOriginAtEnd: 0
+  sourceType: 2
 --- !u!114 &4737233074818116296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,44 +1928,27 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 3.9602075
+      value: 1
+      inSlope: 0
       outSlope: 0
-      tangentMode: 69
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.044560947
-    - serializedVersion: 3
-      time: 0.15
-      value: 0
-      inSlope: 0
-      outSlope: 2.7855384
-      tangentMode: 5
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.09205548
-    - serializedVersion: 3
-      time: 0.8
-      value: 1
-      inSlope: 0.0021554232
-      outSlope: 0.0021554232
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.0052356194
-      outSlope: 0.0052356194
-      tangentMode: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.9986894
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   backToOriginAtEnd: 0
+  sourceType: 2
 --- !u!114 &5674911412079136270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2210,6 +2181,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
