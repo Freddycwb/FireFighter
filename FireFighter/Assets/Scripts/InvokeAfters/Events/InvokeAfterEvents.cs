@@ -22,6 +22,32 @@ public class InvokeAfterEvents : MonoBehaviour
         }
     }
 
+    public void SetInvokeAfter(GameObjectVariable value)
+    {
+        SetInvokeAfter(value.Value);
+    }
+
+    public void SetInvokeAfter(GameObject value)
+    {
+        if (invokeAfter != null && listening)
+        {
+            invokeAfter.onActionCall -= OnActionCall;
+            invokeAfter.onSubActionCall -= OnSubActionCall;
+        }
+
+        InvokeAfter newInvokeAfter = value.GetComponent<InvokeAfter>();
+
+        if (newInvokeAfter != null) {
+            invokeAfter = newInvokeAfter;
+            invokeAfter.onActionCall += OnActionCall;
+            invokeAfter.onSubActionCall += OnSubActionCall;
+        }
+        else
+        {
+            listening = false;
+        }
+    }
+
     void OnActionCall()
     {
         if (enabled)

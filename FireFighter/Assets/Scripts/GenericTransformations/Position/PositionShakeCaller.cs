@@ -23,4 +23,21 @@ public class PositionShakeCaller : MonoBehaviour
     {
         time = value.GetCurrentTimeToAction();
     }
+
+    public void SetCounter(InvokeAfterCounter value)
+    {
+        positionShake.CallShakeByCounter(value, new Vector3(time, intensity, delayBetweenShake));
+    }
+
+    public void SetCounter(GameObject value)
+    {
+        InvokeAfterCounter counter = value.GetComponent<InvokeAfterCounter>();
+        SetCounter(counter);
+    }
+
+    public void SetCounter(GameObjectVariable value)
+    {
+        GameObject obj = value.Value;
+        SetCounter(obj);
+    }
 }

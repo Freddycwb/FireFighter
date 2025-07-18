@@ -61,7 +61,7 @@ public class UISliderValue : MonoBehaviour
         {
             _counter = source.GetComponent<InvokeAfterCounter>() != null ? source.GetComponent<InvokeAfterCounter>() : null;
         }
-        else if ((sourceType & SourceTypes.counter) != 0)
+        else if ((sourceType & SourceTypes.timer) != 0)
         {
             _timer = source.GetComponent<InvokeAfterTimer>() != null ? source.GetComponent<InvokeAfterTimer>() : null;
         }

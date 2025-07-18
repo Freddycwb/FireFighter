@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class UIImageColorSetter : MonoBehaviour
 {
@@ -23,5 +24,38 @@ public class UIImageColorSetter : MonoBehaviour
                         (int.Parse(g, NumberStyles.HexNumber) / 255f),
                         (int.Parse(b, NumberStyles.HexNumber) / 255f),
                         (int.Parse(alpha, NumberStyles.HexNumber) / 255f));
+    }
+
+    public void SetOpacityByCounterGameObject(GameObjectVariable value)
+    {
+        InvokeAfterCounter counter = value.Value.GetComponent<InvokeAfterCounter>();
+
+        if (counter != null)
+        {
+            SetOpacity(counter);
+        }
+    }
+
+    public void SetOpacityByCounterGameObject(GameObject value)
+    {
+        InvokeAfterCounter counter = value.GetComponent<InvokeAfterCounter>();
+
+        if (counter != null) {
+            SetOpacity(counter);
+        }
+    }
+
+    public void SetOpacity(InvokeAfterCounter value)
+    {
+        float min = value.GetMinValue();
+        float current = value.GetCurrentValue();
+        float max = value.GetMaxValue();
+
+        SetOpacity(current / (max - min));
+    }
+
+    public void SetOpacity(float value)
+    {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, value);
     }
 }
