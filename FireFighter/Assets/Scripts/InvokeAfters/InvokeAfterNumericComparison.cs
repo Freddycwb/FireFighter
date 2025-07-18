@@ -73,6 +73,15 @@ public class InvokeAfterNumericComparison : InvokeAfter
         Compare(value.linearVelocity.magnitude);
     }
 
+    public void CompareInputDirection(GameObject value)
+    {
+        IInputDirection dir = value.GetComponent<IInputDirection>();
+        if (dir != null)
+        {
+            Compare(dir.direction.magnitude);
+        }
+    }
+
     public void Compare(Slider value)
     {
         Compare(value.value);
