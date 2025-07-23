@@ -6485,6 +6485,98 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3604424433194009395, guid: 2c3c6ac98a7814b488053dcbc62baeec, type: 3}
   m_PrefabInstance: {fileID: 10920175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &13019215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13019218}
+  - component: {fileID: 13019217}
+  - component: {fileID: 13019216}
+  m_Layer: 0
+  m_Name: REMOVECURSOR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &13019216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13019215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed8d3d5b955dad4eb221c350525a52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 13019217}
+        m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
+        m_MethodName: HideCursor
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  activeInHierarchy: 0
+--- !u!114 &13019217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13019215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69bf49cb96d6e64b99f194c5ce4a459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  targetVariable: {fileID: 0}
+  maxDistance: 0
+  distanceMargin: 0
+  distanceSmoothing: 0
+  yOffset: 0
+  lookYOffset: 0
+  defaultRotation: {x: 0, y: 0}
+  angleLimits: {x: 0, y: 0}
+  lookDirectionObject: {fileID: 0}
+  sensitivity: {fileID: 0}
+  invertX: {fileID: 0}
+  invertY: {fileID: 0}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!4 &13019218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13019215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &18738133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24462,6 +24554,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 263.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2113672691787828148, guid: 92e5a60a6a1faee4bba64c1fd147c68c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 278
+      objectReference: {fileID: 0}
     - target: {fileID: 2802961616220807567, guid: 92e5a60a6a1faee4bba64c1fd147c68c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -24473,6 +24569,18 @@ PrefabInstance:
     - target: {fileID: 4112287906552849418, guid: 92e5a60a6a1faee4bba64c1fd147c68c, type: 3}
       propertyPath: m_Name
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4548477460060020078, guid: 92e5a60a6a1faee4bba64c1fd147c68c, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807062058637523878, guid: 92e5a60a6a1faee4bba64c1fd147c68c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807062058637523878, guid: 92e5a60a6a1faee4bba64c1fd147c68c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 5971272634307292165, guid: 92e5a60a6a1faee4bba64c1fd147c68c, type: 3}
       propertyPath: m_IsActive
@@ -25218,3 +25326,4 @@ SceneRoots:
   - {fileID: 167252895}
   - {fileID: 489918066}
   - {fileID: 1657490364}
+  - {fileID: 13019218}
