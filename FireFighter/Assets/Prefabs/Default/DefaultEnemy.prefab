@@ -1424,6 +1424,101 @@ MonoBehaviour:
   onSubActionCall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &560325780298870856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2936511506450587018}
+  - component: {fileID: 1926694348922266332}
+  - component: {fileID: 6811328588434934359}
+  m_Layer: 0
+  m_Name: StunSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2936511506450587018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560325780298870856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9085165870642282853}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1926694348922266332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560325780298870856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 183263788235039782}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6811328588434934359}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6811328588434934359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560325780298870856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1317767262
+      Data2: 1170747991
+      Data3: 1338672775
+      Data4: 594780440
+    Path: event:/ChairStun
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &561984797908992081
 GameObject:
   m_ObjectHideFlags: 0
@@ -5297,6 +5392,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   backToOriginAtEnd: 1
+  sourceType: 2
 --- !u!1 &2718844208372106878
 GameObject:
   m_ObjectHideFlags: 0
@@ -12047,7 +12143,7 @@ GameObject:
   - component: {fileID: 4044630922458187611}
   m_Layer: 6
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: WaterChecker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16745,6 +16841,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3135554434285519729, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/ChairBreak
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135554434285519729, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1669016517
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135554434285519729, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1332779760
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135554434285519729, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: -1677515103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135554434285519729, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -1603381467
+      objectReference: {fileID: 0}
     - target: {fileID: 3261396869659542011, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -16854,6 +16970,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5973472756864526352, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3887922615545204235}
+    - targetCorrespondingSourceObject: {fileID: 5973472756864526352, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2936511506450587018}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8412463017330619430, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       insertIndex: -1

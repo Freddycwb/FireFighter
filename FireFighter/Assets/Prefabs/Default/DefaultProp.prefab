@@ -148,11 +148,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 307184791
-      Data2: 1264029918
-      Data3: 104071822
-      Data4: -199132669
-    Path: event:/EnemyTakeDamage
+      Data1: 1669016517
+      Data2: 1332779760
+      Data3: -1677515103
+      Data4: -1603381467
+    Path: event:/ChairBreak
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -723,6 +723,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   alertEmitter: 1
+  ignoreEmitterDisable: 0
 --- !u!1 &2695759792059571908
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +814,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1050,6 +1054,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   alertEmitter: 1
+  ignoreEmitterDisable: 0
 --- !u!1 &4370478333967527054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7021897068555099320
 Transform:
   m_ObjectHideFlags: 0
@@ -1398,11 +1403,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 964272151
-      Data2: 1209171888
-      Data3: 215514006
-      Data4: -672032652
-    Path: event:/DestroyFurniture
+      Data1: 1669016517
+      Data2: 1332779760
+      Data3: -1677515103
+      Data4: -1603381467
+    Path: event:/ChairBreak
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -1459,7 +1464,7 @@ GameObject:
   - component: {fileID: 5663196830858262623}
   m_Layer: 6
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: MeleeChecker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1499,6 +1504,7 @@ MonoBehaviour:
       m_Calls: []
   tags: []
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: -1
 --- !u!65 &5663196830858262623
 BoxCollider:
@@ -1802,6 +1808,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   alertEmitter: 1
+  ignoreEmitterDisable: 0
 --- !u!1 &8412463017330619430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,10 +1854,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8412463017330619430}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
