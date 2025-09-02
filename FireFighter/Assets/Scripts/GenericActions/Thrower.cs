@@ -19,6 +19,16 @@ public class Thrower : MonoBehaviour
     [SerializeField] private float valueAdjuster;
     [SerializeField] private OperatorType.Type valueAdjustType;
 
+    public float GetForceX()
+    {
+        return force.x;
+    }
+
+    public float GetForceY()
+    {
+        return force.y;
+    }
+
     public void SetTarget(GameObject value)
     {
         target = value.transform;
@@ -125,5 +135,20 @@ public class Thrower : MonoBehaviour
     public void SetForceX(float value)
     {
         force.x = value;
+    }
+
+    public void SetForceX(AnimationCurveValue value)
+    {
+        SetForceX(value.GetValueByCounter());
+    }
+
+    public void SetForceY(float value)
+    {
+        force.y = value;
+    }
+
+    public void SetForceY(AnimationCurveValue value)
+    {
+        SetForceY(value.GetValueByCounter());
     }
 }

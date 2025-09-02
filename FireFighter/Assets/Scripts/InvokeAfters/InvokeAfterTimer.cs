@@ -159,7 +159,12 @@ public class InvokeAfterTimer : InvokeAfter
 
     public void SetTimeToAction(DamageChecker time)
     {
-        timeToAction = time.GetLastDamage();
+        SetTimeToAction(time.GetLastDamage());
+    }
+
+    public void SetTimeToAction(AnimationCurveValue time)
+    {
+        SetTimeToAction(time.GetValueByCounter());
     }
 
     public void CancelTimer()
