@@ -169,6 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402006276006238057}
   - component: {fileID: 7492456513046809935}
+  - component: {fileID: 4221102120713480776}
   m_Layer: 0
   m_Name: Lifetime
   m_TagString: Untagged
@@ -233,11 +234,29 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  timeToAction: 5
-  valueSetter: {fileID: 0}
+  timeToAction: 0
+  valueSetter: {fileID: 4221102120713480776}
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
+--- !u!114 &4221102120713480776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227525666105107837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139d3b4d6789fa54ca3051f9533f2663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTimeToAction: 0
+  timeToActionVariable: {fileID: 11400000, guid: 21d5d764f17b2d84b81d05a8835f9868, type: 2}
+  randomTimeToActionVariable: {fileID: 0}
+  valueAdjuster: 0
+  valueAdjusterVariable: {fileID: 0}
+  valueAdjustType: 0
 --- !u!1 &273168726502928939
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4399007605734043811}
   - component: {fileID: 1581594179527441704}
+  - component: {fileID: 1163491277583419656}
   m_Layer: 0
   m_Name: GroundFire
   m_TagString: Untagged
@@ -373,6 +393,42 @@ MonoBehaviour:
   obj: {fileID: 1083258236933289887}
   delay: 1.5
   onEnable: 0
+--- !u!114 &1163491277583419656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083258236933289887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b9e5e01a9c9c64fa0ff6f4998adbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  actionFloat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5288030810398082269}
+        m_TargetAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subActionFloat:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2012463221041742670
 GameObject:
   m_ObjectHideFlags: 0
