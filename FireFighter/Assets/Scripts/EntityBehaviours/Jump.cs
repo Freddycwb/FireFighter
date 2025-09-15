@@ -20,6 +20,7 @@ public class Jump : EntityAction
 
     public Action onJump;
     public Action onStopHolding;
+    public Action onStopGainingHeight;
 
     public override void Update()
     {
@@ -76,9 +77,9 @@ public class Jump : EntityAction
                     _holdJump -= Time.deltaTime;
                     if (_holdJump <= 0)
                     {
-                        if (onStopHolding != null)
+                        if (onStopGainingHeight != null)
                         {
-                            onStopHolding.Invoke();
+                            onStopGainingHeight.Invoke();
                         }
                     }
                 }

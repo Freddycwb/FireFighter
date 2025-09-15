@@ -25,22 +25,41 @@ public class InvokeAfterNumericComparison : InvokeAfter
 
     public void SetValueToCompare(FloatVariable value)
     {
-        compareValue = value.Value;
+        SetValueToCompare(value.Value);
     }
 
     public void SetValueToCompare(int value)
     {
-        compareValue = value;
+        SetValueToCompare((float)value);
     }
 
     public void SetValueToCompare(IntVariable value)
     {
-        compareValue = value.Value;
+        SetValueToCompare(value.Value);
     }
 
     public void SetValueToCompare(StringArrayVariable value)
     {
-        compareValue = value.Value.Length - 1;
+        SetValueToCompare(value.Value.Length - 1);
+    }
+
+    public void SetValueToCompareByCounter(InvokeAfterCounter value)
+    {
+        SetValueToCompare(value.GetCurrentValue());
+    }
+
+    public void SetValueToCompareByCounter(GameObject value)
+    {
+        InvokeAfterCounter counter = value.GetComponent<InvokeAfterCounter>();
+        if (counter != null)
+        {
+            SetValueToCompareByCounter(counter);
+        }
+    }
+
+    public void SetValueToCompareByCounter(GameObjectVariable value)
+    {
+        SetValueToCompareByCounter(value.Value);
     }
 
     public void Compare(int value)

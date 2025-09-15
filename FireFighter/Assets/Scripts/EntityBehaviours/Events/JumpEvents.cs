@@ -9,6 +9,8 @@ public class JumpEvents : MonoBehaviour
 
     [SerializeField] private UnityEvent onJump;
     [SerializeField] private UnityEvent onStopHolding;
+    [SerializeField] private bool callBothEventsOnMaxHeight = true;
+    [SerializeField] private UnityEvent onStopGainingHeight;
 
     private bool listening;
 
@@ -18,6 +20,7 @@ public class JumpEvents : MonoBehaviour
         {
             jump.onJump += OnJump;
             jump.onStopHolding += OnStopHolding;
+            jump.onStopGainingHeight += OnStopGainingHeight;
             listening = true;
         }
     }
@@ -38,12 +41,25 @@ public class JumpEvents : MonoBehaviour
         }
     }
 
+    void OnStopGainingHeight()
+    {
+        if (enabled)
+        {
+            onStopGainingHeight.Invoke();
+            if (callBothEventsOnMaxHeight)
+            {
+                OnStopHolding();
+            }
+        }
+    }
+
     private void OnDisable()
     {
         if (jump != null && listening)
         {
             jump.onJump -= OnJump;
             jump.onStopHolding -= OnStopHolding;
+            jump.onStopGainingHeight -= OnStopGainingHeight;
             listening = false;
         }
     }
