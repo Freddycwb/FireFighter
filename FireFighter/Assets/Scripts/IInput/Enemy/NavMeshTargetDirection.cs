@@ -9,6 +9,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     [SerializeField] private Transform target;
     [SerializeField] private GameObjectVariable targetVariable;
     [SerializeField] private float distToReach = 0.2f;
+    [SerializeField] private float maxDist = float.PositiveInfinity;
     [SerializeField] private Vector2 offSet;
     [SerializeField] private Vector2 randomOffsetRadius;
     [SerializeField] private bool ignoreCanReach;
@@ -108,7 +109,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
         _navMeshTarget = Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y));
 
-        if (reference != null)
+        if (reference != null && _navMeshTarget.x != float.PositiveInfinity)
         {
             reference.transform.position = _navMeshTarget;
         }
@@ -165,7 +166,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     public void CheckIfReachTarget()
     {
-        if (Vector3.Distance(transform.position, _navMeshTarget) > distToReach)
+        if (Vector3.Distance(transform.position, _navMeshTarget) > distToReach && CheckIfCanReachTarget())
         {
             if (_reachTarget)
             {
@@ -191,11 +192,12 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     public bool CheckIfCanReachTarget()
     {
-        return Pathfinder.CanReachTarget(transform.position, Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y)), _path);
+        float minDist = _reachTarget ? distToReach : 0;
+        return Pathfinder.CanReachTarget(transform.position, Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y)), _path, minDist, maxDist);
     }
 
     public bool CheckIfIsInNavMeshArea()
     {
-        return Pathfinder.CanReachTarget(transform.position, transform.position, _path);
+        return Pathfinder.CanReachTarget(transform.position, transform.position, _path, float.NegativeInfinity, float.PositiveInfinity);
     }
 }

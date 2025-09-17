@@ -7,10 +7,15 @@ using static UnityEngine.UI.Image;
 
 public class Pathfinder : MonoBehaviour
 {
-    public static bool CanReachTarget(Vector3 origin, Vector3 destination, NavMeshPath path)
+    public static bool CanReachTarget(Vector3 origin, Vector3 destination, NavMeshPath path, float minDist, float maxDist)
     {
         bool canReach = false;
-        canReach = NavMesh.CalculatePath(origin, destination, NavMesh.AllAreas, path) && path.status == NavMeshPathStatus.PathComplete;
+        bool reacheble = NavMesh.CalculatePath(origin, destination, NavMesh.AllAreas, path) && path.status == NavMeshPathStatus.PathComplete;
+        float distance = GetPathLength(path);
+        bool tooClose = distance < minDist;
+        bool tooFar = distance > maxDist;
+        canReach = reacheble && !tooClose && !tooFar;
+        Debug.Log(distance + " > " + minDist + " = " + canReach);
         return canReach;
     }
 

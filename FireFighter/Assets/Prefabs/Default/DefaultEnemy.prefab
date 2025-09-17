@@ -2374,6 +2374,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetVariable: {fileID: 11400000, guid: aacfc9e7b942e544a9494b3668e5f801, type: 2}
   distToReach: 0.2
+  maxDist: Infinity
   offSet: {x: 0, y: 0}
   randomOffsetRadius: {x: 0, y: 0}
   ignoreCanReach: 0
@@ -3551,9 +3552,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 8282495826774672312}
   targetVariable: {fileID: 0}
-  distToReach: 1.5
+  distToReach: 1
+  maxDist: 10
   offSet: {x: 0, y: 0}
-  randomOffsetRadius: {x: 0, y: 16}
+  randomOffsetRadius: {x: 0, y: 10}
   ignoreCanReach: 0
   updateManually: 0
   reference: {fileID: 0}
@@ -14518,30 +14520,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3411474772977335964}
-        m_TargetAssemblyTypeName: NavMeshTargetDirection, Assembly-CSharp
-        m_MethodName: SetTarget
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5093269251383985059}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2836902303980538913}
-        m_TargetAssemblyTypeName: PositionSetter, Assembly-CSharp
-        m_MethodName: SetPosition
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 6362994051227770195}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5464579895762723697}
         m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
         m_MethodName: StartTimer
@@ -14635,6 +14613,30 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 3411474772977335964}
+        m_TargetAssemblyTypeName: NavMeshTargetDirection, Assembly-CSharp
+        m_MethodName: SetTarget
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5093269251383985059}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2836902303980538913}
+        m_TargetAssemblyTypeName: PositionSetter, Assembly-CSharp
+        m_MethodName: SetPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6362994051227770195}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 3411474772977335964}
         m_TargetAssemblyTypeName: NavMeshTargetDirection, Assembly-CSharp
         m_MethodName: SetOffSetByRandomPointInSphere
@@ -15270,6 +15272,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetVariable: {fileID: 11400000, guid: aacfc9e7b942e544a9494b3668e5f801, type: 2}
   distToReach: 0.2
+  maxDist: Infinity
   offSet: {x: 0, y: 0}
   randomOffsetRadius: {x: 0, y: 0}
   ignoreCanReach: 0
@@ -15475,6 +15478,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetVariable: {fileID: 11400000, guid: aacfc9e7b942e544a9494b3668e5f801, type: 2}
   distToReach: 0.2
+  maxDist: Infinity
   offSet: {x: 0, y: 0}
   randomOffsetRadius: {x: 0, y: 0}
   ignoreCanReach: 0
@@ -16976,9 +16980,9 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8938121905143469593}
-        m_TargetAssemblyTypeName: InvokeAfter, Assembly-CSharp
-        m_MethodName: CallAction
+      - m_Target: {fileID: 3411474772977335964}
+        m_TargetAssemblyTypeName: NavMeshTargetDirection, Assembly-CSharp
+        m_MethodName: SetOffSetByRandomPointInSphere
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17297,11 +17301,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1432061661521899618, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1432061661521899618, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1432061661521899618, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
