@@ -10,18 +10,27 @@ public class PositionShakeCaller : MonoBehaviour
     [SerializeField] private float intensity = 0.3f;
     [SerializeField] private float delayBetweenShake = 0.01f;
 
+    private float timeMultiplier = 1;
+    private float intensityMultiplier = 1;
+    private float delayBetweenShakeMultiplier = 1;
+
     public void CallShake()
     {
         if (time == float.NegativeInfinity || time == float.PositiveInfinity)
         {
             return;
         }
-        positionShake.CallShake(new Vector3(time, intensity, delayBetweenShake));
+        positionShake.CallShake(new Vector3(time * timeMultiplier, intensity * intensityMultiplier, delayBetweenShake * delayBetweenShakeMultiplier));
     }
 
     public void SetTime(InvokeAfterTimer value)
     {
         time = value.GetCurrentTimeToAction();
+    }
+
+    public void SetIntensityMultiplier(float value)
+    {
+        intensityMultiplier = value;
     }
 
     public void SetCounter(InvokeAfterCounter value)

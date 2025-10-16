@@ -107,9 +107,9 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
             return;
         }
 
-        _navMeshTarget = Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y));
+        bool targetPosExists = Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y), out _navMeshTarget);
 
-        if (reference != null && _navMeshTarget.x != float.PositiveInfinity)
+        if (reference != null && targetPosExists)
         {
             reference.transform.position = _navMeshTarget;
         }
@@ -122,7 +122,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
                 onCanReachTarget.Invoke();
             }
             _canReachTarget = true;
-            if (!_reachTarget)
+            if (!_reachTarget && targetPosExists)
             {
                 dir = Pathfinder.GetDirectionTo(transform.position, _navMeshTarget, _path);
             }
@@ -193,7 +193,11 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     public bool CheckIfCanReachTarget()
     {
         float minDist = _reachTarget ? distToReach : 0;
-        return Pathfinder.CanReachTarget(transform.position, Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y)), _path, minDist, maxDist);
+
+        Vector3 closestPos;
+        if (!Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y), out closestPos)) return false;
+
+        return Pathfinder.CanReachTarget(transform.position, closestPos, _path, minDist, maxDist);
     }
 
     public bool CheckIfIsInNavMeshArea()

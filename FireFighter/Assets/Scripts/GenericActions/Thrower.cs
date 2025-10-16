@@ -11,8 +11,13 @@ public class Thrower : MonoBehaviour
     [SerializeField] private Rigidbody throwable;
     [SerializeField] private Transform target;
 
+    [SerializeField] private Vector3 originOffset;
+    [SerializeField] private Vector3 originMaxOffSet;
+    [SerializeField] private bool originOffsetIsLocal;
+
     [FormerlySerializedAs("throwableOffSet")] [SerializeField] private Vector3 targetOffset;
     [FormerlySerializedAs("throwableMaxOffSet")] [SerializeField] private Vector3 targetMaxOffSet;
+
     [SerializeField] private bool addForce;
     [SerializeField] private bool useCenterOfMass;
 
@@ -94,13 +99,18 @@ public class Thrower : MonoBehaviour
 
     public void Throw(Rigidbody rb, Vector3 target, bool addForce)
     {
+        if (!enabled)
+        {
+            return;
+        }
         if (!addForce)
         {
             rb.linearVelocity = Vector3.zero;
         }
 
-        Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
-        Vector3 dirToObject = target + offset - (!useCenterOfMass? rb.transform.position : rb.worldCenterOfMass);
+        Vector3 newTargetOffset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
+        Vector3 newOriginOffset = originMaxOffSet != Vector3.zero ? new Vector3(Random.Range(originOffset.x, originMaxOffSet.x), Random.Range(originOffset.y, originMaxOffSet.y), Random.Range(originOffset.z, originMaxOffSet.z)) : originOffset;
+        Vector3 dirToObject = (target + newTargetOffset) - ((!useCenterOfMass? rb.transform.position : rb.worldCenterOfMass) + (!originOffsetIsLocal? newOriginOffset : rb.transform.TransformDirection(newOriginOffset)));
 
         rb.AddForce(dirToObject.normalized * GetThrowForce(), ForceMode.Impulse);
     }
@@ -112,6 +122,10 @@ public class Thrower : MonoBehaviour
 
     public void Throw(Rigidbody rb, Rigidbody dir, bool addForce)
     {
+        if (!enabled)
+        {
+            return;
+        }
         if (!addForce)
         {
             rb.linearVelocity = Vector3.zero;

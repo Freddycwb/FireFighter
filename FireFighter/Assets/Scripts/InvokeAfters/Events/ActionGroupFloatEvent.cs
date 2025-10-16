@@ -38,6 +38,24 @@ public class ActionGroupFloatEvent : MonoBehaviour
         }
     }
 
+    public void CallFloatActionsByCounterAverage(InvokeAfterCounter value)
+    {
+        float average = (Mathf.Abs(value.GetMinValue()) + value.GetCurrentValue()) / (Mathf.Abs(value.GetMinValue()) + value.GetMaxValue());
+        foreach (InvokeAfterFloat invokeAfter in invokeAfters)
+        {
+            invokeAfter.CallActionFloat(average);
+        }
+    }
+
+    public void CallFloatActionsByCounterInverseAverage(InvokeAfterCounter value)
+    {
+        float average = 1 - ((Mathf.Abs(value.GetMinValue()) + value.GetCurrentValue()) / (Mathf.Abs(value.GetMinValue()) + value.GetMaxValue()));
+        foreach (InvokeAfterFloat invokeAfter in invokeAfters)
+        {
+            invokeAfter.CallActionFloat(average);
+        }
+    }
+
     public void AddInvokeAfter(InvokeAfterFloat value)
     {
         if (value != null)

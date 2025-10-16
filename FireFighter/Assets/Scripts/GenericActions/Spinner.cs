@@ -10,6 +10,7 @@ public class Spinner : MonoBehaviour
 
     [SerializeField] private Vector3 targetOffset;
     [SerializeField] private Vector3 targetMaxOffSet;
+
     [SerializeField] private bool addForce;
     [SerializeField] private bool useCenterOfMass;
 
@@ -84,7 +85,6 @@ public class Spinner : MonoBehaviour
         }
 
         Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
-
         Vector3 dirToObject = target + offset - (!useCenterOfMass ? rb.transform.position : rb.transform.position + rb.centerOfMass);
         float spinForce = force.x >= force.y ? force.x : Random.Range(force.x, force.y);
 

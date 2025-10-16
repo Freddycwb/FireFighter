@@ -15,7 +15,6 @@ public class Pathfinder : MonoBehaviour
         bool tooClose = distance < minDist;
         bool tooFar = distance > maxDist;
         canReach = reacheble && !tooClose && !tooFar;
-        Debug.Log(distance + " > " + minDist + " = " + canReach);
         return canReach;
     }
 
@@ -32,11 +31,12 @@ public class Pathfinder : MonoBehaviour
         return new Vector2(dir.x, dir.z);
     }
 
-    public static Vector3 GetNavMeshClosestPos(Vector3 destination)
+    public static bool GetNavMeshClosestPos(Vector3 destination, out Vector3 pos)
     {
         NavMeshHit hit;
         NavMesh.SamplePosition(destination, out hit, 50, NavMesh.AllAreas);
-        return hit.position;
+        pos = hit.position;
+        return hit.hit;
     }
 
     public static float GetPathLength(NavMeshPath path)
