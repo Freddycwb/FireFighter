@@ -3579,6 +3579,9 @@ MonoBehaviour:
   force: {x: 3.75, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 3837686433801209280}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -6601,6 +6604,9 @@ MonoBehaviour:
   force: {x: 2, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 8607689534750840128}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -7122,6 +7128,9 @@ MonoBehaviour:
   force: {x: 2, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 4040171951454620791}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -10033,6 +10042,9 @@ MonoBehaviour:
   force: {x: 3.75, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 2324501645608456956}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -14594,8 +14606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 672878121028735006}
-  - component: {fileID: 2262282320946550187}
-  - component: {fileID: 4346883441788713281}
+  - component: {fileID: 9175455313785783193}
   - component: {fileID: 6430608678622178204}
   m_Layer: 0
   m_Name: ShootSound
@@ -14616,10 +14627,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7100370432289085142}
   m_Father: {fileID: 6551142409804779599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2262282320946550187
+--- !u!114 &9175455313785783193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14628,11 +14640,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865614277405862845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 496d336028e63df4fb0c34a3768647c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolInstantiator: {fileID: 2149754950860032113}
-  onObjCreated:
+  invokeAfter: {fileID: 266067557107894057}
+  onActionCall:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6430608678622178204}
@@ -14647,25 +14659,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4346883441788713281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865614277405862845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 496d336028e63df4fb0c34a3768647c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolInstantiator: {fileID: 8659587299438256245}
-  onObjCreated:
+  onSubActionCall:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6430608678622178204}
         m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14690,11 +14689,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1453186611
-      Data2: 1111149563
-      Data3: -554320453
-      Data4: -1096411258
-    Path: event:/Shoot
+      Data1: -814024331
+      Data2: 1322190682
+      Data3: 1084569743
+      Data4: 969700994
+    Path: event:/New Event
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -15385,6 +15384,9 @@ MonoBehaviour:
   force: {x: 3.75, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 6855782301176593111}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -17589,6 +17591,9 @@ MonoBehaviour:
   force: {x: -9, y: -9}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 7970614233692240370}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -18528,6 +18533,9 @@ MonoBehaviour:
   force: {x: 3, y: 9}
   throwable: {fileID: 0}
   target: {fileID: 2458321007497389492}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -19509,6 +19517,9 @@ MonoBehaviour:
   force: {x: 13, y: 0}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 4224959658118605656}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -22728,6 +22739,9 @@ MonoBehaviour:
   force: {x: -6, y: -6}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 4166550262381041374}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -26797,6 +26811,9 @@ MonoBehaviour:
   force: {x: -9, y: -10}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 0}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -28850,6 +28867,9 @@ MonoBehaviour:
   force: {x: 2, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 3033764641490181205}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -29112,6 +29132,9 @@ MonoBehaviour:
   force: {x: 5, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 4820110742661909770}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -29309,6 +29332,84 @@ Transform:
   - {fileID: 1881070077492905700}
   m_Father: {fileID: 786766654681085959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3793940942029148322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7100370432289085142}
+  - component: {fileID: 18316204207157750}
+  - component: {fileID: 3576046225910514683}
+  m_Layer: 0
+  m_Name: SetParameter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7100370432289085142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793940942029148322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 672878121028735006}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &18316204207157750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793940942029148322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce896476aa0cd74185c0b6093f94733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 6430608678622178204}
+  param: PitchDown
+--- !u!114 &3576046225910514683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793940942029148322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 7560560589090934579}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 18316204207157750}
+        m_TargetAssemblyTypeName: SetFMODEventParameter, Assembly-CSharp
+        m_MethodName: SetParameterByCurrentCounter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7560560589090934579}
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCounter, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3828592280294925918
 GameObject:
   m_ObjectHideFlags: 0
@@ -29484,6 +29585,9 @@ MonoBehaviour:
   force: {x: 6, y: 0}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 147136593779938969}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 1, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -34656,6 +34760,9 @@ MonoBehaviour:
   force: {x: 17, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 6577121476871405112}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -35118,6 +35225,9 @@ MonoBehaviour:
   force: {x: 5, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 2723955815588289944}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -38424,6 +38534,9 @@ MonoBehaviour:
   force: {x: 10, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 2458321007497389492}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -41478,6 +41591,9 @@ MonoBehaviour:
   force: {x: 10, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 8592441761179185171}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -53926,6 +54042,9 @@ MonoBehaviour:
   force: {x: 3.75, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 4844655774826270605}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -61368,6 +61487,9 @@ MonoBehaviour:
   force: {x: 2, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 394484936141209606}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -61776,6 +61898,9 @@ MonoBehaviour:
   force: {x: 10, y: 0}
   throwable: {fileID: 1236960392716156585}
   target: {fileID: 6679718329274325223}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
@@ -66673,7 +66798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invokeAfter: {fileID: 266067557107894057}
+  invokeAfter: {fileID: 7952233539236761341}
   onActionCall:
     m_PersistentCalls:
       m_Calls:
@@ -66717,7 +66842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowFrequency: 0
-  highFrequency: 0.1
+  highFrequency: 0.01
   duration: 20
   RumbleRequest: {fileID: 11400000, guid: 16c9d3c5058124b43a02e3d278d860b5, type: 2}
 --- !u!1 &8950312163435815756
@@ -66997,6 +67122,9 @@ MonoBehaviour:
   force: {x: 17, y: 0}
   throwable: {fileID: 0}
   target: {fileID: 6634889611677662334}
+  originOffset: {x: 0, y: 0, z: 0}
+  originMaxOffSet: {x: 0, y: 0, z: 0}
+  originOffsetIsLocal: 0
   targetOffset: {x: 0, y: 0, z: 0}
   targetMaxOffSet: {x: 0, y: 0, z: 0}
   addForce: 0
