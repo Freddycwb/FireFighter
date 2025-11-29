@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using static UnityEngine.Rendering.DebugUI;
+using Unity.VisualScripting;
 
 public class Gravity : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Gravity : MonoBehaviour
     private bool _isGrounded = true;
     [SerializeField] private float groundCheckRadius = 0.15f;
     [SerializeField] private LayerMask whatIsGround;
+
+    [SerializeField] private Hover hover;
 
     public Action onLand;
     public Action onTakeOff;
@@ -68,12 +71,27 @@ public class Gravity : MonoBehaviour
 
     private void CheckGround()
     {
-        Collider[] grounds = Physics.OverlapSphere(transform.position, groundCheckRadius, whatIsGround);
+        bool callLand;
+        bool callTakeOff;
 
-        bool callLand = !_isGrounded && grounds.Length > 0;
-        bool callTakeOff = _isGrounded && grounds.Length <= 0;
+        if (hover == null)
+        {
+            Collider[] grounds = Physics.OverlapSphere(transform.position, groundCheckRadius, whatIsGround);
 
-        SetIsGrounded(grounds.Length > 0);
+            callLand = !_isGrounded && grounds.Length > 0;
+            callTakeOff = _isGrounded && grounds.Length <= 0;
+
+            SetIsGrounded(grounds.Length > 0);
+        }
+        else
+        {
+            callLand = !_isGrounded && hover.GetGrounded();
+            callTakeOff = _isGrounded && !hover.GetGrounded();
+
+            SetIsGrounded(hover.GetGrounded());
+        }
+
+
 
         if (callLand)
         {

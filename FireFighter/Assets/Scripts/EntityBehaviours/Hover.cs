@@ -16,13 +16,21 @@ public class Hover : MonoBehaviour
 	[SerializeField] private float springStrength;
 	[SerializeField] private float springDamping;
 
-	private bool grounded;
+	private bool grounded = true;
 
+	[SerializeField] private bool updateDebug;
 	[SerializeField] private LineRenderer debugGroundCheck;
 	[SerializeField] private LineRenderer debugMainRay;
 	[SerializeField] private LineRenderer debugOvershoot;
 
+	public bool GetGrounded()
+	{
+		return grounded;
+	}
+
 	private void Update() {
+		if (!updateDebug) return;
+
 		if ((debugGroundCheck.enabled = !grounded)) {
 			debugGroundCheck.SetPosition(0, transform.position + raySourceOffset);
 			debugGroundCheck.SetPosition(1, transform.position + raySourceOffset + direction * regroundHeight);
