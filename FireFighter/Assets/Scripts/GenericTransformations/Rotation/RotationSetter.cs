@@ -8,8 +8,11 @@ public class RotationSetter : MonoBehaviour
     [SerializeField] private GameObject reference;
     [SerializeField] private Vector3 offSet;
 
+    private Vector3 initialEulerAngles;
+
     private void Awake()
     {
+        initialEulerAngles = transform.eulerAngles;
         if (objectToRotate == null) 
         {
             objectToRotate = gameObject;
@@ -62,5 +65,10 @@ public class RotationSetter : MonoBehaviour
     public void SetLocalZ(float value)
     {
         objectToRotate.transform.localEulerAngles = new Vector3(objectToRotate.transform.localEulerAngles.x, objectToRotate.transform.localEulerAngles.y, value);
+    }
+
+    public void SetToInitial()
+    {
+        objectToRotate.transform.eulerAngles = initialEulerAngles;
     }
 }
