@@ -287,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7575072933245372689}
   - component: {fileID: 4709418453886382965}
+  - component: {fileID: 2928870841804205157}
   m_Layer: 0
   m_Name: OnDestroy
   m_TagString: Untagged
@@ -328,6 +329,33 @@ MonoBehaviour:
   onDelete:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2928870841804205157}
+        m_TargetAssemblyTypeName: InvokeAfterBoolComparison, Assembly-CSharp
+        m_MethodName: Compare
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 527403046419839334}
+          m_ObjectArgumentAssemblyTypeName: InvokeAfterCollision, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2928870841804205157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445950328290696626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09601003378a96f43907452d3f753743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 5204779056455533723}
         m_TargetAssemblyTypeName: InvokeAfterCollisionEvents, Assembly-CSharp
         m_MethodName: CallLastCollisionAction
@@ -340,6 +368,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5048887280457497450}
+        m_TargetAssemblyTypeName: ActionGroupGameObjectEvent, Assembly-CSharp
+        m_MethodName: CallActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  comparison: 0
 --- !u!1 &988981432235506739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,7 +2209,7 @@ MonoBehaviour:
   minValueFloatVariable: {fileID: 0}
   targetToAction: 0
   startCurrentValueType: 2
-  CallActionOnSetToMinMax: 0
+  CallActionOnSetToMinMax: 1
 --- !u!1 &7605886833888051078
 GameObject:
   m_ObjectHideFlags: 0

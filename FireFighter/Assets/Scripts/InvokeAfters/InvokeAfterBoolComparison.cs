@@ -33,6 +33,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
         Compare(value.GetIsGrounded());
     }
 
+    public void Compare(InvokeAfterCollision value)
+    {
+        Compare(value.lastCollision != null);
+    }
+
     public void Compare(InvokeAfterSwitch value)
     {
         Compare(value.GetValue());
