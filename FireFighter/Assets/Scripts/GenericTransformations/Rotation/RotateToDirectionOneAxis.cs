@@ -29,6 +29,8 @@ public class RotateToDirectionOneAxis : MonoBehaviour
     private Quaternion target;
     private bool moving;
 
+    [SerializeField] private bool canControl = true;
+
     public Action onStartMove;
     public Action onStopMove;
 
@@ -111,7 +113,7 @@ public class RotateToDirectionOneAxis : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_input == null)
+        if (_input == null || !canControl)
         {
             return;
         }
@@ -159,5 +161,10 @@ public class RotateToDirectionOneAxis : MonoBehaviour
         float rotY = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         target = Quaternion.Euler(transform.localEulerAngles.x, -rotY + offset, transform.localEulerAngles.z);
         value.transform.rotation = target;
+    }
+
+    public void SetCanControl(bool value)
+    {
+        canControl = value;
     }
 }

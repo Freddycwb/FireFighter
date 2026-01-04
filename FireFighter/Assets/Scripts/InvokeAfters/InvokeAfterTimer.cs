@@ -84,6 +84,7 @@ public class InvokeAfterTimer : InvokeAfter
         }
         if (!haveTime)
         {
+            Debug.Log(gameObject.name + "não tem tempo");
             CallSubAction();
             CallAction();
         }

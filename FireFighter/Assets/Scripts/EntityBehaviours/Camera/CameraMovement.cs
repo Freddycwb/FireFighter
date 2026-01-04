@@ -23,6 +23,7 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private GameObject lookDirectionObject;
     private IInputDirection _lookDirection;
+    [SerializeField] private bool canControl = true;
     [SerializeField] private FloatVariable sensitivity;
     [SerializeField] private BoolVariable invertX;
     [SerializeField] private BoolVariable invertY;
@@ -57,7 +58,7 @@ public class CameraMovement : MonoBehaviour
         if (!target || TimeManager.GetIsPaused() || _lookDirection == null) return;
 
         // Updating camera rotation
-        Vector2 scaledLook = _lookDirection.direction * sensitivity.Value;
+        Vector2 scaledLook = canControl ? _lookDirection.direction * sensitivity.Value : Vector2.zero;
         if (invertY.Value)
         {
             scaledLook.x = -scaledLook.x;
@@ -110,5 +111,10 @@ public class CameraMovement : MonoBehaviour
     public void SetInput(GameObject value)
     {
         _lookDirection = value.GetComponent<IInputDirection>();
+    }
+
+    public void SetCanControl(bool value)
+    {
+        canControl = value;
     }
 }

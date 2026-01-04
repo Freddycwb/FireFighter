@@ -57,6 +57,13 @@ public class EntityAction : MonoBehaviour
         if (canControl)
         {
             _doDownAction = true;
+            if (interaction == InteractionType.down)
+            {
+                if (onActionTrigger != null)
+                {
+                    onActionTrigger.Invoke();
+                }
+            }
         }
     }
 
@@ -65,6 +72,13 @@ public class EntityAction : MonoBehaviour
         if (canControl)
         {
             _doHoldAction = true;
+            if (interaction == InteractionType.hold)
+            {
+                if (onActionTrigger != null)
+                {
+                    onActionTrigger.Invoke();
+                }
+            }
         }
     }
 
@@ -73,6 +87,13 @@ public class EntityAction : MonoBehaviour
         if (canControl)
         {
             _doUpAction = true;
+            if (interaction == InteractionType.up)
+            {
+                if (onActionTrigger != null)
+                {
+                    onActionTrigger.Invoke();
+                }
+            }
         }
     }
 

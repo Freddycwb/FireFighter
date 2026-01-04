@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SmoothPositionSetter : MonoBehaviour
 {
+    [SerializeField] private GameObject objToMove;
     [SerializeField] private Vector3 offset;
     [SerializeField] private float smoothTime = 0.25f;
     private Vector3 velocity = Vector3.zero;
@@ -13,10 +14,19 @@ public class SmoothPositionSetter : MonoBehaviour
 
     private void Start()
     {
+        if (objToMove == null)
+        {
+            objToMove = gameObject;
+        }
         if (targetVariable != null && targetVariable.Value != null)
         {
             target = targetVariable.Value.transform;
         }
+    }
+
+    public void SetSmoothTime(float value)
+    {
+        smoothTime = value;
     }
 
     public void SetTarget(Transform value)
@@ -31,6 +41,6 @@ public class SmoothPositionSetter : MonoBehaviour
             return;
         }
         Vector3 targetPosition = target.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        objToMove.transform.position = Vector3.SmoothDamp(objToMove.transform.position, targetPosition, ref velocity, smoothTime);
     }
 }
