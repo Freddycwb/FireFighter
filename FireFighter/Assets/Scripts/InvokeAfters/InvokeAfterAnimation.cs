@@ -28,10 +28,8 @@ public class InvokeAfterAnimation : InvokeAfter
         }
         else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(animationName))
         {
-            Debug.Log("animação tem nome mas não é a esperada");
             return;
         }
-        Debug.Log((animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) + " | " + !_isFinished);
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !_isFinished)
         {
             _isFinished = true;

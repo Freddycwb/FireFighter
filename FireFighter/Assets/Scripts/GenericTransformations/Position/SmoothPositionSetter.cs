@@ -34,6 +34,11 @@ public class SmoothPositionSetter : MonoBehaviour
         target = value;
     }
 
+    public void SetTarget(GameObjectVariable value)
+    {
+        target = value.Value.transform;
+    }
+
     private void FixedUpdate()
     {
         if (target == null)

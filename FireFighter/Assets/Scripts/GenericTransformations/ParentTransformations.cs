@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class ParentTransformations : MonoBehaviour
 {
+    [SerializeField] private Transform objToTransform;
+
+    private void Awake()
+    {
+        if (objToTransform == null)
+        {
+            objToTransform = transform;
+        }
+    }
+
     public void SetParentToNull()
     {
-        transform.SetParent(null);
+        if (objToTransform == null)
+        {
+            objToTransform = transform;
+        }
+        objToTransform.SetParent(null);
     }
     public void SetParentToNull(Transform value)
     {
         value.SetParent(null);
+    }
+
+    public void SetParentToObjectInHolder(GameObjectHolder value)
+    {
+        objToTransform.SetParent(value.GetGameObject().transform);
     }
 
     public void SetLocalPositionToZero()

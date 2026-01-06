@@ -85,6 +85,15 @@ public class ScaleBetweenTwoValues : MonoBehaviour
         timer = value;
     }
 
+    public void SetTimerToNull()
+    {
+        if (timer == null)
+        {
+            return;
+        }
+        timer = null;
+    }
+
     public void SetScale()
     {
         float perc = minCurrentMaxValue.y / (minCurrentMaxValue.z - minCurrentMaxValue.x);

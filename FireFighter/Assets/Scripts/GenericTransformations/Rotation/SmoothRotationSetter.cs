@@ -33,9 +33,14 @@ public class SmoothRotationSetter : MonoBehaviour
         transformTarget = value;
     }
 
+    public void SetTarget(GameObjectVariable value)
+    {
+        transformTarget = value.Value.transform;
+    }
+
     private void Update()
     {
-        Quaternion rot = Quaternion.Slerp(objToRotate.transform.rotation, transformTarget.rotation, rotSpeed * Time.deltaTime);
+        Quaternion rot = Quaternion.Slerp(objToRotate.transform.rotation, Quaternion.Euler(transformTarget.eulerAngles + offset), rotSpeed * Time.deltaTime);
         objToRotate.transform.rotation = rot;
     }
 }

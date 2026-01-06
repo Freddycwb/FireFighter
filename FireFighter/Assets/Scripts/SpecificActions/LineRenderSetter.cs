@@ -6,6 +6,10 @@ public class LineRenderSetter : MonoBehaviour
     private int posIndex = 0;
     public void SetPoint(GameObject value)
     {
+        if(lineRenderer.positionCount <= posIndex)
+        {
+            return;
+        }
         lineRenderer.SetPosition(posIndex, value.transform.position);
         posIndex++;
     }

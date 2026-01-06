@@ -31,6 +31,14 @@ public class PositionSetter : MonoBehaviour
         }
     }
 
+    public void SetPosition(GameObjectHolder value)
+    {
+        if (value != null)
+        {
+            SetPosition(value.GetGameObject());
+        }
+    }
+
     public void SetPosition(GameObjectVariable value)
     {
         if (value != null && value.Value != null)

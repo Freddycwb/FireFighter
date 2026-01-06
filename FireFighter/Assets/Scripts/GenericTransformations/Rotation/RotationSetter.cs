@@ -44,12 +44,18 @@ public class RotationSetter : MonoBehaviour
 
     public void SetRotation(GameObject value)
     {
+        SetInitial();
         objectToRotate.transform.eulerAngles = value.transform.eulerAngles;
     }
 
     public void SetRotation(GameObjectVariable value)
     {
         SetRotation(value.Value);
+    }
+
+    public void SetRotation(GameObjectHolder value)
+    {
+        SetRotation(value.GetGameObject());
     }
 
     public void SetRotationToReference(GameObject value)
