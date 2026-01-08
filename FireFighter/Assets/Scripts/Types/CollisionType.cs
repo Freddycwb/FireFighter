@@ -15,5 +15,6 @@ public abstract class CollisionType : MonoBehaviour
         fire = 16,
         instantDeath = 32,
         puddle = 64,
+        pit = 128,
     }
 }
