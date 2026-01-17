@@ -9,13 +9,23 @@ public class InvokeAfterDistance : InvokeAfter
     [SerializeField] private GameObject target;
     [SerializeField] private GameObjectVariable targetVariable;
     [SerializeField] private float distanceToAction;
-    [SerializeField] private bool doActionOnStart = true;
+    [SerializeField] private bool doActionOnEnable = true;
 
     private Transform originTransform;
     private Transform targetTransform;
     private bool _close;
 
+    private void OnEnable()
+    {
+        InitialCheck();
+    }
+
     private void Start()
+    {
+        InitialCheck();
+    }
+
+    private void InitialCheck()
     {
         if (origin == null)
         {
@@ -25,9 +35,17 @@ public class InvokeAfterDistance : InvokeAfter
         {
             target = targetVariable.Value;
         }
-        SetOrigin(origin);
-        SetTarget(target);
-        if (doActionOnStart)
+
+        if (origin != null)
+        {
+            SetOrigin(origin);
+        }
+        if (target != null)
+        {
+            SetTarget(target);
+        }
+
+        if (doActionOnEnable && origin != null && target != null)
         {
             if (Vector3.Distance(originTransform.position, targetTransform.position) <= distanceToAction)
             {
@@ -64,6 +82,10 @@ public class InvokeAfterDistance : InvokeAfter
 
     private void Update()
     {
+        if (originTransform == null || targetTransform == null)
+        {
+            return;
+        }
         if (Vector3.Distance(originTransform.position, targetTransform.position) <= distanceToAction && !_close)
         {
             _close = true;

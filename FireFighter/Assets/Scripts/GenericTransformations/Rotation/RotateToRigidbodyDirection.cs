@@ -6,12 +6,21 @@ using UnityEngine.Windows;
 
 public class RotateToRigidbodyDirection : MonoBehaviour
 {
+    [SerializeField] private Transform objToRotate;
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float rotateVel;
     [SerializeField] private float offset;
 
     private Quaternion target;
+
+    private void OnEnable()
+    {
+        if (objToRotate == null)
+        {
+            objToRotate = transform;
+        }
+    }
 
     void Update()
     {
@@ -24,6 +33,6 @@ public class RotateToRigidbodyDirection : MonoBehaviour
         {
             return;
         }
-        transform.rotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
+        objToRotate.rotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
     }
 }

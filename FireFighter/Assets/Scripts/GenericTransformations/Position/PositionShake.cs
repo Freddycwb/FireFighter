@@ -116,6 +116,15 @@ public class PositionShake : MonoBehaviour
         objToShake.transform.localPosition = _position + (newOffset * _intensity);
     }
 
+    public void CancelShake()
+    {
+        StopCoroutine(_coroutine);
+        if (backToOriginAtEnd)
+        {
+            objToShake.transform.localPosition = _position;
+        }
+    }
+
     private void OnDestroy()
     {
         if (_coroutine != null)

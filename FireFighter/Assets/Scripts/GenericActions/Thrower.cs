@@ -39,6 +39,11 @@ public class Thrower : MonoBehaviour
         target = value.transform;
     }
 
+    public void SetTarget(GameObjectVariable value)
+    {
+        SetTarget(value.Value);
+    }
+
     public void Throw()
     {
         Throw(throwable, target.position, addForce);

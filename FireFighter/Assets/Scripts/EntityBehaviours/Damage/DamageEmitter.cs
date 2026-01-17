@@ -44,6 +44,16 @@ public class DamageEmitter : MonoBehaviour
         return knockbackForce;
     }
 
+    public void SetDamageType(CollisionType.Types value)
+    {
+        damageType = value;
+    }
+
+    public void SetDamageType(int value)
+    {
+        damageType = (CollisionType.Types)value;
+    }
+
     public void SetDamageValue(float value)
     {
         damageValue = value;

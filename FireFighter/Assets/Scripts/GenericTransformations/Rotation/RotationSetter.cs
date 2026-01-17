@@ -82,6 +82,12 @@ public class RotationSetter : MonoBehaviour
         objectToRotate.transform.localEulerAngles = Vector3.zero;
     }
 
+    public void SetX(float value)
+    {
+        SetInitial();
+        objectToRotate.transform.eulerAngles = new Vector3(value, objectToRotate.transform.eulerAngles.y, objectToRotate.transform.eulerAngles.z);
+    }
+
     public void SetLocalX(float value)
     {
         SetInitial();

@@ -19,6 +19,8 @@ public class PoolInstantiator : MonoBehaviour
 
     public Action<GameObject> onObjCreated;
 
+    private GameObject lastGameObject;
+
     private void Start()
     {
         newPosition.x = float.PositiveInfinity;
@@ -107,6 +109,8 @@ public class PoolInstantiator : MonoBehaviour
         {
             onObjCreated.Invoke(a);
         }
+
+        lastGameObject = a;
 
         newPosition.x = float.PositiveInfinity;
         newRotation.x = float.PositiveInfinity;

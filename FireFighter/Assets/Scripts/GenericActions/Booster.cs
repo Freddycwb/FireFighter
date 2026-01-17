@@ -11,6 +11,7 @@ public class Booster : MonoBehaviour
     [SerializeField] private float maxSpeed = float.PositiveInfinity;
 
     [SerializeField] private GameObject target;
+    private Vector3 targetPos;
     [SerializeField] private bool active = true;
     [SerializeField] private float lastVelocity;
 
@@ -55,7 +56,11 @@ public class Booster : MonoBehaviour
     {
         if (active)
         {
-            Vector3 dir = (target.transform.position - transform.position).normalized;
+            if (target != null)
+            {
+                targetPos = target.transform.position;
+            }
+            Vector3 dir = (targetPos - transform.position).normalized;
             float velocity = Vector3.Dot(dir, rb.linearVelocity);
             lastVelocity = velocity;
             if (velocity >= maxSpeed)
