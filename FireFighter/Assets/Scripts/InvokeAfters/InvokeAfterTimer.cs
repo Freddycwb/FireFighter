@@ -19,9 +19,9 @@ public class InvokeAfterTimer : InvokeAfter
     [SerializeField] private bool overrideLastTimer = true;
     [SerializeField] private bool useUnscaledTime;
 
-    private float _currentTimeToAction;
+    [ReadOnly][SerializeField] private float _currentTimeToAction;
     private bool _isPaused;
-    private float _currentTimePass;
+    [ReadOnly][SerializeField] private float _currentTimePass;
 
     private Coroutine coroutine;
 
@@ -84,7 +84,6 @@ public class InvokeAfterTimer : InvokeAfter
         }
         if (!haveTime)
         {
-            Debug.Log(gameObject.name + "não tem tempo");
             CallSubAction();
             CallAction();
         }
@@ -158,6 +157,11 @@ public class InvokeAfterTimer : InvokeAfter
         timeToAction = time;
     }
 
+    public void AddTimeToAction(float time)
+    {
+        timeToAction += time;
+    }
+
     public void SetTimeToAction(DamageChecker time)
     {
         SetTimeToAction(time.GetLastDamage());
@@ -166,6 +170,16 @@ public class InvokeAfterTimer : InvokeAfter
     public void SetTimeToAction(AnimationCurveValue time)
     {
         SetTimeToAction(time.GetValueByCounter());
+    }
+
+    public void SetTimeToActionByTimerTimeToAction(InvokeAfterTimer time)
+    {
+        SetTimeToAction(time.GetTimeToAction());
+    }
+
+    public void AddTimeToActionByTimerTimeToAction(InvokeAfterTimer time)
+    {
+        AddTimeToAction(time.GetTimeToAction());
     }
 
     public void CancelTimer()

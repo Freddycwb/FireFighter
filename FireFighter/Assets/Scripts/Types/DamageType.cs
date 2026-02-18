@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CollisionType : MonoBehaviour
+public abstract class DamageType : MonoBehaviour
 {
     [System.Flags]
     public enum Types
@@ -15,6 +15,6 @@ public abstract class CollisionType : MonoBehaviour
         fire = 16,
         instantDeath = 32,
         puddle = 64,
-        pit = 128,
+        pit = 128
     }
 }

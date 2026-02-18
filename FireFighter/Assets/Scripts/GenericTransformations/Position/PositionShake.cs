@@ -22,10 +22,10 @@ public class PositionShake : MonoBehaviour
 
     private Coroutine _coroutine;
     private float _time;
-    private float _lastFullTime;
+    [ReadOnly] [SerializeField] private float _lastFullTime;
     private float _intensity;
-    private float _lastFullIntensity;
-    private float _delayBetweenShake;
+    [ReadOnly][SerializeField] private float _lastFullIntensity;
+    [ReadOnly][SerializeField] private float _delayBetweenShake;
     private Vector3 _position;
 
     private InvokeAfterCounter _counter;
@@ -118,7 +118,10 @@ public class PositionShake : MonoBehaviour
 
     public void CancelShake()
     {
-        StopCoroutine(_coroutine);
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
         if (backToOriginAtEnd)
         {
             objToShake.transform.localPosition = _position;

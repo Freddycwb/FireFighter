@@ -23,9 +23,19 @@ public class PositionShakeCaller : MonoBehaviour
         positionShake.CallShake(new Vector3(time * timeMultiplier, intensity * intensityMultiplier, delayBetweenShake * delayBetweenShakeMultiplier));
     }
 
-    public void SetTime(InvokeAfterTimer value)
+    public void SetTimeByTimerCurrentTimeToAction(InvokeAfterTimer value)
     {
         time = value.GetCurrentTimeToAction();
+    }
+
+    public void SetTimeByTimerTimeToAction(InvokeAfterTimer value)
+    {
+        time = value.GetTimeToAction();
+    }
+
+    public void AddTimeByTimerTimeToAction(InvokeAfterTimer value)
+    {
+        time += value.GetTimeToAction();
     }
 
     public void SetIntensityMultiplier(float value)

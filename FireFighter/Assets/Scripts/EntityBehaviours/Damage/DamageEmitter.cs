@@ -5,13 +5,14 @@ using System;
 
 public class DamageEmitter : MonoBehaviour
 {
-    [SerializeField] private CollisionType.Types damageType;
+    [SerializeField] private DamageType.Types damageType;
     [SerializeField] private float damageValue = 1;
     [SerializeField] private FloatVariable damageValueVariable;
     [SerializeField] private Vector2 knockbackForce;
     [SerializeField] private Vector2Variable knockbackForceVariable;
 
-    public Action onEmitDamage;
+    private SpecialDamageEventType.Types _lastSpecialDamageEventType = SpecialDamageEventType.Types.None;
+    public Action<SpecialDamageEventType.Types> onEmitDamage;
 
     private void Start()
     {
@@ -25,16 +26,22 @@ public class DamageEmitter : MonoBehaviour
         }
     }
 
-    public CollisionType.Types GetDamageType()
+    public DamageType.Types GetDamageType()
     {
         return damageType;
     }
 
-    public float GetDamageValue(bool value)
+    public SpecialDamageEventType.Types GetLastSpecialDamageEventType()
     {
-        if (onEmitDamage != null && value)
+        return _lastSpecialDamageEventType;
+    }
+
+    public float GetDamageValue(bool alertEmitter, SpecialDamageEventType.Types specialDamageEventType)
+    {
+        _lastSpecialDamageEventType = specialDamageEventType;
+        if (onEmitDamage != null && alertEmitter)
         {
-            onEmitDamage.Invoke();
+            onEmitDamage.Invoke(specialDamageEventType);
         }
         return damageValue;
     }
@@ -44,14 +51,14 @@ public class DamageEmitter : MonoBehaviour
         return knockbackForce;
     }
 
-    public void SetDamageType(CollisionType.Types value)
+    public void SetDamageType(DamageType.Types value)
     {
         damageType = value;
     }
 
     public void SetDamageType(int value)
     {
-        damageType = (CollisionType.Types)value;
+        damageType = (DamageType.Types)value;
     }
 
     public void SetDamageValue(float value)

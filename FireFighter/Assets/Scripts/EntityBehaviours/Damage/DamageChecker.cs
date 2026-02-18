@@ -7,10 +7,11 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class DamageChecker : MonoBehaviour
 {
-    [SerializeField] private CollisionType.Types damageType;
+    [SerializeField] private DamageType.Types damageType;
 
     [SerializeField] private UnityEvent<float> takeDamage;
 
+    [SerializeField] private SpecialDamageEventType.Types specialDamageEventType;
     [SerializeField] private bool alertEmitter = true;
     [SerializeField] private bool ignoreEmitterDisable;
 
@@ -67,7 +68,7 @@ public class DamageChecker : MonoBehaviour
         }
         if ((emitter.GetDamageType() & damageType) != 0)
         {
-            lastDamage = emitter.GetDamageValue(alertEmitter);
+            lastDamage = emitter.GetDamageValue(alertEmitter, specialDamageEventType);
             lastKnockbackForce = emitter.GetKnockbackForceValue();
             if (onTakeDamage != null)
             {
