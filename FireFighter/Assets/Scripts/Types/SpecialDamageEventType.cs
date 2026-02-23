@@ -10,6 +10,7 @@ public abstract class SpecialDamageEventType : MonoBehaviour
         None = 0,
         noKnockback = 1,
         gainHealStock = 2,
-        restoreWater = 4
+        restoreWater = 4,
+        indestructible = 8
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 762612698730293258}
   - component: {fileID: 1774471426350932793}
   m_Layer: 0
-  m_Name: VFXAxeAttackImpact
+  m_Name: VFXAxeAttackHitImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
+  useWaitUntilEndOfFrame: 0
 --- !u!2083052967 &1988934468081877719
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -87,7 +88,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 1.2
+        m_Name: Size
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -126,6 +130,9 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:

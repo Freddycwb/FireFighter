@@ -7,7 +7,7 @@ public class DamageEmitterEvents : MonoBehaviour
 {
     [SerializeField] private DamageEmitter damageEmitter;
     [SerializeField] private SpecialDamageEventType.Types specialDamageEventType;
-    [SerializeField] private bool ignoreSpecialDamageEventType;
+    [SerializeField] private bool ignoreSpecialType = true;
 
     [SerializeField] private UnityEvent onEmitDamage;
 
@@ -27,7 +27,7 @@ public class DamageEmitterEvents : MonoBehaviour
         if (enabled)
         {
             bool contain = (value & specialDamageEventType) != 0;
-            if ((contain && !ignoreSpecialDamageEventType) || (!contain && ignoreSpecialDamageEventType))
+            if ((contain && !ignoreSpecialType) || (!contain && ignoreSpecialType))
             {
                 onEmitDamage.Invoke();
             }
