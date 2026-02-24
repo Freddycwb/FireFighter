@@ -1400,7 +1400,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7643955257283168138}
   m_Father: {fileID: 366453912777527422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9085151245212162311
@@ -1749,6 +1750,93 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.65
   m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!1 &5280444884391524696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7643955257283168138}
+  - component: {fileID: 194515641802883087}
+  m_Layer: 0
+  m_Name: CheckStartOnFire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7643955257283168138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280444884391524696}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8585882540910177236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194515641802883087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280444884391524696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 7495714127597987525}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5037656505942089594}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6707702361399678180}
+        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
+        m_MethodName: CancelTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5037656505942089594}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &5308413028090300736
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,7 +4718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4552369109567215895, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.092316
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4552369109567215895, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4638,7 +4726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4552369109567215895, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5714648
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4552369109567215895, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5197,6 +5285,17 @@ GameObject:
 --- !u!114 &6886060961763418589 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 873036080751854966, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+  m_PrefabInstance: {fileID: 6020633501752599723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54e93a655f4fdc4ba5a8a5f12d4b2ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7495714127597987525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4290723239427916398, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
   m_PrefabInstance: {fileID: 6020633501752599723}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
