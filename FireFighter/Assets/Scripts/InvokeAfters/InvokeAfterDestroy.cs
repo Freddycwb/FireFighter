@@ -44,6 +44,7 @@ public class InvokeAfterDestroy : InvokeAfter
 
     public void CallRefresh()
     {
+        int previousLength = objs.Count;
         for (int i = objs.Count - 1; i >= 0; i--) 
         {
             if (objs[i] == null)

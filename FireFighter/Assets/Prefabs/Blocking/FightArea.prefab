@@ -79,6 +79,7 @@ MonoBehaviour:
   tags:
   - Player
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: 1
 --- !u!114 &3327866360836215144
 MonoBehaviour:
@@ -113,6 +114,7 @@ MonoBehaviour:
   tags:
   - Enemy
   ignoreTags: 0
+  listenLeaveActions: 0
   collisionTypes: 1
 --- !u!65 &9118232022681432973
 BoxCollider:
@@ -145,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1873894069341398362}
   - component: {fileID: 4035242780102336696}
+  - component: {fileID: 5884036297533847480}
   m_Layer: 0
   m_Name: BlockNewEnemies
   m_TagString: Untagged
@@ -182,9 +185,9 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7314438430484807657}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 8620968676172708782}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -202,6 +205,39 @@ MonoBehaviour:
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
+--- !u!114 &5884036297533847480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908670357713182261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed8d3d5b955dad4eb221c350525a52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+  subAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4035242780102336696}
+        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
+        m_MethodName: CallAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  activeInHierarchy: 0
 --- !u!1 &4042337395909651489
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +404,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!114 &8891186681438653589
 MonoBehaviour:
   m_ObjectHideFlags: 0

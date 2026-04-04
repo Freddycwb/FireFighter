@@ -117,4 +117,9 @@ public class CameraMovement : MonoBehaviour
     {
         canControl = value;
     }
+
+    public void SetOrbitRotation(Vector3 value)
+    {
+        _orbitRotation = value;
+    }
 }

@@ -20,6 +20,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     private Vector3 _navMeshTarget;
     private Vector3 _lastDir;
     private NavMeshPath _path;
+    private bool _starterVariablesSetted;
 
     private bool _reachTarget = true;
     private bool _canReachTarget = true;
@@ -36,16 +37,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     private void Start()
     {
-        _path = new NavMeshPath();
-        if (targetVariable != null)
-        {
-            target = targetVariable.Value.transform;
-        }
-        if (!_defaultIgnoreCanReachSetted)
-        {
-            _defaultIgnoreCanReach = ignoreCanReach;
-            _defaultIgnoreCanReachSetted = true;
-        }
+        SetStarterVariables();
     }
 
     public void SetTarget(GameObject value)
@@ -100,6 +92,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     public void CalculateDirection()
     {
+        SetStarterVariables();
         Vector3 dir = Vector3.zero;
         if (target == null || _path == null)
         {
@@ -164,8 +157,25 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         }
     }
 
+    private void SetStarterVariables()
+    {
+        if (_starterVariablesSetted) return;
+        _path = new NavMeshPath();
+        if (targetVariable != null)
+        {
+            target = targetVariable.Value.transform;
+        }
+        if (!_defaultIgnoreCanReachSetted)
+        {
+            _defaultIgnoreCanReach = ignoreCanReach;
+            _defaultIgnoreCanReachSetted = true;
+        }
+        _starterVariablesSetted = true;
+    }
+
     public void CheckIfReachTarget()
     {
+        SetStarterVariables();
         if (Vector3.Distance(transform.position, _navMeshTarget) > distToReach && CheckIfCanReachTarget())
         {
             if (_reachTarget)
@@ -192,16 +202,25 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     public bool CheckIfCanReachTarget()
     {
+        SetStarterVariables();
         float minDist = _reachTarget ? distToReach : 0;
 
         Vector3 closestPos;
         if (!Pathfinder.GetNavMeshClosestPos(target.position + new Vector3(offSet.x, 0, offSet.y), out closestPos)) return false;
-
+        if (closestPos == null)
+        {
+            Debug.Log(closestPos);
+        }
+        if (_path == null)
+        {
+            Debug.Log(_path);
+        }
         return Pathfinder.CanReachTarget(transform.position, closestPos, _path, minDist, maxDist);
     }
 
     public bool CheckIfIsInNavMeshArea()
     {
+        SetStarterVariables();
         return Pathfinder.CanReachTarget(transform.position, transform.position, _path, float.NegativeInfinity, float.PositiveInfinity);
     }
 }

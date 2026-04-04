@@ -5,13 +5,21 @@ using UnityEngine;
 public class PositionSetter : MonoBehaviour
 {
     [SerializeField] private Transform objToSetPos;
+    [SerializeField] private GameObjectVariable objToSetPosVariable;
     [SerializeField] private Vector3 offset;
 
     private void OnEnable()
     {
         if (objToSetPos == null)
         {
-            objToSetPos = gameObject.transform;
+            if (objToSetPosVariable != null)
+            {
+                objToSetPos = objToSetPosVariable.Value.transform;
+            }
+            else
+            {
+                objToSetPos = gameObject.transform;
+            }
         }
     }
 

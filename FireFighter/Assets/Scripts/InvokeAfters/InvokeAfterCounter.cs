@@ -55,16 +55,19 @@ public class InvokeAfterCounter : InvokeAfter
     [SerializeField] private actionValueType targetToAction = actionValueType.Min;
     [SerializeField] private startValueType startCurrentValueType = startValueType.Max;
 
+    [SerializeField] private bool isEnabling;
     [SerializeField] private bool CallActionOnSetToMinMax;
 
     public Action onModifyValue;
 
     private void OnEnable()
     {
+        isEnabling = true;
         SetMaxValue();
         SetMinValue();
         SetStartCurrentValue();
         SetCurrentValueVariable();
+        isEnabling = false;
     }
 
     private void SetStartCurrentValue()
@@ -193,7 +196,10 @@ public class InvokeAfterCounter : InvokeAfter
         {
             CheckAction();
         }
-        CallSubAction();
+        if (!isEnabling)
+        {
+            CallSubAction();
+        }
     }
 
     public void SetCurrentValueToMin()
@@ -203,7 +209,10 @@ public class InvokeAfterCounter : InvokeAfter
         {
             CheckAction();
         }
-        CallSubAction();
+        if (!isEnabling)
+        {
+            CallSubAction();
+        }
     }
 
     private void CheckAction()

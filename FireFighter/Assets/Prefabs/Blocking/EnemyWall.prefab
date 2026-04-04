@@ -1941,6 +1941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679f6078f572efe4487ac10e8328a1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objToTransform: {fileID: 0}
 --- !u!114 &6534722686069585327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1956,6 +1957,37 @@ MonoBehaviour:
   obj: {fileID: 2061992640119771817}
   delay: 0.5
   onEnable: 0
+--- !u!1 &2453815284375783557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125701424224426533}
+  m_Layer: 0
+  m_Name: Blocking
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2125701424224426533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453815284375783557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5534785052192086210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2496883394409959948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,6 +1998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5534785052192086210}
   - component: {fileID: 2849942911575921141}
+  - component: {fileID: 4473580288232639261}
   - component: {fileID: 3845728505651041356}
   m_Layer: 0
   m_Name: EnemyWall
@@ -1990,6 +2023,7 @@ Transform:
   - {fileID: 6718385529524133344}
   - {fileID: 7540003384276953246}
   - {fileID: 2393520730948370634}
+  - {fileID: 2125701424224426533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2849942911575921141
@@ -2006,8 +2040,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2453815284375783557}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   subAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4473580288232639261}
+        m_TargetAssemblyTypeName: InvokeAfterBoolComparison, Assembly-CSharp
+        m_MethodName: Compare
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2453815284375783557}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4473580288232639261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496883394409959948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09601003378a96f43907452d3f753743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3845728505651041356}
@@ -2022,6 +2095,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  comparison: 0
 --- !u!114 &3845728505651041356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5020,3 +5097,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679f6078f572efe4487ac10e8328a1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objToTransform: {fileID: 0}
