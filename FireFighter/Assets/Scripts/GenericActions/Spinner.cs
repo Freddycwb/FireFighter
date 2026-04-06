@@ -17,28 +17,6 @@ public class Spinner : MonoBehaviour
     [SerializeField] private float valueAdjuster;
     [SerializeField] private OperatorType.Type valueAdjustType;
 
-    private void Start()
-    {
-        spinnable.maxAngularVelocity = Mathf.Max(Mathf.Abs(force.x), Mathf.Abs(force.y));
-
-        switch (valueAdjustType)
-        {
-            case OperatorType.Type.add:
-                spinnable.maxAngularVelocity += valueAdjuster;
-                break;
-            case OperatorType.Type.subtract:
-                spinnable.maxAngularVelocity -= valueAdjuster;
-                break;
-            case OperatorType.Type.divide:
-                spinnable.maxAngularVelocity /= valueAdjuster;
-                break;
-            case OperatorType.Type.multiply:
-                spinnable.maxAngularVelocity *= valueAdjuster;
-                break;
-            default: break;
-        }
-    }
-
     public void SetTarget(GameObject value)
     {
         target = value.transform;
@@ -105,7 +83,6 @@ public class Spinner : MonoBehaviour
             default:
                 break;
         }
-
         rb.AddTorque(dirToObject * spinForce, ForceMode.Impulse);
     }
 
@@ -116,11 +93,35 @@ public class Spinner : MonoBehaviour
 
     public void SetForce(DamageChecker value)
     {
-        force = -value.GetLastKnockbackForce();
+        force = value.GetLastKnockbackForce();
+        SetMaxAngularVelocity(force);
     }
 
     public void SetForceX(float value)
     {
         force.x = value;
+        SetMaxAngularVelocity(force);
+    }
+
+    private void SetMaxAngularVelocity(Vector2 value)
+    {
+        spinnable.maxAngularVelocity = Mathf.Max(Mathf.Abs(value.x), Mathf.Abs(value.y));
+
+        switch (valueAdjustType)
+        {
+            case OperatorType.Type.add:
+                spinnable.maxAngularVelocity += valueAdjuster;
+                break;
+            case OperatorType.Type.subtract:
+                spinnable.maxAngularVelocity -= valueAdjuster;
+                break;
+            case OperatorType.Type.divide:
+                spinnable.maxAngularVelocity /= valueAdjuster;
+                break;
+            case OperatorType.Type.multiply:
+                spinnable.maxAngularVelocity *= valueAdjuster;
+                break;
+            default: break;
+        }
     }
 }

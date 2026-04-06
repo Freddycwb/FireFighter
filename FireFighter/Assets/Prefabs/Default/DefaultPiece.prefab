@@ -330,6 +330,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  specialDamageEventType: 0
   alertEmitter: 0
   ignoreEmitterDisable: 0
 --- !u!114 &8307860388957467680
@@ -391,6 +392,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &1376629720461770292
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +773,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!114 &7221365335827158016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,6 +919,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!114 &1883001737748449920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,6 +1892,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &4302700562197773978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,6 +1942,7 @@ MonoBehaviour:
   takeDamage:
     m_PersistentCalls:
       m_Calls: []
+  specialDamageEventType: 0
   alertEmitter: 1
   ignoreEmitterDisable: 0
 --- !u!1 &4447498721598922153
@@ -2339,6 +2349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToSetPos: {fileID: 1022281470769857666}
+  objToSetPosVariable: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &8791490395817913833
 MonoBehaviour:
@@ -3266,6 +3277,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   backToOriginAtEnd: 0
   sourceType: 2
+  _lastFullTime: 0
+  _lastFullIntensity: 0
+  _delayBetweenShake: 0
 --- !u!114 &4737233074818116296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3538,7 +3552,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7494382663580745524}
-  m_Mesh: {fileID: 4300000, guid: b943b34952409fa45beac47864f29bf0, type: 2}
+  m_Mesh: {fileID: -3710644321688538134, guid: d2339eae9e37df14d8deea232b5979a4, type: 3}
 --- !u!23 &3919616929294920282
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3562,7 +3576,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c0f98cb1f8eb6846b8ca38b7f77f287, type: 2}
+  - {fileID: 2100000, guid: c46930b9e7458ec4dbd3b7040be59fa9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3605,7 +3619,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b943b34952409fa45beac47864f29bf0, type: 2}
+  m_Mesh: {fileID: -3710644321688538134, guid: d2339eae9e37df14d8deea232b5979a4, type: 3}
 --- !u!1 &8181207933672063332
 GameObject:
   m_ObjectHideFlags: 0
@@ -4044,6 +4058,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &8979794612022030757
 GameObject:
   m_ObjectHideFlags: 0

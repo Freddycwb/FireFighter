@@ -14,7 +14,7 @@ public class DamageEmitter : MonoBehaviour
     private SpecialDamageEventType.Types _lastSpecialDamageEventType = SpecialDamageEventType.Types.None;
     public Action<SpecialDamageEventType.Types> onEmitDamage;
 
-    private void Start()
+    private void OnEnable()
     {
         if (damageValueVariable != null)
         {
