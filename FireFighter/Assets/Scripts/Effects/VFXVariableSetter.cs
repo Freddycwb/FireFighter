@@ -82,6 +82,13 @@ public class VFXVariableSetter : MonoBehaviour
 
 
 
+    public void SetVector3ByNormalizedDirection(GameObject value)
+    {
+        Vector3 dir = (value.transform.position - transform.position).normalized;
+        vfx.SetVector3(variableID, dir);
+    }
+
+
 
     public void SetVector3X(float value)
     {
@@ -113,6 +120,13 @@ public class VFXVariableSetter : MonoBehaviour
             return;
         }
         vfx.SetVector3(variableID, new Vector3(value.bounds.size.x, vfx.GetVector3(variableID).y, vfx.GetVector3(variableID).z));
+    }
+
+    public void SetVector3XByNormalizedDirection(GameObject value)
+    {
+
+        Vector3 dir = (value.transform.position - transform.position).normalized;
+        vfx.SetVector3(variableID, new Vector3(dir.x, vfx.GetVector3(variableID).y, vfx.GetVector3(variableID).z));
     }
 
 
@@ -149,6 +163,12 @@ public class VFXVariableSetter : MonoBehaviour
         vfx.SetVector3(variableID, new Vector3(vfx.GetVector3(variableID).x, value.bounds.size.y, vfx.GetVector3(variableID).z));
     }
 
+    public void SetVector3YByNormalizedDirection(GameObject value)
+    {
+        Vector3 dir = (value.transform.position - transform.position).normalized;
+        vfx.SetVector3(variableID, new Vector3(vfx.GetVector3(variableID).x, dir.y, vfx.GetVector3(variableID).z));
+    }
+
 
 
     public void SetVector3Z(float value)
@@ -181,5 +201,11 @@ public class VFXVariableSetter : MonoBehaviour
             return;
         }
         vfx.SetVector3(variableID, new Vector3(vfx.GetVector3(variableID).x, vfx.GetVector3(variableID).y, value.bounds.size.z));
+    }
+
+    public void SetVector3ZByNormalizedDirection(GameObject value)
+    {
+        Vector3 dir = (value.transform.position - transform.position).normalized;
+        vfx.SetVector3(variableID, new Vector3(vfx.GetVector3(variableID).x, vfx.GetVector3(variableID).y, dir.z));
     }
 }

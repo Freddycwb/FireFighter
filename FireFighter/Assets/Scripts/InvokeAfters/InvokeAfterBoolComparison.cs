@@ -45,7 +45,7 @@ public class InvokeAfterBoolComparison : InvokeAfter
 
     public void Compare(GameObject value)
     {
-        Compare(value.activeSelf);
+        Compare(value.activeInHierarchy);
     }
 
     public void Compare(BoolVariable value)

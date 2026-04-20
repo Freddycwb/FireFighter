@@ -78,7 +78,11 @@ public class DamageEmitter : MonoBehaviour
 
     public void SetKnockbackForceValue(Vector2Variable value)
     {
-        knockbackForce = value.Value;
+        knockbackForceVariable = value;
+        if (knockbackForceVariable != null)
+        {
+            knockbackForce = knockbackForceVariable.Value;
+        }
     }
 
     public void GiveDamageFromCollision(GameObject value)

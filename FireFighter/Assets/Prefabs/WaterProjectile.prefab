@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679f6078f572efe4487ac10e8328a1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objToTransform: {fileID: 0}
 --- !u!114 &5174362828125242763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,8 +278,8 @@ MonoBehaviour:
       Data4: 1840944197
     Path: event:/WaterSplash
   Event: 
-  PlayEvent: 0
-  StopEvent: 0
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -369,6 +370,7 @@ MonoBehaviour:
   minValueFloatVariable: {fileID: 0}
   targetToAction: 0
   startCurrentValueType: 2
+  isEnabling: 0
   CallActionOnSetToMinMax: 0
 --- !u!1 &1548163159105019334
 GameObject:
@@ -449,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25667e32113513d43941128d97a5f1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objToRotate: {fileID: 0}
   rb: {fileID: 2607029185726365039}
   rotateVel: 5
   offset: 90
@@ -590,6 +593,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  specialDamageEventType: 0
   alertEmitter: 0
   ignoreEmitterDisable: 0
 --- !u!114 &5312227975743713269
@@ -725,6 +729,8 @@ MonoBehaviour:
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &2919017686598714613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,8 +1046,8 @@ MonoBehaviour:
       Data4: 579022476
     Path: event:/WaterEvaporate
   Event: 
-  PlayEvent: 0
-  StopEvent: 0
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -1254,10 +1260,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4299623257735981432}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1337,10 +1343,13 @@ MonoBehaviour:
   gravityScale: -8
   maxSpeedUp: Infinity
   maxSpeedDown: -Infinity
+  setIsGroundedOnUpdate: 0
   groundCheckRadius: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  hover: {fileID: 0}
+  collidersToIgnore: []
 --- !u!1 &4602295656167322922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1428,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.15
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4702926247653943827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679f6078f572efe4487ac10e8328a1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objToTransform: {fileID: 0}
 --- !u!114 &4468868920105885501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1803,6 +1813,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 0
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &5516539451295870496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,6 +2185,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  specialDamageEventType: 0
   alertEmitter: 1
   ignoreEmitterDisable: 0
 --- !u!1 &6862615684350441022
@@ -2622,7 +2635,7 @@ Transform:
   m_GameObject: {fileID: 7585864872934976443}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2673,7 +2686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instancesOnStart: 1
   obj: {fileID: 8976785142270247748, guid: 1adb41db0b4117f4ba87a455ee768e78, type: 3}
-  spawnPoint: {fileID: 5935254136164504789}
+  spawnPoint: {fileID: 8911034914033195462}
   parent: {fileID: 0}
   positionOffset: {x: 0, y: 0, z: 0}
   destroySurplus: 0

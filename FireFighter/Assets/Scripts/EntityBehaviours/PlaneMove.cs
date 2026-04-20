@@ -109,4 +109,13 @@ public class PlaneMove : MonoBehaviour
             _lastDir = dir.normalized;
         }
     }
+
+    private void OnDisable()
+    {
+        if (onStopMove != null)
+        {
+            onStopMove.Invoke();
+        }
+        _moving = false;
+    }
 }

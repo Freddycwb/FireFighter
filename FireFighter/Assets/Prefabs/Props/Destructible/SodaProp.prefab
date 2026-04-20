@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8617637969791667535}
+  - component: {fileID: 8433605885511231068}
   - component: {fileID: 3118713125120647169}
   - component: {fileID: 8972623943276994693}
   m_Layer: 0
@@ -33,6 +34,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7642135619077153119}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8433605885511231068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836855928113360308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafd90314ad9ca3458646c7790f8084f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfx: {fileID: 8972623943276994693}
+  variableID: Direction
 --- !u!73398921 &3118713125120647169
 VFXRenderer:
   serializedVersion: 1
@@ -98,9 +113,18 @@ VisualEffect:
         m_Name: Force
         m_Overridden: 1
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: -4, y: -8}
+        m_Name: DirForce
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 0.9}
+        m_Name: Lifetime
+        m_Overridden: 1
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0, y: -0.2, z: 0}
+        m_Name: Direction
+        m_Overridden: 1
     m_Vector4f:
       m_Array:
       - m_Value: {x: 0.824, y: 0.2594074, z: 0, w: 0}
@@ -110,7 +134,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 25
+      - m_Value: 33
         m_Name: Count
         m_Overridden: 1
     m_Matrix4x4f:
@@ -165,6 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7642135619077153119}
   - component: {fileID: 3653744130830684289}
+  - component: {fileID: 2840505026477668148}
   - component: {fileID: 2471577454587112790}
   - component: {fileID: 1038588000057550}
   m_Layer: 0
@@ -207,30 +232,6 @@ MonoBehaviour:
   onActionCall:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 396947637952494850}
-        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8972623943276994693}
-        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2471577454587112790}
         m_TargetAssemblyTypeName: ParentTransformations, Assembly-CSharp
         m_MethodName: SetParentToNull
@@ -255,7 +256,119 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2840505026477668148}
+        m_TargetAssemblyTypeName: InvokeAfterCollisionEvents, Assembly-CSharp
+        m_MethodName: CallLastCollisionAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2840505026477668148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056444301278022192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c906fe4836f9b41a2d808abdb330c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfterCollision: {fileID: 1915941350761224913}
+  onImpact:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeave:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastCollisionAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2131000955323871216}
+        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
+        m_MethodName: SetVector3XByNormalizedDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2131000955323871216}
+        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
+        m_MethodName: SetVector3ZByNormalizedDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8433605885511231068}
+        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
+        m_MethodName: SetVector3XByNormalizedDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8433605885511231068}
+        m_TargetAssemblyTypeName: VFXVariableSetter, Assembly-CSharp
+        m_MethodName: SetVector3ZByNormalizedDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 396947637952494850}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8972623943276994693}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCallGetLastCollisionPoint:
+    m_PersistentCalls:
+      m_Calls: []
+  onCallLastRigidbodyAction:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2471577454587112790
@@ -295,6 +408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7595372811665863551}
+  - component: {fileID: 2131000955323871216}
   - component: {fileID: 5501633419357496762}
   - component: {fileID: 396947637952494850}
   m_Layer: 0
@@ -319,6 +433,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7642135619077153119}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2131000955323871216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391599394318368341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafd90314ad9ca3458646c7790f8084f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfx: {fileID: 396947637952494850}
+  variableID: Direction
 --- !u!73398921 &5501633419357496762
 VFXRenderer:
   serializedVersion: 1
@@ -384,9 +512,18 @@ VisualEffect:
         m_Name: Force
         m_Overridden: 1
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: -5, y: -11}
+        m_Name: DirForce
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 0.9}
+        m_Name: Lifetime
+        m_Overridden: 1
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0, y: -0.15, z: 0}
+        m_Name: Direction
+        m_Overridden: 1
     m_Vector4f:
       m_Array:
       - m_Value: {x: 0.824, y: 0.2594074, z: 0, w: 0}
@@ -396,7 +533,7 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 16
+      - m_Value: 21
         m_Name: Count
         m_Overridden: 1
     m_Matrix4x4f:
@@ -417,6 +554,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 659674632622773587, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: valueAdjuster
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 659674632622773587, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: targetOffset.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 659674632622773587, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: valueAdjustType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1355227891719939018, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -463,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1558804653401157037, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: valueAdjuster
-      value: 1.65
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1558804653401157037, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: valueAdjustType
@@ -473,9 +622,17 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1606996404801566785, guid: e2ba193e1be547f42a86491558001dd4, type: 3}
+    - target: {fileID: 2430122342519080480, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: valueAdjuster
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430122342519080480, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: valueAdjustType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3094024737184483161, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_Size.x
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3094024737184483161, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_Size.y
@@ -483,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3094024737184483161, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_Size.z
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3094024737184483161, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_Center.y
@@ -523,11 +680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7732853517189132037, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: m_Mass
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8180829589414092840, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: valueAdjuster
-      value: 3.75
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8180829589414092840, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       propertyPath: valueAdjustType
@@ -537,14 +694,60 @@ PrefabInstance:
       propertyPath: m_Name
       value: SodaProp
       objectReference: {fileID: 0}
+    - target: {fileID: 8595061171776709185, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8411740540421496181, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7874678254547601708}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1899410003000162902, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1391522705542851430}
   m_SourcePrefab: {fileID: 100100000, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+--- !u!1 &548158853417474529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1899410003000162902, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+  m_PrefabInstance: {fileID: 2145820942239720375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1391522705542851430
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548158853417474529}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &1915941350761224913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 527403046419839334, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}
+  m_PrefabInstance: {fileID: 2145820942239720375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1811fba130e0f41ab91b7e11981b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5650664187049112674 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6029279645405255637, guid: 68e3c495e3e27f2459cc7a58ebb00201, type: 3}

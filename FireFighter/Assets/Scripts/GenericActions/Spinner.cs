@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Spinner : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class Spinner : MonoBehaviour
         }
 
         Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
-        Vector3 dirToObject = target + offset - (!useCenterOfMass ? rb.transform.position : rb.transform.position + rb.centerOfMass);
+        Vector3 dirToObject = target + offset - (!useCenterOfMass ? rb.transform.position : rb.worldCenterOfMass);
         float spinForce = force.x >= force.y ? force.x : Random.Range(force.x, force.y);
 
         switch (valueAdjustType)
@@ -94,34 +95,45 @@ public class Spinner : MonoBehaviour
     public void SetForce(DamageChecker value)
     {
         force = value.GetLastKnockbackForce();
-        SetMaxAngularVelocity(force);
+        SetMaxAngularVelocityByForce();
     }
 
     public void SetForceX(float value)
     {
         force.x = value;
+        SetMaxAngularVelocityByForce();
+    }
+
+    public void SetMaxAngularVelocityByForce()
+    {
         SetMaxAngularVelocity(force);
     }
 
     private void SetMaxAngularVelocity(Vector2 value)
     {
-        spinnable.maxAngularVelocity = Mathf.Max(Mathf.Abs(value.x), Mathf.Abs(value.y));
+        float maxVel = Mathf.Max(Mathf.Abs(value.x), Mathf.Abs(value.y));
 
         switch (valueAdjustType)
         {
             case OperatorType.Type.add:
-                spinnable.maxAngularVelocity += valueAdjuster;
+                maxVel += valueAdjuster;
                 break;
             case OperatorType.Type.subtract:
-                spinnable.maxAngularVelocity -= valueAdjuster;
+                maxVel -= valueAdjuster;
                 break;
             case OperatorType.Type.divide:
-                spinnable.maxAngularVelocity /= valueAdjuster;
+                maxVel /= valueAdjuster;
                 break;
             case OperatorType.Type.multiply:
-                spinnable.maxAngularVelocity *= valueAdjuster;
+                maxVel *= valueAdjuster;
                 break;
             default: break;
         }
+        SetMaxAngularVelocity(maxVel);
+    }
+
+    public void SetMaxAngularVelocity(float value)
+    {
+        spinnable.maxAngularVelocity = value;
     }
 }

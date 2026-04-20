@@ -13,12 +13,13 @@ public class Gravity : MonoBehaviour
     [SerializeField] private float maxSpeedUp = float.PositiveInfinity;
     [SerializeField] private float maxSpeedDown = float.NegativeInfinity;
 
-
+    [SerializeField] private bool setIsGroundedOnUpdate = true;
     private bool _isGrounded = true;
     [SerializeField] private float groundCheckRadius = 0.15f;
     [SerializeField] private LayerMask whatIsGround;
 
     [SerializeField] private Hover hover;
+    [SerializeField] private List<GameObject> collidersToIgnore = new List<GameObject>();
 
     public Action onLand;
     public Action onTakeOff;
@@ -44,7 +45,10 @@ public class Gravity : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyGravity();
-        CheckGround();
+        if (setIsGroundedOnUpdate)
+        {
+            CheckGround();
+        }
     }
 
     private void ApplyGravity()
@@ -76,12 +80,25 @@ public class Gravity : MonoBehaviour
 
         if (hover == null)
         {
-            Collider[] grounds = Physics.OverlapSphere(transform.position, groundCheckRadius, whatIsGround);
+            int grounds = 0;
+            Collider[] colliders = Physics.OverlapSphere(transform.position, groundCheckRadius, whatIsGround);
+            grounds = colliders.Length;
 
-            callLand = !_isGrounded && grounds.Length > 0;
-            callTakeOff = _isGrounded && grounds.Length <= 0;
+            foreach(Collider col in colliders)
+            {
+                foreach (GameObject gameObj in collidersToIgnore)
+                {
+                    if (col.gameObject == gameObj)
+                    {
+                        grounds--;
+                    }
+                }
+            }
 
-            SetIsGrounded(grounds.Length > 0);
+            callLand = !_isGrounded && grounds > 0;
+            callTakeOff = _isGrounded && grounds <= 0;
+
+            SetIsGrounded(grounds > 0);
         }
         else
         {

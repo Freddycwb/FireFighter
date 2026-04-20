@@ -122,23 +122,15 @@ public class Thrower : MonoBehaviour
 
     public void ThrowUsingRBVelocity(Rigidbody value)
     {
-        Throw(throwable, value, addForce);
-    }
-
-    public void Throw(Rigidbody rb, Rigidbody dir, bool addForce)
-    {
         if (!enabled)
         {
             return;
         }
         if (!addForce)
         {
-            rb.linearVelocity = Vector3.zero;
+            throwable.linearVelocity = Vector3.zero;
         }
-
-        Vector3 offset = targetMaxOffSet != Vector3.zero ? new Vector3(Random.Range(targetOffset.x, targetMaxOffSet.x), Random.Range(targetOffset.y, targetMaxOffSet.y), Random.Range(targetOffset.z, targetMaxOffSet.z)) : targetOffset;
-
-        rb.AddForce(dir.linearVelocity.normalized * GetThrowForce(), ForceMode.Impulse);
+        throwable.AddForce(value.linearVelocity.normalized * GetThrowForce(), ForceMode.Impulse);
     }
 
     public void SetValueAdjuster(DamageChecker value)
