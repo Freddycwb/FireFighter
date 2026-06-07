@@ -64,6 +64,10 @@ public class InvokeAfterDistance : InvokeAfter
 
     private void Update()
     {
+        if (origin == null || target == null)
+        {
+            return;
+        }
         if (Vector3.Distance(originTransform.position, targetTransform.position) <= distanceToAction && !_close)
         {
             _close = true;

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -52,11 +51,11 @@ public class InvokeAfterFrame : InvokeAfter
         {
             if (useWaitUntilEndOfFrame)
             {
-                yield return new WaitForEndOfFrameUnit();
+                yield return new WaitForEndOfFrame();
             }
             else
             {
-                yield return new WaitForNextFrameUnit();
+                yield return null;
             }
             if (Time.timeScale > 0 || (Time.timeScale <= 0 && useUnscaledTime))
             {

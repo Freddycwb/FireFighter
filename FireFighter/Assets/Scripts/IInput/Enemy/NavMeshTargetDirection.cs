@@ -23,6 +23,9 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     private bool _reachTarget = true;
     private bool _canReachTarget = true;
 
+    private float _lastCalculateTime;
+    [SerializeField] private float calculateTime = 0.2f;
+
     public Action onGetAwayFromTarget;
     public Action onReachTarget;
     public Action onCantReachTarget;
@@ -45,6 +48,8 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
             _defaultIgnoreCanReach = ignoreCanReach;
             _defaultIgnoreCanReachSetted = true;
         }
+
+        _lastCalculateTime = -calculateTime;
     }
 
     public void SetTarget(GameObject value)
@@ -87,9 +92,10 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
             Vector2 dir = Vector2.zero;
             if (enabled)
             {
-                if (!updateManually)
+                if (!updateManually && Time.time - _lastCalculateTime >= calculateTime)
                 {
                     CalculateDirection();
+                    _lastCalculateTime = Time.time;
                 }
                 dir = _lastDir;
             }
