@@ -11,6 +11,7 @@ public class SceneManagerEvents : MonoBehaviour
     [SerializeField] private UnityEvent onLastFrameBeforeLoadScene;
     [SerializeField] private UnityEvent<float> onLoadProgressChange;
     [SerializeField] private UnityEvent onFirstScene;
+    [SerializeField] private UnityEvent onFinishLoadingAdditiveScene;
 
     private bool listening;
 
@@ -22,6 +23,7 @@ public class SceneManagerEvents : MonoBehaviour
             sceneManager.onLastFrameBeforeLoadScene += OnLastFrameBeforeLoadScene;
             sceneManager.onLoadProgressChange += OnLoadProgressChange;
             sceneManager.onFirstScene += OnFirstScene;
+            sceneManager.onFinishLoadingAdditiveScene += OnFinishLoadingAdditiveScene;
             listening = true;
         }
     }
@@ -76,6 +78,14 @@ public class SceneManagerEvents : MonoBehaviour
         if (enabled)
         {
             onFirstScene.Invoke();
+        }
+    }
+
+    void OnFinishLoadingAdditiveScene(string value)
+    {
+        if (enabled)
+        {
+            onFinishLoadingAdditiveScene.Invoke();
         }
     }
 

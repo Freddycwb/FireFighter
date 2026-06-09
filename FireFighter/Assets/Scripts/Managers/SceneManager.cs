@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class SceneManager : MonoBehaviour
 {
@@ -16,6 +14,7 @@ public class SceneManager : MonoBehaviour
     public Action onLastFrameBeforeLoadScene;
     public Action<float> onLoadProgressChange;
     public Action onFirstScene;
+    public Action<string> onFinishLoadingAdditiveScene;
 
 
     private void Start()
@@ -68,6 +67,35 @@ public class SceneManager : MonoBehaviour
                 }
             }
             _loadProgress = Mathf.Clamp01(operation.progress / 0.9f);
+            yield return null;
+        }
+    }
+
+    public void LoadSceneAdditive(string value)
+    {
+        StartCoroutine(LoadSceneAdditiveRoutine(value));
+    }
+
+    private IEnumerator LoadSceneAdditiveRoutine(string value)
+    {
+        _currentScene = value;
+        AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(_currentScene, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        while (!operation.isDone) {
+            yield return null;
+        }
+        onFinishLoadingAdditiveScene?.Invoke(value);
+    }
+
+    public void UnloadScene(string value)
+    {
+        StartCoroutine(UnloadSceneRoutine(value));
+    }
+
+    private IEnumerator UnloadSceneRoutine(string value)
+    {
+        AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(value);
+        while (!operation.isDone)
+        {
             yield return null;
         }
     }
