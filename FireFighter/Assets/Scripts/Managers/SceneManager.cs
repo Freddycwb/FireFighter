@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -15,6 +16,8 @@ public class SceneManager : MonoBehaviour
     public Action<float> onLoadProgressChange;
     public Action onFirstScene;
     public Action<string> onFinishLoadingAdditiveScene;
+
+    [SerializeField] private List<string> sceneLoaded = new List<string>(); 
 
 
     private void Start()
@@ -78,12 +81,17 @@ public class SceneManager : MonoBehaviour
 
     private IEnumerator LoadSceneAdditiveRoutine(string value)
     {
-        _currentScene = value;
-        AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(_currentScene, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-        while (!operation.isDone) {
-            yield return null;
+        if (!sceneLoaded.Contains(value))
+        {
+            _currentScene = value;
+            AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(_currentScene, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            while (!operation.isDone)
+            {
+                yield return null;
+            }
+            onFinishLoadingAdditiveScene?.Invoke(value);
+            sceneLoaded.Add(value);
         }
-        onFinishLoadingAdditiveScene?.Invoke(value);
     }
 
     public void UnloadScene(string value)
@@ -93,10 +101,14 @@ public class SceneManager : MonoBehaviour
 
     private IEnumerator UnloadSceneRoutine(string value)
     {
-        AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(value);
-        while (!operation.isDone)
+        if (sceneLoaded.Contains(value))
         {
-            yield return null;
+            AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(value);
+            while (!operation.isDone)
+            {
+                yield return null;
+            }
+            sceneLoaded.Remove(value);
         }
     }
 
