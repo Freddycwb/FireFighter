@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 2840505026477668148}
   - component: {fileID: 2471577454587112790}
   - component: {fileID: 1038588000057550}
+  - component: {fileID: 886287677576786692}
   m_Layer: 0
   m_Name: SodaSplash
   m_TagString: Untagged
@@ -235,6 +236,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2471577454587112790}
         m_TargetAssemblyTypeName: ParentTransformations, Assembly-CSharp
         m_MethodName: SetParentToNull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 886287677576786692}
+        m_TargetAssemblyTypeName: RotationSetter, Assembly-CSharp
+        m_MethodName: SetToZero
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -399,6 +412,21 @@ MonoBehaviour:
   obj: {fileID: 5056444301278022192}
   delay: 2
   onEnable: 0
+--- !u!114 &886287677576786692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056444301278022192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9b18298cd381c458535a4288cf8d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToRotate: {fileID: 5056444301278022192}
+  reference: {fileID: 0}
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!1 &6391599394318368341
 GameObject:
   m_ObjectHideFlags: 0

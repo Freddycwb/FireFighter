@@ -7,6 +7,8 @@ public class StateMachine : MonoBehaviour
 {
     [SerializeField] private GameObject[] states;
 
+    [ReadOnly][SerializeField] private GameObject currentState;
+    [ReadOnly][SerializeField] private GameObject lastState;
     public Action<GameObject> onChangeState;
 
     private void Start()
@@ -21,6 +23,11 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    public GameObject GetLastState()
+    {
+        return lastState;
+    }
+
     public void ChangeState(GameObject state)
     {
         foreach (GameObject s in states)
@@ -30,7 +37,15 @@ public class StateMachine : MonoBehaviour
 
         if (state != null)
         {
-            state.SetActive(true);
+            if (currentState != state)
+            {
+                if (currentState != lastState)
+                {
+                    lastState = currentState;
+                }
+            }
+            currentState = state;
+            currentState.SetActive(true);
             if (onChangeState != null)
             {
                 onChangeState.Invoke(state);
@@ -43,6 +58,11 @@ public class StateMachine : MonoBehaviour
                 onChangeState.Invoke(gameObject);
             }
         }
+    }
+
+    public void SetStateToLastState()
+    {
+        ChangeState(lastState);
     }
 
     public void SetStateToNull()

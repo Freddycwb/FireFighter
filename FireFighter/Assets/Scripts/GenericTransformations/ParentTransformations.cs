@@ -32,16 +32,26 @@ public class ParentTransformations : MonoBehaviour
         objToTransform.SetParent(value.GetGameObject().transform);
     }
 
+
     public void SetLocalPositionToZero()
     {
-        transform.localPosition = Vector3.zero;
+        objToTransform.transform.localPosition = Vector3.zero;
     }
+
+    public void SetLocalYPosition(float value)
+    {
+        objToTransform.transform.localPosition = new Vector3(objToTransform.transform.localPosition.x, value, objToTransform.transform.localPosition.z);
+    }
+
+
     public void SetLocalRotationToZero()
     {
-        transform.localEulerAngles = Vector3.zero;
+        objToTransform.transform.localEulerAngles = Vector3.zero;
     }
+
+
     public void SetLocalScaleToOne()
     {
-        transform.localScale = Vector3.one;
+        objToTransform.transform.localScale = Vector3.one;
     }
 }

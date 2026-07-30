@@ -106,6 +106,24 @@ public class RotationSetter : MonoBehaviour
         objectToRotate.transform.localEulerAngles = new Vector3(objectToRotate.transform.localEulerAngles.x, objectToRotate.transform.localEulerAngles.y, value);
     }
 
+    public void SetLocalXToReferenceX(GameObject value)
+    {
+        SetInitial();
+        objectToRotate.transform.localEulerAngles = new Vector3(value.transform.localEulerAngles.x, objectToRotate.transform.localEulerAngles.y, objectToRotate.transform.localEulerAngles.z);
+    }
+
+    public void SetLocalYToReferenceY(GameObject value)
+    {
+        SetInitial();
+        objectToRotate.transform.localEulerAngles = new Vector3(objectToRotate.transform.localEulerAngles.x, value.transform.localEulerAngles.y, objectToRotate.transform.localEulerAngles.z);
+    }
+
+    public void SetLocalZToReferenceZ(GameObject value)
+    {
+        SetInitial();
+        objectToRotate.transform.localEulerAngles = new Vector3(objectToRotate.transform.localEulerAngles.x, objectToRotate.transform.localEulerAngles.y, value.transform.localEulerAngles.z);
+    }
+
     public void SetToInitial()
     {
         objectToRotate.transform.eulerAngles = initialEulerAngles;
