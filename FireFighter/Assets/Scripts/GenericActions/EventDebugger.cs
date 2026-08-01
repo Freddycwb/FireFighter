@@ -25,6 +25,11 @@ public class EventDebugger : MonoBehaviour
         Debug.Log(gameObject.name + " : " + value.name + " = " + value.Value);
     }
 
+    public void WriteCounterValueDebug(InvokeAfterCollision value)
+    {
+        Debug.Log(gameObject.name + " : " + value.GetNumberOfCollisions());
+    }
+
     public void WriteCounterValueDebug(InvokeAfterCounter value)
     {
         Debug.Log(gameObject.name + " : " + value.GetCurrentValue());

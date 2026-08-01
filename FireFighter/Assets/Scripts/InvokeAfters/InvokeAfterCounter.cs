@@ -49,7 +49,7 @@ public class InvokeAfterCounter : InvokeAfter
     [HideInInspector] public FloatVariable minValueFloatVariable;
 
     private float _maxValue;
-    private float _currentValue;
+    [ReadOnly][SerializeField] private float _currentValue;
     private float _minValue;
 
     [SerializeField] private actionValueType targetToAction = actionValueType.Min;

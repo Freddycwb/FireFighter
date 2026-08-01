@@ -33,6 +33,8 @@ public class InvokeAfterCollision : InvokeAfter
     private List<GameObject> collisionsThisFrame = new List<GameObject>();
     private int numberOfCollisions;
 
+    private List<GameObject> repeatedCollisions = new List<GameObject>();
+
     public Action<GameObject> onImpact;
     public Action<GameObject> onLeave;
 
@@ -63,13 +65,18 @@ public class InvokeAfterCollision : InvokeAfter
             lastCollision = other.gameObject;
             lastCollisionPoint = other.ClosestPoint(transform.position);
             lastRigidbody = other.attachedRigidbody;
+
+            repeatedCollisions.Add(lastCollision);
+
+            bool containLastCollision = collisions.Contains(lastCollision);
+
             if (onImpact != null)
             {
                 onImpact.Invoke(lastCollision);
             }
-            numberOfCollisions++;
+            numberOfCollisions = !containLastCollision ? collisions.Count + 1 : collisions.Count;
             CallAction();
-            if (!collisions.Contains(lastCollision))
+            if (!containLastCollision)
             {
                 collisions.Add(lastCollision);
             }
@@ -99,9 +106,15 @@ public class InvokeAfterCollision : InvokeAfter
             {
                 onLeave.Invoke(other.gameObject);
             }
-            numberOfCollisions--;
+
+            repeatedCollisions.Remove(other.gameObject);
+
+            bool noRepeatedCollision = !repeatedCollisions.Contains(other.gameObject);
+            bool containsOtherGameObject = collisions.Contains(other.gameObject);
+            numberOfCollisions = containsOtherGameObject && noRepeatedCollision ? collisions.Count - 1 : collisions.Count;
+
             CallSubAction();
-            if (collisions.Contains(other.gameObject))
+            if (containsOtherGameObject && noRepeatedCollision)
             {
                 collisions.Remove(other.gameObject);
             }
@@ -115,6 +128,7 @@ public class InvokeAfterCollision : InvokeAfter
                 }
             }
         }
+        CleanCollisions();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -133,13 +147,18 @@ public class InvokeAfterCollision : InvokeAfter
             lastCollision = other.gameObject;
             lastCollisionPoint = other.contacts[0].point;
             lastRigidbody = other.rigidbody;
+
+            repeatedCollisions.Add(lastCollision);
+
+            bool containLastCollision = collisions.Contains(lastCollision);
+
             if (onImpact != null)
             {
                 onImpact.Invoke(lastCollision);
             }
-            numberOfCollisions++;
+            numberOfCollisions = !containLastCollision ? collisions.Count + 1 : collisions.Count;
             CallAction();
-            if (!collisions.Contains(lastCollision))
+            if (!containLastCollision)
             {
                 collisions.Add(lastCollision);
             }
@@ -169,9 +188,14 @@ public class InvokeAfterCollision : InvokeAfter
             {
                 onLeave.Invoke(other.gameObject);
             }
-            numberOfCollisions--;
+
+            repeatedCollisions.Remove(other.gameObject);
+
+            bool noRepeatedCollision = !repeatedCollisions.Contains(other.gameObject);
+            bool containsOtherGameObject = collisions.Contains(other.gameObject);
+            numberOfCollisions = containsOtherGameObject && noRepeatedCollision ? collisions.Count -1 : collisions.Count;
             CallSubAction();
-            if (collisions.Contains(other.gameObject))
+            if (containsOtherGameObject && noRepeatedCollision)
             {
                 collisions.Remove(other.gameObject);
             }
@@ -185,6 +209,7 @@ public class InvokeAfterCollision : InvokeAfter
                 }
             }
         }
+        CleanCollisions();
     }
 
     private void LateUpdate()
@@ -208,6 +233,7 @@ public class InvokeAfterCollision : InvokeAfter
     public void CleanCollisions()
     {
         collisions.RemoveAll(x => !x);
+        repeatedCollisions.RemoveAll(x => !x);
         numberOfCollisions = collisions.Count;
     }
 
@@ -225,9 +251,13 @@ public class InvokeAfterCollision : InvokeAfter
         {
             onLeave.Invoke(leaveAction.gameObject);
         }
-        numberOfCollisions--;
+
+        repeatedCollisions.Remove(lastCollision);
+
+        bool containsLeaveActionGameObject = collisions.Contains(leaveAction.gameObject);
+        numberOfCollisions = containsLeaveActionGameObject ? collisions.Count - 1 : collisions.Count;
         CallSubAction();
-        if (collisions.Contains(leaveAction.gameObject))
+        if (containsLeaveActionGameObject)
         {
             collisions.Remove(leaveAction.gameObject);
         }
