@@ -14,6 +14,14 @@ public class ParentTransformations : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (objToTransform == null)
+        {
+            objToTransform = transform;
+        }
+    }
+
     public void SetParentToNull()
     {
         if (objToTransform == null)

@@ -232,8 +232,8 @@ public class InvokeAfterCollision : InvokeAfter
 
     public void CleanCollisions()
     {
-        collisions.RemoveAll(x => !x);
-        repeatedCollisions.RemoveAll(x => !x);
+        collisions.RemoveAll(x => !x || !x.activeSelf);
+        repeatedCollisions.RemoveAll(x => !x || !x.activeSelf);
         numberOfCollisions = collisions.Count;
     }
 

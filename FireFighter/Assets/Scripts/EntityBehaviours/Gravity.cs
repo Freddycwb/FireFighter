@@ -18,11 +18,16 @@ public class Gravity : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.15f;
     [SerializeField] private LayerMask whatIsGround;
 
+    private bool _isFalling = true;
+
     [SerializeField] private Hover hover;
     [SerializeField] private List<GameObject> collidersToIgnore = new List<GameObject>();
 
     public Action onLand;
     public Action onTakeOff;
+
+    public Action onStartFalling;
+    public Action onStartRising;
 
     public bool GetIsGrounded()
     {
@@ -49,6 +54,7 @@ public class Gravity : MonoBehaviour
         {
             CheckGround();
         }
+        CheckIsFalling();
     }
 
     private void ApplyGravity()
@@ -126,6 +132,26 @@ public class Gravity : MonoBehaviour
         }
     }
 
+    private void CheckIsFalling()
+    {
+        if (rb.linearVelocity.y <= 0 && !_isFalling)
+        {
+            _isFalling = true;
+            if (onStartFalling != null)
+            {
+                onStartFalling.Invoke();
+            }
+        }
+        else if (rb.linearVelocity.y > 0 && _isFalling)
+        {
+            _isFalling = false;
+            if (onStartRising != null)
+            {
+                onStartRising.Invoke();
+            }
+        }
+    }
+
     public void SetGravityScale(float value)
     {
         gravityScale = value;
@@ -148,6 +174,15 @@ public class Gravity : MonoBehaviour
         if (downVelocity.y <= maxSpeedDown)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, maxSpeedDown, rb.linearVelocity.z);
+        }
+    }
+
+    public void SetFallSpeed(float value)
+    {
+        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.linearVelocity);
+        if (downVelocity.y <= value)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, value, rb.linearVelocity.z);
         }
     }
 }
