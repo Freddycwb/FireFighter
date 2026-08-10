@@ -51,7 +51,7 @@ public class TimeManager : MonoBehaviour
             StopCoroutine(coroutine);
         }
         timeScale = value;
-        Time.timeScale = 1 * timeScale;
+        Time.timeScale = timeScale;
         Time.fixedDeltaTime = defaultFixedDeltaTime * timeScale;
         VFXManager.fixedTimeStep = defaultVFXFixedTimeStep * timeScale;
     }
@@ -90,12 +90,12 @@ public class TimeManager : MonoBehaviour
             count += Time.unscaledDeltaTime / freezeFrameDuration;
             if (count >= 1)
             {
-                count = 1;     
+                count = 1;
             }
         }
         else
         {
-            Time.timeScale = 1 * timeScale;
+            Time.timeScale = timeScale;
             Time.fixedDeltaTime = defaultFixedDeltaTime * timeScale;
             VFXManager.fixedTimeStep = defaultVFXFixedTimeStep * timeScale;
         }

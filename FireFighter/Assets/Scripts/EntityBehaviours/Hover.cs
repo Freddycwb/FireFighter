@@ -13,9 +13,6 @@ public class Hover : MonoBehaviour
 	[SerializeField] private LayerMask layerMask;
 	[SerializeField] private QueryTriggerInteraction shouldHitTrigger;
 
-	[SerializeField] private float springStrength;
-	[SerializeField] private float springDamping;
-
 	private bool grounded = true;
 
 	[SerializeField] private bool updateDebug;
@@ -29,18 +26,25 @@ public class Hover : MonoBehaviour
 	}
 
 	private void Update() {
+		// - debug -
 		if (!updateDebug) return;
 
-		if ((debugGroundCheck.enabled = !grounded)) {
+		debugGroundCheck.enabled = !grounded;
+		debugMainRay.enabled = grounded;
+		debugOvershoot.enabled = grounded;
+
+		if (!grounded) {
 			debugGroundCheck.SetPosition(0, transform.position + raySourceOffset);
 			debugGroundCheck.SetPosition(1, transform.position + raySourceOffset + direction * regroundHeight);
 			debugMainRay.SetPosition(0, transform.position + raySourceOffset + direction * regroundHeight);
 		} else {
 			debugMainRay.SetPosition(0, transform.position + raySourceOffset);
 		}
+
 		debugMainRay.SetPosition(1, transform.position + raySourceOffset + direction * hoverHeight);
 		debugOvershoot.SetPosition(0, transform.position + raySourceOffset + direction * hoverHeight);
 		debugOvershoot.SetPosition(1, transform.position + raySourceOffset + direction * (hoverHeight + overshootDistance));
+		// ---
 	}
 
 	private void FixedUpdate() {
@@ -51,11 +55,13 @@ public class Hover : MonoBehaviour
 		RaycastHit hit;
 		if (!(grounded = Physics.Raycast(transform.position + raySourceOffset, direction, out hit, hoverHeight + overshootDistance, layerMask, shouldHitTrigger))) return;
 
-		float velAlongRay = Vector3.Dot(direction, rb.linearVelocity);
-		float force = (springStrength * (hit.distance - hoverHeight)) - (velAlongRay * springDamping);
-		rb.AddForce(direction * force, ForceMode.Acceleration);
+		// zeroing out velocity along ray by subtracting the velocity projected to direction
+		Vector3 proj = Vector3.Dot(rb.linearVelocity, direction) * direction;
+		rb.linearVelocity -= proj;
+
+		rb.position += direction * (hit.distance - hoverHeight);
 	}
-	
+
 	public void DeattachFromGround() {
 		grounded = false;
 	}

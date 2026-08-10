@@ -59,24 +59,13 @@ public class Gravity : MonoBehaviour
 
     private void ApplyGravity()
     {
-        Vector3 upVelocity = Vector3.up * Vector3.Dot(Vector3.up, rb.linearVelocity);
-        if (upVelocity.y >= maxSpeedUp)
-        {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, maxSpeedUp, rb.linearVelocity.z);
-        }
-
-        Vector3 downVelocity = Vector3.down * Vector3.Dot(Vector3.down, rb.linearVelocity);
-        if (downVelocity.y <= maxSpeedDown)
-        {
-            return;
-        }
-
         Vector3 gravity = gravityScale * Vector3.up;
-        rb.AddForce(gravity, ForceMode.Acceleration);
-        if (downVelocity.y <= maxSpeedDown)
-        {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, -maxSpeedDown, rb.linearVelocity.z);
+
+        if (!_isGrounded || !setIsGroundedOnUpdate) {
+                rb.AddForce(gravity, ForceMode.Acceleration);
         }
+
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, maxSpeedDown, maxSpeedUp), rb.linearVelocity.z);
     }
 
     private void CheckGround()
