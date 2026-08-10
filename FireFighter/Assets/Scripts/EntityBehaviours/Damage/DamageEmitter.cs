@@ -76,6 +76,11 @@ public class DamageEmitter : MonoBehaviour
         damageValue = value.GetCurrentValue();
     }
 
+    public void AddDamageValue(float value)
+    {
+        damageValue += value;
+    }
+
     public void SetKnockbackForceValue(Vector2Variable value)
     {
         knockbackForceVariable = value;

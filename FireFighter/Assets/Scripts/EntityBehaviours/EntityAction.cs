@@ -33,6 +33,11 @@ public class EntityAction : MonoBehaviour
     public Action onCanControl;
     public Action onCantControl;
 
+    public bool GetCanControl()
+    {
+        return canControl;
+    }
+
     public void SetCanControl(bool value)
     {
         if (value && !canControl)

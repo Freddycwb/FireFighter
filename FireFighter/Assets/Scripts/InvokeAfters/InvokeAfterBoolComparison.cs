@@ -33,6 +33,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
         Compare(value.GetIsGrounded());
     }
 
+    public void CompareCanControl(EntityAction value)
+    {
+        Compare(value.GetCanControl());
+    }
+
     public void Compare(InvokeAfterCollision value)
     {
         Compare(value.lastCollision != null);
