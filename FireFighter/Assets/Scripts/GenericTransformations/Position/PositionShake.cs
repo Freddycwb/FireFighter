@@ -74,6 +74,15 @@ public class PositionShake : MonoBehaviour
         }
     }
 
+    public void StopShake()
+    {
+        _time = 0;
+        if (backToOriginAtEnd)
+        {
+            objToShake.transform.localPosition = _position;
+        }
+    }
+
     private void Update()
     {
         if (_time > 0 && !((sourceType & SourceTypes.counter) != 0))

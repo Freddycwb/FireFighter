@@ -39,6 +39,11 @@ public class Gravity : MonoBehaviour
         _isGrounded = value;
     }
 
+    public void SetIsGroundedOnUpdate(bool value)
+    {
+        setIsGroundedOnUpdate = value;
+    }
+
     private void Start()
     {
         if (rb == null && GetComponent<Rigidbody>())
