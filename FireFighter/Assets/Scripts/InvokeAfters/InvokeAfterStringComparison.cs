@@ -24,9 +24,50 @@ public class InvokeAfterStringComparison : InvokeAfter
         compareValue = value.Value;
     }
 
+    public void SetValueToCompare(StringHolder value)
+    {
+        compareValue = value.GetString();
+    }
+
     public void Compare(StringVariable value)
     {
         Compare(value.Value);
+    }
+
+    public void Compare(StringArrayVariable value)
+    {
+        bool find = false;
+        switch (comparison)
+        {
+            case ComparisonType.equal:
+                foreach (string a in value.Value)
+                {
+                    if (a == compareValue)
+                    {
+                        CallAction();
+                        find = true;
+                    }
+                }
+                if (!find)
+                {
+                    CallSubAction();
+                }
+                break;
+            case ComparisonType.contains:
+                foreach (string a in value.Value)
+                {
+                    if (a.Contains(compareValue))
+                    {
+                        CallAction();
+                        find = true;
+                    }
+                }
+                if (!find)
+                {
+                    CallSubAction();
+                }
+                break;
+        }
     }
 
     public void Compare(Animator value)

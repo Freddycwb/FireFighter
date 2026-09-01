@@ -29,6 +29,11 @@ public class RotationSetter : MonoBehaviour
         }
     }
 
+    public void SetReference(GameObjectVariable value)
+    {
+        SetReference(value.Value);
+    }
+
     public void SetReference(GameObject value)
     {
         reference = value;

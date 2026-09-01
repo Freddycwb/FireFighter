@@ -20,6 +20,11 @@ public class IntVariable : NumericVariable<int>
         Value += amount;
     }
 
+    public void Add(IntVariable amount)
+    {
+        Value += amount.Value;
+    }
+
     public override void Add(Variable<int> amount)
     {
         Value += amount.Value;

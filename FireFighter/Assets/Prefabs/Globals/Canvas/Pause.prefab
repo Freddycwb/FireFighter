@@ -277,6 +277,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &82128863064212380
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +457,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1266,8 +1269,10 @@ MonoBehaviour:
   maxValueFloatVariable: {fileID: 0}
   currentValueFloatVariable: {fileID: 0}
   minValueFloatVariable: {fileID: 0}
+  _currentValue: 0
   targetToAction: 0
   startCurrentValueType: 2
+  isEnabling: 0
   CallActionOnSetToMinMax: 0
 --- !u!114 &619303741400089110
 MonoBehaviour:
@@ -1350,8 +1355,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: English
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b5de6776a68a9954dae8366c922775f2, type: 2}
-  m_sharedMaterial: {fileID: 1015490931033961651, guid: b5de6776a68a9954dae8366c922775f2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de79eb69569c0da4cbfa0062df1f8eb6, type: 2}
+  m_sharedMaterial: {fileID: -5391660010955880624, guid: de79eb69569c0da4cbfa0062df1f8eb6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1386,6 +1391,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1432,6 +1438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: _currentLanguage
+  richTextTag: 0
+  textGradual: {fileID: 0}
 --- !u!1 &761287448871190396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,8 +1611,10 @@ MonoBehaviour:
   maxValueFloatVariable: {fileID: 0}
   currentValueFloatVariable: {fileID: 0}
   minValueFloatVariable: {fileID: 0}
+  _currentValue: 0
   targetToAction: 0
   startCurrentValueType: 2
+  isEnabling: 0
   CallActionOnSetToMinMax: 0
 --- !u!114 &2325414112503304224
 MonoBehaviour:
@@ -2294,8 +2304,10 @@ MonoBehaviour:
   maxValueFloatVariable: {fileID: 0}
   currentValueFloatVariable: {fileID: 11400000, guid: db190b5a10b4aee40818c45948b65ac1, type: 2}
   minValueFloatVariable: {fileID: 0}
+  _currentValue: 0
   targetToAction: 0
   startCurrentValueType: 1
+  isEnabling: 0
   CallActionOnSetToMinMax: 0
 --- !u!1 &1421105259808454952
 GameObject:
@@ -2852,6 +2864,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3169,10 +3182,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tem certeza
+  m_text: Are you sure?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b5de6776a68a9954dae8366c922775f2, type: 2}
-  m_sharedMaterial: {fileID: 1015490931033961651, guid: b5de6776a68a9954dae8366c922775f2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f00aaf1fc7537eb41aca1f8996f65041, type: 2}
+  m_sharedMaterial: {fileID: 6848407156605850230, guid: f00aaf1fc7537eb41aca1f8996f65041, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3196,8 +3209,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.26
-  m_fontSizeBase: 41.26
+  m_fontSize: 41.5
+  m_fontSizeBase: 41.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3206,7 +3219,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -4.8
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3253,6 +3267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: _areYouSure
+  richTextTag: 0
+  textGradual: {fileID: 0}
 --- !u!1 &2348272091326320696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,8 +3382,10 @@ MonoBehaviour:
   maxValueFloatVariable: {fileID: 0}
   currentValueFloatVariable: {fileID: 0}
   minValueFloatVariable: {fileID: 0}
+  _currentValue: 0
   targetToAction: 1
   startCurrentValueType: 1
+  isEnabling: 0
   CallActionOnSetToMinMax: 0
 --- !u!114 &4619249890553696334
 MonoBehaviour:
@@ -3868,6 +3886,8 @@ MonoBehaviour:
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &2790169078471711711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,6 +4372,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!114 &2419792622987382975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5236,8 +5258,10 @@ MonoBehaviour:
   maxValueFloatVariable: {fileID: 0}
   currentValueFloatVariable: {fileID: 0}
   minValueFloatVariable: {fileID: 0}
+  _currentValue: 0
   targetToAction: 0
   startCurrentValueType: 2
+  isEnabling: 0
   CallActionOnSetToMinMax: 0
 --- !u!114 &2574772508190664730
 MonoBehaviour:
@@ -6036,6 +6060,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &4897343897497538533
 GameObject:
   m_ObjectHideFlags: 0
@@ -7139,6 +7165,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &6074671433135679579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7843,6 +7871,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &6278967115305397521
 GameObject:
   m_ObjectHideFlags: 0
@@ -8396,6 +8426,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &6553214404982209928
 GameObject:
   m_ObjectHideFlags: 0
@@ -8984,6 +9016,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &6969337803149388018
 GameObject:
   m_ObjectHideFlags: 0
@@ -9324,6 +9358,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &7309963352481292083
 GameObject:
   m_ObjectHideFlags: 0
@@ -10281,6 +10317,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &8134144678617617232
 GameObject:
   m_ObjectHideFlags: 0
@@ -10953,8 +10991,10 @@ MonoBehaviour:
   maxValueFloatVariable: {fileID: 0}
   currentValueFloatVariable: {fileID: 11400000, guid: b5f14bab238dd2246bcc71af2af75923, type: 2}
   minValueFloatVariable: {fileID: 0}
+  _currentValue: 0
   targetToAction: 0
   startCurrentValueType: 1
+  isEnabling: 0
   CallActionOnSetToMinMax: 0
 --- !u!1 &8628130912976279189
 GameObject:
@@ -11459,6 +11499,8 @@ MonoBehaviour:
   startTimerOnEnabled: 0
   overrideLastTimer: 1
   useUnscaledTime: 1
+  _currentTimeToAction: 0
+  _currentTimePass: 0
 --- !u!1 &8810902058620882223
 GameObject:
   m_ObjectHideFlags: 0
@@ -12071,6 +12113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: _yes
+  richTextTag: 0
+  textGradual: {fileID: 0}
 --- !u!224 &2589177826028062011 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2546295331807007425, guid: b1f34517242e50b4aaf1fe513d27de7b, type: 3}
@@ -12122,6 +12166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: _no
+  richTextTag: 0
+  textGradual: {fileID: 0}
 --- !u!224 &6951129764220366452 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6975941887778683278, guid: b1f34517242e50b4aaf1fe513d27de7b, type: 3}
@@ -13459,7 +13505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970053289766424717, guid: 6c0d787f1e77e7748bdfdcf70e1418b0, type: 3}
       propertyPath: _key
-      value: _menu
+      value: _backToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1414300426362217526, guid: 6c0d787f1e77e7748bdfdcf70e1418b0, type: 3}
       propertyPath: m_Name

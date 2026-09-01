@@ -27,6 +27,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private FloatVariable sensitivity;
     [SerializeField] private BoolVariable invertX;
     [SerializeField] private BoolVariable invertY;
+    [SerializeField] private float sensitivityMultiplier = 1;
 
     [SerializeField] private LayerMask obstacleMask;
 
@@ -58,7 +59,7 @@ public class CameraMovement : MonoBehaviour
         if (!target || TimeManager.GetIsPaused() || _lookDirection == null) return;
 
         // Updating camera rotation
-        Vector2 scaledLook = canControl ? _lookDirection.direction * sensitivity.Value : Vector2.zero;
+        Vector2 scaledLook = canControl ? _lookDirection.direction * (sensitivity.Value * sensitivityMultiplier) : Vector2.zero;
         if (invertY.Value)
         {
             scaledLook.x = -scaledLook.x;
@@ -116,6 +117,25 @@ public class CameraMovement : MonoBehaviour
     public void SetCanControl(bool value)
     {
         canControl = value;
+    }
+
+    public Vector3 GetOrbitRotation()
+    {
+        return _orbitRotation;
+    }
+
+    public void SetOrbitRotationByOtherCameraMovement(GameObjectVariable value)
+    {
+        SetOrbitRotationByOtherCameraMovement(value.Value);
+    }
+
+    public void SetOrbitRotationByOtherCameraMovement(GameObject value)
+    {
+        CameraMovement c = value.GetComponent<CameraMovement>();
+        if (c != null)
+        {
+            SetOrbitRotation(c.GetOrbitRotation());
+        }
     }
 
     public void SetOrbitRotation(Vector3 value)

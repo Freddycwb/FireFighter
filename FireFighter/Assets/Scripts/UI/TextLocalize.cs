@@ -9,6 +9,8 @@ public class TextLocalize : MonoBehaviour
     private TextMeshPro _TMProText;
 
     [SerializeField] private string _key;
+    [SerializeField] private bool richTextTag;
+    [SerializeField] private TextGradual textGradual;
 
 
     private void Awake()
@@ -26,37 +28,81 @@ public class TextLocalize : MonoBehaviour
     }
     private void OnEnable()
     {
+        if (_key == "")
+        {
+            return;
+        }
         if (isInUI)
         {
-            _TMProUIText.text = Localization.Localize(_key);
+            _TMProUIText.text = richTextTag ? "<line-height=100%>" + Localization.LocalizeText(_key) : Localization.LocalizeText(_key);
         }
         else
         {
-            _TMProText.text = Localization.Localize(_key);
+            _TMProText.text = richTextTag ? "<line-height=100%>" + Localization.LocalizeText(_key) : Localization.LocalizeText(_key);
         }
     }
 
     public void ChangeText()
     {
-        if (isInUI)
+        if (_key == "")
         {
-            _TMProUIText.text = Localization.Localize(_key);
+            if (isInUI)
+            {
+                _TMProUIText.text = "";
+            }
+            else
+            {
+                _TMProText.text = "";
+            }
+            return;
+        }
+        string text = richTextTag ? "<line-height=100%>" + Localization.LocalizeText(_key) : Localization.LocalizeText(_key);
+        if (textGradual == null)
+        {
+            if (isInUI)
+            {
+                _TMProUIText.text = text;
+            }
+            else
+            {
+                _TMProText.text = text;
+            }
         }
         else
         {
-            _TMProText.text = Localization.Localize(_key);
+            textGradual.CallType(Localization.LocalizeText(_key));
         }
     }
 
     public void LocalizeText(string value)
     {
-        if (isInUI)
+        if (value == "")
         {
-            _TMProUIText.text = Localization.Localize(value);
+            if (isInUI)
+            {
+                _TMProUIText.text = "";
+            }
+            else
+            {
+                _TMProText.text = "";
+            }
+            return;
+        }
+        string text = richTextTag ? "<line-height=100%>" + Localization.LocalizeText(value) : Localization.LocalizeText(value);
+        if (textGradual == null)
+        {
+            if (isInUI)
+            {
+                _TMProUIText.text = text;
+            }
+            else
+            {
+                _TMProText.text = text;
+            }
         }
         else
         {
-            _TMProText.text = Localization.Localize(value);
+            textGradual.CallType(Localization.LocalizeText(value));
         }
     }
 }

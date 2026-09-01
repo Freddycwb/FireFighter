@@ -65,4 +65,14 @@ public class SetRotationToTarget : MonoBehaviour
             SetRotation(target);
         }
     }
+
+    public void SetTarget(GameObject value)
+    {
+        target = value;
+    }
+
+    public void SetTarget(GameObjectVariable value)
+    {
+        SetTarget(value.Value);
+    }
 }

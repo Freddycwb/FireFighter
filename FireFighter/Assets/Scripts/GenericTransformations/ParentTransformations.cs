@@ -40,6 +40,10 @@ public class ParentTransformations : MonoBehaviour
         objToTransform.SetParent(value.GetGameObject().transform);
     }
 
+    public void SetParentToVariable(GameObjectVariable value)
+    {
+        objToTransform.SetParent(value.Value.transform);
+    }
 
     public void SetLocalPositionToZero()
     {

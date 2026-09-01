@@ -57,6 +57,7 @@ public class InvokeAfterCounter : InvokeAfter
 
     [SerializeField] private bool isEnabling;
     [SerializeField] private bool CallActionOnSetToMinMax;
+    [SerializeField] private bool CallSubActionOnlyIfCurrentChange;
 
     public Action onModifyValue;
 
@@ -150,6 +151,11 @@ public class InvokeAfterCounter : InvokeAfter
         SetMaxValue(value.Value);
     }
 
+    public void SetMaxValue(StringArrayVariable value)
+    {
+        SetMaxValue(value.Value.Length);
+    }
+
     public void SetMaxValue(int value)
     {
         _maxValue = value;
@@ -236,7 +242,12 @@ public class InvokeAfterCounter : InvokeAfter
 
     public void ModifyValue(float a)
     {
-        _currentValue = Mathf.Clamp(_currentValue + a, _minValue, _maxValue);
+        float newValue = Mathf.Clamp(_currentValue + a, _minValue, _maxValue);
+        if (_currentValue == newValue && CallSubActionOnlyIfCurrentChange)
+        {
+            return;
+        }
+        _currentValue = newValue;
         SetCurrentValueVariable();
         CallSubAction();
         CheckAction();
@@ -248,14 +259,7 @@ public class InvokeAfterCounter : InvokeAfter
 
     public void ModifyValue(FloatVariable a)
     {
-        _currentValue = Mathf.Clamp(_currentValue + a.Value, _minValue, _maxValue);
-        SetCurrentValueVariable();
-        CallSubAction();
-        CheckAction();
-        if (onModifyValue != null)
-        {
-            onModifyValue.Invoke();
-        }
+        ModifyValue(a.Value);
     }
 
     public void SetValue(float a)

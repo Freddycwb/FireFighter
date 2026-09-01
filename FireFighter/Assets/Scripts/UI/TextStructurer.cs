@@ -1,5 +1,8 @@
 using TMPro;
 using UnityEngine;
+using FMOD;
+using FMOD.Studio;
+using FMODUnity;
 
 public class TextStruct : MonoBehaviour
 {
@@ -7,9 +10,19 @@ public class TextStruct : MonoBehaviour
     [SerializeField] private string displayText;
     [SerializeField] private bool setOnChangeDisplayText = true;
 
+    [SerializeField] private StringArrayVariable stringArray;
+
     public void SetTMP()
     {
-        tmp.text = displayText;
+        if (tmp != null)
+        {
+            tmp.text = displayText;
+        }
+    }
+
+    public void LocalizeDisplayText(TextLocalize value)
+    {
+        value.LocalizeText(displayText);
     }
 
     private void CheckSetOnChangeDisplayText()
@@ -24,6 +37,25 @@ public class TextStruct : MonoBehaviour
     {
         displayText = value;
         CheckSetOnChangeDisplayText();
+    }
+
+    public string GetDisplayText()
+    {
+        return displayText;
+    }
+
+    public void SetDisplayTextByStringArray(int value)
+    {
+        if (stringArray != null)
+        {
+            displayText = stringArray.Value[value];
+            CheckSetOnChangeDisplayText();
+        }
+    }
+
+    public void SetDisplayTextByStringArray(IntVariable value)
+    {
+        SetDisplayTextByStringArray(value.Value);
     }
 
     public void CleanDisplayText()
