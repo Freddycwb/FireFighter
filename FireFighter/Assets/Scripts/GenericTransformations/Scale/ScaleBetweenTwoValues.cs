@@ -5,6 +5,15 @@ using UnityEngine;
 public class ScaleBetweenTwoValues : MonoBehaviour
 {
     [SerializeField] private GameObject objectToScale;
+    [System.Flags]
+    public enum Axis
+    {
+        None = 0,
+        x = 1,
+        y = 2,
+        z = 4
+    }
+    [SerializeField] private Axis axis;
     [SerializeField] private Vector2 minMaxScale;
     [SerializeField] private Vector3 minCurrentMaxValue;
 
@@ -103,6 +112,22 @@ public class ScaleBetweenTwoValues : MonoBehaviour
 
         float currentScale = currentExtraScale + minMaxScale.x;
 
-        objectToScale.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+        if (!(currentScale > 0 || currentScale < 0))
+        {
+            return;
+        }
+
+        if (!((axis & Axis.x) == 0))
+        {
+            objectToScale.transform.localScale = new Vector3(currentScale, objectToScale.transform.localScale.y, objectToScale.transform.localScale.z);
+        }
+        if (!((axis & Axis.y) == 0))
+        {
+            objectToScale.transform.localScale = new Vector3(objectToScale.transform.localScale.x, currentScale, objectToScale.transform.localScale.z);
+        }
+        if (!((axis & Axis.z) == 0))
+        {
+            objectToScale.transform.localScale = new Vector3(objectToScale.transform.localScale.x, objectToScale.transform.localScale.y, currentScale);
+        }
     }
 }
