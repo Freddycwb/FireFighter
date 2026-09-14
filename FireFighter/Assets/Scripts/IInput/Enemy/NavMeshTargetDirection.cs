@@ -71,6 +71,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
         Vector2 heading = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         float radius = UnityEngine.Random.Range(randomOffsetRadius.x, randomOffsetRadius.y);
         offSet = heading * radius;
+        CheckIfReachTarget();
     }
 
     public Vector2 direction

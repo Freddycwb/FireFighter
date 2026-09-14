@@ -13,6 +13,8 @@ public class InvokeAfter : MonoBehaviour
     public Action onActionCall;
     public Action onSubActionCall;
 
+    protected bool _invokeAfterEnable = false;
+
     public void CallAction()
     {
         action.Invoke();
@@ -25,7 +27,7 @@ public class InvokeAfter : MonoBehaviour
     public void CallSubAction()
     {
         subAction.Invoke();
-        if (onSubActionCall != null && gameObject.activeSelf)
+        if (onSubActionCall != null && (gameObject.activeSelf || _invokeAfterEnable))
         {
             onSubActionCall.Invoke();
         }

@@ -60,6 +60,16 @@ public class InvokeAfterDistance : InvokeAfter
         }
     }
 
+    public void SetClose(bool value)
+    {
+        _close = value;
+    }
+
+    public void SetDoActionOnEnable(bool value)
+    {
+        doActionOnEnable = value;
+    }
+
     public bool GetClose()
     {
         return _close;

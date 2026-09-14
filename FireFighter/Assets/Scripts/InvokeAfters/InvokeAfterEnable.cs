@@ -7,6 +7,11 @@ public class InvokeAfterEnable : InvokeAfter
 {
     [SerializeField] private bool activeInHierarchy;
 
+    private void Awake()
+    {
+        _invokeAfterEnable = true;
+    }
+
     private void OnEnable()
     {
         if (gameObject.activeInHierarchy || !activeInHierarchy)

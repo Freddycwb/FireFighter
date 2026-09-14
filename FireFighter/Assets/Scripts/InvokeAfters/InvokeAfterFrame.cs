@@ -29,6 +29,10 @@ public class InvokeAfterFrame : InvokeAfter
 
     public void StartTimer()
     {
+        if (!gameObject.activeSelf)
+        {
+            return;
+        }
         if (overrideLastTimer && coroutine != null)
         {
             StopCoroutine(coroutine);

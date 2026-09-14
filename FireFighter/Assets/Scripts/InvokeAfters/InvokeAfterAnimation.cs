@@ -9,6 +9,8 @@ public class InvokeAfterAnimation : InvokeAfter
     [SerializeField] private string animationName;
     private bool _isFinished = true;
 
+    [SerializeField] private bool callActionOnSwitchAnimation;
+
     public void SetAnimationName(string value)
     {
         animationName = value;
@@ -28,6 +30,10 @@ public class InvokeAfterAnimation : InvokeAfter
         }
         else if (!animator.GetCurrentAnimatorStateInfo(0).IsName(animationName))
         {
+            if (!_isFinished && callActionOnSwitchAnimation)
+            {
+                CallAction();
+            }
             return;
         }
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !_isFinished)

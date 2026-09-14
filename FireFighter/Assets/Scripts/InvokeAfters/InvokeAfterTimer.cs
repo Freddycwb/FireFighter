@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -24,6 +25,8 @@ public class InvokeAfterTimer : InvokeAfter
     [ReadOnly][SerializeField] private float _currentTimePass;
 
     private Coroutine coroutine;
+
+    public Action onTimerCanceled;
 
     public float GetTimeToAction()
     {
@@ -93,7 +96,7 @@ public class InvokeAfterTimer : InvokeAfter
     {
         if (randomTimeToActionVariable != null && randomTimeToActionVariable.Value != Vector2.zero)
         {
-            _currentTimeToAction = Random.Range(randomTimeToActionVariable.Value.x, randomTimeToActionVariable.Value.y);
+            _currentTimeToAction = UnityEngine.Random.Range(randomTimeToActionVariable.Value.x, randomTimeToActionVariable.Value.y);
         }
         else if (timeToActionVariable != null && timeToActionVariable.Value > 0)
         {
@@ -107,7 +110,7 @@ public class InvokeAfterTimer : InvokeAfter
             }
             else
             {
-                _currentTimeToAction = Random.Range(timeToAction, maxTimeToAction);
+                _currentTimeToAction = UnityEngine.Random.Range(timeToAction, maxTimeToAction);
             }
         }
         CallSubAction();
@@ -187,6 +190,10 @@ public class InvokeAfterTimer : InvokeAfter
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
+            if (onTimerCanceled != null)
+            {
+                onTimerCanceled.Invoke();
+            }
         }
     }
 

@@ -7,8 +7,12 @@ public class StateMachine : MonoBehaviour
 {
     [SerializeField] private GameObject[] states;
 
+    [SerializeField] private bool canChangeState = true;
+    public Action<bool> onCanChangeState;
+
     [ReadOnly][SerializeField] private GameObject currentState;
     [ReadOnly][SerializeField] private GameObject lastState;
+    [ReadOnly][SerializeField] private GameObject lastStateRequired;
     public Action<GameObject> onChangeState;
 
     private void Start()
@@ -23,12 +27,59 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    public GameObject GetCurrentState()
+    {
+        return currentState;
+    }
+
     public GameObject GetLastState()
     {
         return lastState;
     }
 
+    public void SetLastStateRequeredToNull()
+    {
+        lastStateRequired = null;
+    }
+
+    public void SetCanChangeState(bool value)
+    {
+        if (canChangeState == value)
+        {
+            return;
+        }
+        canChangeState = value;
+        if (value && lastStateRequired != null)
+        {
+            ChangeState(lastStateRequired);
+            lastState = null;
+        }
+        if (onCanChangeState != null)
+        {
+            onCanChangeState.Invoke(canChangeState);
+        }
+    }
+
     public void ChangeState(GameObject state)
+    {
+        if (state == null)
+        {
+            return;
+        }
+        if (!canChangeState)
+        {
+            lastStateRequired = state;
+            return;
+        }
+        ChangeStateAction(state);
+    }
+
+    public void ForcedChangeState(GameObject state)
+    {
+        ChangeStateAction(state);
+    }
+
+    private void ChangeStateAction(GameObject state)
     {
         foreach (GameObject s in states)
         {
@@ -63,10 +114,5 @@ public class StateMachine : MonoBehaviour
     public void SetStateToLastState()
     {
         ChangeState(lastState);
-    }
-
-    public void SetStateToNull()
-    {
-        ChangeState(null);
     }
 }

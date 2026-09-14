@@ -48,6 +48,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
         Compare(value.GetValue());
     }
 
+    public void Compare(InvokeAfterDistance value)
+    {
+        Compare(value.GetClose());
+    }
+
     public void Compare(GameObject value)
     {
         Compare(value.activeInHierarchy);

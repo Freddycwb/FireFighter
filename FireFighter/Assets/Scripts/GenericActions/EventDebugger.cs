@@ -20,6 +20,11 @@ public class EventDebugger : MonoBehaviour
         Debug.Log(gameObject.name + " : " + value.activeSelf);
     }
 
+    public void WriteGameObjectDebug(GameObject value)
+    {
+        Debug.Log(gameObject.name + " : " + value.name);
+    }
+
     public void WriteErrorDebug(FloatVariable value)
     {
         Debug.Log(gameObject.name + " : " + value.name + " = " + value.Value);

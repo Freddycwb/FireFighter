@@ -8,6 +8,7 @@ public class StateMachineEvents : MonoBehaviour
     [SerializeField] private StateMachine stateMachine;
 
     [SerializeField] private UnityEvent<GameObject> onChangeState;
+    [SerializeField] private UnityEvent<bool> onCanChangeState;
 
     private bool listening;
 
@@ -16,6 +17,7 @@ public class StateMachineEvents : MonoBehaviour
         if (stateMachine != null)
         {
             stateMachine.onChangeState += OnChangeState;
+            stateMachine.onCanChangeState += OnCanChangeState;
             listening = true;
         }
     }
@@ -28,11 +30,20 @@ public class StateMachineEvents : MonoBehaviour
         }
     }
 
+    void OnCanChangeState(bool value)
+    {
+        if (enabled)
+        {
+            onCanChangeState.Invoke(value);
+        }
+    }
+
     private void OnDisable()
     {
         if (stateMachine != null && listening)
         {
             stateMachine.onChangeState -= OnChangeState;
+            stateMachine.onCanChangeState -= OnCanChangeState;
             listening = false;
         }
     }
