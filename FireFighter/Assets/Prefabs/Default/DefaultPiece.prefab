@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8529640093834967843}
   - component: {fileID: 8894423245444110404}
   - component: {fileID: 2777709411794042735}
-  - component: {fileID: 1911185929796901033}
-  - component: {fileID: 2409623250300375130}
   m_Layer: 0
   m_Name: SetMaterial
   m_TagString: Untagged
@@ -79,92 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   render: {fileID: 3919616929294920282}
---- !u!114 &1911185929796901033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66046323984026475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeAfter: {fileID: 2752335545950921573}
-  onActionCall:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2777709411794042735}
-        m_TargetAssemblyTypeName: MeshRendererSetter, Assembly-CSharp
-        m_MethodName: SetMaterial
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 6747e47b1101c344e83627f316cfcc70, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 215906514332016851}
-        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSubActionCall:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2409623250300375130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66046323984026475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeAfter: {fileID: 3689833362520266026}
-  onActionCall:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2777709411794042735}
-        m_TargetAssemblyTypeName: MeshRendererSetter, Assembly-CSharp
-        m_MethodName: SetMaterial
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 6747e47b1101c344e83627f316cfcc70, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 215906514332016851}
-        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSubActionCall:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &717166929903011769
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +766,7 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  timeToAction: 30
+  timeToAction: 15
   valueSetter: {fileID: 7221365335827158016}
   startTimerOnEnabled: 0
   overrideLastTimer: 1
@@ -873,7 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139d3b4d6789fa54ca3051f9533f2663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeToAction: 60
+  maxTimeToAction: 30
   timeToActionVariable: {fileID: 0}
   randomTimeToActionVariable: {fileID: 0}
   valueAdjuster: 0
@@ -1038,6 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToScale: {fileID: 7494382663580745524}
+  axis: -1
   minMaxScale: {x: 0, y: 1}
   minCurrentMaxValue: {x: 0, y: 0, z: 0.5}
   setScaleOnSetCurrent: 1
@@ -1729,6 +1642,7 @@ GameObject:
   - component: {fileID: 1303328089019271337}
   - component: {fileID: 1285167245020352607}
   - component: {fileID: 8664702146668594931}
+  - component: {fileID: 4739297036046155256}
   - component: {fileID: 1935131666693971325}
   m_Layer: 0
   m_Name: DefaultPiece
@@ -1951,6 +1865,54 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   subActionFloat:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4739297036046155256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108811895107137654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fd9ff0007fc984cbce7830c91b64b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+  subAction:
+    m_PersistentCalls:
+      m_Calls: []
+  actionMaterial:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2777709411794042735}
+        m_TargetAssemblyTypeName: MeshRendererSetter, Assembly-CSharp
+        m_MethodName: SetMaterial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 215906514332016851}
+        m_TargetAssemblyTypeName: InvokeAfterTimer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  subActionMaterial:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1935131666693971325
@@ -2506,6 +2468,7 @@ MonoBehaviour:
   objToSetPos: {fileID: 1022281470769857666}
   objToSetPosVariable: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
+  reference: {fileID: 0}
 --- !u!114 &8791490395817913833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4472,6 +4435,7 @@ MonoBehaviour:
   objToSetPos: {fileID: 7658463626998338970}
   objToSetPosVariable: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
+  reference: {fileID: 0}
 --- !u!1 &8886646853782058392
 GameObject:
   m_ObjectHideFlags: 0

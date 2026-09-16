@@ -1309,6 +1309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6464216139637887595}
   - component: {fileID: 4555773995247487985}
+  - component: {fileID: 4543656749401722382}
   m_Layer: 0
   m_Name: TimerToRun
   m_TagString: Untagged
@@ -1373,13 +1374,31 @@ MonoBehaviour:
   subAction:
     m_PersistentCalls:
       m_Calls: []
-  timeToAction: 2.5
-  valueSetter: {fileID: 0}
+  timeToAction: 2.25
+  valueSetter: {fileID: 4543656749401722382}
   startTimerOnEnabled: 1
   overrideLastTimer: 1
   useUnscaledTime: 0
   _currentTimeToAction: 0
   _currentTimePass: 0
+--- !u!114 &4543656749401722382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5281038784002339233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139d3b4d6789fa54ca3051f9533f2663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTimeToAction: 2.75
+  timeToActionVariable: {fileID: 0}
+  randomTimeToActionVariable: {fileID: 0}
+  valueAdjuster: 0
+  valueAdjusterVariable: {fileID: 0}
+  valueAdjustType: 0
 --- !u!1 &5392934464907509388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031221960951774312, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: maxValueFloat
-      value: 150
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1150858454466308467, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: m_IsActive

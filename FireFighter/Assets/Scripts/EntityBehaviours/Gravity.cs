@@ -64,6 +64,10 @@ public class Gravity : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if (rb.isKinematic)
+        {
+            return;
+        }
         Vector3 gravity = gravityScale * Vector3.up;
 
         if (!_isGrounded || !setIsGroundedOnUpdate) {

@@ -24,6 +24,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     private bool _reachTarget = true;
     private bool _canReachTarget = true;
+    private bool _enableCheckCanReachTarget = true;
 
     public Action onGetAwayFromTarget;
     public Action onReachTarget;
@@ -33,6 +34,16 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     public bool GetReachTarget()
     {
         return _reachTarget;
+    }
+
+    private void OnEnable()
+    {
+        _canReachTarget = true;
+        _enableCheckCanReachTarget = true;
+        if (_starterVariablesSetted)
+        {
+            CheckIfCanReachTarget();
+        }
     }
 
     private void Start()
@@ -162,7 +173,7 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
     {
         if (_starterVariablesSetted) return;
         _path = new NavMeshPath();
-        if (targetVariable != null)
+        if (targetVariable != null && targetVariable.Value != null)
         {
             target = targetVariable.Value.transform;
         }
@@ -203,7 +214,11 @@ public class NavMeshTargetDirection : MonoBehaviour, IInputDirection
 
     public bool CheckIfCanReachTarget()
     {
-        SetStarterVariables();
+        if (!_enableCheckCanReachTarget)
+        {
+            SetStarterVariables();
+        }
+        _enableCheckCanReachTarget = false;
         float minDist = _reachTarget ? distToReach : 0;
 
         Vector3 closestPos;
