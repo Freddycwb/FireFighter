@@ -30,6 +30,10 @@ public class InvokeAfterGameObjectComparison : InvokeAfter
     public void Compare(GameObject value)
     {
         bool isEqual = (value == objToCompare);
+        if (!isEqual && value == null && objToCompare == null)
+        {
+            isEqual = true;
+        }
         if (isEqual ^ (comparison == ComparisonType.isEqual))
         {
             CallSubAction();

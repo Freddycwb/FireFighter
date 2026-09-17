@@ -6,6 +6,7 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     [SerializeField] private GameObject obj;
+    [SerializeField] private List<GameObject> objs = new List<GameObject>();
     [SerializeField] private float delay;
     [SerializeField] private bool onEnable;
     private Coroutine coroutine;
@@ -30,7 +31,10 @@ public class Destroyer : MonoBehaviour
 
     private void Start()
     {
-        poolObj = obj.GetComponent<PoolObject>();
+        if (obj != null)
+        {
+            poolObj = obj.GetComponent<PoolObject>();
+        }
     }
 
     private void CheckDelay()
@@ -99,6 +103,13 @@ public class Destroyer : MonoBehaviour
         else
         {
             poolObj.Delete();
+        }
+        if (objs.Count > 0)
+        {
+            foreach (GameObject item in objs)
+            {
+                Destroy(item);
+            }
         }
     }
 

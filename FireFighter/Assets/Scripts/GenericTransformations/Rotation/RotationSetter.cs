@@ -47,6 +47,17 @@ public class RotationSetter : MonoBehaviour
         }        
     }
 
+    public void SetRotation(Vector2 value)
+    {
+        SetInitial();
+        objectToRotate.transform.eulerAngles = new Vector3(value.x, value.y, objectToRotate.transform.eulerAngles.z);
+    }
+
+    public void SetRotation(Vector2Variable value)
+    {
+        SetRotation(value.Value);
+    }
+
     public void SetRotation(GameObject value)
     {
         SetInitial();

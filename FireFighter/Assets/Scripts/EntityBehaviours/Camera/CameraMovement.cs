@@ -19,6 +19,7 @@ public class CameraMovement : MonoBehaviour
 
     private Vector2 _orbitRotation;
     [SerializeField] private Vector2 defaultRotation;
+    [SerializeField] private Vector2Variable defaultRotationVariable;
     [SerializeField] private Vector2 angleLimits;
 
     [SerializeField] private GameObject lookDirectionObject;
@@ -41,7 +42,11 @@ public class CameraMovement : MonoBehaviour
             _lookDirection = lookDirectionObject.GetComponent<IInputDirection>();
         }
 
-        _orbitRotation = defaultRotation;
+        if (defaultRotationVariable != null)
+        {
+            defaultRotation = defaultRotationVariable.Value * Vector2.down;
+        }
+        _orbitRotation = defaultRotation + new Vector2(0, -90);
     }
 
     private void Start()

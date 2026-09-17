@@ -43,6 +43,14 @@ public class PositionSetter : MonoBehaviour
         }
     }
 
+    public void SetPosition(Vector3Variable value)
+    {
+        if (value != null)
+        {
+            SetPosition(value.Value);
+        }
+    }
+
     public void SetPosition(GameObject value)
     {
         if (value != null)

@@ -25,6 +25,16 @@ public class GameEventFloat : ScriptableObject
         Raise();
     }
 
+    public void RaiseVector2VariableX(Vector2Variable value)
+    {
+        Raise(value.Value.x);
+    }
+
+    public void RaiseVector2VariableY(Vector2Variable value)
+    {
+        Raise(value.Value.y);
+    }
+
     public void RegisterListener(InvokeAfterGameEventFloat listener)
     {
         if (!_eventListeners.Contains(listener))
