@@ -36,12 +36,12 @@ public class InvokeAfterAnimation : InvokeAfter
             }
             return;
         }
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !_isFinished)
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !_isFinished)
         {
             _isFinished = true;
             CallAction();
         }
-        else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1 && _isFinished)
+        else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && _isFinished)
         {
             _isFinished = false;
             CallSubAction();

@@ -124,6 +124,11 @@ public class CameraMovement : MonoBehaviour
         canControl = value;
     }
 
+    public void SetSensitivityMultiplier(float value)
+    {
+        sensitivityMultiplier = value;
+    }
+
     public Vector3 GetOrbitRotation()
     {
         return _orbitRotation;

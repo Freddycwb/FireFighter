@@ -8,6 +8,7 @@ public class PoolInstantiator : MonoBehaviour
     [SerializeField] private int instancesOnStart;
     [SerializeField] private GameObject obj;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform holder;
     [SerializeField] private Transform parent;
     [SerializeField] private Vector3 positionOffset;
     [SerializeField] private bool destroySurplus;
@@ -29,7 +30,7 @@ public class PoolInstantiator : MonoBehaviour
         for (int i = 0; i < instancesOnStart; i++)
         {
             GameObject a = Instantiate(obj, transform.position, transform.rotation);
-            a.transform.SetParent(transform);
+            a.transform.SetParent(holder? holder : transform);
             a.SetActive(false);
             a.AddComponent<PoolObject>().SetInstantiator(this);
         }
@@ -75,9 +76,11 @@ public class PoolInstantiator : MonoBehaviour
 
         GameObject a;
 
-        if (transform.childCount > 0)
+        Transform useHolder = holder ? holder : transform;
+
+        if (useHolder.childCount > 0)
         {
-            a = transform.GetChild(0).gameObject;
+            a = useHolder.GetChild(0).gameObject;
             a.transform.position = newPosition;
             a.transform.rotation = newRotation;
             a.transform.SetParent(parent);

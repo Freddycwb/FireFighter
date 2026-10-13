@@ -55,20 +55,28 @@ public class InvokeAfterCounter : InvokeAfter
     [SerializeField] private actionValueType targetToAction = actionValueType.Min;
     [SerializeField] private startValueType startCurrentValueType = startValueType.Max;
 
+    [SerializeField] private bool resetValuesOnEnable = true;
+    private bool alreadySetValues;
     [SerializeField] private bool isEnabling;
     [SerializeField] private bool CallActionOnSetToMinMax;
     [SerializeField] private bool CallSubActionOnlyIfCurrentChange;
+
 
     public Action onModifyValue;
 
     private void OnEnable()
     {
+        if (!resetValuesOnEnable && alreadySetValues)
+        {
+            return;
+        }
         isEnabling = true;
         SetMaxValue();
         SetMinValue();
         SetStartCurrentValue();
         SetCurrentValueVariable();
         isEnabling = false;
+        alreadySetValues = true;
     }
 
     private void SetStartCurrentValue()
@@ -154,6 +162,11 @@ public class InvokeAfterCounter : InvokeAfter
     public void SetMaxValue(StringArrayVariable value)
     {
         SetMaxValue(value.Value.Length);
+    }
+
+    public void SetMaxValueByRenderBoundY(Renderer value)
+    {
+        SetMaxValue(Mathf.FloorToInt(value.bounds.size.y));
     }
 
     public void SetMaxValue(int value)
@@ -260,6 +273,11 @@ public class InvokeAfterCounter : InvokeAfter
     public void ModifyValue(FloatVariable a)
     {
         ModifyValue(a.Value);
+    }
+
+    public void ModifyValueByLocalScale(GameObject a)
+    {
+        ModifyValue((a.transform.localScale.x + a.transform.localScale.y + a.transform.localScale.z) / 3);
     }
 
     public void SetValue(float a)

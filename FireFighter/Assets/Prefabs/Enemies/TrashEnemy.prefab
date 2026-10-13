@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ad3d21feb0775458f4bdbd823a74ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 4.5, y: 5}
+  force: {x: 2.5, y: 3}
   throwable: {fileID: 6173356626471029320}
   target: {fileID: 9191605649217351656}
   originOffset: {x: 0, y: 0, z: 0}
@@ -580,6 +580,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45da1e019a6f3246b6471c312347bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2349057455280468507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708328969513067513}
+  - component: {fileID: 285796039372179060}
+  - component: {fileID: 6204954383826168678}
+  m_Layer: 0
+  m_Name: Shoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708328969513067513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349057455280468507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7789749318538104157}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &285796039372179060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349057455280468507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 2045696391844565074}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6204954383826168678}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6204954383826168678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349057455280468507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -363439134
+      Data2: 1303148598
+      Data3: 1600510341
+      Data4: -878210884
+    Path: event:/TrashShoot
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2417719250219348143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,6 +1654,7 @@ MonoBehaviour:
   objToSetPos: {fileID: 6869498586720419370}
   objToSetPosVariable: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
+  localOffset: 0
   reference: {fileID: 0}
 --- !u!1 &6973485595958649787
 GameObject:
@@ -1894,7 +1990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 6869498586720419370}
   targetVariable: {fileID: 0}
-  distToReach: 1.5
+  distToReach: 0.35
   maxDist: Infinity
   offSet: {x: 0, y: 0}
   randomOffsetRadius: {x: 3, y: 6}
@@ -1958,7 +2054,7 @@ Transform:
   m_GameObject: {fileID: 9090421888980867125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.7}
+  m_LocalPosition: {x: 0, y: 1, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2579,6 +2675,10 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2100000, guid: 6219596ef149ea242b3990b6fde8a973, type: 2}
+    - target: {fileID: 3179384127481493578, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      propertyPath: distToReach
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3238741349976826851, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.339
@@ -3236,6 +3336,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2922113704845737204, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       insertIndex: 1
       addedObject: {fileID: 7418557803223646092}
+    - targetCorrespondingSourceObject: {fileID: 9085165870642282853, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 708328969513067513}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1221979500808069163, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       insertIndex: -1
@@ -3591,6 +3694,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8118725495138e74e83a1a0018d046ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7789749318538104157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9085165870642282853, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+  m_PrefabInstance: {fileID: 1301049372748598328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7929536861321652096 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8936582303021116344, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}

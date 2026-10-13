@@ -1821,6 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 3997456707704547692}
+  objs: []
   delay: 2
   onEnable: 0
 --- !u!114 &664669409546076061
@@ -2423,6 +2424,101 @@ Transform:
   - {fileID: 185793127314691751}
   m_Father: {fileID: 4821890383996045930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5058898254843728936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6911258309528333114}
+  - component: {fileID: 5384636986862793508}
+  - component: {fileID: 7809218668410315594}
+  m_Layer: 0
+  m_Name: DashSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6911258309528333114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058898254843728936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7097308311069319123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5384636986862793508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058898254843728936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce9b431052cf8043ba2229f01bc2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invokeAfter: {fileID: 2914082255600694635}
+  onActionCall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7809218668410315594}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubActionCall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7809218668410315594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058898254843728936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1128443646
+      Data2: 1127146053
+      Data3: -53285456
+      Data4: -153525701
+    Path: event:/EnemyFireIn
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 70
 --- !u!1 &5664331790396450606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,6 +3635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 7588714350645917447}
+  objs: []
   delay: 0
   onEnable: 0
 --- !u!1 &7769436364648452151
@@ -3834,6 +3931,7 @@ MonoBehaviour:
   _currentValue: 0
   targetToAction: 0
   startCurrentValueType: 0
+  resetValuesOnEnable: 1
   isEnabling: 0
   CallActionOnSetToMinMax: 0
   CallSubActionOnlyIfCurrentChange: 0
@@ -4725,6 +4823,26 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2100000, guid: f1b51c8f0935582439a6e74c14bda03c, type: 2}
+    - target: {fileID: 2956628983601040369, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/SnackStep
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956628983601040369, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: -76268736
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956628983601040369, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1158965226
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956628983601040369, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 399508375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956628983601040369, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: 229717881
+      objectReference: {fileID: 0}
     - target: {fileID: 2986777505228974906, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       propertyPath: m_Height
       value: 0.72
@@ -5405,6 +5523,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1195642708481670888, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 857213459044880376}
+    - targetCorrespondingSourceObject: {fileID: 9085165870642282853, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6911258309528333114}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7958198022388820421, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
       insertIndex: -1
@@ -5990,6 +6111,11 @@ MonoBehaviour:
 --- !u!54 &6613572135399250118 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5161805385080817264, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
+  m_PrefabInstance: {fileID: 2047530856017567414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7097308311069319123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9085165870642282853, guid: cc9815c63f81fde4884ce3f3f5fe67cf, type: 3}
   m_PrefabInstance: {fileID: 2047530856017567414}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7148602906882301974 stripped
