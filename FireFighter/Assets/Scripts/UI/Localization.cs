@@ -84,6 +84,12 @@ public class Localization : MonoBehaviour
         UpdateLanguage();
     }
 
+    public static void ChangeInput(string input)
+    {
+        _currentInput = input;
+        UpdateLanguage();
+    }
+
     public static string LocalizeText(string key)
     {
         if (!_hasLoadedText)

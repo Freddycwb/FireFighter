@@ -31,6 +31,18 @@ public class GameEventVector3 : ScriptableObject
         Raise();
     }
 
+    public void RaiseUsingOnlyY(float value)
+    {
+        this.value = new Vector3(0,value,0);
+        Raise();
+    }
+
+    public void RaiseUsingOnlyYRotation(GameObject value)
+    {
+        this.value = value.transform.position;
+        Raise();
+    }
+
     public void RegisterListener(InvokeAfterGameEventVector3 listener)
     {
         if (!_eventListeners.Contains(listener))

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem;
 
-public class MenuPauseTrigger : MonoBehaviour, IInputAction
+public class MenuOptionsTrigger : MonoBehaviour, IInputAction
 {
 
     public bool buttonDown

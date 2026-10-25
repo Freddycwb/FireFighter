@@ -3,6 +3,9 @@ using UnityEngine;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TextStruct : MonoBehaviour
 {
@@ -11,6 +14,22 @@ public class TextStruct : MonoBehaviour
     [SerializeField] private bool setOnChangeDisplayText = true;
 
     [SerializeField] private StringArrayVariable stringArray;
+
+    private TextLocalize textLocalize;
+    private bool localizeOnUpdateL;
+
+    private void Awake()
+    {
+        Localization.updateL += OnEnable;
+    }
+
+    private void OnEnable()
+    {
+        if (localizeOnUpdateL)
+        {
+            LocalizeDisplayText(textLocalize);
+        }
+    }
 
     public void SetTMP()
     {
@@ -22,7 +41,9 @@ public class TextStruct : MonoBehaviour
 
     public void LocalizeDisplayText(TextLocalize value)
     {
-        value.LocalizeText(displayText);
+        textLocalize = value;
+        textLocalize.LocalizeText(displayText);
+        localizeOnUpdateL = true;
     }
 
     private void CheckSetOnChangeDisplayText()
@@ -37,6 +58,7 @@ public class TextStruct : MonoBehaviour
     {
         displayText = value;
         CheckSetOnChangeDisplayText();
+        localizeOnUpdateL = false;
     }
 
     public string GetDisplayText()
@@ -50,6 +72,7 @@ public class TextStruct : MonoBehaviour
         {
             displayText = stringArray.Value[value];
             CheckSetOnChangeDisplayText();
+            localizeOnUpdateL = false;
         }
     }
 
@@ -61,6 +84,7 @@ public class TextStruct : MonoBehaviour
     public void CleanDisplayText()
     {
         displayText = "";
+        localizeOnUpdateL = false;
         CheckSetOnChangeDisplayText();
     }
 
@@ -68,6 +92,7 @@ public class TextStruct : MonoBehaviour
     {
         displayText += value;
         CheckSetOnChangeDisplayText();
+        localizeOnUpdateL = false;
     }
 
     public void AddToDisplayText(InvokeAfterCounter value)
