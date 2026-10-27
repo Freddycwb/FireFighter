@@ -63,6 +63,11 @@ public class InvokeAfterBoolComparison : InvokeAfter
         Compare(value.Value);
     }
 
+    public void Compare(GameEventBool value)
+    {
+        Compare(value.value);
+    }
+
     public void Compare(bool value)
     {
         if (value ^ (comparison == ComparisonType.isTrue))

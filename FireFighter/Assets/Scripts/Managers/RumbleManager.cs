@@ -26,6 +26,11 @@ public class RumbleManager : MonoBehaviour
         StopRumbleCoroutine = StartCoroutine(RumbleDuration(value.z));
     }
 
+    public void RumblePulse(GameEventVector3 value)
+    {
+        RumblePulse(value.value);
+    }
+
     private IEnumerator RumbleDuration(float value)
     {
         yield return new WaitForSeconds(value);
