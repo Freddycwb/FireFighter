@@ -9,6 +9,9 @@ public class TextLocalize : MonoBehaviour
     private TextMeshPro _TMProText;
 
     [SerializeField] private string _key;
+
+    [SerializeField] private bool updateOnLanguageChange = true;
+
     [SerializeField] private bool richTextTag;
     [SerializeField] private TextGradual textGradual;
 
@@ -24,9 +27,24 @@ public class TextLocalize : MonoBehaviour
         {
             _TMProText = GetComponent<TextMeshPro>();
         }
-        Localization.updateL += OnEnable;
+
+        Localization.updateL += OnLanguageUpdated;
     }
+
+    private void OnLanguageUpdated()
+    {
+        if (updateOnLanguageChange)
+        {
+            UpdateText();
+        }
+    }
+
     private void OnEnable()
+    {
+        UpdateText();
+    }
+
+    public void UpdateText()
     {
         if (_key == "")
         {
@@ -104,5 +122,10 @@ public class TextLocalize : MonoBehaviour
         {
             textGradual.CallType(Localization.LocalizeText(value));
         }
+    }
+
+    private void OnDisable()
+    {
+        Localization.updateL -= UpdateText;
     }
 }

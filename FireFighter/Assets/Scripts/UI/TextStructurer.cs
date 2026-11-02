@@ -12,6 +12,7 @@ public class TextStruct : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tmp;
     [SerializeField] private string displayText;
     [SerializeField] private bool setOnChangeDisplayText = true;
+    [SerializeField] private bool updateOnChangeLanguageOverride = true;
 
     [SerializeField] private StringArrayVariable stringArray;
 
@@ -20,12 +21,17 @@ public class TextStruct : MonoBehaviour
 
     private void Awake()
     {
-        Localization.updateL += OnEnable;
+        Localization.updateL += UpdateText;
     }
 
     private void OnEnable()
     {
-        if (localizeOnUpdateL)
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
+        if (localizeOnUpdateL && updateOnChangeLanguageOverride)
         {
             LocalizeDisplayText(textLocalize);
         }
@@ -112,5 +118,10 @@ public class TextStruct : MonoBehaviour
     public void AddCounterToDisplayText(GameObjectVariable value)
     {
         AddCounterToDisplayText(value.Value);
+    }
+
+    private void OnDisable()
+    {
+        Localization.updateL -= UpdateText;
     }
 }
